@@ -1,1 +1,306 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم | مَسَارُ التَّمَيُّزِ</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- خط تجوال العربي -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- ملف التنسيقات الخاص -->
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0f172a',
+                        petrol: '#0d5c75',
+                        gold: '#d4af37',
+                        goldhover: '#b89628',
+                        lightbg: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-lightbg text-slate-800 flex flex-col min-h-screen font-sans antialiased">
 
+    <!-- الهيدر الخاص بمدير النظام -->
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار مسار التميز" class="h-10 w-auto object-contain">
+                <div class="flex flex-col">
+                    <span class="text-lg font-black text-white">لوحة تحكم المنصة</span>
+                    <span class="text-[10px] text-gold font-bold">مَسَارُ التَّمَيُّزِ الأكاديمي</span>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-4">
+                <a href="index.html" target="_blank" class="text-slate-300 hover:text-white text-xs font-bold flex items-center gap-1.5 bg-slate-800 px-3 py-2 rounded-xl border border-slate-700 transition">
+                    <i class="fas fa-external-link-alt text-gold"></i>
+                    <span class="hidden sm:inline">معاينة الموقع للزوار</span>
+                </a>
+                <button id="admin-logout-btn" onclick="logoutAdmin()" class="hidden bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 transition">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>تسجيل الخروج</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. شاشة تسجيل الدخول (Login Form) -->
+    <main id="admin-login-section" class="py-20 px-4 flex-grow flex items-center justify-center">
+        <div class="max-w-md w-full bg-white rounded-3xl p-8 border border-slate-200 shadow-xl space-y-6">
+            <div class="text-center space-y-2">
+                <div class="w-16 h-16 bg-slate-900 text-gold rounded-2xl flex items-center justify-center text-2xl mx-auto shadow-md">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h2 class="text-2xl font-black text-slate-900">تسجيل دخول الآدمن</h2>
+                <p class="text-slate-500 text-xs">أدخل كلمة المرور الخاصة للوصول إلى خيارات الإدارة والتعديل</p>
+            </div>
+
+            <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">كلمة مرور لوحة التحكم</label>
+                    <input type="password" id="admin-password-input" required placeholder="أدخل كلمة المرور..." class="w-full px-4 py-3 bg-lightbg border border-slate-300 rounded-xl text-slate-900 focus:outline-none focus:border-gold font-medium text-sm">
+                </div>
+                <div id="login-error-msg" class="hidden text-rose-600 text-xs font-bold text-center bg-rose-50 p-2.5 rounded-lg border border-rose-200">
+                    كلمة المرور غير صحيحة
+                </div>
+                <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-gold font-extrabold py-3.5 rounded-xl text-sm transition shadow-lg shadow-slate-900/20">
+                    دخول اللوحة
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- 2. لوحة التحكم الرئيسية (Dashboard Main) -->
+    <main id="admin-dashboard-section" class="hidden py-10 px-4 max-w-7xl mx-auto w-full flex-grow space-y-10">
+        
+        <!-- بطاقات الإحصائيات الشاملة -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                <span class="text-xs text-slate-500 font-bold block">إجمالي الخدمات المضافة</span>
+                <span id="stat-total-services" class="text-3xl font-black text-slate-900">0</span>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                <span class="text-xs text-slate-500 font-bold block">نماذج الأعمال السابقة</span>
+                <span id="stat-total-works" class="text-3xl font-black text-petrol">0</span>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                <span class="text-xs text-slate-500 font-bold block">تقييمات الطلاب</span>
+                <span id="stat-total-reviews" class="text-3xl font-black text-gold">0</span>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                <span class="text-xs text-slate-500 font-bold block">إجمالي المشاهدات</span>
+                <span id="stat-total-views" class="text-3xl font-black text-emerald-600">0</span>
+            </div>
+        </div>
+
+        <!-- أزرار التنقل بين تبويبات اللوحة -->
+        <div class="flex border-b border-slate-200 gap-4 overflow-x-auto">
+            <button onclick="switchTab('services')" id="tab-btn-services" class="tab-btn active pb-3 px-2 font-bold text-sm border-b-2 border-slate-900 text-slate-900 flex items-center gap-2">
+                <i class="fas fa-th-large"></i>
+                <span>إدارة الخدمات</span>
+            </button>
+            <button onclick="switchTab('works')" id="tab-btn-works" class="tab-btn pb-3 px-2 font-bold text-sm text-slate-500 hover:text-slate-900 flex items-center gap-2">
+                <i class="fas fa-images"></i>
+                <span>إضافة نماذج الأعمال</span>
+            </button>
+        </div>
+
+        <!-- تبويب 1: إدارة الخدمات (عرض وإضافة وتعديل) -->
+        <div id="tab-content-services" class="space-y-8">
+            <!-- نموذج إضافة / تعديل خدمة -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                    <h3 id="service-form-title" class="text-xl font-extrabold text-slate-900 flex items-center gap-2">
+                        <i class="fas fa-plus-circle text-gold"></i>
+                        <span>إضافة خدمة جديدة للموقع</span>
+                    </h3>
+                    <button type="button" onclick="resetServiceForm()" class="text-xs text-slate-500 hover:text-slate-900 underline font-bold">
+                        إعادة تعيين نموذج الخدمة
+                    </button>
+                </div>
+
+                <form id="add-edit-service-form" onsubmit="handleServiceSubmit(event)" class="space-y-6">
+                    <input type="hidden" id="form-service-id" value="">
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- اسم الخدمة -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">عنوان/اسم الخدمة <span class="text-rose-600">*</span></label>
+                            <input type="text" id="service-title-input" required placeholder="مثال: حل واجبات البرمجة بلغة Python" class="w-full px-4 py-2.5 bg-lightbg border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-gold font-medium">
+                        </div>
+
+                        <!-- اختيار قسم الخدمة المباشر -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">القسم / التخصص التابع له <span class="text-rose-600">*</span></label>
+                            <select id="service-category-select" required class="w-full px-4 py-2.5 bg-lightbg border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-gold font-medium">
+                                <option value="" disabled selected>اختر القسم المباشر...</option>
+                                <!-- يتم تعبئتها ديناميكياً بـ 8 الأقسام المعتمدة عبر admin.js -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- رابط غلاف الخدمة المباشر -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">رابط صورة غلاف الخدمة (Image URL)</label>
+                            <input type="url" id="service-image-url-input" placeholder="https://example.com/image.jpg" onchange="previewCoverImage(this.value)" class="w-full px-4 py-2.5 bg-lightbg border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-gold font-medium">
+                            <span class="text-[11px] text-slate-400 block mt-1">ضع رابط الصورة المرفوعة على موقع خارجي (Imgur, Postimages, الخ)</span>
+                        </div>
+
+                        <!-- الرابط اللطيف Slug -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">الرابط اللطيف (Slug)</label>
+                            <input type="text" id="service-slug-input" placeholder="تلقائي إن تركته فارغاً (مثال: python-homework)" class="w-full px-4 py-2.5 bg-lightbg border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-gold font-medium text-left" dir="ltr">
+                        </div>
+                    </div>
+
+                    <!-- معاينة صورة غلاف الخدمة -->
+                    <div id="cover-preview-box" class="hidden p-3 bg-lightbg rounded-xl border border-slate-200 flex items-center gap-4">
+                        <img id="cover-preview-img" src="" alt="معاينة الغلاف" class="h-16 w-24 object-cover rounded-lg border border-slate-300">
+                        <span class="text-xs font-bold text-emerald-600 flex items-center gap-1">
+                            <i class="fas fa-check-circle"></i>
+                            تم التقاط رابط الصورة بنجاح
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- السعر التقديري -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">معلومات السعر</label>
+                            <input type="text" id="service-price-input" placeholder="حسب الاتفاق" class="w-full px-4 py-2.5 bg-lightbg border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-gold font-medium">
+                        </div>
+
+                        <!-- مدة التنفيذ -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">مدة التنفيذ</label>
+                            <input type="text" id="service-time-input" placeholder="حسب الموعد النهائي" class="w-full px-4 py-2.5 bg-lightbg border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-gold font-medium">
+                        </div>
+                    </div>
+
+                    <!-- الوصف المختصر -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">الوصف المختصر (يظهر في كارت الخدمة بالصفحة الرئيسية) <span class="text-rose-600">*</span></label>
+                        <textarea id="service-short-desc-input" rows="2" required placeholder="اكتب وصفاً موجزاً وجذاباً للخدمة..." class="w-full px-4 py-2.5 bg-lightbg border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-gold font-medium"></textarea>
+                    </div>
+
+                    <!-- الوصف الشامل -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">الوصف التفصيلي والمتطلبات (يظهر في صفحة تفاصيل الخدمة)</label>
+                        <textarea id="service-full-desc-input" rows="4" placeholder="اكتب التفاصيل الكاملة والشروط والمخرجات المتوقعة..." class="w-full px-4 py-2.5 bg-lightbg border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-gold font-medium"></textarea>
+                    </div>
+
+                    <!-- خيار النشر والإتاحة -->
+                    <div class="flex items-center gap-2 pt-2">
+                        <input type="checkbox" id="service-published-checkbox" checked class="w-4 h-4 text-slate-900 rounded border-slate-300 focus:ring-gold">
+                        <label for="service-published-checkbox" class="text-xs font-bold text-slate-800">نشر وإظهار الخدمة فوراً للزوار في الموقع</label>
+                    </div>
+
+                    <!-- أزرار الحفظ والنشر -->
+                    <div class="flex justify-end gap-3 pt-4 border-t border-slate-100">
+                        <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-gold font-extrabold px-8 py-3.5 rounded-xl text-sm transition shadow-lg flex items-center gap-2">
+                            <i class="fas fa-save"></i>
+                            <span id="save-service-btn-text">حفظ ونشر الخدمة</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- جدول / قائمة الخدمات الحالية في قاعدة البيانات -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                <h3 class="text-xl font-extrabold text-slate-900 flex items-center gap-2">
+                    <i class="fas fa-list text-petrol"></i>
+                    <span>جميع الخدمات المضافة حالياً</span>
+                </h3>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-right text-sm">
+                        <thead class="bg-slate-900 text-gold text-xs font-bold uppercase">
+                            <tr>
+                                <th class="p-4 rounded-r-xl">الخدمة</th>
+                                <th class="p-4">القسم التابع له</th>
+                                <th class="p-4">المشاهدات</th>
+                                <th class="p-4">الحالة</th>
+                                <th class="p-4 rounded-l-xl text-center">الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-services-table-body" class="divide-y divide-slate-100 font-medium text-slate-700">
+                            <!-- يتم ملؤها بواسطة admin.js -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- تبويب 2: إضافة وإدارة الأعمال السابقة (Works) -->
+        <div id="tab-content-works" class="hidden space-y-8">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                <h3 class="text-xl font-extrabold text-slate-900 flex items-center gap-2">
+                    <i class="fas fa-plus-square text-petrol"></i>
+                    <span>ربط نموذج عمل سابق بخدمة معينة</span>
+                </h3>
+
+                <form id="add-work-form" onsubmit="handleWorkSubmit(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- اختيار الخدمة التابعة لها -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">اختر الخدمة التابع لها هذا العمل <span class="text-rose-600">*</span></label>
+                            <select id="work-service-select" required class="w-full px-4 py-2.5 bg-lightbg border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-gold font-medium">
+                                <option value="" disabled selected>اختر الخدمة...</option>
+                                <!-- يتم تعبئتها بجميع الخدمات عبر admin.js -->
+                            </select>
+                        </div>
+
+                        <!-- عنوان العمل السابق -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">عنوان/اسم النموذج السابق <span class="text-rose-600">*</span></label>
+                            <input type="text" id="work-title-input" required placeholder="مثال: نموذج حل واجب رياضيات هندسية متقدمة" class="w-full px-4 py-2.5 bg-lightbg border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-gold font-medium">
+                        </div>
+                    </div>
+
+                    <!-- رابط صورة النموذج المباشر -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">رابط صورة النموذج السابق (Image URL) <span class="text-rose-600">*</span></label>
+                        <input type="url" id="work-image-url-input" required placeholder="https://example.com/work-sample.jpg" class="w-full px-4 py-2.5 bg-lightbg border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-gold font-medium">
+                    </div>
+
+                    <!-- شرح وتوضيح العمل -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">شرح وملاحظات حول هذا النموذج</label>
+                        <textarea id="work-desc-input" rows="2" placeholder="اكتب توضيحاً موجزاً لنوع التقنيات أو الخطوات المستخدمة..." class="w-full px-4 py-2.5 bg-lightbg border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-gold font-medium"></textarea>
+                    </div>
+
+                    <div class="flex justify-end pt-4 border-t border-slate-100">
+                        <button type="submit" class="bg-petrol hover:bg-slate-900 text-white font-extrabold px-8 py-3.5 rounded-xl text-sm transition shadow-lg flex items-center gap-2">
+                            <i class="fas fa-upload"></i>
+                            <span>حفظ وربط النموذج بالخدمة</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- الفوتر -->
+    <footer class="bg-slate-950 text-slate-500 py-6 text-center text-xs border-t border-slate-900 mt-auto">
+        مَسَارُ التَّمَيُّزِ - لوحة التحكم الإدارية © 2026
+    </footer>
+
+    <!-- ربط الملفات البرمجية -->
+    <script src="whatsapp.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
