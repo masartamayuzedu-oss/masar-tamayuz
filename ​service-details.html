@@ -1,1 +1,287 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الخدمة | مَسَارُ التَّمَيُّزِ</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- خط تجوال العربي -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- ملف التنسيقات الخاص -->
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0f172a',
+                        petrol: '#0d5c75',
+                        gold: '#d4af37',
+                        goldhover: '#b89628',
+                        lightbg: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-lightbg text-slate-800 flex flex-col min-h-screen font-sans antialiased">
 
+    <!-- 1. الهيدر والقائمة العلوية -->
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+            <!-- الشعار واسم المنصة -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار مسار التميز" class="h-12 w-auto object-contain transition transform group-hover:scale-105">
+                <div class="flex flex-col">
+                    <span class="text-xl font-black text-white tracking-wide">مَسَارُ التَّمَيُّزِ</span>
+                    <span class="text-xs text-gold font-bold">لِلْخِدْمَاتِ الطُّلَّابِيَّةِ والأكاديمية</span>
+                </div>
+            </a>
+
+            <!-- روابط التنقل -->
+            <nav class="hidden md:flex items-center gap-8 font-semibold text-slate-300">
+                <a href="index.html" class="hover:text-gold transition">الرئيسية</a>
+                <a href="services.html" class="hover:text-gold transition">جميع الخدمات</a>
+                <a href="about.html" class="hover:text-gold transition">من نحن</a>
+                <a href="contact.html" class="hover:text-gold transition">تواصل معنا</a>
+            </nav>
+
+            <!-- أزرار الإجراءات -->
+            <div class="flex items-center gap-3">
+                <button onclick="sendGeneralWhatsApp()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2.5 rounded-xl text-sm flex items-center gap-2 shadow-lg shadow-emerald-900/20 transition transform hover:-translate-y-0.5">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    <span class="hidden sm:inline">طلب خدمة مباشر</span>
+                </button>
+                <a href="admin.html" class="text-slate-400 hover:text-white p-2 rounded-lg text-sm transition" title="لوحة التحكم">
+                    <i class="fas fa-user-shield text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. شريط التنقل الفرعي (Breadcrumb) -->
+    <div class="bg-slate-900 text-slate-400 py-4 px-4 border-b border-slate-800 text-xs sm:text-sm">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap">
+                <a href="index.html" class="hover:text-gold transition">الرئيسية</a>
+                <i class="fas fa-chevron-left text-[10px] text-slate-600"></i>
+                <a href="services.html" class="hover:text-gold transition">الخدمات والأقسام</a>
+                <i class="fas fa-chevron-left text-[10px] text-slate-600"></i>
+                <span id="service-category-badge" class="text-gold font-bold">جاري التحميل...</span>
+            </div>
+            <a href="services.html" class="text-slate-300 hover:text-gold font-bold text-xs flex items-center gap-1.5 transition">
+                <i class="fas fa-arrow-right"></i>
+                <span>العودة للخدمات</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- 3. المحتوى الرئيسي لصفحة الخدمة -->
+    <main class="py-12 px-4 max-w-7xl mx-auto w-full flex-grow">
+        <!-- حاوية تحميل الخدمة -->
+        <div id="service-loading-state" class="text-center py-20 text-slate-500 space-y-3">
+            <i class="fas fa-circle-notch fa-spin text-4xl text-gold"></i>
+            <p class="font-bold text-sm">جاري جلب تفاصيل الخدمة والأعمال السابقة...</p>
+        </div>
+
+        <!-- تفاصيل الخدمة عند الاكتمال -->
+        <div id="service-details-container" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- العمود الأيمن الرئيسي (التفاصيل والأعمال والتقييمات) -->
+            <div class="lg:col-span-2 space-y-8">
+                
+                <!-- كارت التفاصيل الرئيسية -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                    <div class="space-y-3">
+                        <span id="detail-category-name" class="inline-block text-xs font-bold text-petrol bg-petrol/10 px-3 py-1 rounded-full">--</span>
+                        <h1 id="detail-service-title" class="text-2xl sm:text-4xl font-black text-slate-900 leading-tight">--</h1>
+                        <div class="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-500 pt-2 border-t border-slate-100">
+                            <span class="flex items-center gap-1 text-amber-500 font-bold">
+                                <i class="fas fa-star"></i>
+                                <span id="detail-avg-rating">5.0</span>
+                            </span>
+                            <span>•</span>
+                            <span class="flex items-center gap-1">
+                                <i class="fas fa-eye text-slate-400"></i>
+                                <span id="detail-views-count">0</span> مشاهدة
+                            </span>
+                            <span>•</span>
+                            <span class="flex items-center gap-1">
+                                <i class="fas fa-images text-slate-400"></i>
+                                <span id="detail-works-count">0</span> نموذج سابق
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- غلاف الخدمة (إذا وجد رابط صورة) -->
+                    <div id="detail-cover-container" class="hidden rounded-2xl overflow-hidden border border-slate-100 max-h-96 bg-slate-950">
+                        <img id="detail-cover-img" src="" alt="" class="w-full h-full object-cover">
+                    </div>
+
+                    <!-- الوصف الشامل -->
+                    <div class="space-y-4 pt-4 border-t border-slate-100">
+                        <h3 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                            <i class="fas fa-align-right text-gold"></i>
+                            <span>الوصف الشامل للخدمة والمتطلبات</span>
+                        </h3>
+                        <div id="detail-full-description" class="text-slate-600 text-sm sm:text-base leading-relaxed whitespace-pre-line">
+                            --
+                        </div>
+                    </div>
+                </div>
+
+                <!-- قسم معرض الأعمال السابقة الملحقة بالخدمة -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                        <h3 class="text-xl font-extrabold text-slate-900 flex items-center gap-2">
+                            <i class="fas fa-folder-open text-petrol"></i>
+                            <span>نماذج وأعمال سابقة لهذه الخدمة</span>
+                        </h3>
+                        <span id="works-badge-count" class="text-xs bg-slate-100 text-slate-700 font-bold px-2.5 py-1 rounded-full">0 نماذج</span>
+                    </div>
+
+                    <!-- شبكة الأعمال السابقة -->
+                    <div id="service-works-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- يتم ملؤها ديناميكياً بواسطة main.js -->
+                    </div>
+                </div>
+
+                <!-- قسم آراء وتقييمات الطلاب -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                        <h3 class="text-xl font-extrabold text-slate-900 flex items-center gap-2">
+                            <i class="fas fa-comments text-gold"></i>
+                            <span>تقييمات وآراء الطلاب</span>
+                        </h3>
+                    </div>
+
+                    <!-- قائمة التقييمات الحالية -->
+                    <div id="service-reviews-list" class="space-y-4">
+                        <!-- يتم الجلب بواسطة main.js -->
+                    </div>
+
+                    <!-- نموذج إضافة تقييم جديد -->
+                    <div class="pt-6 border-t border-slate-100 space-y-4">
+                        <h4 class="font-bold text-slate-900 text-sm">أضف تقييمك لهذه الخدمة</h4>
+                        <form id="add-review-form" onsubmit="handleReviewSubmit(event)" class="space-y-4">
+                            <input type="hidden" id="review-service-id" value="">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">اسمك (أو الكلية/التخصص)</label>
+                                    <input type="text" id="review-student-name" required placeholder="مثال: طالب بكلية الهندسة" class="w-full px-4 py-2.5 bg-lightbg border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-gold">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">التقييم من 5</label>
+                                    <select id="review-rating" class="w-full px-4 py-2.5 bg-lightbg border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-gold">
+                                        <option value="5">⭐⭐⭐⭐⭐ (5/5) ممتاز جداً</option>
+                                        <option value="4">⭐⭐⭐⭐ (4/5) جيد جداً</option>
+                                        <option value="3">⭐⭐⭐ (3/5) جيد</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">رأيك أو انطباعك</label>
+                                <textarea id="review-comment" rows="2" required placeholder="اكتب انطباعك عن دقة وتنسيق الخدمة..." class="w-full px-4 py-2.5 bg-lightbg border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-gold"></textarea>
+                            </div>
+                            <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-gold font-bold px-6 py-2.5 rounded-xl text-xs transition">
+                                إرسال التقييم
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- العمود الأيسر (بطاقات الطلب والطلب المباشر) -->
+            <div class="space-y-6">
+                <!-- بطاقة الطلب المباشر عبر الواتساب -->
+                <div class="bg-slate-900 text-white rounded-3xl p-6 border border-slate-800 shadow-xl space-y-6 sticky top-28">
+                    <div class="text-center space-y-2 pb-4 border-b border-slate-800">
+                        <span class="text-xs text-gold font-bold bg-slate-800 px-3 py-1 rounded-full">طلب الخدمة</span>
+                        <h3 class="text-xl font-extrabold text-white">هل تريد طلب هذه الخدمة؟</h3>
+                        <p class="text-slate-400 text-xs">سيتم فتح الواتساب مباشرة مع رسالة مخصصة باسم هذه الخدمة.</p>
+                    </div>
+
+                    <!-- الميزات السريعة -->
+                    <div class="space-y-3 text-xs text-slate-300">
+                        <div class="flex items-center justify-between p-3 bg-slate-800/50 rounded-xl border border-slate-800">
+                            <span class="text-slate-400">التكلفة والرسوم:</span>
+                            <span id="detail-price-info" class="font-bold text-gold">حسب الاتفاق</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-slate-800/50 rounded-xl border border-slate-800">
+                            <span class="text-slate-400">مدة التنفيذ:</span>
+                            <span id="detail-execution-time" class="font-bold text-white">حسب الموعد النهائي</span>
+                        </div>
+                    </div>
+
+                    <!-- زر الواتساب المخصص المولد ديناميكياً -->
+                    <button id="service-whatsapp-btn" onclick="" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold py-4 rounded-xl text-base flex items-center justify-center gap-3 shadow-lg shadow-emerald-900/40 transition transform hover:-translate-y-0.5">
+                        <i class="fab fa-whatsapp text-2xl"></i>
+                        <span>تواصل معنا عبر واتساب الآن</span>
+                    </button>
+
+                    <div class="text-center pt-2">
+                        <span class="text-[11px] text-slate-500 flex items-center justify-center gap-1">
+                            <i class="fas fa-lock text-slate-600"></i>
+                            نضمن لك السرية المطلقة والتسليم الدقيق
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 4. الفوتر -->
+    <footer class="bg-slate-950 text-slate-400 py-12 px-4 border-t border-slate-900 mt-auto">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-slate-900">
+            <!-- عمود 1: التعريف -->
+            <div class="space-y-4 md:col-span-2">
+                <div class="flex items-center gap-3">
+                    <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار مسار التميز" class="h-10 w-auto">
+                    <span class="text-lg font-bold text-white">مَسَارُ التَّمَيُّزِ</span>
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed max-w-md">
+                    منصة متخصصة في تقديم الاستشارات والدعم الأكاديمي والحلول التقنية والبرمجية لطلاب الجامعات والدراسات العليا، بأعلى معايير الجودة والسرية التامة.
+                </p>
+            </div>
+
+            <!-- عمود 2: روابط سريعة -->
+            <div class="space-y-3">
+                <h4 class="text-white font-bold text-sm">روابط سريعة</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="index.html" class="hover:text-gold transition">الرئيسية</a></li>
+                    <li><a href="services.html" class="hover:text-gold transition">قائمة الخدمات</a></li>
+                    <li><a href="about.html" class="hover:text-gold transition">من نحن</a></li>
+                    <li><a href="contact.html" class="hover:text-gold transition">تواصل معنا</a></li>
+                </ul>
+            </div>
+
+            <!-- عمود 3: التواصل -->
+            <div class="space-y-3">
+                <h4 class="text-white font-bold text-sm">التواصل والطلب</h4>
+                <p class="text-xs text-slate-400">للاستفسار المباشر وسرعة الاستجابة عبر واتساب الرسمي:</p>
+                <button onclick="sendGeneralWhatsApp()" class="bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-slate-800 px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2 transition">
+                    <i class="fab fa-whatsapp text-sm"></i>
+                    <span>المحادثة المباشرة</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-6 text-center text-xs text-slate-500">
+            جميع الحقوق محفوظة © 2026 - مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ والأكاديمية
+        </div>
+    </footer>
+
+    <!-- ربط الملفات البرمجية -->
+    <script src="whatsapp.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
