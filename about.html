@@ -1,1 +1,237 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>من نحن | مَسَارُ التَّمَيُّزِ</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- خط تجوال العربي -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- ملف التنسيقات الخاص -->
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0f172a',
+                        petrol: '#0d5c75',
+                        gold: '#d4af37',
+                        goldhover: '#b89628',
+                        lightbg: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-lightbg text-slate-800 flex flex-col min-h-screen font-sans antialiased">
 
+    <!-- 1. الهيدر والقائمة العلوية -->
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+            <!-- الشعار واسم المنصة -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار مسار التميز" class="h-12 w-auto object-contain transition transform group-hover:scale-105">
+                <div class="flex flex-col">
+                    <span class="text-xl font-black text-white tracking-wide">مَسَارُ التَّمَيُّزِ</span>
+                    <span class="text-xs text-gold font-bold">لِلْخِدْمَاتِ الطُّلَّابِيَّةِ والأكاديمية</span>
+                </div>
+            </a>
+
+            <!-- روابط التنقل -->
+            <nav class="hidden md:flex items-center gap-8 font-semibold text-slate-300">
+                <a href="index.html" class="hover:text-gold transition">الرئيسية</a>
+                <a href="services.html" class="hover:text-gold transition">جميع الخدمات</a>
+                <a href="about.html" class="text-gold font-bold transition">من نحن</a>
+                <a href="contact.html" class="hover:text-gold transition">تواصل معنا</a>
+            </nav>
+
+            <!-- أزرار الإجراءات -->
+            <div class="flex items-center gap-3">
+                <button onclick="sendGeneralWhatsApp()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2.5 rounded-xl text-sm flex items-center gap-2 shadow-lg shadow-emerald-900/20 transition transform hover:-translate-y-0.5">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    <span class="hidden sm:inline">طلب خدمة مباشر</span>
+                </button>
+                <a href="admin.html" class="text-slate-400 hover:text-white p-2 rounded-lg text-sm transition" title="لوحة التحكم">
+                    <i class="fas fa-user-shield text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. هيدر الصفحة الفرعية -->
+    <section class="bg-slate-900 text-white py-16 px-4 border-b border-slate-800 text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-4xl mx-auto relative z-10 space-y-4">
+            <span class="text-gold font-bold text-sm bg-slate-800/80 border border-gold/30 px-4 py-1.5 rounded-full inline-block">تعرّف علينا</span>
+            <h1 class="text-3xl sm:text-5xl font-black text-white">من نحن؟</h1>
+            <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto">تعرّف على رؤيتنا ورسالتنا والقيم الأكاديمية التي نعمل وفقها لدعم الطلاب والباحثين.</p>
+        </div>
+    </section>
+
+    <!-- 3. نبذة تفصيلية عن المنصة -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <div class="inline-flex items-center gap-2 text-petrol font-bold text-sm bg-petrol/10 px-3 py-1 rounded-full">
+                    <i class="fas fa-bullseye"></i>
+                    <span>الهوية والغاية</span>
+                </div>
+                <h2 class="text-3xl font-extrabold text-slate-900 leading-snug">شريكك الموثوق في الرحلة الأكاديمية والبحثية</h2>
+                <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                    <strong>مَسَارُ التَّمَيُّزِ</strong> هي منصة متخصصة في تقديم الاستشارات والدعم الأكاديمي والتقني للطلاب في مختلف التخصصات الجامعية والدراسات العليا.
+                </p>
+                <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                    نهدف إلى تخفيف العبء الأكاديمي عن الطالب وتقديم مخرجات احترافية دقيقة تُساعده على التفوق والتميز في مسيرته التعليمية، مع الالتزام التام بسياسات الجودة والسرية الأكاديمية.
+                </p>
+            </div>
+            
+            <div class="bg-slate-900 text-white p-8 rounded-3xl border border-slate-800 shadow-xl space-y-6 relative">
+                <div class="flex items-center gap-4 border-b border-slate-800 pb-4">
+                    <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار المنصة" class="h-12 w-auto">
+                    <div>
+                        <h3 class="font-bold text-lg text-gold">مَسَارُ التَّمَيُّزِ</h3>
+                        <p class="text-xs text-slate-400">لِلْخِدْمَاتِ الطُّلَّابِيَّةِ والأكاديمية</p>
+                    </div>
+                </div>
+                <p class="text-slate-300 text-xs sm:text-sm leading-relaxed italic">
+                    "نؤمن بأن التفوق الأكاديمي يحتاج إلى توجيه صحيح، وإتقان في التنفيذ، ودعم مستمر حتى يصل الطالب إلى غايته بثقة واقتدار."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. الرؤية والرسالة -->
+    <section class="py-16 px-4 bg-lightbg border-y border-slate-200">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- بطاقة الرؤية -->
+            <div class="p-8 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-4 hover:border-gold transition">
+                <div class="w-12 h-12 bg-navy text-gold rounded-xl flex items-center justify-center text-2xl font-bold shadow-md">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3 class="text-2xl font-extrabold text-slate-900">رؤيتنا</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    أن نكون الخيار الأول والمنصة الأوثق للطلاب الجامعيين والباحثين في تقديم الحلول الأكاديمية والبرمجية والهندسية المتكاملة والمبتكرة في العالم العربي.
+                </p>
+            </div>
+
+            <!-- بطاقة الرسالة -->
+            <div class="p-8 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-4 hover:border-gold transition">
+                <div class="w-12 h-12 bg-petrol text-white rounded-xl flex items-center justify-center text-2xl font-bold shadow-md">
+                    <i class="fas fa-paper-plane"></i>
+                </div>
+                <h3 class="text-2xl font-extrabold text-slate-900">رسالتنا</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    تمكين الطلاب والباحثين من تحقيق أقصى درجات النجاح والتفوق الأكاديمي عبر تقديم خدمات دعم عالية الجودة، تتسم بالدقة، الاحترافية، والشفافية التامة.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. قيمنا الرائدة -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                <span class="text-gold font-bold text-sm bg-gold/10 px-3 py-1 rounded-full">المبادئ والأسس</span>
+                <h2 class="text-3xl font-extrabold text-slate-900">القيم التي نلتزم بها</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- قيمة 1 -->
+                <div class="p-6 bg-lightbg rounded-xl border border-slate-100 text-center space-y-3">
+                    <i class="fas fa-shield-alt text-3xl text-petrol"></i>
+                    <h4 class="font-bold text-slate-900 text-lg">الأمانة والسرية</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">حفظ كافة بيانات وبيانات الطلاب والأعمال بخصوصية وأمان مطلق.</p>
+                </div>
+
+                <!-- قيمة 2 -->
+                <div class="p-6 bg-lightbg rounded-xl border border-slate-100 text-center space-y-3">
+                    <i class="fas fa-award text-3xl text-gold"></i>
+                    <h4 class="font-bold text-slate-900 text-lg">الجودة العالية</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">التزام تام بالمعايير والمواصفات الأكاديمية والهندسية الدقيقة.</p>
+                </div>
+
+                <!-- قيمة 3 -->
+                <div class="p-6 bg-lightbg rounded-xl border border-slate-100 text-center space-y-3">
+                    <i class="fas fa-history text-3xl text-emerald-600"></i>
+                    <h4 class="font-bold text-slate-900 text-lg">الانضباط الزمني</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">التسليم قبل أو في الموعد المكتوب لضمان وقت كافٍ للمراجعة والشرح.</p>
+                </div>
+
+                <!-- قيمة 4 -->
+                <div class="p-6 bg-lightbg rounded-xl border border-slate-100 text-center space-y-3">
+                    <i class="fas fa-comments text-3xl text-amber-500"></i>
+                    <h4 class="font-bold text-slate-900 text-lg">المتابعة المستمرة</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">توضيح وشرح خطوات العمل وتطبيق كافة التعديلات بكل مرونة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. قسم الدعوة للتواصل المباشر -->
+    <section class="py-16 px-4 bg-gradient-to-r from-slate-900 via-petrol to-slate-900 text-white my-12 max-w-7xl mx-auto rounded-3xl shadow-2xl relative overflow-hidden">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-8 p-4 sm:p-8 relative z-10 text-center lg:text-right">
+            <div class="space-y-3">
+                <h2 class="text-2xl sm:text-4xl font-extrabold">جاهز لبدء رحلتك الأكاديمية معنا؟</h2>
+                <p class="text-slate-200 text-sm sm:text-base">تواصل معنا الآن واستفسر عن الخدمات المتاحة والتفاصيل التي تحتاجها.</p>
+            </div>
+            <button onclick="sendGeneralWhatsApp()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold px-8 py-4 rounded-xl text-lg flex items-center gap-3 shadow-lg transition transform hover:scale-105 whitespace-nowrap">
+                <i class="fab fa-whatsapp text-2xl"></i>
+                <span>تواصل معنا عبر واتساب</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- 7. الفوتر -->
+    <footer class="bg-slate-950 text-slate-400 py-12 px-4 border-t border-slate-900 mt-auto">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-slate-900">
+            <!-- عمود 1: التعريف -->
+            <div class="space-y-4 md:col-span-2">
+                <div class="flex items-center gap-3">
+                    <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار مسار التميز" class="h-10 w-auto">
+                    <span class="text-lg font-bold text-white">مَسَارُ التَّمَيُّزِ</span>
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed max-w-md">
+                    منصة متخصصة في تقديم الاستشارات والدعم الأكاديمي والحلول التقنية والبرمجية لطلاب الجامعات والدراسات العليا، بأعلى معايير الجودة والسرية التامة.
+                </p>
+            </div>
+
+            <!-- عمود 2: روابط سريعة -->
+            <div class="space-y-3">
+                <h4 class="text-white font-bold text-sm">روابط سريعة</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="index.html" class="hover:text-gold transition">الرئيسية</a></li>
+                    <li><a href="services.html" class="hover:text-gold transition">قائمة الخدمات</a></li>
+                    <li><a href="about.html" class="hover:text-gold transition">من نحن</a></li>
+                    <li><a href="contact.html" class="hover:text-gold transition">تواصل معنا</a></li>
+                </ul>
+            </div>
+
+            <!-- عمود 3: التواصل -->
+            <div class="space-y-3">
+                <h4 class="text-white font-bold text-sm">التواصل والطلب</h4>
+                <p class="text-xs text-slate-400">للاستفسار المباشر وسرعة الاستجابة عبر واتساب الرسمي:</p>
+                <button onclick="sendGeneralWhatsApp()" class="bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-slate-800 px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2 transition">
+                    <i class="fab fa-whatsapp text-sm"></i>
+                    <span>المحادثة المباشرة</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-6 text-center text-xs text-slate-500">
+            جميع الحقوق محفوظة © 2026 - مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ والأكاديمية
+        </div>
+    </footer>
+
+    <!-- ربط الملفات البرمجية -->
+    <script src="whatsapp.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
