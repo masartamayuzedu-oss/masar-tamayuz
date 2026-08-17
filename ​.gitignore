@@ -1,1 +1,16 @@
+# استبعاد مجلد حزم وحاويات Node
+node_modules/
+
+# استبعاد ملفات متغيرات البيئة الحساسة
+.env
+.env.local
+.env.production
+
+# استبعاد ملفات النظام والسجلات
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thum.db
 
