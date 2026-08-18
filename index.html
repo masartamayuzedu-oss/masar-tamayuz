@@ -12,12 +12,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* إعدادات الخط والألوان الأساسية المطابقة للصورة */
         body { 
             font-family: 'Tajawal', sans-serif; 
-            background-color: #1a222c; /* كحلي داكن جداً */
+            background-color: #1a222c; 
         }
-        .text-gold { color: #d0a75f; } /* اللون الذهبي الخردلي */
+        .text-gold { color: #d0a75f; }
         .bg-gold { background-color: #d0a75f; }
         .border-gold { border-color: #d0a75f; }
     </style>
@@ -25,28 +24,30 @@
 <body class="text-white min-h-screen flex flex-col relative">
 
     <!-- 1. الهيدر (الشريط العلوي) -->
-    <header class="flex justify-between items-center px-6 py-5 border-b border-gray-800 bg-[#1a222c] sticky top-0 z-40">
-        <!-- زر القائمة على اليسار -->
-        <button id="menu-btn" class="text-white text-2xl focus:outline-none">
+    <header class="flex justify-between items-center px-6 py-4 border-b border-gray-800 bg-[#1a222c] sticky top-0 z-40">
+        
+        <!-- الجهة اليمنى: الشعار + اسم المنصة -->
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار مسار التميز" class="h-10 w-auto object-contain">
+            <span class="text-gold font-bold text-sm sm:text-base md:text-lg tracking-wide">
+                مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
+            </span>
+        </a>
+
+        <!-- الجهة اليسرى: زر القائمة -->
+        <button id="menu-btn" class="text-white text-2xl focus:outline-none p-2">
             <i class="fas fa-bars"></i>
         </button>
-        
-        <!-- اسم المنصة على اليمين بخط ولون واحد -->
-        <div class="text-gold font-bold text-lg md:text-xl tracking-wide">
-            مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
-        </div>
     </header>
 
-    <!-- القائمة المنسدلة (شاشة كاملة تظهر عند الضغط) -->
+    <!-- القائمة المنسدلة الجانبية -->
     <div id="mobile-menu" class="hidden fixed inset-0 bg-[#1a222c] z-50 flex flex-col">
-        <!-- زر إغلاق القائمة -->
         <div class="flex justify-between items-center px-6 py-5 border-b border-gray-800">
             <button id="close-menu-btn" class="text-white text-3xl focus:outline-none">
                 <i class="fas fa-times"></i>
             </button>
             <div class="text-gold font-bold text-lg">القائمة السريعة</div>
         </div>
-        <!-- روابط القائمة -->
         <div class="flex flex-col px-6 py-10 gap-8 text-xl font-bold">
             <a href="index.html" class="text-white hover:text-gold transition">الرئيسية</a>
             <a href="services.html" class="text-white hover:text-gold transition">خدماتنا</a>
@@ -57,7 +58,7 @@
         </div>
     </div>
 
-    <!-- 2. الواجهة الرئيسية (Hero Section) المطابقة تماماً للصورة -->
+    <!-- 2. الواجهة الرئيسية (Hero Section) -->
     <main class="flex-grow flex flex-col items-center justify-center text-center px-5 py-12">
         
         <!-- الشارة العلوية -->
@@ -77,7 +78,7 @@
 
         <!-- الأزرار العمودية -->
         <div class="flex flex-col w-full max-w-sm gap-4">
-            <button onclick="sendGeneralWhatsApp()" class="bg-gold text-[#1a222c] font-bold py-4 rounded-md text-lg transition hover:opacity-90 w-full">
+            <button onclick="sendGeneralWhatsApp()" class="bg-gold text-[#1a222c] font-bold py-4 rounded-md text-lg transition hover:opacity-95 w-full">
                 تواصل معنا لطلب خدمة
             </button>
             <a href="services.html" class="border border-gray-600 text-white font-bold py-4 rounded-md text-lg transition hover:bg-gray-800 w-full block">
@@ -106,9 +107,8 @@
 
     </main>
 
-    <!-- سكربت بسيط لتشغيل القائمة الجانبية وزر الواتساب -->
+    <!-- الجافاسكريبت للقائمة -->
     <script>
-        // التحكم بفتح وإغلاق القائمة
         const menuBtn = document.getElementById('menu-btn');
         const closeMenuBtn = document.getElementById('close-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -121,9 +121,8 @@
             mobileMenu.classList.add('hidden');
         });
 
-        // دالة الواتساب المؤقتة لتفادي الأخطاء
         function sendGeneralWhatsApp() {
-            window.open('https://wa.me/967770000000', '_blank'); // استبدل الرقم برقمك
+            window.open('https://wa.me/967770000000', '_blank');
         }
     </script>
 </body>
