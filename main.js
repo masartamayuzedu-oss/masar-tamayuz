@@ -141,7 +141,6 @@ function createServiceCardHTML(service) {
 // ==================== [ 1. منطق الصفحة الرئيسية (index.html) ] ====================
 
 async function loadFeaturedServices() {
-    // التوافق مع اسم الحاوية في كلاً من index.html والصفحات السابقة
     const container = document.getElementById('featured-services') || document.getElementById('services-grid-container');
     if (!container) return;
 
@@ -151,7 +150,6 @@ async function loadFeaturedServices() {
 
         if (result.success && result.data.length > 0) {
             container.innerHTML = '';
-            // عرض أول 6 خدمات فقط في الرئيسية
             const featuredList = result.data.slice(0, 6);
             featuredList.forEach(service => {
                 container.innerHTML += createServiceCardHTML(service);
@@ -476,15 +474,17 @@ document.addEventListener('DOMContentLoaded', () => {
     recordPageVisit();
 
     const path = window.location.pathname;
+    const href = window.location.href;
 
-    if (path.includes('services.html')) {
+    // دعم مسارات الاستضافات سواء بـ .html أو بدونه
+    if (path.includes('services') || href.includes('services')) {
         loadServicesPageData();
 
         const searchInput = document.getElementById('service-search-input');
         if (searchInput) {
             searchInput.addEventListener('input', renderFilteredServices);
         }
-    } else if (path.includes('service-details.html')) {
+    } else if (path.includes('service-details') || href.includes('service-details')) {
         loadServiceDetailsPage();
     } else {
         loadFeaturedServices();
