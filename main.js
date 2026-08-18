@@ -10,6 +10,15 @@ let currentCategoryFilter = 'all';
 // ==================== [ أدوات مساعدة العامة ] ====================
 
 /**
+ * دالة إرسال الطلب المباشر عبر الواتساب
+ */
+function sendServiceWhatsApp(serviceTitle) {
+    const phoneNumber = "967770000000"; // استبدله برقمك إن أردت
+    const message = encodeURIComponent(`السلام عليكم، أرغب في الاستفسار وطلب خدمة: ${serviceTitle}`);
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+}
+
+/**
  * دالة إنشاء وتنبيه التوست (Toast Notification)
  */
 function showToast(message, type = 'success') {
@@ -132,7 +141,8 @@ function createServiceCardHTML(service) {
 // ==================== [ 1. منطق الصفحة الرئيسية (index.html) ] ====================
 
 async function loadFeaturedServices() {
-    const container = document.getElementById('featured-services');
+    // التوافق مع اسم الحاوية في كلاً من index.html والصفحات السابقة
+    const container = document.getElementById('featured-services') || document.getElementById('services-grid-container');
     if (!container) return;
 
     try {
@@ -166,11 +176,10 @@ async function loadFeaturedServices() {
 // ==================== [ 2. منطق صفحة الخدمات (services.html) ] ====================
 
 async function loadServicesPageData() {
-    const gridContainer = document.getElementById('all-services-grid');
+    const gridContainer = document.getElementById('all-services-grid') || document.getElementById('services-grid-container');
     if (!gridContainer) return;
 
     try {
-        // جلب الأقسام والخدمات معاً بالتوازي
         const [categoriesRes, servicesRes] = await Promise.all([
             fetch('/api/categories'),
             fetch('/api/services')
@@ -223,7 +232,6 @@ function renderCategoryFilterButtons() {
 function filterServicesByCategory(categorySlug, buttonElement) {
     currentCategoryFilter = categorySlug;
 
-    // تحديث الشكل النشط للأزرار
     document.querySelectorAll('.category-btn').forEach(btn => {
         btn.classList.remove('active', 'bg-slate-900', 'text-gold', 'border-slate-800');
         btn.classList.add('bg-slate-200', 'text-slate-700', 'border-slate-300/60');
@@ -236,7 +244,7 @@ function filterServicesByCategory(categorySlug, buttonElement) {
 }
 
 function renderFilteredServices() {
-    const gridContainer = document.getElementById('all-services-grid');
+    const gridContainer = document.getElementById('all-services-grid') || document.getElementById('services-grid-container');
     const searchInput = document.getElementById('service-search-input');
     const searchQuery = searchInput ? searchInput.value.trim().toLowerCase() : '';
 
@@ -244,12 +252,10 @@ function renderFilteredServices() {
 
     let filtered = allServicesData;
 
-    // تصفية حسب القسم
     if (currentCategoryFilter !== 'all') {
         filtered = filtered.filter(s => s.category_slug === currentCategoryFilter);
     }
 
-    // تصفية حسب البحث
     if (searchQuery !== '') {
         filtered = filtered.filter(s => 
             s.title.toLowerCase().includes(searchQuery) || 
@@ -304,7 +310,7 @@ async function loadServiceDetailsPage() {
 
         if (!result.success || !result.data) {
             loadingState.innerHTML = `
-                <div class="py-12 text-rose-500 font-bold text-sm">
+                <div class="py-12 text-rose-500 font-bold text-sm text-center">
                     عذراً، الخدمة المطلوبة غير موجودة أو تم حذفها.
                     <br>
                     <a href="services.html" class="inline-block mt-4 bg-slate-900 text-gold px-6 py-2.5 rounded-xl font-bold text-xs">العودة للخدمات</a>
@@ -315,54 +321,52 @@ async function loadServiceDetailsPage() {
 
         const service = result.data;
 
-        // ملء البيانات في عناصر الواجهة
         document.title = `${service.title} | مَسَارُ التَّمَيُّزِ`;
         
-        document.getElementById('service-category-badge').textContent = service.category_name || 'خدمة أكاديمية';
-        document.getElementById('detail-category-name').textContent = service.category_name || 'خدمة أكاديمية';
-        document.getElementById('detail-service-title').textContent = service.title;
-        document.getElementById('detail-avg-rating').textContent = parseFloat(service.avg_rating || 5.0).toFixed(1);
-        document.getElementById('detail-views-count').textContent = service.views_count || 1;
-        document.getElementById('detail-works-count').textContent = service.works ? service.works.length : 0;
-        document.getElementById('detail-full-description').textContent = service.full_description || service.short_description;
-        document.getElementById('detail-price-info').textContent = service.price_info || 'حسب الاتفاق';
-        document.getElementById('detail-execution-time').textContent = service.execution_time || 'حسب الموعد النهائي';
+        if (document.getElementById('service-category-badge')) document.getElementById('service-category-badge').textContent = service.category_name || 'خدمة أكاديمية';
+        if (document.getElementById('detail-category-name')) document.getElementById('detail-category-name').textContent = service.category_name || 'خدمة أكاديمية';
+        if (document.getElementById('detail-service-title')) document.getElementById('detail-service-title').textContent = service.title;
+        if (document.getElementById('detail-avg-rating')) document.getElementById('detail-avg-rating').textContent = parseFloat(service.avg_rating || 5.0).toFixed(1);
+        if (document.getElementById('detail-views-count')) document.getElementById('detail-views-count').textContent = service.views_count || 1;
+        if (document.getElementById('detail-works-count')) document.getElementById('detail-works-count').textContent = service.works ? service.works.length : 0;
+        if (document.getElementById('detail-full-description')) document.getElementById('detail-full-description').textContent = service.full_description || service.short_description;
+        if (document.getElementById('detail-price-info')) document.getElementById('detail-price-info').textContent = service.price_info || 'حسب الاتفاق';
+        if (document.getElementById('detail-execution-time')) document.getElementById('detail-execution-time').textContent = service.execution_time || 'حسب الموعد النهائي';
 
-        // ضبط صورة الغلاف إن وجدت
         if (service.cover_image_url && service.cover_image_url.trim() !== '') {
             const coverBox = document.getElementById('detail-cover-container');
             const coverImg = document.getElementById('detail-cover-img');
-            coverImg.src = service.cover_image_url;
-            coverImg.alt = service.title;
-            coverBox.classList.remove('hidden');
+            if (coverBox && coverImg) {
+                coverImg.src = service.cover_image_url;
+                coverImg.alt = service.title;
+                coverBox.classList.remove('hidden');
+            }
         }
 
-        // ضبط زر الواتساب المخصص
         const whatsappBtn = document.getElementById('service-whatsapp-btn');
         if (whatsappBtn) {
             whatsappBtn.onclick = () => sendServiceWhatsApp(service.title);
         }
 
-        // إعداد المعرف في نموذج التقييم
         const reviewServiceIdInput = document.getElementById('review-service-id');
         if (reviewServiceIdInput) {
             reviewServiceIdInput.value = service.id;
         }
 
-        // عرض الأعمال السابقة والتقييمات
         renderServiceWorksList(service.works || []);
         renderServiceReviewsList(service.reviews || []);
 
-        // إخفاء مؤشر التحميل وإظهار التفاصيل
         loadingState.classList.add('hidden');
         detailsContainer.classList.remove('hidden');
 
     } catch (error) {
-        loadingState.innerHTML = `
-            <div class="py-12 text-rose-500 font-bold text-sm">
-                تعذر تحميل تفاصيل الخدمة. يرجى المحاولة مرة أخرى.
-            </div>
-        `;
+        if (loadingState) {
+            loadingState.innerHTML = `
+                <div class="py-12 text-rose-500 font-bold text-sm text-center">
+                    تعذر تحميل تفاصيل الخدمة. يرجى المحاولة مرة أخرى.
+                </div>
+            `;
+        }
     }
 }
 
@@ -455,7 +459,6 @@ async function handleReviewSubmit(event) {
         if (result.success) {
             showToast('شكراً لك! تم إضافة تقييمك بنجاح');
             document.getElementById('add-review-form').reset();
-            // إعادة تحميل تفاصيل الصفحة لتحديث التقييمات
             const urlParams = new URLSearchParams(window.location.search);
             const slug = urlParams.get('slug');
             if (slug) loadServiceDetailsPage();
@@ -472,13 +475,11 @@ async function handleReviewSubmit(event) {
 document.addEventListener('DOMContentLoaded', () => {
     recordPageVisit();
 
-    // تشغيل الدالة المناسبة حسب الصفحة الحالية
     const path = window.location.pathname;
 
     if (path.includes('services.html')) {
         loadServicesPageData();
 
-        // ربط حدث الكتابة في البحث
         const searchInput = document.getElementById('service-search-input');
         if (searchInput) {
             searchInput.addEventListener('input', renderFilteredServices);
@@ -486,12 +487,12 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (path.includes('service-details.html')) {
         loadServiceDetailsPage();
     } else {
-        // الرئيسية وباقي الصفحات
         loadFeaturedServices();
     }
 });
 
 // إتاحة الدوال على نطاق النافذة العامة
+window.sendServiceWhatsApp = sendServiceWhatsApp;
 window.filterServicesByCategory = filterServicesByCategory;
 window.resetFilters = resetFilters;
 window.handleReviewSubmit = handleReviewSubmit;
