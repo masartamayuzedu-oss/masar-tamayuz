@@ -24,39 +24,41 @@
 <body class="text-white min-h-screen flex flex-col relative">
 
     <!-- 1. الهيدر (الشريط العلوي) -->
-    <header class="flex justify-between items-center px-6 py-4 border-b border-gray-800 bg-[#1a222c] sticky top-0 z-40">
-        
-        <!-- الجهة اليمنى: الشعار + اسم المنصة -->
-        <a href="index.html" class="flex items-center gap-3">
-            <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار مسار التميز" class="h-10 w-auto object-contain">
-            <span class="text-gold font-bold text-sm sm:text-base md:text-lg tracking-wide">
-                مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
-            </span>
-        </a>
-
-        <!-- الجهة اليسرى: زر القائمة -->
-        <button id="menu-btn" class="text-white text-2xl focus:outline-none p-2">
-            <i class="fas fa-bars"></i>
-        </button>
-    </header>
-
-    <!-- القائمة المنسدلة الجانبية -->
-    <div id="mobile-menu" class="hidden fixed inset-0 bg-[#1a222c] z-50 flex flex-col">
-        <div class="flex justify-between items-center px-6 py-5 border-b border-gray-800">
-            <button id="close-menu-btn" class="text-white text-3xl focus:outline-none">
-                <i class="fas fa-times"></i>
+    <header class="bg-[#1a222c] border-b border-gray-800 sticky top-0 z-50">
+        <div class="flex justify-between items-center px-5 py-4 max-w-7xl mx-auto">
+            
+            <!-- اليسار: زر القائمة المنسدلة مع إطار ذهبي مطابق للصورة -->
+            <button id="menu-btn" class="border border-gold text-gold rounded p-2 px-3 focus:outline-none transition hover:bg-gold/10">
+                <i class="fas fa-bars text-xl"></i>
             </button>
-            <div class="text-gold font-bold text-lg">القائمة السريعة</div>
-        </div>
-        <div class="flex flex-col px-6 py-10 gap-8 text-xl font-bold">
-            <a href="index.html" class="text-white hover:text-gold transition">الرئيسية</a>
-            <a href="services.html" class="text-white hover:text-gold transition">خدماتنا</a>
-            <a href="about.html" class="text-white hover:text-gold transition">من نحن</a>
-            <a href="#" onclick="sendGeneralWhatsApp()" class="text-gold hover:text-yellow-500 transition flex items-center gap-3">
-                <i class="fab fa-whatsapp text-2xl"></i> تواصل عبر واتساب
+
+            <!-- اليمين: الشعار + اسم المنصة بالكامل -->
+            <a href="index.html" class="flex items-center gap-3">
+                <span class="text-gold font-bold text-sm sm:text-base md:text-lg tracking-wide">
+                    مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
+                </span>
+                <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار مسار التميز" class="h-9 w-auto object-contain">
             </a>
+
         </div>
-    </div>
+
+        <!-- القائمة المنسدلة (تفتح أسفل الهيدر مباشرة مطابقة للصورة المرفقة) -->
+        <nav id="dropdown-menu" class="hidden bg-[#151b23] border-b border-gray-800 shadow-2xl transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col items-end text-right gap-5">
+                <a href="index.html" class="text-gold font-bold text-lg hover:underline w-full">الرئيسية</a>
+                <a href="services.html" class="text-gray-200 font-semibold text-lg hover:text-gold transition w-full">خدماتنا</a>
+                <a href="about.html" class="text-gray-200 font-semibold text-lg hover:text-gold transition w-full">من نحن</a>
+                <a href="contact.html" class="text-gray-200 font-semibold text-lg hover:text-gold transition w-full">تواصل معنا</a>
+                <a href="login.html" class="text-gray-200 font-semibold text-lg hover:text-gold transition w-full">تسجيل الدخول / حساب جديد</a>
+                <a href="admin.html" class="text-gray-200 font-semibold text-lg hover:text-gold transition w-full">لوحة التحكم</a>
+                
+                <!-- زر الأكشن الذهبي أسفل القائمة (مطابق لزر "انضم إلينا") -->
+                <button onclick="sendGeneralWhatsApp()" class="mt-2 bg-gold text-[#1a222c] font-bold py-3 px-8 rounded-lg text-base hover:opacity-90 transition w-full sm:w-auto text-center">
+                    <i class="fab fa-whatsapp ml-2"></i> تواصل عبر واتساب
+                </button>
+            </div>
+        </nav>
+    </header>
 
     <!-- 2. الواجهة الرئيسية (Hero Section) -->
     <main class="flex-grow flex flex-col items-center justify-center text-center px-5 py-12">
@@ -107,22 +109,19 @@
 
     </main>
 
-    <!-- الجافاسكريبت للقائمة -->
+    <!-- الجافاسكريبت للقائمة والواتساب -->
     <script>
+        // التحكم بفتح وإغلاق القائمة المنسدلة أسفل الهيدر
         const menuBtn = document.getElementById('menu-btn');
-        const closeMenuBtn = document.getElementById('close-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+        const dropdownMenu = document.getElementById('dropdown-menu');
 
         menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('hidden');
+            dropdownMenu.classList.toggle('hidden');
         });
 
-        closeMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-        });
-
+        // دالة التواصل عبر الواتساب بالرقم الصحيح الخاص بك (+967736190956)
         function sendGeneralWhatsApp() {
-            window.open('https://wa.me/967770000000', '_blank');
+            window.open('https://wa.me/967736190956', '_blank');
         }
     </script>
 </body>
