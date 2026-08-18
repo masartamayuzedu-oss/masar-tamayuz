@@ -1,4 +1,16 @@
--- 1. جدول الأقسام الرئيسية
+-- ==========================================================================
+-- مَسَارُ التَّمَيُّزِ - هيكلية قاعدة البيانات الشاملة (schema.sql)
+-- ==========================================================================
+
+-- 1. جدول مديري النظام (Admins)
+CREATE TABLE IF NOT EXISTS admins (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password_hash TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 2. جدول الأقسام الرئيسية
 CREATE TABLE IF NOT EXISTS categories (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE,
@@ -8,7 +20,7 @@ CREATE TABLE IF NOT EXISTS categories (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- 2. جدول الخدمات
+-- 3. جدول الخدمات
 CREATE TABLE IF NOT EXISTS services (
     id SERIAL PRIMARY KEY,
     category_id INT REFERENCES categories(id) ON DELETE CASCADE,
@@ -24,7 +36,7 @@ CREATE TABLE IF NOT EXISTS services (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- 3. جدول الأعمال السابقة المرتبطة بالخدمات
+-- 4. جدول الأعمال السابقة المرتبطة بالخدمات
 CREATE TABLE IF NOT EXISTS works (
     id SERIAL PRIMARY KEY,
     service_id INT REFERENCES services(id) ON DELETE CASCADE,
@@ -35,7 +47,7 @@ CREATE TABLE IF NOT EXISTS works (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- 4. جدول التقييمات
+-- 5. جدول التقييمات
 CREATE TABLE IF NOT EXISTS reviews (
     id SERIAL PRIMARY KEY,
     service_id INT REFERENCES services(id) ON DELETE CASCADE,
@@ -46,13 +58,17 @@ CREATE TABLE IF NOT EXISTS reviews (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- 5. جدول إحصائيات زوار الموقع
+-- 6. جدول إحصائيات زوار الموقع
 CREATE TABLE IF NOT EXISTS site_stats (
     id SERIAL PRIMARY KEY,
-    page_name VARCHAR(100) NOT NULL,
+    page_name VARCHAR(100) NOT NULL UNIQUE,
     views_count INT DEFAULT 1,
     last_visited TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- ==========================================================================
+-- زرع البيانات الافتراضية المبدئية (Seed Data)
+-- ==========================================================================
 
 -- إضافة الأقسام الرئيسية الافتراضية
 INSERT INTO categories (name, slug, icon, description) VALUES
@@ -65,3 +81,9 @@ INSERT INTO categories (name, slug, icon, description) VALUES
 ('🎓 الدراسات العليا', 'postgraduate', 'fa-university', 'مقترحات أبحاث، خطط، وتنسيق رسائل'),
 ('📄 الخدمات الطلابية', 'general-services', 'fa-file-alt', 'نماذج، خطوط، وتنسيق المستندات')
 ON CONFLICT (slug) DO NOTHING;
+
+-- تهيئة صفحة الإحصائيات الرئيسية
+INSERT INTO site_stats (page_name, views_count) VALUES
+('home', 1),
+('services', 1)
+ON CONFLICT (page_name) DO NOTHING;
