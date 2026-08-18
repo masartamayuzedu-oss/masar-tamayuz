@@ -3,148 +3,976 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>من نحن - مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ</title>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome للأيقونات -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- خط تجوال العام وخط كايرو للاسم المطابق للصورة -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Arabic Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Tajawal:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
     <style>
-        body { 
-            font-family: 'Tajawal', sans-serif; 
-            background-color: #1a222c; 
+
+        /* ==============================
+           الهوية العامة
+        ============================== */
+
+        * {
+            box-sizing: border-box;
         }
-        .brand-font {
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Tajawal', sans-serif;
+            background: #f7f5f0;
+            color: #202832;
+        }
+
+        .brand-font,
+        h1,
+        h2,
+        h3,
+        h4,
+        button,
+        .nav-link {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        /* الألوان */
+
+        .gold {
+            color: #c9a45c;
+        }
+
+        .bg-gold {
+            background: #c9a45c;
+        }
+
+        .dark-header {
+            background: #1a222c;
+        }
+
+        /* ==============================
+           الهيدر
+        ============================== */
+
+        .site-header {
+            background: #1a222c;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .brand-name {
             font-family: 'Cairo', sans-serif;
             font-weight: 800;
+            color: #d0a75f;
+            letter-spacing: .2px;
         }
-        .text-gold { color: #d0a75f; }
-        .bg-gold { background-color: #d0a75f; }
-        .border-gold { border-color: #d0a75f; }
+
+        .menu-button {
+            color: #ffffff;
+            transition: .25s ease;
+        }
+
+        .menu-button:hover {
+            color: #d0a75f;
+        }
+
+        /* ==============================
+           العنوان الرئيسي
+        ============================== */
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 8px 20px;
+
+            border: 1px solid #d8c59d;
+            border-radius: 999px;
+
+            background: rgba(201,164,92,.07);
+
+            color: #a8833f;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            box-shadow: 0 4px 15px rgba(31,41,55,.03);
+        }
+
+        .main-title {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 900;
+            color: #202832;
+            font-size: clamp(2.4rem, 7vw, 4.4rem);
+            line-height: 1.35;
+            letter-spacing: -1px;
+        }
+
+        .intro-text {
+            color: #69727d;
+            font-size: clamp(1rem, 2.5vw, 1.18rem);
+            line-height: 2;
+            max-width: 720px;
+            margin: auto;
+        }
+
+        /* ==============================
+           البطاقة الرئيسية
+        ============================== */
+
+        .main-card {
+            background: #ffffff;
+
+            border: 1px solid #e7e1d7;
+
+            border-radius: 26px;
+
+            box-shadow:
+                0 18px 45px rgba(31, 41, 55, .07),
+                0 3px 12px rgba(31, 41, 55, .03);
+
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        .main-card:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 25px 55px rgba(31, 41, 55, .09),
+                0 5px 15px rgba(31, 41, 55, .04);
+        }
+
+        .main-card-title {
+            font-family: 'Cairo', sans-serif;
+            font-size: clamp(1.35rem, 4vw, 1.9rem);
+            font-weight: 800;
+            line-height: 1.8;
+            color: #202832;
+        }
+
+        .body-text {
+            color: #66717d;
+            font-size: clamp(1rem, 2.8vw, 1.12rem);
+            line-height: 2.15;
+        }
+
+        .brand-highlight {
+            color: #b58e48;
+            font-weight: 800;
+        }
+
+        /* ==============================
+           صندوق الاقتباس
+        ============================== */
+
+        .quote-box {
+            background: linear-gradient(
+                135deg,
+                #fbf7ee,
+                #f7f1e4
+            );
+
+            border: 1px solid #eadfc9;
+
+            border-radius: 18px;
+        }
+
+        .quote-icon {
+            color: #c9a45c;
+            font-size: 1.4rem;
+        }
+
+        .quote-text {
+            color: #59636f;
+            font-size: .98rem;
+            line-height: 1.9;
+            font-style: italic;
+        }
+
+        /* ==============================
+           بطاقات الرؤية والرسالة
+        ============================== */
+
+        .info-card {
+            background: #ffffff;
+
+            border: 1px solid #e7e1d7;
+
+            border-radius: 23px;
+
+            box-shadow:
+                0 14px 35px rgba(31, 41, 55, .055);
+
+            transition: .3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 20px 45px rgba(31, 41, 55, .08);
+        }
+
+        .icon-box {
+            width: 58px;
+            height: 58px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            border-radius: 16px;
+
+            background: #fbf7ee;
+
+            border: 1px solid #eadfc9;
+
+            color: #c29b53;
+
+            font-size: 1.25rem;
+
+            box-shadow: 0 5px 15px rgba(201,164,92,.08);
+        }
+
+        .card-title {
+            font-family: 'Cairo', sans-serif;
+
+            color: #202832;
+
+            font-size: clamp(1.25rem, 3vw, 1.55rem);
+
+            font-weight: 800;
+
+            line-height: 1.6;
+        }
+
+        /* ==============================
+           عنوان قسم القيم
+        ============================== */
+
+        .sub-label {
+            color: #b28a48;
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .sub-title {
+            font-family: 'Cairo', sans-serif;
+
+            color: #202832;
+
+            font-weight: 900;
+
+            font-size: clamp(1.65rem, 5vw, 2.25rem);
+
+            line-height: 1.5;
+        }
+
+        /* ==============================
+           بطاقات القيم
+        ============================== */
+
+        .value-card {
+            background: #ffffff;
+
+            border: 1px solid #e8e2d8;
+
+            border-radius: 20px;
+
+            padding: 24px 18px;
+
+            text-align: center;
+
+            box-shadow: 0 10px 25px rgba(31,41,55,.045);
+
+            transition: .3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-4px);
+
+            border-color: #d9c59d;
+
+            box-shadow: 0 17px 35px rgba(31,41,55,.07);
+        }
+
+        .value-icon {
+            width: 48px;
+            height: 48px;
+
+            margin: 0 auto 14px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background: #fbf7ee;
+
+            border: 1px solid #eadfc9;
+
+            color: #c29b53;
+        }
+
+        .value-title {
+            font-family: 'Cairo', sans-serif;
+
+            font-weight: 800;
+
+            color: #303944;
+
+            font-size: 1rem;
+        }
+
+        /* ==============================
+           الاقتباس النهائي
+        ============================== */
+
+        .closing-quote {
+            position: relative;
+
+            background: #17212b;
+
+            color: white;
+
+            border-radius: 25px;
+
+            border: 1px solid rgba(201,164,92,.35);
+
+            box-shadow:
+                0 20px 45px rgba(23,33,43,.15);
+        }
+
+        .closing-main {
+            font-family: 'Cairo', sans-serif;
+
+            font-size: clamp(1.15rem, 3.5vw, 1.55rem);
+
+            line-height: 2;
+
+            font-weight: 700;
+        }
+
+        .closing-small {
+            color: #b9c0c7;
+
+            font-size: .85rem;
+
+            line-height: 1.8;
+        }
+
+        /* ==============================
+           الفوتر
+        ============================== */
+
+        .site-footer {
+            background: #17212b;
+
+            border-top: 1px solid rgba(201,164,92,.18);
+
+            color: #8e99a5;
+        }
+
+        .footer-brand {
+            font-family: 'Cairo', sans-serif;
+
+            font-size: clamp(1.05rem, 3vw, 1.45rem);
+
+            font-weight: 800;
+
+            line-height: 1.9;
+        }
+
+        .footer-gold {
+            color: #d0a75f;
+        }
+
+        .footer-white {
+            color: #f5f5f5;
+        }
+
+        .footer-separator {
+            color: #c9a45c;
+            margin: 0 7px;
+            font-weight: 700;
+        }
+
+        .footer-tagline {
+            color: #c7ccd1;
+            font-size: .95rem;
+            font-weight: 500;
+        }
+
+        .footer-copy {
+            color: #89939e;
+
+            font-size: .82rem;
+
+            line-height: 2;
+        }
+
+        .developer {
+            color: #89939e;
+
+            font-weight: 700;
+        }
+
+        /* ==============================
+           تحسين الجوال
+        ============================== */
+
+        @media (max-width: 640px) {
+
+            .main-card {
+                border-radius: 21px;
+            }
+
+            .info-card {
+                border-radius: 20px;
+            }
+
+            .value-card {
+                border-radius: 17px;
+            }
+
+            .main-title {
+                letter-spacing: -.5px;
+            }
+
+            .body-text {
+                line-height: 2;
+            }
+
+            .quote-text {
+                font-size: .9rem;
+            }
+
+            .site-footer {
+                padding-bottom: 35px;
+            }
+
+            .footer-brand {
+                font-size: 1rem;
+            }
+
+            .footer-tagline {
+                font-size: .88rem;
+            }
+
+            /* رفع اسم المطور في الجوال فقط */
+            .developer-line {
+                position: relative;
+                top: -10px;
+            }
+        }
+
     </style>
 </head>
-<body class="text-white min-h-screen flex flex-col relative">
 
-    <!-- 1. الهيدر (الشريط العلوي) -->
-    <header class="bg-[#1a222c] border-b border-gray-800 sticky top-0 z-50">
-        <div class="flex justify-between items-center px-5 py-4 max-w-7xl mx-auto">
-            
-            <!-- الجهة اليمنى: الشعار أولاً ثم اسم المنصة بالخط المطابق -->
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار مسار التميز" class="h-9 w-auto object-contain">
-                <span class="text-gold brand-font text-sm sm:text-base md:text-lg tracking-wide">
-                    مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
-                </span>
+
+<body>
+
+<!-- ==================================================
+     الهيدر
+================================================== -->
+
+<header class="site-header sticky top-0 z-50">
+
+    <div class="flex justify-between items-center
+                px-5 py-4
+                max-w-7xl mx-auto">
+
+        <!-- اسم المنصة + الشعار -->
+        <a href="index.html"
+           class="flex items-center gap-3">
+
+            <img
+                src="https://i.ibb.co/d48tW2sy/1787004624422.png"
+                alt="شعار مسار التميز"
+                class="h-9 w-auto object-contain"
+            >
+
+            <span class="brand-name text-sm sm:text-base md:text-lg">
+                مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
+            </span>
+
+        </a>
+
+
+        <!-- زر القائمة -->
+        <button
+            id="menu-btn"
+            class="menu-button text-2xl p-1 focus:outline-none"
+            aria-label="فتح القائمة">
+
+            <i class="fas fa-bars"></i>
+
+        </button>
+
+    </div>
+
+
+    <!-- القائمة -->
+    <nav
+        id="dropdown-menu"
+        class="hidden bg-[#1a222c]
+               border-b border-gray-800
+               shadow-2xl">
+
+        <div
+            class="max-w-7xl mx-auto
+                   px-6 py-6
+                   flex flex-col
+                   items-end text-right
+                   gap-6">
+
+            <a href="index.html"
+               class="nav-link text-gray-200 font-semibold text-lg hover:text-[#d0a75f] transition w-full">
+                الرئيسية
             </a>
 
-            <!-- الجهة اليسرى: زر القائمة -->
-            <button id="menu-btn" class="text-white text-2xl focus:outline-none p-1">
-                <i class="fas fa-bars"></i>
+            <a href="services.html"
+               class="nav-link text-gray-200 font-semibold text-lg hover:text-[#d0a75f] transition w-full">
+                خدماتنا
+            </a>
+
+            <a href="about.html"
+               class="nav-link text-[#d0a75f] font-bold text-lg w-full">
+                من نحن
+            </a>
+
+            <a href="login.html"
+               class="nav-link text-gray-200 font-semibold text-lg hover:text-[#d0a75f] transition w-full">
+                تسجيل الدخول / حساب جديد
+            </a>
+
+            <a href="admin.html"
+               class="nav-link text-gray-200 font-semibold text-lg hover:text-[#d0a75f] transition w-full">
+                لوحة التحكم
+            </a>
+
+
+            <!-- واتساب -->
+            <button
+                onclick="sendGeneralWhatsApp()"
+                class="mt-2 bg-[#d0a75f]
+                       text-[#1a222c]
+                       font-bold
+                       py-3.5 px-8
+                       rounded-lg
+                       text-base
+                       hover:opacity-90
+                       transition
+                       w-full sm:w-auto
+                       flex items-center
+                       justify-center gap-2">
+
+                <i class="fab fa-whatsapp text-xl"></i>
+
+                تواصل عبر واتساب
+
             </button>
 
         </div>
 
-        <!-- القائمة المنسدلة (بدون خيار تواصل معنا) -->
-        <nav id="dropdown-menu" class="hidden bg-[#1a222c] border-b border-gray-800 shadow-2xl transition-all duration-300">
-            <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col items-end text-right gap-6">
-                <a href="index.html" class="text-gray-200 font-semibold text-lg hover:text-gold transition w-full">الرئيسية</a>
-                <a href="services.html" class="text-gray-200 font-semibold text-lg hover:text-gold transition w-full">خدماتنا</a>
-                <a href="about.html" class="text-gold font-bold text-lg hover:text-white transition w-full">من نحن</a>
-                <a href="login.html" class="text-gray-200 font-semibold text-lg hover:text-gold transition w-full">تسجيل الدخول / حساب جديد</a>
-                <a href="admin.html" class="text-gray-200 font-semibold text-lg hover:text-gold transition w-full">لوحة التحكم</a>
-                
-                <!-- زر الواتساب الذهبي -->
-                <button onclick="sendGeneralWhatsApp()" class="mt-2 bg-gold text-[#1a222c] font-bold py-3.5 px-8 rounded-lg text-base hover:opacity-90 transition w-full sm:w-auto text-center flex items-center justify-center gap-2">
-                    <i class="fab fa-whatsapp text-xl"></i> تواصل عبر واتساب
-                </button>
-            </div>
-        </nav>
-    </header>
+    </nav>
 
-    <!-- 2. محتوى صفحة من نحن -->
-    <main class="flex-grow flex flex-col items-center px-5 py-10 max-w-4xl mx-auto w-full">
-        
-        <!-- رأس القسم -->
-        <div class="text-center mb-10">
-            <div class="inline-flex items-center gap-2 border border-gray-600 bg-gray-800/50 text-gray-300 px-4 py-1.5 rounded-full text-xs font-semibold mb-4">
-                <i class="fas fa-info-circle text-gold"></i> الهوية والغاية
-            </div>
-            <h1 class="text-3xl md:text-4xl font-black text-white mb-3">
-                من نحن؟
-            </h1>
-            <p class="text-gray-400 text-sm md:text-base max-w-md mx-auto">
-                تعرّف على رؤيتنا ورسالتنا والقيم الأكاديمية التي نعمل وفقها لدعم الطلاب والباحثين.
-            </p>
+</header>
+
+
+<!-- ==================================================
+     المحتوى الرئيسي
+================================================== -->
+
+<main class="max-w-5xl mx-auto px-5">
+
+
+    <!-- ===============================================
+         مقدمة الصفحة
+    ================================================ -->
+
+    <section class="text-center pt-16 sm:pt-20 pb-12">
+
+        <div class="section-label mb-6">
+
+            تعرّف علينا وعلى تميزنا
+
         </div>
 
-        <!-- البطاقة الرئيسية الأولى -->
-        <div class="w-full bg-[#151b23] border border-gray-800 rounded-2xl p-6 md:p-8 mb-8 shadow-xl">
-            <h2 class="text-xl md:text-2xl font-bold text-white mb-4">
-                شريكك الموثوق في الرحلة الأكاديمية والبحثية
-            </h2>
-            <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-4">
-                <span class="text-gold font-bold">مَسَارُ التَّمَيُّزِ</span> هي منصة متخصصة في تقديم الاستشارات والدعم الأكاديمي والتقني للطلاب في مختلف التخصصات الجامعية والدراسات العليا.
-            </p>
-            <p class="text-gray-300 text-sm md:text-base leading-relaxed">
-                نهدف إلى تخفيف العبء الأكاديمي عن الطالب وتقديم مخرجات احترافية دقيقة تُساعده على التفوق والتميز في مسيرته التعليمية، مع الالتزام التام بسياسات الجودة والسرية الأكاديمية.
-            </p>
 
-            <!-- صندوق الاقتباس الداخلي -->
-            <div class="mt-6 bg-[#1a222c] border border-gray-700/60 rounded-xl p-4 flex items-center gap-4">
-                <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="الشعار" class="h-10 w-auto object-contain flex-shrink-0">
-                <p class="text-xs md:text-sm text-gray-300 italic">
-                    "نؤمن بأن التفوق الأكاديمي يحتاج إلى توجيه صحيح، وإتقان في التنفيذ، ودعم مستمر حتى يصل الطالب إلى غايته بثقة واقتدار."
+        <h1 class="main-title mb-5">
+
+            من نحن؟
+
+        </h1>
+
+
+        <p class="intro-text">
+
+            تعرّف على رؤيتنا ورسالتنا والقيم التي نعمل وفقها
+            لتقديم تجربة موثوقة ودعم احترافي للطلاب والباحثين.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- ===============================================
+         البطاقة الرئيسية
+    ================================================ -->
+
+    <section class="main-card p-6 sm:p-8 md:p-10 mb-8">
+
+        <h2 class="main-card-title mb-6">
+
+            شريكك الموثوق في الرحلة الأكاديمية والبحثية
+
+        </h2>
+
+
+        <p class="body-text mb-5">
+
+            <span class="brand-highlight">
+                مَسَارُ التَّمَيُّزِ
+            </span>
+
+            هي منصة متخصصة في تقديم الخدمات الطلابية والأكاديمية،
+            ودعم طلاب الجامعات والدراسات العليا، إلى جانب الحلول
+            التقنية والإبداعية، باحترافية وجودة عالية.
+
+        </p>
+
+
+        <p class="body-text">
+
+            نسعى إلى مساعدة المستفيد على إنجاز ما يحتاجه بسهولة،
+            وتوفير وقته وجهده، من خلال تجربة منظمة تجمع بين
+            الجودة والدقة والسرعة والاهتمام باحتياجه.
+
+        </p>
+
+
+        <!-- الاقتباس -->
+        <div class="quote-box mt-8 p-5 sm:p-6">
+
+            <div class="flex items-start gap-4">
+
+                <div class="quote-icon pt-1">
+
+                    <i class="fas fa-quote-right"></i>
+
+                </div>
+
+
+                <p class="quote-text">
+
+                    نؤمن بأن الإنجاز الحقيقي لا يعتمد على تقديم الخدمة
+                    فحسب، بل على جودة التجربة، ودقة التنفيذ، والثقة
+                    التي نبنيها مع كل مستفيد.
+
                 </p>
+
             </div>
+
         </div>
 
-        <!-- بطاقة الرؤية -->
-        <div class="w-full bg-[#151b23] border border-gray-800 rounded-2xl p-6 md:p-8 mb-6 shadow-xl flex flex-col md:flex-row items-start md:items-center gap-5">
-            <div class="bg-gold/10 text-gold p-4 rounded-xl text-2xl flex-shrink-0">
+    </section>
+
+
+
+    <!-- ===============================================
+         رؤيتنا
+    ================================================ -->
+
+    <section class="info-card p-6 sm:p-8 mb-6">
+
+        <div class="flex flex-col sm:flex-row gap-5">
+
+            <div class="icon-box">
+
                 <i class="fas fa-eye"></i>
+
             </div>
-            <div>
-                <h3 class="text-xl font-bold text-white mb-2">رؤيتنا</h3>
-                <p class="text-gray-300 text-sm md:text-base leading-relaxed">
-                    أن نكون الخيار الأول والمنصة الأوثق للطلاب الجامعيين والباحثين في تقديم الحلول الأكاديمية والبرمجية والهندسية المتكاملة والمبتكرة في العالم العربي.
+
+
+            <div class="flex-1">
+
+                <h2 class="card-title mb-3">
+                    رؤيتنا
+                </h2>
+
+                <p class="body-text">
+
+                    أن نكون الخيار الموثوق للطلاب والباحثين
+                    في الحصول على خدمات وحلول احترافية،
+                    تجمع بين الجودة وسهولة الوصول والاهتمام
+                    الحقيقي باحتياجات المستفيد.
+
                 </p>
+
             </div>
+
         </div>
 
-        <!-- بطاقة الرسالة -->
-        <div class="w-full bg-[#151b23] border border-gray-800 rounded-2xl p-6 md:p-8 shadow-xl flex flex-col md:flex-row items-start md:items-center gap-5">
-            <div class="bg-gold/10 text-gold p-4 rounded-xl text-2xl flex-shrink-0">
+    </section>
+
+
+
+    <!-- ===============================================
+         رسالتنا
+    ================================================ -->
+
+    <section class="info-card p-6 sm:p-8 mb-16">
+
+        <div class="flex flex-col sm:flex-row gap-5">
+
+            <div class="icon-box">
+
                 <i class="fas fa-paper-plane"></i>
+
             </div>
-            <div>
-                <h3 class="text-xl font-bold text-white mb-2">رسالتنا</h3>
-                <p class="text-gray-300 text-sm md:text-base leading-relaxed">
-                    تمكين الطلاب والباحثين من تحقيق أقصى درجات النجاح والتفوق الأكاديمي عبر تقديم خدمات دعم عالية الجودة، تتسم بالدقة، الاحترافية، والشفافية التامة.
+
+
+            <div class="flex-1">
+
+                <h2 class="card-title mb-3">
+                    رسالتنا
+                </h2>
+
+                <p class="body-text">
+
+                    تمكين المستفيد من الوصول إلى خدمات موثوقة
+                    وحلول متقنة، من خلال تجربة تجمع بين الجودة
+                    والسرعة والاحترافية، وتضع احتياجه في مقدمة
+                    أولوياتنا.
+
                 </p>
+
             </div>
+
         </div>
 
-    </main>
+    </section>
 
-    <!-- الفوتر (أسفل الصفحة) -->
-    <footer class="bg-[#151b23] border-t border-gray-800 text-center py-6 text-xs text-gray-400 mt-10">
-        جميع الحقوق محفوظة © 2026 - مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ والأساسيات الأكاديمية
-    </footer>
 
-    <!-- الجافاسكريبت -->
-    <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const dropdownMenu = document.getElementById('dropdown-menu');
 
-        menuBtn.addEventListener('click', () => {
-            dropdownMenu.classList.toggle('hidden');
-        });
+    <!-- ===============================================
+         قيمنا الأساسية
+    ================================================ -->
 
-        function sendGeneralWhatsApp() {
-            window.open('https://wa.me/967736190956', '_blank');
-        }
-    </script>
+    <section class="pb-16">
+
+        <div class="text-center mb-9">
+
+            <div class="sub-label mb-2">
+                قيمنا
+            </div>
+
+            <h2 class="sub-title">
+                قيمنا الأساسية
+            </h2>
+
+        </div>
+
+
+        <div class="grid grid-cols-2 gap-4 sm:gap-6">
+
+
+            <!-- الجودة -->
+            <div class="value-card">
+
+                <div class="value-icon">
+
+                    <i class="fas fa-medal"></i>
+
+                </div>
+
+                <div class="value-title">
+                    الجودة
+                </div>
+
+            </div>
+
+
+            <!-- الثقة -->
+            <div class="value-card">
+
+                <div class="value-icon">
+
+                    <i class="fas fa-handshake"></i>
+
+                </div>
+
+                <div class="value-title">
+                    الثقة
+                </div>
+
+            </div>
+
+
+            <!-- الموثوقية -->
+            <div class="value-card">
+
+                <div class="value-icon">
+
+                    <i class="fas fa-shield-halved"></i>
+
+                </div>
+
+                <div class="value-title">
+                    الموثوقية
+                </div>
+
+            </div>
+
+
+            <!-- الابتكار -->
+            <div class="value-card">
+
+                <div class="value-icon">
+
+                    <i class="fas fa-lightbulb"></i>
+
+                </div>
+
+                <div class="value-title">
+                    الابتكار
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ===============================================
+         الاقتباس الختامي
+    ================================================ -->
+
+    <section class="closing-quote p-7 sm:p-10 mb-20 text-center">
+
+        <div class="relative z-10">
+
+            <p class="closing-main">
+
+                نؤمن أن كل طلب وراءه هدف،
+                وكل هدف يستحق أن يُنجز بإتقان.
+
+            </p>
+
+
+            <p class="closing-small mt-4">
+
+                مَسَارُ التَّمَيُّزِ — نحو تجربة أكثر احترافية،
+                وإنجاز أكثر سهولة.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- ==================================================
+     الفوتر
+================================================== -->
+
+<footer class="site-footer text-center px-5 py-10">
+
+    <div class="max-w-4xl mx-auto">
+
+        <!-- اسم المنصة + العبارة -->
+        <div class="footer-brand">
+
+            <span class="footer-gold">
+                مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
+            </span>
+
+            <span class="footer-separator">|</span>
+
+            <span class="footer-white">
+                جودة تُنجز، وثقة تُبنى.
+            </span>
+
+        </div>
+
+
+        <!-- الحقوق -->
+        <p class="footer-copy">
+
+            جميع الحقوق محفوظة © 2026 - مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
+
+        </p>
+
+
+        <!-- التطوير والإشراف -->
+        <p class="footer-copy mt-3 developer-line">
+
+            تطوير وإشراف
+            <span class="developer">
+                م.محمد الشراري
+            </span>
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- ==================================================
+     JavaScript
+================================================== -->
+
+<script>
+
+    const menuBtn =
+        document.getElementById('menu-btn');
+
+    const dropdownMenu =
+        document.getElementById('dropdown-menu');
+
+
+    menuBtn.addEventListener('click', () => {
+
+        dropdownMenu.classList.toggle('hidden');
+
+    });
+
+
+    function sendGeneralWhatsApp() {
+
+        window.open(
+            'https://wa.me/967736190956',
+            '_blank'
+        );
+
+    }
+
+</script>
+
 </body>
 </html>
