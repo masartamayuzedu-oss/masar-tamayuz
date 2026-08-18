@@ -11,599 +11,120 @@
     <!-- خط تجوال العربي -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brandDark: '#1b2430', /* لون الخلفية الداكن المطابق للصورة */
-                        brandGold: '#c29b57', /* اللون الذهبي المطابق للصورة */
-                    },
-                    fontFamily: {
-                        sans: ['Tajawal', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
     <style>
-        /* إضافة خلفية داكنة مع تأثير خفيف وراء النصوص (اختياري لجمالية أكثر) */
-        .hero-bg {
-            background-color: #1b2430;
-            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
-            background-blend-mode: overlay;
+        /* إعدادات الخط والألوان الأساسية المطابقة للصورة */
+        body { 
+            font-family: 'Tajawal', sans-serif; 
+            background-color: #1a222c; /* كحلي داكن جداً */
         }
+        .text-gold { color: #d0a75f; } /* اللون الذهبي الخردلي */
+        .bg-gold { background-color: #d0a75f; }
+        .border-gold { border-color: #d0a75f; }
     </style>
 </head>
-<body class="bg-brandDark text-white font-sans antialiased min-h-screen flex flex-col">
+<body class="text-white min-h-screen flex flex-col relative">
 
     <!-- 1. الهيدر (الشريط العلوي) -->
-    <header class="bg-[#151c25] border-b border-gray-800 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
-            
-            <!-- زر القائمة (الهامبرغر) على اليسار -->
-            <button id="menuToggleBtn" class="text-white hover:text-brandGold transition p-2 focus:outline-none">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
-
-            <!-- اسم المنصة بالكامل بخط ولون واحد على اليمين -->
-            <a href="index.html" class="text-brandGold font-black text-lg md:text-2xl tracking-wide">
-                مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
-            </a>
-
+    <header class="flex justify-between items-center px-6 py-5 border-b border-gray-800 bg-[#1a222c] sticky top-0 z-40">
+        <!-- زر القائمة على اليسار -->
+        <button id="menu-btn" class="text-white text-2xl focus:outline-none">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <!-- اسم المنصة على اليمين بخط ولون واحد -->
+        <div class="text-gold font-bold text-lg md:text-xl tracking-wide">
+            مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
         </div>
-
-        <!-- القائمة المنسدلة (تظهر عند الضغط على زر الهامبرغر) -->
-        <nav id="mobileMenu" class="hidden absolute top-20 left-0 w-full bg-[#151c25] border-b border-gray-800 shadow-xl z-40">
-            <div class="flex flex-col py-4 px-6 space-y-4 text-center">
-                <a href="index.html" class="text-brandGold font-bold text-lg border-b border-gray-700 pb-2">الرئيسية</a>
-                <a href="services.html" class="text-gray-300 hover:text-brandGold text-lg border-b border-gray-700 pb-2 transition">خدماتنا</a>
-                <a href="about.html" class="text-gray-300 hover:text-brandGold text-lg border-b border-gray-700 pb-2 transition">من نحن</a>
-                <button onclick="sendGeneralWhatsApp()" class="text-gray-300 hover:text-brandGold text-lg pb-2 transition flex items-center justify-center gap-2">
-                    <i class="fab fa-whatsapp"></i> تواصل عبر واتساب
-                </button>
-            </div>
-        </nav>
     </header>
 
-    <!-- 2. قسم الواجهة الرئيسية (Hero Section) -->
-    <section class="hero-bg flex-grow flex flex-col items-center justify-center py-16 px-4 text-center">
-        <div class="max-w-3xl w-full flex flex-col items-center">
-            
-            <!-- الشارة العلوية المفرغة بحدود ذهبية -->
-            <div class="border border-brandGold text-brandGold px-6 py-2 rounded-full text-sm font-bold mb-8">
-                شريكك الأكاديمي الموثوق
-            </div>
-
-            <!-- العنوان الرئيسي -->
-            <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
-                حلول أكاديمية وتقنية <br>
-                بأعلى معايير الجودة
-            </h1>
-
-            <!-- النص الوصفي -->
-            <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-10 max-w-xl">
-                منصة متخصصة لتقديم الدعم والحلول لطلاب الجامعات والدراسات العليا. نجمع بين الدقة الأكاديمية والاحترافية التقنية، لنختصر عليك الجهد والوقت نحو التفوق.
-            </p>
-
-            <!-- الأزرار المرتبة عمودياً (مطابقة للصورة) -->
-            <div class="flex flex-col w-full max-w-sm space-y-4">
-                <!-- الزر الأول (معبأ باللون الذهبي) -->
-                <button onclick="sendGeneralWhatsApp()" class="bg-brandGold text-[#1b2430] font-extrabold text-lg py-4 rounded-md transition hover:bg-yellow-600 w-full">
-                    تواصل معنا لطلب خدمة
-                </button>
-                
-                <!-- الزر الثاني (شفاف بحدود) -->
-                <a href="services.html" class="border border-gray-500 text-white font-bold text-lg py-4 rounded-md transition hover:bg-gray-800 w-full block">
-                    استكشف خدماتنا
-                </a>
-                
-                <!-- الزر الثالث (شفاف بحدود) -->
-                <a href="about.html" class="border border-gray-500 text-white font-bold text-lg py-4 rounded-md transition hover:bg-gray-800 w-full block">
-                    تعرّف علينا
-                </a>
-            </div>
-
-            <!-- الإحصائيات السفلية (كما في الصورة) -->
-            <div class="flex flex-wrap justify-center gap-6 md:gap-12 mt-16 text-gray-300 font-bold text-sm md:text-base">
-                <div class="flex items-center gap-2">
-                    <span class="text-brandGold text-xl">+100</span>
-                    <span>خدمة منجزة</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="text-brandGold text-xl">+24/7</span>
-                    <span>متابعة مستمرة</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="text-brandGold text-xl">100%</span>
-                    <span>سرية تامة</span>
-                </div>
-            </div>
-
+    <!-- القائمة المنسدلة (شاشة كاملة تظهر عند الضغط) -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-[#1a222c] z-50 flex flex-col">
+        <!-- زر إغلاق القائمة -->
+        <div class="flex justify-between items-center px-6 py-5 border-b border-gray-800">
+            <button id="close-menu-btn" class="text-white text-3xl focus:outline-none">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="text-gold font-bold text-lg">القائمة السريعة</div>
         </div>
-    </section>
+        <!-- روابط القائمة -->
+        <div class="flex flex-col px-6 py-10 gap-8 text-xl font-bold">
+            <a href="index.html" class="text-white hover:text-gold transition">الرئيسية</a>
+            <a href="services.html" class="text-white hover:text-gold transition">خدماتنا</a>
+            <a href="about.html" class="text-white hover:text-gold transition">من نحن</a>
+            <a href="#" onclick="sendGeneralWhatsApp()" class="text-gold hover:text-yellow-500 transition flex items-center gap-3">
+                <i class="fab fa-whatsapp text-2xl"></i> تواصل عبر واتساب
+            </a>
+        </div>
+    </div>
 
-    <!-- سكربت تشغيل القائمة المنسدلة (الهامبرغر) -->
+    <!-- 2. الواجهة الرئيسية (Hero Section) المطابقة تماماً للصورة -->
+    <main class="flex-grow flex flex-col items-center justify-center text-center px-5 py-12">
+        
+        <!-- الشارة العلوية -->
+        <div class="border border-gold text-gold px-6 py-1.5 rounded-full text-sm font-bold mb-8">
+            شريكك الأكاديمي الموثوق
+        </div>
+
+        <!-- العنوان الرئيسي -->
+        <h1 class="text-3xl md:text-5xl font-black leading-snug mb-5 text-white">
+            حلول أكاديمية وتقنية<br>بأعلى معايير الجودة
+        </h1>
+        
+        <!-- النص الوصفي -->
+        <p class="text-gray-300 text-sm md:text-base max-w-md leading-relaxed mb-10">
+            منصة متخصصة لتقديم الدعم والحلول لطلاب الجامعات والدراسات العليا. نجمع بين الدقة الأكاديمية والاحترافية التقنية، لنختصر عليك الجهد والوقت نحو التفوق.
+        </p>
+
+        <!-- الأزرار العمودية -->
+        <div class="flex flex-col w-full max-w-sm gap-4">
+            <button onclick="sendGeneralWhatsApp()" class="bg-gold text-[#1a222c] font-bold py-4 rounded-md text-lg transition hover:opacity-90 w-full">
+                تواصل معنا لطلب خدمة
+            </button>
+            <a href="services.html" class="border border-gray-600 text-white font-bold py-4 rounded-md text-lg transition hover:bg-gray-800 w-full block">
+                استكشف خدماتنا
+            </a>
+            <a href="about.html" class="border border-gray-600 text-white font-bold py-4 rounded-md text-lg transition hover:bg-gray-800 w-full block">
+                تعرّف علينا
+            </a>
+        </div>
+
+        <!-- الإحصائيات -->
+        <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10 mt-14 text-sm font-bold">
+            <div class="flex items-center gap-2">
+                <span class="text-gold text-lg">+100</span>
+                <span class="text-gray-300">خدمة منجزة</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="text-gold text-lg">24/7</span>
+                <span class="text-gray-300">متابعة مستمرة</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="text-gold text-lg">100%</span>
+                <span class="text-gray-300">سرية تامة</span>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- سكربت بسيط لتشغيل القائمة الجانبية وزر الواتساب -->
     <script>
-        const menuToggleBtn = document.getElementById('menuToggleBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
+        // التحكم بفتح وإغلاق القائمة
+        const menuBtn = document.getElementById('menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-        menuToggleBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
         });
 
-        // دالة الواتساب المؤقتة (حتى لا يحدث خطأ عند الضغط على الزر)
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+        // دالة الواتساب المؤقتة لتفادي الأخطاء
         function sendGeneralWhatsApp() {
-            window.open('https://wa.me/967770000000', '_blank');
+            window.open('https://wa.me/967770000000', '_blank'); // استبدل الرقم برقمك
         }
     </script>
-</body>
-</html>
-    <header class="bg-navy border-b border-slate-800 sticky top-0 z-50 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
-            
-            <!-- الشعار واسم المنصة -->
-            <a href="index.html" class="flex items-center gap-3 group">
-                <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار مسار التميز" class="h-10 sm:h-12 w-auto object-contain transition transform group-hover:scale-105">
-                <div class="flex flex-col hidden sm:flex">
-                    <span class="text-xl font-black text-white tracking-wide">مَسَارُ التَّمَيُّزِ</span>
-                    <span class="text-xs text-gold font-bold">للخدمات الطلابية والأكاديمية</span>
-                </div>
-            </a>
-
-            <!-- أزرار الإجراءات (مطابقة للصورة) -->
-            <div class="flex items-center gap-4">
-                <a href="#" class="text-slate-300 hover:text-white font-semibold text-sm transition hidden sm:block">تسجيل الدخول</a>
-                <button onclick="sendGeneralWhatsApp()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-2.5 rounded-lg text-sm flex items-center gap-2 shadow-lg transition">
-                    <i class="fas fa-user-plus"></i>
-                    <span>حساب جديد</span>
-                </button>
-                <a href="admin.html" class="text-slate-400 hover:text-white p-2 rounded-lg text-sm transition sm:hidden" title="لوحة التحكم">
-                    <i class="fas fa-user-shield text-lg"></i>
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- 2. قسم الواجهة الرئيسية (Hero Section) -->
-    <section class="relative bg-navy text-white py-16 lg:py-24 px-4 border-b border-slate-800">
-        <div class="max-w-4xl mx-auto text-center space-y-8">
-            
-            <!-- شارة صغيرة ذهبية مطابقة للتصميم -->
-            <div class="inline-flex items-center gap-2 bg-petrol border border-slate-700 text-gold px-5 py-2 rounded-full text-sm font-bold shadow-sm">
-                <i class="fas fa-crown text-xs"></i>
-                <span>رفيقك الأكاديمي من البداية إلى التميز</span>
-            </div>
-
-            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
-                حلول أكاديمية وتقنية متكاملة <br>
-                <span class="text-gold mt-2 block">للطالب الجامعي والدراسات العليا</span>
-            </h1>
-
-            <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
-                نساعدك في إنجاز مشاريع التخرج، التكليفات الأكاديمية، الحلول البرمجية، والأبحاث العلمية بأعلى معايير الدقة والجودة مع ضمان السرية التامة.
-            </p>
-
-            <!-- الأزرار مرتبة عمودياً أو أفقياً كما في الصورة -->
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4 max-w-xs sm:max-w-none mx-auto">
-                <a href="services.html" class="w-full sm:w-auto bg-gold hover:bg-goldhover text-white font-bold px-8 py-4 rounded-xl shadow-lg transition transform hover:-translate-y-1 text-base flex justify-center items-center gap-2">
-                    <i class="fas fa-th-large"></i>
-                    <span>استكشف كافة الخدمات</span>
-                </a>
-                <button onclick="sendGeneralWhatsApp()" class="w-full sm:w-auto bg-transparent border border-slate-600 hover:bg-slate-800 text-white font-bold px-8 py-4 rounded-xl transition transform hover:-translate-y-1 text-base flex justify-center items-center gap-2">
-                    <i class="fab fa-whatsapp text-emerald-400 text-xl"></i>
-                    <span>تواصل معنا سريعا للطلب</span>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- إحصائيات سريعة (قسم داكن منفصل أسفل الـ Hero يطابق التصميم) -->
-    <section class="bg-petrol py-8 border-b border-slate-800">
-        <div class="max-w-5xl mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div>
-                    <span class="block text-3xl font-black text-gold mb-1">100%</span>
-                    <span class="text-sm text-slate-400">جودة واحترافية</span>
-                </div>
-                <div>
-                    <span class="block text-3xl font-black text-gold mb-1">24/7</span>
-                    <span class="text-sm text-slate-400">متابعة مستمرة</span>
-                </div>
-                <div>
-                    <span class="block text-3xl font-black text-gold mb-1">دقيق</span>
-                    <span class="text-sm text-slate-400">تسليم في الموعد</span>
-                </div>
-                <div>
-                    <span class="block text-3xl font-black text-gold mb-1">تامة</span>
-                    <span class="text-sm text-slate-400">سرية بياناتك</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. قسم "لماذا مسار التميز؟" (بطاقات عمودية مطابقة للصورة) -->
-    <section class="py-16 px-4 bg-lightbg border-b border-slate-200">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-12">
-                <span class="text-gold font-bold text-sm mb-2 block">مميزاتنا الملموسة</span>
-                <h2 class="text-3xl sm:text-4xl font-black text-navy">لماذا يختارنا الطلاب دائماً؟</h2>
-                <p class="text-slate-500 mt-3 text-sm">نحن لا نقدم مجرد إنجاز للخدمة، بل نضمن لك تجربة أكاديمية متكاملة.</p>
-            </div>
-
-            <!-- قائمة البطاقات بشكل عمودي -->
-            <div class="space-y-6">
-                <!-- ميزة 1 -->
-                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-right gap-6 transition hover:shadow-md hover:border-gold/30">
-                    <div class="w-16 h-16 shrink-0 bg-navy text-gold rounded-xl flex items-center justify-center text-3xl shadow-inner">
-                        <i class="fas fa-user-graduate"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-navy mb-2">خبرة ودقة أكاديمية</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">فريق مهندسين ومختصين يضمن تنفّيذ التكليفات الأكاديمية والحلول البرمجية بأعلى جودة واحترافية، مع مراجعة دقيقة قبل التسليم.</p>
-                    </div>
-                </div>
-
-                <!-- ميزة 2 -->
-                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-right gap-6 transition hover:shadow-md hover:border-gold/30">
-                    <div class="w-16 h-16 shrink-0 bg-navy text-gold rounded-xl flex items-center justify-center text-3xl shadow-inner">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-navy mb-2">سرعة وتسليم في الموعد</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">نُدرك أهمية المواعيد النهائية (Deadlines) ونلتزم بتسليم المطلوب قبل الوقت المحدد لمراجعته، دون التأثير على جودة المخرجات.</p>
-                    </div>
-                </div>
-
-                <!-- ميزة 3 -->
-                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-right gap-6 transition hover:shadow-md hover:border-gold/30">
-                    <div class="w-16 h-16 shrink-0 bg-navy text-gold rounded-xl flex items-center justify-center text-3xl shadow-inner">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-navy mb-2">متابعة وشرح متبادل</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">لا ينتهي دورنا بالتسليم، بل نتابع معك لشرح خطوات الحل والتنفيذ وتطبيق أي تعديلات مطلوبة لضمان فهمك الكامل للمشروع.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. قسم أبرز الخدمات (Dynamic List) -->
-    <section class="py-16 px-4 bg-white">
-        <div class="max-w-5xl mx-auto">
-            <div class="flex flex-col md:flex-row items-center justify-between mb-10 gap-4 border-b border-slate-100 pb-4">
-                <div class="text-center md:text-right">
-                    <h2 class="text-2xl sm:text-3xl font-black text-navy">أبرز الخدمات الأكاديمية والتقنية</h2>
-                </div>
-                <a href="services.html" class="bg-gold text-white hover:bg-goldhover px-5 py-2 rounded-lg font-bold text-sm transition">
-                    عرض جميع الخدمات
-                </a>
-            </div>
-
-            <!-- حاوية الخدمات الديناميكية المجلوبة عبر main.js -->
-            <div id="featured-services" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- سيتم استدعاء كروت الخدمات بواسطة JS هنا -->
-                <div class="col-span-full text-center py-12 text-slate-400">
-                    <i class="fas fa-circle-notch fa-spin text-3xl mb-3 block text-gold"></i>
-                    <span>جاري تحميل أحدث الخدمات...</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. قسم "كيف نعمل؟" -->
-    <section class="py-16 px-4 bg-navy text-white">
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-black text-white">كيف تحصل على خدمتك؟</h2>
-                <p class="text-slate-400 mt-2">خطوات بسيطة وسريعة لإنجاز مهامك</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div class="p-6 bg-petrol rounded-2xl border border-slate-700 hover:border-gold transition">
-                    <div class="w-12 h-12 bg-gold text-white font-black text-xl rounded-full flex items-center justify-center mx-auto mb-4">1</div>
-                    <h3 class="font-bold text-lg mb-2">تصفح الخدمات</h3>
-                    <p class="text-slate-400 text-xs">اختر الخدمة المناسبة واطلع على التفاصيل.</p>
-                </div>
-                <div class="p-6 bg-petrol rounded-2xl border border-slate-700 hover:border-gold transition">
-                    <div class="w-12 h-12 bg-gold text-white font-black text-xl rounded-full flex items-center justify-center mx-auto mb-4">2</div>
-                    <h3 class="font-bold text-lg mb-2">تواصل عبر واتساب</h3>
-                    <p class="text-slate-400 text-xs">اضغط على زر الخدمة ليتم توجيهك مباشرة.</p>
-                </div>
-                <div class="p-6 bg-petrol rounded-2xl border border-slate-700 hover:border-gold transition">
-                    <div class="w-12 h-12 bg-gold text-white font-black text-xl rounded-full flex items-center justify-center mx-auto mb-4">3</div>
-                    <h3 class="font-bold text-lg mb-2">الاتفاق والتنفيذ</h3>
-                    <p class="text-slate-400 text-xs">نتفق على المتطلبات ونبدأ العمل فوراً.</p>
-                </div>
-                <div class="p-6 bg-petrol rounded-2xl border border-slate-700 hover:border-gold transition">
-                    <div class="w-12 h-12 bg-gold text-white font-black text-xl rounded-full flex items-center justify-center mx-auto mb-4">4</div>
-                    <h3 class="font-bold text-lg mb-2">الاستلام والمراجعة</h3>
-                    <p class="text-slate-400 text-xs">تستلم عملك مكتملاً مع إمكانية التعديل.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. الفوتر (تذييل الصفحة) -->
-    <footer class="bg-petrol text-slate-400 py-10 px-4 border-t border-slate-800 mt-auto">
-        <div class="max-w-5xl mx-auto flex flex-col items-center text-center space-y-6">
-            <div class="flex flex-col items-center gap-3">
-                <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار مسار التميز" class="h-12 w-auto">
-                <span class="text-xl font-black text-white">مَسَارُ التَّمَيُّزِ</span>
-                <span class="text-xs text-gold">للخدمات الطلابية والأكاديمية</span>
-            </div>
-            
-            <div class="flex flex-wrap justify-center gap-6 text-sm font-semibold">
-                <a href="index.html" class="hover:text-gold transition">الرئيسية</a>
-                <a href="services.html" class="hover:text-gold transition">الخدمات</a>
-                <a href="about.html" class="hover:text-gold transition">من نحن</a>
-                <a href="contact.html" class="hover:text-gold transition">تواصل معنا</a>
-            </div>
-
-            <button onclick="sendGeneralWhatsApp()" class="bg-navy hover:bg-slate-800 text-emerald-400 border border-slate-700 px-6 py-2.5 rounded-lg text-sm font-bold flex items-center gap-2 transition">
-                <i class="fab fa-whatsapp text-lg"></i>
-                <span>المحادثة المباشرة عبر واتساب</span>
-            </button>
-
-            <div class="w-full border-t border-slate-800 pt-6 mt-4 text-xs">
-                جميع الحقوق محفوظة © 2026 - مَسَارُ التَّمَيُّزِ
-            </div>
-        </div>
-    </footer>
-
-    <!-- ربط الملفات البرمجية -->
-    <script src="whatsapp.js"></script>
-    <script src="main.js"></script>
-</body>
-</html>
-    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
-            <!-- الشعار واسم المنصة -->
-            <a href="index.html" class="flex items-center gap-3 group">
-                <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار مسار التميز" class="h-12 w-auto object-contain transition transform group-hover:scale-105">
-                <div class="flex flex-col">
-                    <span class="text-xl font-black text-white tracking-wide">مَسَارُ التَّمَيُّزِ</span>
-                    <span class="text-xs text-gold font-bold">لِلْخِدْمَاتِ الطُّلَّابِيَّةِ </span>
-                </div>
-            </a>
-
-            <!-- روابط التنقل -->
-            <nav class="hidden md:flex items-center gap-8 font-semibold text-slate-300">
-                <a href="index.html" class="text-gold font-bold transition">الرئيسية</a>
-                <a href="services.html" class="hover:text-gold transition">جميع الخدمات</a>
-                <a href="about.html" class="hover:text-gold transition">من نحن</a>
-                <a href="contact.html" class="hover:text-gold transition">تواصل معنا</a>
-            </nav>
-
-            <!-- أزرار الإجراءات -->
-            <div class="flex items-center gap-3">
-                <button onclick="sendGeneralWhatsApp()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2.5 rounded-xl text-sm flex items-center gap-2 shadow-lg shadow-emerald-900/20 transition transform hover:-translate-y-0.5">
-                    <i class="fab fa-whatsapp text-lg"></i>
-                    <span class="hidden sm:inline">طلب خدمة مباشر</span>
-                </button>
-                <a href="admin.html" class="text-slate-400 hover:text-white p-2 rounded-lg text-sm transition" title="لوحة التحكم">
-                    <i class="fas fa-user-shield text-lg"></i>
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- 2. قسم الواجهة الرئيسية (Hero Section) -->
-    <section class="relative bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 text-white py-20 lg:py-28 px-4 overflow-hidden">
-        <!-- خلفية جمالية -->
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:16px_16px]"></div>
-        
-        <div class="max-w-5xl mx-auto text-center relative z-10 space-y-8">
-            <div class="inline-flex items-center gap-2 bg-slate-800/80 border border-gold/30 text-gold px-4 py-2 rounded-full text-sm font-bold shadow-inner">
-                <i class="fas fa-star text-xs"></i>
-                <span>رفيقك الأكاديمي من البداية إلى التميز</span>
-            </div>
-
-            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
-                حلول أكاديمية وتقنية متكاملة <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-gold to-amber-500">للطالب الجامعي والدراسات العليا</span>
-            </h1>
-
-            <p class="text-slate-300 text-base sm:text-xl max-w-3xl mx-auto font-normal leading-relaxed">
-                نساعدك في إنجاز مشاريع التخرج، التكليفات الأكاديمية، الحلول البرمجية، والأبحاث العلمية بأعلى معايير الدقة والجودة مع ضمان السرية التامة والالتزام بالمواعيد.
-            </p>
-
-            <div class="flex flex-wrap justify-center gap-4 pt-4">
-                <a href="services.html" class="bg-gradient-to-r from-amber-500 to-gold hover:from-amber-600 hover:to-goldhover text-slate-950 font-extrabold px-8 py-4 rounded-xl shadow-xl transition transform hover:-translate-y-1 text-base flex items-center gap-2">
-                    <i class="fas fa-th-large"></i>
-                    <span>استكشف كافة الخدمات</span>
-                </a>
-                <button onclick="sendGeneralWhatsApp()" class="bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-bold px-8 py-4 rounded-xl shadow-lg transition transform hover:-translate-y-1 text-base flex items-center gap-2">
-                    <i class="fab fa-whatsapp text-emerald-400 text-xl"></i>
-                    <span>تواصل معنا عبر واتساب</span>
-                </button>
-            </div>
-
-            <!-- إحصائيات سريعة -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-12 border-t border-slate-800/80 max-w-4xl mx-auto">
-                <div class="p-4 bg-slate-800/40 rounded-xl border border-slate-800">
-                    <span class="block text-2xl sm:text-3xl font-black text-gold">+100%</span>
-                    <span class="text-xs text-slate-400">دقة واحترافية</span>
-                </div>
-                <div class="p-4 bg-slate-800/40 rounded-xl border border-slate-800">
-                    <span class="block text-2xl sm:text-3xl font-black text-gold">24/7</span>
-                    <span class="text-xs text-slate-400">متابعة واستشارات</span>
-                </div>
-                <div class="p-4 bg-slate-800/40 rounded-xl border border-slate-800">
-                    <span class="block text-2xl sm:text-3xl font-black text-gold">تسليم دقيق</span>
-                    <span class="text-xs text-slate-400">التزام تام بالمواعيد</span>
-                </div>
-                <div class="p-4 bg-slate-800/40 rounded-xl border border-slate-800">
-                    <span class="block text-2xl sm:text-3xl font-black text-gold">سرية تامة</span>
-                    <span class="text-xs text-slate-400">لحسابات وأعمال الطلاب</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. قسم "لماذا مسار التميز؟" -->
-    <section class="py-20 px-4 bg-white border-b border-slate-100">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-                <span class="text-petrol font-bold text-sm bg-petrol/10 px-3 py-1 rounded-full">مميزاتنا الملموسة</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">لماذا يختارنا الطلاب دائماً؟</h2>
-                <p class="text-slate-600 text-sm sm:text-base">نحن لا نقدم مجرد إنجاز للخدمة، بل نضمن لك تجربة أكاديمية متكاملة تضمن تفوقك.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- ميزة 1 -->
-                <div class="p-8 bg-lightbg rounded-2xl border border-slate-100 hover:border-gold/50 transition duration-300 space-y-4">
-                    <div class="w-14 h-14 bg-navy text-gold rounded-xl flex items-center justify-center text-2xl font-bold shadow-md">
-                        <i class="fas fa-user-graduate"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900">خبرة ودقة أكاديمية</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">فريق مهندسين ومختصين يضمن تنفّيذ التكليفات الأكاديمية والحلول البرمجية بأعلى جودة واحترافية.</p>
-                </div>
-
-                <!-- ميزة 2 -->
-                <div class="p-8 bg-lightbg rounded-2xl border border-slate-100 hover:border-gold/50 transition duration-300 space-y-4">
-                    <div class="w-14 h-14 bg-petrol text-white rounded-xl flex items-center justify-center text-2xl font-bold shadow-md">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900">سرعة وتسليم في الموعد</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">نُدرك أهمية المواعيد النهائية (Deadlines) ونلتزم بتسليم المطلوب قبل الوقت المحدد لمراجعته.</p>
-                </div>
-
-                <!-- ميزة 3 -->
-                <div class="p-8 bg-lightbg rounded-2xl border border-slate-100 hover:border-gold/50 transition duration-300 space-y-4">
-                    <div class="w-14 h-14 bg-amber-500 text-slate-950 rounded-xl flex items-center justify-center text-2xl font-bold shadow-md">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900">متابعة وشرح متبادل</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">لا ينتهي دورنا بالتسليم، بل نتابع معك لشرح خطوات الحل والتنفيذ وتطبيق أي تعديلات مطلوبة.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. قسم أبرز الخدمات (Dynamic List) -->
-    <section class="py-20 px-4 bg-lightbg">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-                <div>
-                    <span class="text-gold font-bold text-sm bg-gold/10 px-3 py-1 rounded-full">خدمات مختارة</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">أبرز الخدمات الأكاديمية والتقنية</h2>
-                </div>
-                <a href="services.html" class="text-petrol hover:text-slate-900 font-bold text-sm flex items-center gap-2">
-                    <span>عرض كل الخدمات والأقسام</span>
-                    <i class="fas fa-arrow-left"></i>
-                </a>
-            </div>
-
-            <!-- حاوية الخدمات الديناميكية المجلوبة عبر main.js -->
-            <div id="featured-services" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- سيتم استدعاء كروت الخدمات بواسطة JS هنا -->
-                <div class="col-span-full text-center py-12 text-slate-400">
-                    <i class="fas fa-circle-notch fa-spin text-3xl mb-3 block text-gold"></i>
-                    <span>جاري تحميل أحدث الخدمات...</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. قسم "كيف نعمل؟" (خطوات الطلب) -->
-    <section class="py-20 px-4 bg-slate-900 text-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-                <span class="text-gold font-bold text-sm bg-slate-800 px-3 py-1 rounded-full border border-gold/20">خطوات بسيطة وسريعة</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">كيف تحصل على خدمتك؟</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center relative">
-                <!-- خطوة 1 -->
-                <div class="p-6 bg-slate-800/60 rounded-2xl border border-slate-800 space-y-4">
-                    <div class="w-12 h-12 bg-gold text-slate-950 font-extrabold text-xl rounded-full flex items-center justify-center mx-auto">1</div>
-                    <h3 class="font-bold text-lg text-white">تصفح الخدمات</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">اختر الخدمة المناسبة واطلع على التفاصيل ونماذج الأعمال السابقة.</p>
-                </div>
-
-                <!-- خطوة 2 -->
-                <div class="p-6 bg-slate-800/60 rounded-2xl border border-slate-800 space-y-4">
-                    <div class="w-12 h-12 bg-gold text-slate-950 font-extrabold text-xl rounded-full flex items-center justify-center mx-auto">2</div>
-                    <h3 class="font-bold text-lg text-white">تواصل عبر واتساب</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">اضغط على زر الخدمة ليتم توجيهك برسالة جاهزة ومحددة لتفاصيل طلبك.</p>
-                </div>
-
-                <!-- خطوة 3 -->
-                <div class="p-6 bg-slate-800/60 rounded-2xl border border-slate-800 space-y-4">
-                    <div class="w-12 h-12 bg-gold text-slate-950 font-extrabold text-xl rounded-full flex items-center justify-center mx-auto">3</div>
-                    <h3 class="font-bold text-lg text-white">الاتفاق والتنفيذ</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">نتفق على المتطلبات، التفاصيل، والموعد المحدد لتبدأ عملية التنفيذ فوراً.</p>
-                </div>
-
-                <!-- خطوة 4 -->
-                <div class="p-6 bg-slate-800/60 rounded-2xl border border-slate-800 space-y-4">
-                    <div class="w-12 h-12 bg-emerald-500 text-slate-950 font-extrabold text-xl rounded-full flex items-center justify-center mx-auto">4</div>
-                    <h3 class="font-bold text-lg text-white">الاستلام والمراجعة</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">تستلم عملك مكتملاً مع إمكانية التعديل والشرح لتضمن أعلى الدرجات.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. قسم الدعوة للتواصل المباشر (Call to Action) -->
-    <section class="py-16 px-4 bg-gradient-to-r from-petrol to-slate-900 text-white my-12 max-w-7xl mx-auto rounded-3xl shadow-2xl relative overflow-hidden">
-        <div class="flex flex-col lg:flex-row items-center justify-between gap-8 p-4 sm:p-8 relative z-10">
-            <div class="space-y-3 text-center lg:text-right">
-                <h2 class="text-2xl sm:text-4xl font-extrabold">هل تبحث عن خدمة أكاديمية أو تقنية مخصصة؟</h2>
-                <p class="text-slate-200 text-sm sm:text-base">فريقنا متواجد على مدار الساعة للرد على كافة استفساراتك وتقديم أفضل الحلول.</p>
-            </div>
-            <button onclick="sendGeneralWhatsApp()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold px-8 py-4 rounded-xl text-lg flex items-center gap-3 shadow-lg shadow-emerald-900/40 transition transform hover:scale-105 whitespace-nowrap">
-                <i class="fab fa-whatsapp text-2xl"></i>
-                <span>تواصل معنا عبر واتساب الآن</span>
-            </button>
-        </div>
-    </section>
-
-    <!-- 7. الفوتر -->
-    <footer class="bg-slate-950 text-slate-400 py-12 px-4 border-t border-slate-900 mt-auto">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-slate-900">
-            <!-- عمود 1: التعريف -->
-            <div class="space-y-4 md:col-span-2">
-                <div class="flex items-center gap-3">
-                    <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار مسار التميز" class="h-10 w-auto">
-                    <span class="text-lg font-bold text-white">مَسَارُ التَّمَيُّزِ</span>
-                </div>
-                <p class="text-xs text-slate-400 leading-relaxed max-w-md">
-                    منصة متخصصة في تقديم الاستشارات والدعم الأكاديمي والحلول التقنية والبرمجية لطلاب الجامعات والدراسات العليا، بأعلى معايير الجودة والسرية التامة.
-                </p>
-            </div>
-
-            <!-- عمود 2: روابط سريعة -->
-            <div class="space-y-3">
-                <h4 class="text-white font-bold text-sm">روابط سريعة</h4>
-                <ul class="space-y-2 text-xs">
-                    <li><a href="index.html" class="hover:text-gold transition">الرئيسية</a></li>
-                    <li><a href="services.html" class="hover:text-gold transition">قائمة الخدمات</a></li>
-                    <li><a href="about.html" class="hover:text-gold transition">من نحن</a></li>
-                    <li><a href="contact.html" class="hover:text-gold transition">تواصل معنا</a></li>
-                </ul>
-            </div>
-
-            <!-- عمود 3: التواصل -->
-            <div class="space-y-3">
-                <h4 class="text-white font-bold text-sm">التواصل والطلب</h4>
-                <p class="text-xs text-slate-400">للاستفسار المباشر وسرعة الاستجابة عبر واتساب الرسمي:</p>
-                <button onclick="sendGeneralWhatsApp()" class="bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-slate-800 px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2 transition">
-                    <i class="fab fa-whatsapp text-sm"></i>
-                    <span>المحادثة المباشرة</span>
-                </button>
-            </div>
-        </div>
-
-        <div class="max-w-7xl mx-auto pt-6 text-center text-xs text-slate-500">
-            جميع الحقوق محفوظة © 2026 - مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ والأكاديمية
-        </div>
-    </footer>
-
-    <!-- ربط الملفات البرمجية -->
-    <script src="whatsapp.js"></script>
-    <script src="main.js"></script>
 </body>
 </html>
