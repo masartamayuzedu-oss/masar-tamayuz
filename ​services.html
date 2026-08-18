@@ -861,24 +861,33 @@
 <script>
 
     /* ==============================
-       القائمة
+       القائمة وتفاعل الأزرار
     ============================== */
 
-    const menuBtn =
-        document.getElementById('menu-btn');
-
-    const dropdownMenu =
-        document.getElementById('dropdown-menu');
-
+    const menuBtn = document.getElementById('menu-btn');
+    const dropdownMenu = document.getElementById('dropdown-menu');
 
     if (menuBtn && dropdownMenu) {
-
-        menuBtn.addEventListener('click', function () {
-
+        // فتح وإغلاق القائمة عند الضغط على زر القائمة
+        menuBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
             dropdownMenu.classList.toggle('hidden');
-
         });
 
+        // إغلاق القائمة فوراً عند النقر على أي رابط داخلها لضمان الانتقال السلس
+        const navLinks = dropdownMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                dropdownMenu.classList.add('hidden');
+            });
+        });
+
+        // إغلاق القائمة عند النقر في أي مكان خارجها
+        document.addEventListener('click', function (event) {
+            if (!dropdownMenu.contains(event.target) && !menuBtn.contains(event.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
+        });
     }
 
 
