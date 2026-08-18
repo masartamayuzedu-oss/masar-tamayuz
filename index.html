@@ -3,25 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مَسَارُ التَّمَيُّزِ | منصة الخدمات الطلابية والأكاديمية</title>
-    <!-- Tailwind CSS CDN -->
+    <title>مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- خط تجوال العربي -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    <!-- ملف التنسيقات الخاص -->
-    <link rel="stylesheet" href="style.css">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        navy: '#111827', /* كحلي داكن يطابق الصورة */
-                        petrol: '#1f2937', /* كحلي أفتح للأقسام */
-                        gold: '#d97706', /* ذهبي مطابق للصورة */
-                        goldhover: '#b45309',
-                        lightbg: '#f9fafb'
+                        brandDark: '#1b2430', /* لون الخلفية الداكن المطابق للصورة */
+                        brandGold: '#c29b57', /* اللون الذهبي المطابق للصورة */
                     },
                     fontFamily: {
                         sans: ['Tajawal', 'sans-serif'],
@@ -30,10 +26,119 @@
             }
         }
     </script>
+    <style>
+        /* إضافة خلفية داكنة مع تأثير خفيف وراء النصوص (اختياري لجمالية أكثر) */
+        .hero-bg {
+            background-color: #1b2430;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            background-blend-mode: overlay;
+        }
+    </style>
 </head>
-<body class="bg-lightbg text-slate-800 flex flex-col min-h-screen font-sans antialiased">
+<body class="bg-brandDark text-white font-sans antialiased min-h-screen flex flex-col">
 
-    <!-- 1. الهيدر والقائمة العلوية (مطابق للصورة: تسجيل دخول على اليسار، الشعار على اليمين) -->
+    <!-- 1. الهيدر (الشريط العلوي) -->
+    <header class="bg-[#151c25] border-b border-gray-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
+            
+            <!-- زر القائمة (الهامبرغر) على اليسار -->
+            <button id="menuToggleBtn" class="text-white hover:text-brandGold transition p-2 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+
+            <!-- اسم المنصة بالكامل بخط ولون واحد على اليمين -->
+            <a href="index.html" class="text-brandGold font-black text-lg md:text-2xl tracking-wide">
+                مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
+            </a>
+
+        </div>
+
+        <!-- القائمة المنسدلة (تظهر عند الضغط على زر الهامبرغر) -->
+        <nav id="mobileMenu" class="hidden absolute top-20 left-0 w-full bg-[#151c25] border-b border-gray-800 shadow-xl z-40">
+            <div class="flex flex-col py-4 px-6 space-y-4 text-center">
+                <a href="index.html" class="text-brandGold font-bold text-lg border-b border-gray-700 pb-2">الرئيسية</a>
+                <a href="services.html" class="text-gray-300 hover:text-brandGold text-lg border-b border-gray-700 pb-2 transition">خدماتنا</a>
+                <a href="about.html" class="text-gray-300 hover:text-brandGold text-lg border-b border-gray-700 pb-2 transition">من نحن</a>
+                <button onclick="sendGeneralWhatsApp()" class="text-gray-300 hover:text-brandGold text-lg pb-2 transition flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp"></i> تواصل عبر واتساب
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 2. قسم الواجهة الرئيسية (Hero Section) -->
+    <section class="hero-bg flex-grow flex flex-col items-center justify-center py-16 px-4 text-center">
+        <div class="max-w-3xl w-full flex flex-col items-center">
+            
+            <!-- الشارة العلوية المفرغة بحدود ذهبية -->
+            <div class="border border-brandGold text-brandGold px-6 py-2 rounded-full text-sm font-bold mb-8">
+                شريكك الأكاديمي الموثوق
+            </div>
+
+            <!-- العنوان الرئيسي -->
+            <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+                حلول أكاديمية وتقنية <br>
+                بأعلى معايير الجودة
+            </h1>
+
+            <!-- النص الوصفي -->
+            <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-10 max-w-xl">
+                منصة متخصصة لتقديم الدعم والحلول لطلاب الجامعات والدراسات العليا. نجمع بين الدقة الأكاديمية والاحترافية التقنية، لنختصر عليك الجهد والوقت نحو التفوق.
+            </p>
+
+            <!-- الأزرار المرتبة عمودياً (مطابقة للصورة) -->
+            <div class="flex flex-col w-full max-w-sm space-y-4">
+                <!-- الزر الأول (معبأ باللون الذهبي) -->
+                <button onclick="sendGeneralWhatsApp()" class="bg-brandGold text-[#1b2430] font-extrabold text-lg py-4 rounded-md transition hover:bg-yellow-600 w-full">
+                    تواصل معنا لطلب خدمة
+                </button>
+                
+                <!-- الزر الثاني (شفاف بحدود) -->
+                <a href="services.html" class="border border-gray-500 text-white font-bold text-lg py-4 rounded-md transition hover:bg-gray-800 w-full block">
+                    استكشف خدماتنا
+                </a>
+                
+                <!-- الزر الثالث (شفاف بحدود) -->
+                <a href="about.html" class="border border-gray-500 text-white font-bold text-lg py-4 rounded-md transition hover:bg-gray-800 w-full block">
+                    تعرّف علينا
+                </a>
+            </div>
+
+            <!-- الإحصائيات السفلية (كما في الصورة) -->
+            <div class="flex flex-wrap justify-center gap-6 md:gap-12 mt-16 text-gray-300 font-bold text-sm md:text-base">
+                <div class="flex items-center gap-2">
+                    <span class="text-brandGold text-xl">+100</span>
+                    <span>خدمة منجزة</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-brandGold text-xl">+24/7</span>
+                    <span>متابعة مستمرة</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-brandGold text-xl">100%</span>
+                    <span>سرية تامة</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- سكربت تشغيل القائمة المنسدلة (الهامبرغر) -->
+    <script>
+        const menuToggleBtn = document.getElementById('menuToggleBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggleBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // دالة الواتساب المؤقتة (حتى لا يحدث خطأ عند الضغط على الزر)
+        function sendGeneralWhatsApp() {
+            window.open('https://wa.me/967770000000', '_blank');
+        }
+    </script>
+</body>
+</html>
     <header class="bg-navy border-b border-slate-800 sticky top-0 z-50 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
             
