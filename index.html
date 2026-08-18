@@ -1,131 +1,28 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome للأيقونات -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- خط تجوال العام وخط كايرو للاسم المطابق للصورة -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    
-    <style>
-        body { 
-            font-family: 'Tajawal', sans-serif; 
-            background-color: #1a222c; 
-        }
-        .brand-font {
-            font-family: 'Cairo', sans-serif;
-            font-weight: 800;
-        }
-        .text-gold { color: #d0a75f; }
-        .bg-gold { background-color: #d0a75f; }
-        .border-gold { border-color: #d0a75f; }
-    </style>
-</head>
-<body class="text-white min-h-screen flex flex-col relative">
+<nav id="dropdown-menu" class="hidden bg-[#1a222c] border-b border-gray-800 shadow-2xl transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col items-end text-right gap-6">
 
-    <!-- 1. الهيدر (الشريط العلوي) -->
-    <header class="bg-[#1a222c] border-b border-gray-800 sticky top-0 z-50">
-        <div class="flex justify-between items-center px-5 py-4 max-w-7xl mx-auto">
-            
-            <!-- الجهة اليمنى: الشعار أولاً ثم اسم المنصة بالخط الجديد المطابق للصورة -->
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار مسار التميز" class="h-9 w-auto object-contain">
-                <span class="text-gold brand-font text-sm sm:text-base md:text-lg tracking-wide">
-                    مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
-                </span>
-            </a>
+        <a href="index.html"
+           class="text-gold font-bold text-lg hover:text-white transition w-full">
+            الرئيسية
+        </a>
 
-            <!-- الجهة اليسرى: زر القائمة أبيض بدون أي إطار تماماً -->
-            <button id="menu-btn" class="text-white text-2xl focus:outline-none p-1">
-                <i class="fas fa-bars"></i>
-            </button>
+        <a href="services.html"
+           class="text-gray-200 font-semibold text-lg hover:text-gold transition w-full">
+            خدماتنا
+        </a>
 
-        </div>
+        <a href="about.html"
+           class="text-gray-200 font-semibold text-lg hover:text-gold transition w-full">
+            من نحن
+        </a>
 
-        <!-- القائمة المنسدلة (مطابقة لطريقة ونمط القائمة في الصورة المرفقة) -->
-        <nav id="dropdown-menu" class="hidden bg-[#1a222c] border-b border-gray-800 shadow-2xl transition-all duration-300">
-            <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col items-end text-right gap-6">
-                <a href="index.html" class="text-gold font-bold text-lg hover:text-white transition w-full">الرئيسية</a>
-                <a href="services.html" class="text-gray-200 font-semibold text-lg hover:text-gold transition w-full">خدماتنا</a>
-                <a href="about.html" class="text-gray-200 font-semibold text-lg hover:text-gold transition w-full">من نحن</a>
-                <a href="contact.html" class="text-gray-200 font-semibold text-lg hover:text-gold transition w-full">تواصل معنا</a>
-                <a href="login.html" class="text-gray-200 font-semibold text-lg hover:text-gold transition w-full">تسجيل الدخول / حساب جديد</a>
-                <a href="admin.html" class="text-gray-200 font-semibold text-lg hover:text-gold transition w-full">لوحة التحكم</a>
-                
-                <!-- زر الأكشن الذهبي أسفل القائمة -->
-                <button onclick="sendGeneralWhatsApp()" class="mt-2 bg-gold text-[#1a222c] font-bold py-3.5 px-8 rounded-lg text-base hover:opacity-90 transition w-full sm:w-auto text-center flex items-center justify-center gap-2">
-                    <i class="fab fa-whatsapp text-xl"></i> تواصل عبر واتساب
-                </button>
-            </div>
-        </nav>
-    </header>
+        <button onclick="sendGeneralWhatsApp()"
+                class="mt-2 bg-gold text-[#1a222c] font-bold py-3.5 px-8 rounded-lg text-base hover:opacity-90 transition w-full sm:w-auto flex items-center justify-center gap-2">
 
-    <!-- 2. الواجهة الرئيسية (Hero Section) -->
-    <main class="flex-grow flex flex-col items-center justify-center text-center px-5 py-12">
-        
-        <!-- الشارة العلوية -->
-        <div class="border border-gold text-gold px-6 py-1.5 rounded-full text-sm font-bold mb-8">
-            منصة موثوقة لخدماتك
-        </div>
+            <i class="fab fa-whatsapp text-xl"></i>
+            تواصل عبر واتساب
 
-        <!-- العنوان الرئيسي -->
-        <h1 class="text-3xl md:text-5xl font-black leading-snug mb-5 text-white">
-            إنجازك يبدأ من هنا
-        </h1>
-        
-        <!-- النص الوصفي -->
-        <p class="text-gray-300 text-sm md:text-base max-w-lg leading-relaxed mb-10">
-            منصة متخصصة في تقديم الخدمات الطلابية والأكاديمية وخدمات الدراسات العليا، إلى جانب الحلول التقنية والإبداعية، باحترافية وجودة عالية، لنساعدك على إنجاز ما تحتاجه بسهولة، وتوفير وقتك وجهدك.
-        </p>
+        </button>
 
-        <!-- الأزرار -->
-        <div class="flex flex-col w-full max-w-sm gap-4">
-            <button onclick="sendGeneralWhatsApp()" class="bg-gold text-[#1a222c] font-bold py-4 rounded-md text-lg transition hover:opacity-95 w-full">
-                اطلب خدمتك الآن
-            </button>
-            <a href="services.html" class="border border-gray-600 text-white font-bold py-4 rounded-md text-lg transition hover:bg-gray-800 w-full block">
-                استكشف خدماتنا
-            </a>
-            <a href="about.html" class="border border-gray-600 text-white font-bold py-4 rounded-md text-lg transition hover:bg-gray-800 w-full block">
-                تعرّف علينا
-            </a>
-        </div>
-
-        <!-- إحصائيات الثقة -->
-        <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10 mt-14 text-sm font-bold">
-            <div class="flex items-center gap-2">
-                <span class="text-gold text-lg">+100</span>
-                <span class="text-gray-300">خدمة منجزة</span>
-            </div>
-            <div class="flex items-center gap-2">
-                <span class="text-gold text-lg"><i class="fas fa-check-circle"></i></span>
-                <span class="text-gray-300">دعم ومتابعة مستمرة</span>
-            </div>
-            <div class="flex items-center gap-2">
-                <span class="text-gold text-lg">100%</span>
-                <span class="text-gray-300">سرية تامة</span>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- الجافاسكريبت للقائمة والواتساب -->
-    <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const dropdownMenu = document.getElementById('dropdown-menu');
-
-        menuBtn.addEventListener('click', () => {
-            dropdownMenu.classList.toggle('hidden');
-        });
-
-        // دالة التواصل عبر الواتساب بالرقم الصحيح (+967736190956)
-        function sendGeneralWhatsApp() {
-            window.open('https://wa.me/967736190956', '_blank');
-        }
-    </script>
-</body>
-</html>
+    </div>
+</nav>
