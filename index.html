@@ -27,22 +27,22 @@
     <header class="bg-[#1a222c] border-b border-gray-800 sticky top-0 z-50">
         <div class="flex justify-between items-center px-5 py-4 max-w-7xl mx-auto">
             
-            <!-- اليسار: زر القائمة المنسدلة مع إطار ذهبي مطابق للصورة -->
-            <button id="menu-btn" class="border border-gold text-gold rounded p-2 px-3 focus:outline-none transition hover:bg-gold/10">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
-
-            <!-- اليمين: الشعار + اسم المنصة بالكامل -->
+            <!-- الجهة اليمنى: الشعار أولاً ثم اسم المنصة -->
             <a href="index.html" class="flex items-center gap-3">
+                <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار مسار التميز" class="h-9 w-auto object-contain">
                 <span class="text-gold font-bold text-sm sm:text-base md:text-lg tracking-wide">
                     مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
                 </span>
-                <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار مسار التميز" class="h-9 w-auto object-contain">
             </a>
+
+            <!-- الجهة اليسرى: زر القائمة أبيض بدون أي إطار تماماً -->
+            <button id="menu-btn" class="text-white text-2xl focus:outline-none p-1">
+                <i class="fas fa-bars"></i>
+            </button>
 
         </div>
 
-        <!-- القائمة المنسدلة (تفتح أسفل الهيدر مباشرة مطابقة للصورة المرفقة) -->
+        <!-- القائمة المنسدلة (تفتح أسفل الهيدر مباشرة مطابقة لصورة نادي رؤية) -->
         <nav id="dropdown-menu" class="hidden bg-[#151b23] border-b border-gray-800 shadow-2xl transition-all duration-300">
             <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col items-end text-right gap-5">
                 <a href="index.html" class="text-gold font-bold text-lg hover:underline w-full">الرئيسية</a>
@@ -52,7 +52,7 @@
                 <a href="login.html" class="text-gray-200 font-semibold text-lg hover:text-gold transition w-full">تسجيل الدخول / حساب جديد</a>
                 <a href="admin.html" class="text-gray-200 font-semibold text-lg hover:text-gold transition w-full">لوحة التحكم</a>
                 
-                <!-- زر الأكشن الذهبي أسفل القائمة (مطابق لزر "انضم إلينا") -->
+                <!-- زر الأكشن الذهبي أسفل القائمة -->
                 <button onclick="sendGeneralWhatsApp()" class="mt-2 bg-gold text-[#1a222c] font-bold py-3 px-8 rounded-lg text-base hover:opacity-90 transition w-full sm:w-auto text-center">
                     <i class="fab fa-whatsapp ml-2"></i> تواصل عبر واتساب
                 </button>
@@ -111,7 +111,6 @@
 
     <!-- الجافاسكريبت للقائمة والواتساب -->
     <script>
-        // التحكم بفتح وإغلاق القائمة المنسدلة أسفل الهيدر
         const menuBtn = document.getElementById('menu-btn');
         const dropdownMenu = document.getElementById('dropdown-menu');
 
@@ -119,7 +118,7 @@
             dropdownMenu.classList.toggle('hidden');
         });
 
-        // دالة التواصل عبر الواتساب بالرقم الصحيح الخاص بك (+967736190956)
+        // دالة التواصل عبر الواتساب بالرقم الصحيح (+967736190956)
         function sendGeneralWhatsApp() {
             window.open('https://wa.me/967736190956', '_blank');
         }
