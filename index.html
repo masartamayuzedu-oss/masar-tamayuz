@@ -660,7 +660,7 @@
                            flex items-center justify-center
                            text-2xl mb-5">
 
-                    <i class="fas fa-book-open"></i>
+                    <i class="fas fa-file-lines"></i>
 
                 </div>
 
@@ -726,14 +726,14 @@
                     class="text-gray-500 text-sm
                            leading-relaxed mb-5">
 
-                    استشارات ومتابعة لفهم احتياجك وتحديد الحل والطريقة
-                    الأنسب لطلبك.
+                    استشارات ومتابعة لفهم احتياجك وتحديد الحل والطريقة الأنسب لطلبك.
 
                 </p>
 
 
+                <!-- تواصل معنا عبر الواتساب برسالة مخصصة -->
                 <button
-                    onclick="sendGeneralWhatsApp()"
+                    onclick="sendConsultationWhatsApp()"
                     class="text-[#1a222c] font-bold text-sm
                            hover:text-[#d0a75f] transition
                            cursor-pointer">
@@ -1208,11 +1208,27 @@
 
                     <p
                         class="text-gray-500 text-sm
-                               leading-relaxed">
+                               leading-relaxed mb-5">
 
-                        نحول المعلومات والبيانات المعقدة إلى تصاميم إنفوجرافيك إبداعية تجمع بين دقة المحتوى وجمال الإخراج البصري، مما يسهل وصول رسالتك بوضوح وتأثير عالٍ في العروض التقديمية والمشاريع الأكاديمية. 📊🎨
+                        نحول المعلومات والبيانات المعقدة إلى تصاميم إنفوجرافيك إبداعية تجمع بين دقة المحتوى وجمال الإخراج البصري، مما يسهل وصول رسالتك بوضوح وتأثير عالٍ في العروض التقديمية والمشاريع الأكاديمية.
 
                     </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('تصميم خريطة ذهنية ومفاهيمية ذكية')"
+                        class="w-full bg-[#1a222c] text-white
+                               font-bold py-3 rounded-xl
+                               hover:bg-[#d0a75f]
+                               hover:text-[#1a222c]
+                               transition flex items-center
+                               justify-center gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
 
                 </div>
 
@@ -1248,11 +1264,27 @@
 
                     <p
                         class="text-gray-500 text-sm
-                               leading-relaxed">
+                               leading-relaxed mb-5">
 
-                        نحول أفكارك ورؤيتك إلى مخططات وتصاميم معمارية دقيقة تجمع بين جمال الإخراج البصري والاستغلال الأمثل للمساحات، مما يضمن تنفيذ مشروعك بأعلى درجات الفخامة والدقة الهندسية. 🏛️📐
+                        نحول أفكارك ورؤيتك إلى مخططات وتصاميم معمارية دقيقة تجمع بين جمال الإخراج البصري والاستغلال الأمثل للمساحات، مما يضمن تنفيذ مشروعك بأعلى درجات الفخامة والدقة الهندسية.
 
                     </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('تصميم ورسم هندسي معماري احترافي')"
+                        class="w-full bg-[#1a222c] text-white
+                               font-bold py-3 rounded-xl
+                               hover:bg-[#d0a75f]
+                               hover:text-[#1a222c]
+                               transition flex items-center
+                               justify-center gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
 
                 </div>
 
@@ -1288,11 +1320,27 @@
 
                     <p
                         class="text-gray-500 text-sm
-                               leading-relaxed">
+                               leading-relaxed mb-5">
 
-                        نحول أفكارك ورسائلك التسويقية إلى تصاميم بوسترات بصرية جذابة تدمج بين قوة العبارة وتناسق العناصر الفنية، مما يضمن لفت الانتباه وإيصال هويتك أو فعاليتك للجمهور المستهدف بأعلى درجات التأثير والاحترافية. 📢✨
+                        نحول أفكارك ورسائلك التسويقية إلى تصاميم بوسترات بصرية جذابة تدمج بين قوة العبارة وتناسق العناصر الفنية، مما يضمن لفت الانتباه وإيصال هويتك أو فعاليتك للجمهور المستهدف بأعلى درجات التأثير والاحترافية.
 
                     </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('تصميم بوسترات إعلانية وتفاعلية احترافية')"
+                        class="w-full bg-[#1a222c] text-white
+                               font-bold py-3 rounded-xl
+                               hover:bg-[#d0a75f]
+                               hover:text-[#1a222c]
+                               transition flex items-center
+                               justify-center gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
 
                 </div>
 
@@ -1328,11 +1376,27 @@
 
                     <p
                         class="text-gray-500 text-sm
-                               leading-relaxed">
+                               leading-relaxed mb-5">
 
-                        نصمم عروضكم التقديمية بأسلوب إبداعي يناسب كافة المجالات (الأكاديمية، التجارية، والتدريبية). نجمع بين التنسيق البصري الجذاب وسهولة عرض المعلومات، مع اهتمام دقيق بالهوية البصرية لضمان تقديم محتواكم بأفضل صورة ممكنة وأعلى مستويات الاحترافية. 💻✨
+                        نصمم عروضكم التقديمية بأسلوب إبداعي يناسب كافة المجالات (الأكاديمية، التجارية، والتدريبية). نجمع بين التنسيق البصري الجذاب وسهولة عرض المعلومات، مع اهتمام دقيق بالهوية البصرية لضمان تقديم محتواكم بأفضل صورة ممكنة وأعلى مستويات الاحترافية.
 
                     </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('تصميم عروض تقديمية PowerPoint احترافية')"
+                        class="w-full bg-[#1a222c] text-white
+                               font-bold py-3 rounded-xl
+                               hover:bg-[#d0a75f]
+                               hover:text-[#1a222c]
+                               transition flex items-center
+                               justify-center gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
 
                 </div>
 
@@ -1825,12 +1889,82 @@
 
 <script>
 
-    function sendGeneralWhatsApp() {
+    /*
+     * رقم واتساب المنصة
+     */
+    const WHATSAPP_NUMBER = '967736190956';
+
+
+    /*
+     * فتح واتساب برسالة مخصصة
+     */
+    function openWhatsApp(message) {
+
+        const encodedMessage = encodeURIComponent(message);
 
         window.open(
-            'https://wa.me/967736190956',
+            `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`,
             '_blank'
         );
+
+    }
+
+
+    /*
+     * رسالة الطلب العامة
+     *
+     * تستخدم في:
+     * - اطلب خدمتك الآن
+     * - ابدأ طلبك الآن
+     * - تواصل عبر واتساب
+     */
+    function sendGeneralWhatsApp() {
+
+        const message =
+`السلام عليكم،
+أرغب في طلب خدمة من منصة مَسَارُ التَّمَيُّزِ للخدمات الطلابية.
+
+لدي طلب وأرغب في إرسال تفاصيله لمعرفة إمكانية التنفيذ والتكلفة والمدة المناسبة.
+
+وشكرًا لكم.`;
+
+        openWhatsApp(message);
+
+    }
+
+
+    /*
+     * رسالة الاستشارات والدعم
+     */
+    function sendConsultationWhatsApp() {
+
+        const message =
+`السلام عليكم،
+أرغب في الاستفادة من خدمة الاستشارات والدعم لدى منصة مَسَارُ التَّمَيُّزِ للخدمات الطلابية.
+
+أود توضيح احتياجي والحصول على التوجيه والحل الأنسب لطلبي.
+
+وشكرًا لكم.`;
+
+        openWhatsApp(message);
+
+    }
+
+
+    /*
+     * رسالة مخصصة لكل نموذج من الأعمال
+     */
+    function sendServiceWhatsApp(serviceName) {
+
+        const message =
+`السلام عليكم،
+أرغب في الاستفسار وطلب خدمة: ( ${serviceName} ) لدى منصة مَسَارُ التَّمَيُّزِ للخدمات الطلابية.
+
+أرغب في معرفة التفاصيل والتكلفة والمدة المناسبة لتنفيذ الخدمة.
+
+وشكرًا لكم.`;
+
+        openWhatsApp(message);
 
     }
 
@@ -1838,4 +1972,4 @@
 
 
 </body>
-</html>
+            </html>
