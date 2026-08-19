@@ -31,38 +31,35 @@
     <div class="flex justify-between items-center px-5 py-4 max-w-7xl mx-auto">  
           
         <!-- الشعار واسم المنصة -->  
-        <button onclick="window.location.href='index.html'" class="flex items-center gap-3 bg-transparent border-0 cursor-pointer">  
+        <a href="index.html" class="flex items-center gap-3 no-underline cursor-pointer">  
             <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار مسار التميز" class="h-9 w-auto object-contain">  
             <span class="text-gold brand-font text-sm sm:text-base md:text-lg tracking-wide">  
                 مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ  
             </span>  
-        </button>  
+        </a>  
 
-        <!-- زر القائمة (الثلاث خطوط) -->  
-        <button id="menu-btn" class="text-white text-2xl focus:outline-none p-1 cursor-pointer" aria-label="فتح القائمة">  
-            <i class="fas fa-bars"></i>  
-        </button>  
+        <!-- زر القائمة (الثلاث خطوط) باستخدام تفاعل HTML البسيط Details/Summary لضمان عدم التعليق -->  
+        <details class="relative">  
+            <summary class="list-none text-white text-2xl focus:outline-none p-1 cursor-pointer select-none">  
+                <i class="fas fa-bars"></i>  
+            </summary>  
+
+            <!-- القائمة المنسدلة -->  
+            <div class="absolute left-0 mt-3 w-60 bg-[#1a222c] border border-gray-700 rounded-2xl shadow-2xl py-4 px-5 flex flex-col items-end text-right gap-4 z-50">  
+                <a href="index.html" class="text-gold font-bold text-base transition w-full block">الرئيسية</a>  
+                <a href="services.html" class="text-gray-200 font-semibold text-base hover:text-gold transition w-full block">خدماتنا</a>  
+                <a href="about.html" class="text-gray-200 font-semibold text-base hover:text-gold transition w-full block">من نحن</a>  
+                <a href="contact.html" class="text-gray-200 font-semibold text-base hover:text-gold transition w-full block">تواصل معنا</a>  
+                <a href="admin.html" class="text-gray-200 font-semibold text-base hover:text-gold transition w-full block">لوحة التحكم</a>  
+                  
+                <!-- زر الواتساب أسفل القائمة -->  
+                <button onclick="sendGeneralWhatsApp()" class="mt-2 bg-gold text-[#1a222c] font-bold py-2.5 px-4 rounded-lg text-sm hover:opacity-90 transition w-full text-center flex items-center justify-center gap-2 cursor-pointer">  
+                    <i class="fab fa-whatsapp text-lg"></i> تواصل عبر واتساب  
+                </button>  
+            </div>  
+        </details>  
 
     </div>  
-
-    <!-- القائمة المنسدلة -->  
-    <nav id="dropdown-menu" class="hidden bg-[#1a222c] border-b border-gray-800 shadow-2xl transition-all duration-300">  
-        <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col items-end text-right gap-6">  
-            <button onclick="window.location.href='index.html'" class="bg-transparent border-0 text-gold font-bold text-lg transition w-full text-right cursor-pointer">الرئيسية</button>  
-            
-            <!-- زر خدماتنا المعدل برمجياً لضمان الفتح الفوري -->  
-            <a href="services.html" onclick="goToServices(event)" class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full block text-right cursor-pointer">خدماتنا</a>  
-            
-            <button onclick="window.location.href='about.html'" class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full text-right cursor-pointer">من نحن</button>  
-            <button onclick="window.location.href='contact.html'" class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full text-right cursor-pointer">تواصل معنا</button>  
-            <button onclick="window.location.href='admin.html'" class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full text-right cursor-pointer">لوحة التحكم</button>  
-              
-            <!-- زر الواتساب أسفل القائمة -->  
-            <button onclick="sendGeneralWhatsApp()" class="mt-2 bg-gold text-[#1a222c] font-bold py-3.5 px-8 rounded-lg text-base hover:opacity-90 transition w-full sm:w-auto text-center flex items-center justify-center gap-2 cursor-pointer">  
-                <i class="fab fa-whatsapp text-xl"></i> تواصل عبر واتساب  
-            </button>  
-        </div>  
-    </nav>  
 </header>  
 
 <!-- 2. الواجهة الرئيسية (Hero Section) -->  
@@ -88,12 +85,12 @@
         <button onclick="sendGeneralWhatsApp()" class="bg-gold text-[#1a222c] font-bold py-4 rounded-md text-lg transition hover:opacity-95 w-full cursor-pointer">  
             اطلب خدمتك الآن  
         </button>  
-        <button onclick="window.location.href='services.html'" class="border border-gray-600 text-white font-bold py-4 rounded-md text-lg transition hover:bg-gray-800 w-full block text-center cursor-pointer">  
+        <a href="services.html" class="border border-gray-600 text-white font-bold py-4 rounded-md text-lg transition hover:bg-gray-800 w-full block text-center no-underline cursor-pointer">  
             استكشف خدماتنا  
-        </button>  
-        <button onclick="window.location.href='about.html'" class="border border-gray-600 text-white font-bold py-4 rounded-md text-lg transition hover:bg-gray-800 w-full block text-center cursor-pointer">  
+        </a>  
+        <a href="about.html" class="border border-gray-600 text-white font-bold py-4 rounded-md text-lg transition hover:bg-gray-800 w-full block text-center no-underline cursor-pointer">  
             تعرّف علينا  
-        </button>  
+        </a>  
     </div>  
 
     <!-- إحصائيات الثقة -->  
@@ -114,31 +111,8 @@
 
 </main>  
 
-<!-- الجافاسكريبت للقائمة والواتساب والانتقال الفوري -->  
-<script src="main.js"></script>
+<!-- الواتساب -->  
 <script>  
-    const menuBtn = document.getElementById('menu-btn');  
-    const dropdownMenu = document.getElementById('dropdown-menu');  
-
-    if (menuBtn && dropdownMenu) {  
-        menuBtn.addEventListener('click', (e) => {  
-            e.stopPropagation();  
-            dropdownMenu.classList.toggle('hidden');  
-        });  
-
-        document.addEventListener('click', (event) => {  
-            if (!dropdownMenu.contains(event.target) && !menuBtn.contains(event.target)) {  
-                dropdownMenu.classList.add('hidden');  
-            }  
-        });  
-    }  
-
-    // دالة الانتقال المباشر لصفحة الخدمات لمنع أي تعليق في الزر
-    function goToServices(event) {
-        event.preventDefault();
-        window.location.href = 'services.html';
-    }
-
     function sendGeneralWhatsApp() {  
         window.open('https://wa.me/967736190956', '_blank');  
     }  
