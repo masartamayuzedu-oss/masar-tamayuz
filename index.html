@@ -31,7 +31,7 @@
     <div class="flex justify-between items-center px-5 py-4 max-w-7xl mx-auto">  
           
         <!-- الجهة اليمنى: الشعار أولاً ثم اسم المنصة -->  
-        <a href="./index.html" class="flex items-center gap-3">  
+        <a href="javascript:void(0);" onclick="window.location.href='index.html'" class="flex items-center gap-3">  
             <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار مسار التميز" class="h-9 w-auto object-contain">  
             <span class="text-gold brand-font text-sm sm:text-base md:text-lg tracking-wide">  
                 مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ  
@@ -48,11 +48,11 @@
     <!-- القائمة المنسدلة -->  
     <nav id="dropdown-menu" class="hidden bg-[#1a222c] border-b border-gray-800 shadow-2xl transition-all duration-300">  
         <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col items-end text-right gap-6">  
-            <a href="./index.html" class="nav-link text-gold font-bold text-lg transition w-full">الرئيسية</a>  
-            <a href="./services.html" class="nav-link text-gray-200 font-semibold text-lg hover:text-gold transition w-full">خدماتنا</a>  
-            <a href="./about.html" class="nav-link text-gray-200 font-semibold text-lg hover:text-gold transition w-full">من نحن</a>  
-            <a href="./contact.html" class="nav-link text-gray-200 font-semibold text-lg hover:text-gold transition w-full">تواصل معنا</a>  
-            <a href="./admin.html" class="nav-link text-gray-200 font-semibold text-lg hover:text-gold transition w-full">لوحة التحكم</a>  
+            <a href="javascript:void(0);" onclick="window.location.href='index.html'" class="nav-link text-gray-200 font-semibold text-lg hover:text-gold transition w-full">الرئيسية</a>  
+            <a href="javascript:void(0);" onclick="window.location.href='services.html'" class="nav-link text-gold font-bold text-lg transition w-full">خدماتنا</a>  
+            <a href="javascript:void(0);" onclick="window.location.href='about.html'" class="nav-link text-gray-200 font-semibold text-lg hover:text-gold transition w-full">من نحن</a>  
+            <a href="javascript:void(0);" onclick="window.location.href='contact.html'" class="nav-link text-gray-200 font-semibold text-lg hover:text-gold transition w-full">تواصل معنا</a>  
+            <a href="javascript:void(0);" onclick="window.location.href='admin.html'" class="nav-link text-gray-200 font-semibold text-lg hover:text-gold transition w-full">لوحة التحكم</a>  
               
             <!-- زر الأكشن الذهبي أسفل القائمة -->  
             <button onclick="sendGeneralWhatsApp()" class="mt-2 bg-gold text-[#1a222c] font-bold py-3.5 px-8 rounded-lg text-base hover:opacity-90 transition w-full sm:w-auto text-center flex items-center justify-center gap-2">  
@@ -85,12 +85,12 @@
         <button onclick="sendGeneralWhatsApp()" class="bg-gold text-[#1a222c] font-bold py-4 rounded-md text-lg transition hover:opacity-95 w-full">  
             اطلب خدمتك الآن  
         </button>  
-        <a href="./services.html" class="border border-gray-600 text-white font-bold py-4 rounded-md text-lg transition hover:bg-gray-800 w-full block text-center">  
+        <button onclick="window.location.href='services.html'" class="border border-gray-600 text-white font-bold py-4 rounded-md text-lg transition hover:bg-gray-800 w-full block text-center">  
             استكشف خدماتنا  
-        </a>  
-        <a href="./about.html" class="border border-gray-600 text-white font-bold py-4 rounded-md text-lg transition hover:bg-gray-800 w-full block text-center">  
+        </button>  
+        <button onclick="window.location.href='about.html'" class="border border-gray-600 text-white font-bold py-4 rounded-md text-lg transition hover:bg-gray-800 w-full block text-center">  
             تعرّف علينا  
-        </a>  
+        </button>  
     </div>  
 
     <!-- إحصائيات الثقة -->  
@@ -123,15 +123,7 @@
             dropdownMenu.classList.toggle('hidden');  
         });  
 
-        // إغلاق القائمة عند النقر على أي رابط داخلها للانتقال بسلاسة
-        const navLinks = dropdownMenu.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                dropdownMenu.classList.add('hidden');
-            });
-        });
-
-        // إغلاق القائمة عند النقر خارجها
+        // إغلاق القائمة عند النقر في أي مكان خارجها
         document.addEventListener('click', (event) => {
             if (!dropdownMenu.contains(event.target) && !menuBtn.contains(event.target)) {
                 dropdownMenu.classList.add('hidden');
@@ -145,4 +137,4 @@
 </script>
 
 </body>  
-</html>  
+</html>
