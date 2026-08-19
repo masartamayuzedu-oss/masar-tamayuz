@@ -37,6 +37,60 @@
         .border-gold {
             border-color: #d0a75f;
         }
+
+        /* ==============================
+           الفوتر
+        ============================== */
+
+        .site-footer {
+            background: #17212b;
+            border-top: 1px solid rgba(201,164,92,.18);
+            color: #8e99a5;
+        }
+
+        .footer-brand {
+            font-family: 'Cairo', sans-serif;
+            font-size: clamp(1.05rem, 3vw, 1.45rem);
+            font-weight: 800;
+            line-height: 1.9;
+        }
+
+        .footer-gold {
+            color: #d0a75f;
+        }
+
+        .footer-white {
+            color: #f5f5f5;
+        }
+
+        .footer-separator {
+            color: #c9a45c;
+            margin: 0 7px;
+            font-weight: 700;
+        }
+
+        .footer-copy {
+            color: #89939e;
+            font-size: .82rem;
+            line-height: 2;
+        }
+
+        .developer {
+            color: #89939e;
+            font-weight: 700;
+        }
+
+        @media (max-width: 640px) {
+
+            .site-footer {
+                padding-bottom: 35px;
+            }
+
+            .footer-brand {
+                font-size: 1rem;
+            }
+
+        }
     </style>
 </head>
 
@@ -1047,6 +1101,53 @@
     </div>
 
 </section>
+
+
+<!-- ========================================================= -->
+<!-- 10. الفوتر - تمت إضافته فقط -->
+<!-- ========================================================= -->
+
+<footer class="site-footer text-center px-5 py-10">
+
+    <div class="max-w-4xl mx-auto">
+
+        <!-- اسم المنصة + العبارة -->
+        <div class="footer-brand">
+
+            <span class="footer-gold">
+                مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
+            </span>
+
+            <span class="footer-separator">|</span>
+
+            <span class="footer-white">
+                جودة تُنجز، وثقة تُبنى.
+            </span>
+
+        </div>
+
+
+        <!-- الحقوق -->
+        <p class="footer-copy">
+
+            جميع الحقوق محفوظة © 2026 - مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
+
+        </p>
+
+
+        <!-- التطوير والإشراف -->
+        <p class="footer-copy mt-3">
+
+            تطوير وإشراف
+            <span class="developer">
+                م. محمد الشراري
+            </span>
+
+        </p>
+
+    </div>
+
+</footer>
 
 
 <!-- ========================================================= -->
