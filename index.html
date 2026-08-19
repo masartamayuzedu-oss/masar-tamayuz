@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>  
     <!-- FontAwesome للأيقونات -->  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">  
-    <!-- خط تجوال العام وخط كايرو للاسم المطابق للصورة -->  
+    <!-- خطوط المنصة -->  
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">  
     <style>  
         body {   
@@ -30,7 +30,7 @@
 <header class="bg-[#1a222c] border-b border-gray-800 sticky top-0 z-50">  
     <div class="flex justify-between items-center px-5 py-4 max-w-7xl mx-auto">  
           
-        <!-- الجهة اليمنى: الشعار أولاً ثم اسم المنصة -->  
+        <!-- الشعار واسم المنصة -->  
         <button onclick="window.location.href='index.html'" class="flex items-center gap-3 bg-transparent border-0 cursor-pointer">  
             <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار مسار التميز" class="h-9 w-auto object-contain">  
             <span class="text-gold brand-font text-sm sm:text-base md:text-lg tracking-wide">  
@@ -38,7 +38,7 @@
             </span>  
         </button>  
 
-        <!-- الجهة اليسرى: زر القائمة -->  
+        <!-- زر القائمة (الثلاث خطوط) -->  
         <button id="menu-btn" class="text-white text-2xl focus:outline-none p-1 cursor-pointer" aria-label="فتح القائمة">  
             <i class="fas fa-bars"></i>  
         </button>  
@@ -49,12 +49,15 @@
     <nav id="dropdown-menu" class="hidden bg-[#1a222c] border-b border-gray-800 shadow-2xl transition-all duration-300">  
         <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col items-end text-right gap-6">  
             <button onclick="window.location.href='index.html'" class="bg-transparent border-0 text-gold font-bold text-lg transition w-full text-right cursor-pointer">الرئيسية</button>  
-            <button onclick="window.location.href='services.html'" class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full text-right cursor-pointer">خدماتنا</button>  
+            
+            <!-- زر خدماتنا المعدل برمجياً لضمان الفتح الفوري -->  
+            <a href="services.html" onclick="goToServices(event)" class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full block text-right cursor-pointer">خدماتنا</a>  
+            
             <button onclick="window.location.href='about.html'" class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full text-right cursor-pointer">من نحن</button>  
             <button onclick="window.location.href='contact.html'" class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full text-right cursor-pointer">تواصل معنا</button>  
             <button onclick="window.location.href='admin.html'" class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full text-right cursor-pointer">لوحة التحكم</button>  
               
-            <!-- زر الأكشن الذهبي أسفل القائمة -->  
+            <!-- زر الواتساب أسفل القائمة -->  
             <button onclick="sendGeneralWhatsApp()" class="mt-2 bg-gold text-[#1a222c] font-bold py-3.5 px-8 rounded-lg text-base hover:opacity-90 transition w-full sm:w-auto text-center flex items-center justify-center gap-2 cursor-pointer">  
                 <i class="fab fa-whatsapp text-xl"></i> تواصل عبر واتساب  
             </button>  
@@ -111,7 +114,7 @@
 
 </main>  
 
-<!-- الجافاسكريبت للقائمة والواتساب -->  
+<!-- الجافاسكريبت للقائمة والواتساب والانتقال الفوري -->  
 <script src="main.js"></script>
 <script>  
     const menuBtn = document.getElementById('menu-btn');  
@@ -129,6 +132,12 @@
             }  
         });  
     }  
+
+    // دالة الانتقال المباشر لصفحة الخدمات لمنع أي تعليق في الزر
+    function goToServices(event) {
+        event.preventDefault();
+        window.location.href = 'services.html';
+    }
 
     function sendGeneralWhatsApp() {  
         window.open('https://wa.me/967736190956', '_blank');  
