@@ -1,26 +1,32 @@
 /* ==========================================================================
-   مَسَارُ التَّمَيُّزِ - المحرك الرئيسي للواجهة المباشرة (main.js)
+   مَسَارُ التَّمَيُّزِ
+   المحرك الرئيسي للموقع - main.js
    ========================================================================== */
 
-// ==================== [ المتغيرات العامة ] ====================
+
+/* ==========================================================================
+   1. المتغيرات العامة
+   ========================================================================== */
 
 let allServicesData = [];
 let allCategoriesData = [];
 let currentCategoryFilter = 'all';
 
 
-// ==================== [ أدوات مساعدة عامة ] ====================
+/* ==========================================================================
+   2. أدوات مساعدة عامة
+   ========================================================================== */
+
 
 /**
- * إرسال طلب خدمة مباشرة عبر واتساب
+ * إرسال طلب خدمة عبر واتساب
  */
-function sendServiceWhatsApp(serviceTitle = '') {
+function sendServiceWhatsApp(serviceTitle) {
+
     const phoneNumber = '967736190956';
 
-    const title = String(serviceTitle || 'الخدمة المطلوبة').trim();
-
     const message = encodeURIComponent(
-        `السلام عليكم، أرغب في الاستفسار وطلب خدمة: ${title}`
+        `السلام عليكم، أرغب في الاستفسار وطلب خدمة: ${serviceTitle}`
     );
 
     window.open(
@@ -31,9 +37,24 @@ function sendServiceWhatsApp(serviceTitle = '') {
 
 
 /**
- * إنشاء وتنبيه Toast
+ * إرسال رسالة واتساب عامة
+ */
+function sendGeneralWhatsApp() {
+
+    const phoneNumber = '967736190956';
+
+    window.open(
+        `https://wa.me/${phoneNumber}`,
+        '_blank'
+    );
+}
+
+
+/**
+ * إنشاء إشعار Toast
  */
 function showToast(message, type = 'success') {
+
     const toast = document.createElement('div');
 
     toast.className = `toast-notification ${
@@ -50,37 +71,22 @@ function showToast(message, type = 'success') {
         } text-xl"></i>
 
         <span class="text-xs sm:text-sm font-bold text-white">
-            ${escapeHTML(message)}
+            ${message}
         </span>
     `;
 
     document.body.appendChild(toast);
 
     setTimeout(() => {
+
         toast.style.opacity = '0';
         toast.style.transition = 'opacity 0.3s ease';
 
         setTimeout(() => {
             toast.remove();
         }, 300);
+
     }, 3500);
-}
-
-
-/**
- * حماية النصوص قبل وضعها داخل HTML
- */
-function escapeHTML(value) {
-    if (value === null || value === undefined) {
-        return '';
-    }
-
-    return String(value)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
 }
 
 
@@ -88,22 +94,27 @@ function escapeHTML(value) {
  * توليد نجوم التقييم
  */
 function renderRatingStars(rating = 5) {
-    const numericRating = Math.max(
-        0,
-        Math.min(
-            5,
-            Math.round(parseFloat(rating) || 0)
+
+    const numericRating = Math.min(
+        5,
+        Math.max(
+            1,
+            Math.round(parseFloat(rating) || 5)
         )
     );
 
     let starsHTML = '';
 
     for (let i = 1; i <= 5; i++) {
+
         if (i <= numericRating) {
+
             starsHTML += `
                 <i class="fas fa-star text-amber-400"></i>
             `;
+
         } else {
+
             starsHTML += `
                 <i class="far fa-star text-slate-300"></i>
             `;
@@ -114,145 +125,149 @@ function renderRatingStars(rating = 5) {
 }
 
 
-/**
- * تسجيل زيارة الصفحة الحالية
- */
+/* ==========================================================================
+   3. تسجيل زيارة الصفحة
+   ========================================================================== */
+
 async function recordPageVisit() {
+
     try {
+
         let pageName =
             window.location.pathname
                 .split('/')
-                .pop() || 'index.html';
+                .pop();
 
         if (!pageName) {
             pageName = 'index.html';
         }
 
-        /*
-         * توافق مع schema:
-         * home / services
-         */
-        if (
-            pageName === 'index.html' ||
-            pageName === ''
-        ) {
-            pageName = 'home';
-        } else if (pageName === 'services.html') {
-            pageName = 'services';
-        }
-
         await fetch('/api/stats/visit', {
+
             method: 'POST',
+
             headers: {
                 'Content-Type': 'application/json'
             },
+
             body: JSON.stringify({
                 page_name: pageName
             })
+
         });
 
     } catch (error) {
-        // تجاهل أخطاء الإحصائيات حتى لا تؤثر على الموقع
-        console.warn('تعذر تسجيل زيارة الصفحة:', error);
+
+        // لا نوقف الموقع إذا فشل تسجيل الزيارة
+        console.warn(
+            'تعذر تسجيل زيارة الصفحة:',
+            error
+        );
     }
 }
 
 
-// ==================== [ بطاقات الخدمات ] ====================
+/* ==========================================================================
+   4. إنشاء بطاقة الخدمة
+   ========================================================================== */
 
-/**
- * إنشاء كارت الخدمة
- */
 function createServiceCardHTML(service) {
-    const ratingValue = parseFloat(
-        service.avg_rating || 5.0
-    ).toFixed(1);
+
+    const ratingValue =
+        parseFloat(service.avg_rating || 5.0).toFixed(1);
 
     const coverImage =
         service.cover_image_url &&
         String(service.cover_image_url).trim() !== ''
-            ? String(service.cover_image_url).trim()
+            ? service.cover_image_url
             : null;
 
-    const serviceTitle = escapeHTML(
-        service.title || 'خدمة'
-    );
+    const title =
+        service.title || 'خدمة بدون عنوان';
 
-    const serviceSlug = encodeURIComponent(
-        service.slug || ''
-    );
+    const shortDescription =
+        service.short_description || 'لا يوجد وصف للخدمة.';
 
-    const categoryName = escapeHTML(
-        service.category_name || 'خدمة أكاديمية'
-    );
+    const categoryName =
+        service.category_name || 'خدمة أكاديمية';
 
-    const shortDescription = escapeHTML(
-        service.short_description || ''
-    );
+    const slug =
+        service.slug || '';
 
     const reviewsCount =
-        Number(service.reviews_count) || 0;
+        service.reviews_count || 0;
 
     const viewsCount =
-        Number(service.views_count) || 0;
+        service.views_count || 0;
 
-    const serviceId =
-        Number(service.id) || 0;
-
-    const coverHTML = coverImage
-        ? `
-            <div class="h-44 w-full bg-slate-900 overflow-hidden relative">
-
-                <img
-                    src="${escapeHTML(coverImage)}"
-                    alt="${serviceTitle}"
-                    class="w-full h-full object-cover transition duration-500 hover:scale-105"
-                    loading="lazy"
-                    onerror="this.style.display='none'"
-                >
-
-                <span class="absolute top-3 right-3 text-[11px] font-bold text-slate-900 bg-gold/90 backdrop-blur-md px-3 py-1 rounded-full shadow-md">
-                    ${categoryName}
-                </span>
-
-            </div>
-        `
-        : `
-            <div class="p-6 pb-0">
-                <div class="flex items-center justify-between">
-
-                    <span class="text-xs font-bold text-petrol bg-petrol/10 px-3 py-1 rounded-full">
-                        ${categoryName}
-                    </span>
-
-                </div>
-            </div>
-        `;
+    /*
+     * حماية بسيطة للنص الذي سيتم إرساله إلى onclick
+     */
+    const safeTitle =
+        String(title)
+            .replace(/\\/g, '\\\\')
+            .replace(/'/g, "\\'")
+            .replace(/"/g, '&quot;');
 
     return `
-        <div
-            class="service-card bg-white rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden"
-            data-service-id="${serviceId}"
-        >
+
+        <div class="service-card bg-white rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden">
 
             <div>
 
-                ${coverHTML}
+                ${
+                    coverImage
+                        ? `
+                            <div class="h-44 w-full bg-slate-900 overflow-hidden relative">
+
+                                <img
+                                    src="${coverImage}"
+                                    alt="${title}"
+                                    class="w-full h-full object-cover transition duration-500 hover:scale-105"
+                                >
+
+                                <span class="absolute top-3 right-3 text-[11px] font-bold text-slate-900 bg-gold/90 backdrop-blur-md px-3 py-1 rounded-full shadow-md">
+                                    ${categoryName}
+                                </span>
+
+                            </div>
+                        `
+                        : ''
+                }
+
 
                 <div class="p-6 space-y-3">
+
+                    ${
+                        !coverImage
+                            ? `
+                                <div class="flex items-center justify-between">
+
+                                    <span class="text-xs font-bold text-petrol bg-petrol/10 px-3 py-1 rounded-full">
+                                        ${categoryName}
+                                    </span>
+
+                                </div>
+                            `
+                            : ''
+                    }
+
 
                     <h3 class="text-lg font-bold text-slate-900 leading-snug hover:text-petrol transition">
 
                         <a
-                            href="service-details.html?slug=${serviceSlug}"
+                            href="service-details.html?slug=${encodeURIComponent(slug)}"
                         >
-                            ${serviceTitle}
+                            ${title}
                         </a>
 
                     </h3>
 
+
                     <p class="text-slate-600 text-xs sm:text-sm line-clamp-2 leading-relaxed">
+
                         ${shortDescription}
+
                     </p>
 
                 </div>
@@ -293,24 +308,30 @@ function createServiceCardHTML(service) {
                 <div class="grid grid-cols-2 gap-2">
 
                     <a
-                        href="service-details.html?slug=${serviceSlug}"
+                        href="service-details.html?slug=${encodeURIComponent(slug)}"
                         class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-2.5 rounded-xl text-xs text-center transition flex items-center justify-center gap-1"
                     >
-                        <span>التفاصيل</span>
+
+                        <span>
+                            التفاصيل
+                        </span>
 
                         <i class="fas fa-arrow-left text-[10px]"></i>
+
                     </a>
 
 
                     <button
                         type="button"
-                        onclick="sendServiceWhatsAppById(${serviceId})"
+                        onclick="sendServiceWhatsApp('${safeTitle}')"
                         class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl text-xs text-center transition flex items-center justify-center gap-1 shadow-md shadow-emerald-900/10"
                     >
 
                         <i class="fab fa-whatsapp text-sm"></i>
 
-                        <span>طلب مباشر</span>
+                        <span>
+                            طلب مباشر
+                        </span>
 
                     </button>
 
@@ -319,47 +340,33 @@ function createServiceCardHTML(service) {
             </div>
 
         </div>
+
     `;
 }
 
 
-/**
- * إرسال واتساب اعتمادًا على ID الخدمة
- * أفضل من وضع اسم الخدمة مباشرة داخل onclick
- */
-function sendServiceWhatsAppById(serviceId) {
-    const service = allServicesData.find(
-        item => Number(item.id) === Number(serviceId)
-    );
+/* ==========================================================================
+   5. الصفحة الرئيسية
+   ========================================================================== */
 
-    if (!service) {
-        showToast(
-            'تعذر العثور على بيانات الخدمة',
-            'error'
-        );
-        return;
-    }
-
-    sendServiceWhatsApp(service.title);
-}
-
-
-// ==================== [ الصفحة الرئيسية ] ====================
-
-/**
- * تحميل الخدمات المميزة
- */
 async function loadFeaturedServices() {
+
     const container =
         document.getElementById('featured-services') ||
         document.getElementById('services-grid-container');
 
+    /*
+     * الصفحة الرئيسية الحالية التي أرسلتها لا تحتوي على
+     * featured-services، لذلك لا نفعل شيئاً هنا.
+     */
     if (!container) {
         return;
     }
 
     try {
-        const response = await fetch('/api/services');
+
+        const response =
+            await fetch('/api/services');
 
         if (!response.ok) {
             throw new Error(
@@ -367,27 +374,33 @@ async function loadFeaturedServices() {
             );
         }
 
-        const result = await response.json();
+        const result =
+            await response.json();
 
         if (
             result.success &&
             Array.isArray(result.data) &&
             result.data.length > 0
         ) {
+
             container.innerHTML = '';
 
             const featuredList =
                 result.data.slice(0, 6);
 
             featuredList.forEach(service => {
+
                 container.insertAdjacentHTML(
                     'beforeend',
                     createServiceCardHTML(service)
                 );
+
             });
 
         } else {
+
             container.innerHTML = `
+
                 <div class="col-span-full text-center py-12 bg-white rounded-3xl border border-slate-200/80 p-8">
 
                     <i class="fas fa-box-open text-4xl text-slate-300 mb-3 block"></i>
@@ -397,66 +410,82 @@ async function loadFeaturedServices() {
                     </p>
 
                 </div>
+
             `;
         }
 
     } catch (error) {
 
         console.error(
-            'loadFeaturedServices error:',
+            'خطأ في تحميل الخدمات المميزة:',
             error
         );
 
         container.innerHTML = `
+
             <div class="col-span-full text-center py-8 text-rose-500 font-bold text-sm">
 
                 تعذر جلب الخدمات.
                 يرجى إعادة المحاولة لاحقاً.
 
             </div>
+
         `;
     }
 }
 
 
-// ==================== [ صفحة الخدمات ] ====================
+/* ==========================================================================
+   6. تحميل صفحة الخدمات
+   ========================================================================== */
 
-/**
- * تحميل الأقسام والخدمات
- */
 async function loadServicesPageData() {
+
     const gridContainer =
         document.getElementById('all-services-grid') ||
         document.getElementById('services-grid-container');
 
     if (!gridContainer) {
         console.warn(
-            'لم يتم العثور على حاوية الخدمات'
+            'لم يتم العثور على شبكة الخدمات.'
         );
         return;
     }
 
     try {
 
+        /*
+         * جلب التصنيفات والخدمات معاً
+         */
         const [
             categoriesRes,
             servicesRes
         ] = await Promise.all([
+
             fetch('/api/categories'),
+
             fetch('/api/services')
+
         ]);
 
+
+        /*
+         * التحقق من نجاح HTTP
+         */
         if (!categoriesRes.ok) {
+
             throw new Error(
                 `Categories HTTP Error: ${categoriesRes.status}`
             );
         }
 
         if (!servicesRes.ok) {
+
             throw new Error(
                 `Services HTTP Error: ${servicesRes.status}`
             );
         }
+
 
         const categoriesData =
             await categoriesRes.json();
@@ -465,23 +494,38 @@ async function loadServicesPageData() {
             await servicesRes.json();
 
 
-        // الأقسام
+        /* ==============================
+           التصنيفات
+           ============================== */
+
         if (
             categoriesData.success &&
             Array.isArray(categoriesData.data)
         ) {
+
             allCategoriesData =
                 categoriesData.data;
 
             renderCategoryFilterButtons();
+
+        } else {
+
+            console.warn(
+                'لم يتم تحميل التصنيفات.',
+                categoriesData
+            );
         }
 
 
-        // الخدمات
+        /* ==============================
+           الخدمات
+           ============================== */
+
         if (
             servicesData.success &&
             Array.isArray(servicesData.data)
         ) {
+
             allServicesData =
                 servicesData.data;
 
@@ -490,6 +534,7 @@ async function loadServicesPageData() {
         } else {
 
             gridContainer.innerHTML = `
+
                 <div class="col-span-full text-center py-12 bg-white rounded-3xl border border-slate-200">
 
                     <i class="fas fa-box-open text-4xl text-slate-300 mb-3"></i>
@@ -499,37 +544,52 @@ async function loadServicesPageData() {
                     </p>
 
                 </div>
+
             `;
         }
 
     } catch (error) {
 
         console.error(
-            'loadServicesPageData error:',
+            'خطأ في تحميل دليل الخدمات:',
             error
         );
 
         gridContainer.innerHTML = `
-            <div class="col-span-full text-center py-12 text-rose-500 font-bold text-sm">
 
-                حدث خطأ أثناء تحميل دليل الخدمات.
+            <div class="col-span-full text-center py-12 bg-white rounded-3xl border border-rose-200">
 
-                <br>
+                <i class="fas fa-triangle-exclamation text-4xl text-rose-400 mb-3"></i>
 
-                <span class="text-xs text-slate-400">
-                    يرجى تحديث الصفحة والمحاولة مرة أخرى.
-                </span>
+                <p class="text-rose-500 font-bold text-sm">
+                    حدث خطأ أثناء تحميل دليل الخدمات.
+                </p>
+
+                <p class="text-slate-400 text-xs mt-2">
+                    تأكد من تشغيل الخادم وواجهات API.
+                </p>
+
+                <button
+                    type="button"
+                    onclick="loadServicesPageData()"
+                    class="mt-4 bg-petrol text-gold px-5 py-2.5 rounded-xl text-xs font-bold"
+                >
+                    إعادة المحاولة
+                </button>
 
             </div>
+
         `;
     }
 }
 
 
-/**
- * إنشاء أزرار الأقسام
- */
+/* ==========================================================================
+   7. إنشاء أزرار التصنيفات
+   ========================================================================== */
+
 function renderCategoryFilterButtons() {
+
     const buttonsContainer =
         document.getElementById(
             'category-filter-buttons'
@@ -539,48 +599,56 @@ function renderCategoryFilterButtons() {
         return;
     }
 
+
     let buttonsHTML = `
+
         <button
             type="button"
             onclick="filterServicesByCategory('all', this)"
-            class="category-btn active bg-slate-900 text-gold px-4 py-2 rounded-xl text-xs font-bold transition border border-slate-800 flex items-center gap-2 shadow-sm"
+            class="category-btn active bg-slate-900 text-gold px-4 py-2 rounded-xl text-xs font-bold transition border border-slate-800 flex items-center gap-2 shadow-sm whitespace-nowrap"
         >
 
             <i class="fas fa-th-large"></i>
 
-            <span>الكل</span>
+            <span>
+                الكل
+            </span>
 
         </button>
+
     `;
 
 
     allCategoriesData.forEach(category => {
 
-        const slug = escapeHTML(
-            category.slug || ''
-        );
+        const slug =
+            category.slug || '';
 
-        const name = escapeHTML(
-            category.name || 'قسم'
-        );
+        const name =
+            category.name || 'تصنيف';
 
-        const icon = escapeHTML(
-            category.icon || 'fa-folder'
-        );
+        const icon =
+            category.icon || 'fa-folder';
+
 
         buttonsHTML += `
+
             <button
                 type="button"
                 onclick="filterServicesByCategory('${slug}', this)"
-                class="category-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold transition border border-slate-300/60 hover:bg-slate-300 flex items-center gap-2"
+                class="category-btn bg-slate-200 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold transition border border-slate-300/60 hover:bg-slate-300 flex items-center gap-2 whitespace-nowrap"
             >
 
                 <i class="fas ${icon}"></i>
 
-                <span>${name}</span>
+                <span>
+                    ${name}
+                </span>
 
             </button>
+
         `;
+
     });
 
 
@@ -589,17 +657,22 @@ function renderCategoryFilterButtons() {
 }
 
 
-/**
- * فلترة الخدمات حسب القسم
- */
+/* ==========================================================================
+   8. فلترة الخدمات حسب التصنيف
+   ========================================================================== */
+
 function filterServicesByCategory(
     categorySlug,
     buttonElement
 ) {
+
     currentCategoryFilter =
         categorySlug || 'all';
 
 
+    /*
+     * تحديث شكل الأزرار
+     */
     document
         .querySelectorAll('.category-btn')
         .forEach(button => {
@@ -616,9 +689,13 @@ function filterServicesByCategory(
                 'text-slate-700',
                 'border-slate-300/60'
             );
+
         });
 
 
+    /*
+     * تفعيل الزر الحالي
+     */
     if (buttonElement) {
 
         buttonElement.classList.remove(
@@ -640,27 +717,32 @@ function filterServicesByCategory(
 }
 
 
-/**
- * عرض الخدمات بعد البحث والفلترة
- */
+/* ==========================================================================
+   9. البحث + فلترة الخدمات
+   ========================================================================== */
+
 function renderFilteredServices() {
+
     const gridContainer =
         document.getElementById('all-services-grid') ||
         document.getElementById('services-grid-container');
-
-    if (!gridContainer) {
-        return;
-    }
-
 
     const searchInput =
         document.getElementById(
             'service-search-input'
         );
 
+
+    if (!gridContainer) {
+        return;
+    }
+
+
     const searchQuery =
         searchInput
-            ? searchInput.value.trim().toLowerCase()
+            ? searchInput.value
+                .trim()
+                .toLowerCase()
             : '';
 
 
@@ -670,54 +752,78 @@ function renderFilteredServices() {
             : [];
 
 
-    // فلترة القسم
+    /*
+     * فلترة التصنيف
+     */
     if (
+        currentCategoryFilter &&
         currentCategoryFilter !== 'all'
     ) {
-        filtered = filtered.filter(service =>
-            String(
-                service.category_slug || ''
-            ).toLowerCase() ===
-            String(
-                currentCategoryFilter
-            ).toLowerCase()
-        );
+
+        filtered =
+            filtered.filter(service => {
+
+                return (
+                    service.category_slug ===
+                    currentCategoryFilter
+                );
+
+            });
     }
 
 
-    // فلترة البحث
+    /*
+     * فلترة البحث
+     */
     if (searchQuery !== '') {
 
-        filtered = filtered.filter(service => {
+        filtered =
+            filtered.filter(service => {
 
-            const title =
-                String(
-                    service.title || ''
-                ).toLowerCase();
+                const title =
+                    String(
+                        service.title || ''
+                    ).toLowerCase();
 
-            const shortDescription =
-                String(
-                    service.short_description || ''
-                ).toLowerCase();
+                const shortDescription =
+                    String(
+                        service.short_description || ''
+                    ).toLowerCase();
 
-            const fullDescription =
-                String(
-                    service.full_description || ''
-                ).toLowerCase();
+                const fullDescription =
+                    String(
+                        service.full_description || ''
+                    ).toLowerCase();
 
-            return (
-                title.includes(searchQuery) ||
-                shortDescription.includes(searchQuery) ||
-                fullDescription.includes(searchQuery)
-            );
-        });
+                const categoryName =
+                    String(
+                        service.category_name || ''
+                    ).toLowerCase();
+
+
+                return (
+
+                    title.includes(searchQuery) ||
+
+                    shortDescription.includes(searchQuery) ||
+
+                    fullDescription.includes(searchQuery) ||
+
+                    categoryName.includes(searchQuery)
+
+                );
+
+            });
     }
 
 
-    // لا توجد نتائج
+    /*
+     * لا توجد نتائج
+     */
     if (filtered.length === 0) {
 
         gridContainer.innerHTML = `
+
             <div class="col-span-full text-center py-16 bg-white rounded-3xl border border-slate-200/80 p-8">
 
                 <i class="fas fa-search-minus text-4xl text-slate-300 mb-3 block"></i>
@@ -735,13 +841,16 @@ function renderFilteredServices() {
                 </button>
 
             </div>
+
         `;
 
         return;
     }
 
 
-    // عرض النتائج
+    /*
+     * عرض الخدمات
+     */
     gridContainer.innerHTML = '';
 
     filtered.forEach(service => {
@@ -755,10 +864,12 @@ function renderFilteredServices() {
 }
 
 
-/**
- * إعادة تعيين البحث والفلترة
- */
+/* ==========================================================================
+   10. إعادة ضبط البحث والتصنيفات
+   ========================================================================== */
+
 function resetFilters() {
+
     const searchInput =
         document.getElementById(
             'service-search-input'
@@ -769,34 +880,37 @@ function resetFilters() {
     }
 
 
-    currentCategoryFilter = 'all';
+    currentCategoryFilter =
+        'all';
 
 
-    const allButtons =
-        document.querySelectorAll(
-            '.category-btn'
+    const allButton =
+        document.querySelector(
+            '#category-filter-buttons .category-btn'
         );
 
-    if (allButtons.length > 0) {
+
+    if (allButton) {
 
         filterServicesByCategory(
             'all',
-            allButtons[0]
+            allButton
         );
 
     } else {
 
         renderFilteredServices();
+
     }
 }
 
 
-// ==================== [ تفاصيل الخدمة ] ====================
+/* ==========================================================================
+   11. صفحة تفاصيل الخدمة
+   ========================================================================== */
 
-/**
- * تحميل تفاصيل الخدمة
- */
 async function loadServiceDetailsPage() {
+
     const detailsContainer =
         document.getElementById(
             'service-details-container'
@@ -840,6 +954,7 @@ async function loadServiceDetailsPage() {
 
 
         if (!response.ok) {
+
             throw new Error(
                 `HTTP Error: ${response.status}`
             );
@@ -858,6 +973,7 @@ async function loadServiceDetailsPage() {
             if (loadingState) {
 
                 loadingState.innerHTML = `
+
                     <div class="py-12 text-rose-500 font-bold text-sm text-center">
 
                         عذراً، الخدمة المطلوبة غير موجودة أو تم حذفها.
@@ -872,6 +988,7 @@ async function loadServiceDetailsPage() {
                         </a>
 
                     </div>
+
                 `;
             }
 
@@ -883,132 +1000,77 @@ async function loadServiceDetailsPage() {
             result.data;
 
 
+        /*
+         * عنوان الصفحة
+         */
         document.title =
             `${service.title} | مَسَارُ التَّمَيُّزِ`;
 
 
-        // القسم
-        const categoryBadge =
-            document.getElementById(
-                'service-category-badge'
-            );
+        /*
+         * تعبئة البيانات
+         */
 
-        if (categoryBadge) {
-            categoryBadge.textContent =
-                service.category_name ||
-                'خدمة أكاديمية';
-        }
+        setText(
+            'service-category-badge',
+            service.category_name ||
+            'خدمة أكاديمية'
+        );
 
+        setText(
+            'detail-category-name',
+            service.category_name ||
+            'خدمة أكاديمية'
+        );
 
-        const categoryName =
-            document.getElementById(
-                'detail-category-name'
-            );
+        setText(
+            'detail-service-title',
+            service.title
+        );
 
-        if (categoryName) {
-            categoryName.textContent =
-                service.category_name ||
-                'خدمة أكاديمية';
-        }
+        setText(
+            'detail-avg-rating',
+            parseFloat(
+                service.avg_rating || 5
+            ).toFixed(1)
+        );
 
+        setText(
+            'detail-views-count',
+            service.views_count || 1
+        );
 
-        // العنوان
-        const titleElement =
-            document.getElementById(
-                'detail-service-title'
-            );
+        setText(
+            'detail-works-count',
+            service.works
+                ? service.works.length
+                : 0
+        );
 
-        if (titleElement) {
-            titleElement.textContent =
-                service.title || '';
-        }
+        setText(
+            'detail-full-description',
+            service.full_description ||
+            service.short_description ||
+            ''
+        );
 
+        setText(
+            'detail-price-info',
+            service.price_info ||
+            'حسب الاتفاق'
+        );
 
-        // التقييم
-        const ratingElement =
-            document.getElementById(
-                'detail-avg-rating'
-            );
-
-        if (ratingElement) {
-            ratingElement.textContent =
-                parseFloat(
-                    service.avg_rating || 5.0
-                ).toFixed(1);
-        }
-
-
-        // المشاهدات
-        const viewsElement =
-            document.getElementById(
-                'detail-views-count'
-            );
-
-        if (viewsElement) {
-            viewsElement.textContent =
-                service.views_count || 0;
-        }
+        setText(
+            'detail-execution-time',
+            service.execution_time ||
+            'حسب الموعد النهائي'
+        );
 
 
-        // الأعمال
-        const worksElement =
-            document.getElementById(
-                'detail-works-count'
-            );
+        /*
+         * صورة الغلاف
+         */
 
-        if (worksElement) {
-
-            worksElement.textContent =
-                Array.isArray(service.works)
-                    ? service.works.length
-                    : 0;
-        }
-
-
-        // الوصف
-        const fullDescription =
-            document.getElementById(
-                'detail-full-description'
-            );
-
-        if (fullDescription) {
-
-            fullDescription.textContent =
-                service.full_description ||
-                service.short_description ||
-                '';
-        }
-
-
-        // السعر
-        const priceElement =
-            document.getElementById(
-                'detail-price-info'
-            );
-
-        if (priceElement) {
-
-            priceElement.textContent =
-                service.price_info ||
-                'حسب الاتفاق';
-        }
-
-
-        // مدة التنفيذ
-        const timeElement =
-            document.getElementById(
-                'detail-execution-time'
-            );
-
-        if (timeElement) {
-
-            timeElement.textContent =
-                service.execution_time ||
-                'حسب الموعد النهائي';
-        }
-
-
-        // صورة الغلاف
         if (
             service.cover_image_url &&
             String(
@@ -1045,56 +1107,74 @@ async function loadServiceDetailsPage() {
         }
 
 
-        // زر واتساب
+        /*
+         * زر واتساب
+         */
+
         const whatsappBtn =
             document.getElementById(
                 'service-whatsapp-btn'
             );
 
+
         if (whatsappBtn) {
 
             whatsappBtn.onclick = () => {
+
                 sendServiceWhatsApp(
                     service.title
                 );
+
             };
         }
 
 
-        // ID التقييم
+        /*
+         * ID التقييم
+         */
+
         const reviewServiceIdInput =
             document.getElementById(
                 'review-service-id'
             );
 
+
         if (reviewServiceIdInput) {
 
             reviewServiceIdInput.value =
                 service.id;
+
         }
 
 
-        // الأعمال
+        /*
+         * الأعمال
+         */
+
         renderServiceWorksList(
-            Array.isArray(service.works)
-                ? service.works
-                : []
+            service.works || []
         );
 
 
-        // التقييمات
+        /*
+         * التقييمات
+         */
+
         renderServiceReviewsList(
-            Array.isArray(service.reviews)
-                ? service.reviews
-                : []
+            service.reviews || []
         );
 
 
-        // إخفاء التحميل وإظهار التفاصيل
+        /*
+         * إظهار الصفحة
+         */
+
         if (loadingState) {
+
             loadingState.classList.add(
                 'hidden'
             );
+
         }
 
         detailsContainer.classList.remove(
@@ -1105,7 +1185,7 @@ async function loadServiceDetailsPage() {
     } catch (error) {
 
         console.error(
-            'loadServiceDetailsPage error:',
+            'خطأ في تحميل تفاصيل الخدمة:',
             error
         );
 
@@ -1113,17 +1193,17 @@ async function loadServiceDetailsPage() {
         if (loadingState) {
 
             loadingState.innerHTML = `
+
                 <div class="py-12 text-rose-500 font-bold text-sm text-center">
 
                     تعذر تحميل تفاصيل الخدمة.
 
                     <br>
 
-                    <span class="text-xs text-slate-400">
-                        يرجى المحاولة مرة أخرى.
-                    </span>
+                    يرجى المحاولة مرة أخرى.
 
                 </div>
+
             `;
         }
     }
@@ -1131,9 +1211,28 @@ async function loadServiceDetailsPage() {
 
 
 /**
- * عرض الأعمال السابقة
+ * تعيين نص لعنصر بأمان
  */
+function setText(elementId, value) {
+
+    const element =
+        document.getElementById(elementId);
+
+    if (element) {
+
+        element.textContent =
+            value ?? '';
+
+    }
+}
+
+
+/* ==========================================================================
+   12. نماذج الأعمال
+   ========================================================================== */
+
 function renderServiceWorksList(works) {
+
     const container =
         document.getElementById(
             'service-works-grid'
@@ -1150,21 +1249,30 @@ function renderServiceWorksList(works) {
     }
 
 
+    const safeWorks =
+        Array.isArray(works)
+            ? works
+            : [];
+
+
     if (badgeCount) {
 
         badgeCount.textContent =
-            `${works.length} نماذج`;
+            `${safeWorks.length} نماذج`;
+
     }
 
 
-    if (works.length === 0) {
+    if (safeWorks.length === 0) {
 
         container.innerHTML = `
+
             <div class="col-span-full text-center py-8 bg-lightbg rounded-2xl border border-slate-200/80 text-slate-500 text-xs">
 
                 لا تتوفر نماذج أعمال معروضة لهذه الخدمة حالياً.
 
             </div>
+
         `;
 
         return;
@@ -1174,62 +1282,35 @@ function renderServiceWorksList(works) {
     container.innerHTML = '';
 
 
-    works.forEach(work => {
-
-        const imageUrl =
-            escapeHTML(
-                work.image_url || ''
-            );
-
-        const title =
-            escapeHTML(
-                work.title || 'نموذج عمل'
-            );
-
-        const description =
-            escapeHTML(
-                work.description || ''
-            );
-
+    safeWorks.forEach(work => {
 
         container.insertAdjacentHTML(
             'beforeend',
             `
+
                 <div class="bg-lightbg rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm space-y-3">
 
                     <div class="h-48 w-full bg-slate-900 overflow-hidden relative">
 
-                        ${
-                            imageUrl
-                                ? `
-                                    <img
-                                        src="${imageUrl}"
-                                        alt="${title}"
-                                        class="w-full h-full object-cover transition duration-300 hover:scale-105"
-                                        loading="lazy"
-                                    >
-                                `
-                                : `
-                                    <div class="w-full h-full flex items-center justify-center text-slate-500">
-                                        <i class="fas fa-image text-3xl"></i>
-                                    </div>
-                                `
-                        }
+                        <img
+                            src="${work.image_url || ''}"
+                            alt="${work.title || ''}"
+                            class="w-full h-full object-cover transition duration-300 hover:scale-105"
+                        >
 
                     </div>
-
 
                     <div class="p-4 space-y-2">
 
                         <h4 class="font-bold text-slate-900 text-sm">
-                            ${title}
+                            ${work.title || ''}
                         </h4>
 
                         ${
-                            description
+                            work.description
                                 ? `
                                     <p class="text-slate-500 text-xs leading-relaxed">
-                                        ${description}
+                                        ${work.description}
                                     </p>
                                 `
                                 : ''
@@ -1238,16 +1319,20 @@ function renderServiceWorksList(works) {
                     </div>
 
                 </div>
+
             `
         );
+
     });
 }
 
 
-/**
- * عرض التقييمات
- */
+/* ==========================================================================
+   13. تقييمات الخدمة
+   ========================================================================== */
+
 function renderServiceReviewsList(reviews) {
+
     const container =
         document.getElementById(
             'service-reviews-list'
@@ -1259,14 +1344,22 @@ function renderServiceReviewsList(reviews) {
     }
 
 
-    if (reviews.length === 0) {
+    const safeReviews =
+        Array.isArray(reviews)
+            ? reviews
+            : [];
+
+
+    if (safeReviews.length === 0) {
 
         container.innerHTML = `
+
             <div class="text-center py-6 bg-lightbg rounded-2xl border border-slate-200/80 text-slate-500 text-xs">
 
                 كن أول من يضيف تقييماً لهذه الخدمة!
 
             </div>
+
         `;
 
         return;
@@ -1276,29 +1369,20 @@ function renderServiceReviewsList(reviews) {
     container.innerHTML = '';
 
 
-    reviews.forEach(review => {
-
-        const studentName =
-            escapeHTML(
-                review.student_name ||
-                'طالب جامعي'
-            );
-
-        const comment =
-            escapeHTML(
-                review.comment || ''
-            );
-
+    safeReviews.forEach(review => {
 
         container.insertAdjacentHTML(
             'beforeend',
             `
+
                 <div class="p-4 bg-lightbg rounded-2xl border border-slate-200/80 space-y-2">
 
                     <div class="flex items-center justify-between">
 
                         <span class="font-bold text-slate-900 text-xs">
-                            ${studentName}
+
+                            ${review.student_name || 'طالب جامعي'}
+
                         </span>
 
                         <div class="text-xs flex gap-0.5">
@@ -1311,30 +1395,31 @@ function renderServiceReviewsList(reviews) {
 
                     </div>
 
-
                     ${
-                        comment
+                        review.comment
                             ? `
                                 <p class="text-slate-600 text-xs leading-relaxed">
-                                    ${comment}
+                                    ${review.comment}
                                 </p>
                             `
                             : ''
                     }
 
                 </div>
+
             `
         );
+
     });
 }
 
 
-// ==================== [ التقييمات ] ====================
+/* ==========================================================================
+   14. إرسال تقييم جديد
+   ========================================================================== */
 
-/**
- * إرسال تقييم جديد
- */
 async function handleReviewSubmit(event) {
+
     event.preventDefault();
 
 
@@ -1359,7 +1444,18 @@ async function handleReviewSubmit(event) {
         );
 
 
-    if (!serviceIdElement) {
+    if (
+        !serviceIdElement ||
+        !studentNameElement ||
+        !ratingElement ||
+        !commentElement
+    ) {
+
+        showToast(
+            'تعذر العثور على حقول التقييم.',
+            'error'
+        );
+
         return;
     }
 
@@ -1367,29 +1463,20 @@ async function handleReviewSubmit(event) {
     const serviceId =
         serviceIdElement.value;
 
-
     const studentName =
-        studentNameElement
-            ? studentNameElement.value.trim()
-            : '';
-
+        studentNameElement.value.trim();
 
     const rating =
-        ratingElement
-            ? ratingElement.value
-            : 5;
-
+        ratingElement.value;
 
     const comment =
-        commentElement
-            ? commentElement.value.trim()
-            : '';
+        commentElement.value.trim();
 
 
     if (!serviceId) {
 
         showToast(
-            'تعذر تحديد الخدمة',
+            'معرف الخدمة غير موجود.',
             'error'
         );
 
@@ -1400,7 +1487,7 @@ async function handleReviewSubmit(event) {
     if (!studentName) {
 
         showToast(
-            'يرجى إدخال الاسم',
+            'يرجى كتابة اسمك.',
             'error'
         );
 
@@ -1414,6 +1501,7 @@ async function handleReviewSubmit(event) {
             await fetch(
                 '/api/reviews',
                 {
+
                     method: 'POST',
 
                     headers: {
@@ -1422,9 +1510,11 @@ async function handleReviewSubmit(event) {
                     },
 
                     body: JSON.stringify({
+
                         service_id:
                             parseInt(
-                                serviceId
+                                serviceId,
+                                10
                             ),
 
                         student_name:
@@ -1432,12 +1522,15 @@ async function handleReviewSubmit(event) {
 
                         rating:
                             parseInt(
-                                rating
+                                rating,
+                                10
                             ),
 
                         comment:
                             comment
+
                     })
+
                 }
             );
 
@@ -1466,24 +1559,20 @@ async function handleReviewSubmit(event) {
                     'add-review-form'
                 );
 
+
             if (form) {
                 form.reset();
             }
 
 
-            const urlParams =
-                new URLSearchParams(
-                    window.location.search
-                );
+            /*
+             * إعادة تحميل تفاصيل الخدمة
+             */
+            setTimeout(() => {
 
-            const slug =
-                urlParams.get('slug');
+                loadServiceDetailsPage();
 
-
-            if (slug) {
-
-                await loadServiceDetailsPage();
-            }
+            }, 500);
 
 
         } else {
@@ -1499,9 +1588,10 @@ async function handleReviewSubmit(event) {
     } catch (error) {
 
         console.error(
-            'handleReviewSubmit error:',
+            'خطأ في إرسال التقييم:',
             error
         );
+
 
         showToast(
             'تعذر إرسال التقييم، يرجى المحاولة لاحقاً',
@@ -1511,32 +1601,76 @@ async function handleReviewSubmit(event) {
 }
 
 
-// ==================== [ التهيئة ] ====================
+/* ==========================================================================
+   15. تحديد الصفحة الحالية
+   ========================================================================== */
+
+function getCurrentPage() {
+
+    const path =
+        window.location.pathname
+            .toLowerCase();
+
+
+    /*
+     * إزالة / من نهاية المسار
+     */
+    const cleanPath =
+        path.replace(/\/+$/, '');
+
+
+    const pageName =
+        cleanPath
+            .split('/')
+            .pop();
+
+
+    return pageName || 'index.html';
+}
+
+
+/* ==========================================================================
+   16. تشغيل الموقع
+   ========================================================================== */
 
 document.addEventListener(
     'DOMContentLoaded',
     () => {
 
-        // تسجيل الزيارة
-        recordPageVisit();
-
-
-        const path =
-            window.location.pathname;
-
-        const href =
-            window.location.href;
+        console.log(
+            'main.js تم تحميله بنجاح'
+        );
 
 
         /*
-         * تحديد الصفحة الحالية
+         * تسجيل الزيارة
          */
+        recordPageVisit();
 
-        // صفحة الخدمات
+
+        const currentPage =
+            getCurrentPage();
+
+
+        console.log(
+            'الصفحة الحالية:',
+            currentPage
+        );
+
+
+        /* ==========================================
+           صفحة الخدمات
+           ========================================== */
+
         if (
-            path.includes('services') ||
-            href.includes('services.html')
+            currentPage === 'services.html' ||
+            currentPage === 'services'
         ) {
+
+            console.log(
+                'تشغيل صفحة الخدمات...'
+            );
+
 
             loadServicesPageData();
 
@@ -1553,6 +1687,7 @@ document.addEventListener(
                     'input',
                     renderFilteredServices
                 );
+
             }
 
 
@@ -1560,35 +1695,67 @@ document.addEventListener(
         }
 
 
-        // صفحة تفاصيل الخدمة
+        /* ==========================================
+           صفحة تفاصيل الخدمة
+           ========================================== */
+
         if (
-            path.includes(
-                'service-details'
-            ) ||
-            href.includes(
-                'service-details.html'
-            )
+            currentPage === 'service-details.html' ||
+            currentPage === 'service-details'
         ) {
 
+            console.log(
+                'تشغيل صفحة تفاصيل الخدمة...'
+            );
+
+
             loadServiceDetailsPage();
+
 
             return;
         }
 
 
-        // الصفحة الرئيسية
-        loadFeaturedServices();
+        /* ==========================================
+           الصفحة الرئيسية
+           ========================================== */
+
+        if (
+            currentPage === 'index.html' ||
+            currentPage === ''
+        ) {
+
+            console.log(
+                'تشغيل الصفحة الرئيسية...'
+            );
+
+
+            loadFeaturedServices();
+
+            return;
+        }
+
+
+        /*
+         * أي صفحة أخرى
+         */
+        console.log(
+            'لا توجد وظائف خاصة لهذه الصفحة.'
+        );
+
     }
 );
 
 
-// ==================== [ إتاحة الدوال للـ HTML ] ====================
+/* ==========================================================================
+   17. إتاحة الدوال للـ HTML
+   ========================================================================== */
 
 window.sendServiceWhatsApp =
     sendServiceWhatsApp;
 
-window.sendServiceWhatsAppById =
-    sendServiceWhatsAppById;
+window.sendGeneralWhatsApp =
+    sendGeneralWhatsApp;
 
 window.filterServicesByCategory =
     filterServicesByCategory;
@@ -1599,5 +1766,8 @@ window.resetFilters =
 window.handleReviewSubmit =
     handleReviewSubmit;
 
-window.showToast =
-    showToast;
+window.loadServicesPageData =
+    loadServicesPageData;
+
+window.loadServiceDetailsPage =
+    loadServiceDetailsPage;
