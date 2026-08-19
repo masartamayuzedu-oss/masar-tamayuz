@@ -10,12 +10,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- FontAwesome للأيقونات -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- خطوط المنصة -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap"
+          rel="stylesheet">
 
     <style>
+
         body {
             font-family: 'Tajawal', sans-serif;
             background-color: #1a222c;
@@ -38,63 +41,12 @@
             border-color: #d0a75f;
         }
 
-        /* ==============================
-           الفوتر
-        ============================== */
-
-        .site-footer {
-            background: #17212b;
-            border-top: 1px solid rgba(201,164,92,.18);
-            color: #8e99a5;
-        }
-
-        .footer-brand {
-            font-family: 'Cairo', sans-serif;
-            font-size: clamp(1.05rem, 3vw, 1.45rem);
-            font-weight: 800;
-            line-height: 1.9;
-        }
-
-        .footer-gold {
-            color: #d0a75f;
-        }
-
-        .footer-white {
-            color: #f5f5f5;
-        }
-
-        .footer-separator {
-            color: #c9a45c;
-            margin: 0 7px;
-            font-weight: 700;
-        }
-
-        .footer-copy {
-            color: #89939e;
-            font-size: .82rem;
-            line-height: 2;
-        }
-
-        .developer {
-            color: #89939e;
-            font-weight: 700;
-        }
-
-        @media (max-width: 640px) {
-
-            .site-footer {
-                padding-bottom: 35px;
-            }
-
-            .footer-brand {
-                font-size: 1rem;
-            }
-
-        }
     </style>
 </head>
 
+
 <body class="text-white min-h-screen flex flex-col relative">
+
 
 <!-- ========================================================= -->
 <!-- 1. الهيدر -->
@@ -120,47 +72,82 @@
 
         </a>
 
+
         <!-- زر القائمة -->
         <details class="relative">
 
-            <summary class="list-none text-white text-2xl focus:outline-none p-1 cursor-pointer select-none">
+            <summary
+                class="list-none text-white text-2xl focus:outline-none p-1 cursor-pointer select-none">
+
                 <i class="fas fa-bars"></i>
+
             </summary>
 
+
             <!-- القائمة المنسدلة -->
-            <div class="absolute left-0 mt-3 w-60 bg-[#1a222c] border border-gray-700 rounded-2xl shadow-2xl py-4 px-5 flex flex-col items-end text-right gap-4 z-50">
+            <div
+                class="absolute left-0 mt-3 w-60 bg-[#1a222c]
+                       border border-gray-700 rounded-2xl shadow-2xl
+                       py-4 px-5 flex flex-col items-end
+                       text-right gap-4 z-50">
 
-                <a href="index.html"
-                   class="text-gold font-bold text-base transition w-full block">
+
+                <a
+                    href="index.html"
+                    class="text-gold font-bold text-base transition w-full block">
+
                     الرئيسية
+
                 </a>
 
-                <a href="services.html"
-                   class="text-gray-200 font-semibold text-base hover:text-gold transition w-full block">
+
+                <a
+                    href="services.html"
+                    class="text-gray-200 font-semibold text-base hover:text-gold transition w-full block">
+
                     خدماتنا
+
                 </a>
 
-                <a href="about.html"
-                   class="text-gray-200 font-semibold text-base hover:text-gold transition w-full block">
+
+                <a
+                    href="about.html"
+                    class="text-gray-200 font-semibold text-base hover:text-gold transition w-full block">
+
                     من نحن
+
                 </a>
 
-                <a href="contact.html"
-                   class="text-gray-200 font-semibold text-base hover:text-gold transition w-full block">
+
+                <a
+                    href="contact.html"
+                    class="text-gray-200 font-semibold text-base hover:text-gold transition w-full block">
+
                     تواصل معنا
+
                 </a>
 
-                <a href="admin.html"
-                   class="text-gray-200 font-semibold text-base hover:text-gold transition w-full block">
+
+                <a
+                    href="admin.html"
+                    class="text-gray-200 font-semibold text-base hover:text-gold transition w-full block">
+
                     لوحة التحكم
+
                 </a>
+
 
                 <!-- زر الواتساب -->
                 <button
                     onclick="sendGeneralWhatsApp()"
-                    class="mt-2 bg-gold text-[#1a222c] font-bold py-2.5 px-4 rounded-lg text-sm hover:opacity-90 transition w-full text-center flex items-center justify-center gap-2 cursor-pointer">
+                    class="mt-2 bg-gold text-[#1a222c]
+                           font-bold py-2.5 px-4 rounded-lg
+                           text-sm hover:opacity-90 transition
+                           w-full text-center flex items-center
+                           justify-center gap-2 cursor-pointer">
 
                     <i class="fab fa-whatsapp text-lg"></i>
+
                     تواصل عبر واتساب
 
                 </button>
@@ -174,51 +161,84 @@
 </header>
 
 
+
 <!-- ========================================================= -->
-<!-- 2. الواجهة الرئيسية الأصلية - لم يتم تغييرها -->
+<!-- 2. الواجهة الرئيسية الأصلية -->
 <!-- ========================================================= -->
 
-<main class="flex-grow flex flex-col items-center justify-center text-center px-5 py-12">
+<main
+    class="flex-grow flex flex-col items-center justify-center
+           text-center px-5 py-12">
+
 
     <!-- الشارة العلوية -->
-    <div class="border border-gold text-gold px-6 py-1.5 rounded-full text-sm font-bold mb-8">
+    <div
+        class="border border-gold text-gold px-6 py-1.5
+               rounded-full text-sm font-bold mb-8">
+
         منصة موثوقة لخدماتك
+
     </div>
 
+
     <!-- العنوان الرئيسي -->
-    <h1 class="text-3xl md:text-5xl font-black leading-snug mb-5 text-white">
+    <h1
+        class="text-3xl md:text-5xl font-black
+               leading-snug mb-5 text-white">
+
         إنجازك يبدأ من هنا
+
     </h1>
 
+
     <!-- النص الوصفي -->
-    <p class="text-gray-300 text-sm md:text-base max-w-lg leading-relaxed mb-10">
+    <p
+        class="text-gray-300 text-sm md:text-base
+               max-w-lg leading-relaxed mb-10">
+
         منصة متخصصة في تقديم الخدمات الطلابية والأكاديمية وخدمات الدراسات العليا،
         إلى جانب الحلول التقنية والإبداعية، باحترافية وجودة عالية، لنساعدك على
         إنجاز ما تحتاجه بسهولة، وتوفير وقتك وجهدك.
+
     </p>
+
 
     <!-- الأزرار -->
     <div class="flex flex-col w-full max-w-sm gap-4">
 
+
         <button
             onclick="sendGeneralWhatsApp()"
-            class="bg-gold text-[#1a222c] font-bold py-4 rounded-md text-lg transition hover:opacity-95 w-full cursor-pointer">
+            class="bg-gold text-[#1a222c]
+                   font-bold py-4 rounded-md text-lg
+                   transition hover:opacity-95
+                   w-full cursor-pointer">
 
             اطلب خدمتك الآن
 
         </button>
 
+
         <a
             href="services.html"
-            class="border border-gray-600 text-white font-bold py-4 rounded-md text-lg transition hover:bg-gray-800 w-full block text-center no-underline cursor-pointer">
+            class="border border-gray-600 text-white
+                   font-bold py-4 rounded-md text-lg
+                   transition hover:bg-gray-800
+                   w-full block text-center
+                   no-underline cursor-pointer">
 
             استكشف خدماتنا
 
         </a>
 
+
         <a
             href="about.html"
-            class="border border-gray-600 text-white font-bold py-4 rounded-md text-lg transition hover:bg-gray-800 w-full block text-center no-underline cursor-pointer">
+            class="border border-gray-600 text-white
+                   font-bold py-4 rounded-md text-lg
+                   transition hover:bg-gray-800
+                   w-full block text-center
+                   no-underline cursor-pointer">
 
             تعرّف علينا
 
@@ -226,10 +246,16 @@
 
     </div>
 
+
     <!-- إحصائيات الثقة -->
-    <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10 mt-14 text-sm font-bold">
+    <div
+        class="flex flex-wrap justify-center items-center
+               gap-6 md:gap-10 mt-14
+               text-sm font-bold">
+
 
         <div class="flex items-center gap-2">
+
             <span class="text-gold text-lg">
                 +100
             </span>
@@ -237,7 +263,9 @@
             <span class="text-gray-300">
                 خدمة منجزة
             </span>
+
         </div>
+
 
         <div class="flex items-center gap-2">
 
@@ -250,6 +278,7 @@
             </span>
 
         </div>
+
 
         <div class="flex items-center gap-2">
 
@@ -268,58 +297,98 @@
 </main>
 
 
+
 <!-- ========================================================= -->
 <!-- 3. الخدمات المميزة -->
 <!-- ========================================================= -->
 
-<section class="bg-[#f8fafc] text-[#1a222c] py-16 px-5 border-t border-gray-200">
+<section
+    class="bg-[#f8fafc] text-[#1a222c]
+           py-16 px-5 border-t border-gray-200">
+
 
     <div class="max-w-7xl mx-auto">
 
+
         <div class="text-center max-w-2xl mx-auto mb-12">
 
-            <span class="inline-block bg-[#d0a75f]/10 text-[#1a222c] px-4 py-1.5 rounded-full text-xs font-bold mb-4">
+
+            <span
+                class="inline-block bg-[#d0a75f]/10
+                       text-[#1a222c] px-4 py-1.5
+                       rounded-full text-xs font-bold mb-4">
+
                 خدماتنا المميزة
+
             </span>
 
+
             <h2 class="text-2xl md:text-4xl font-black mb-4">
+
                 خدمات تساعدك على الإنجاز
+
             </h2>
 
-            <p class="text-gray-500 text-sm md:text-base leading-relaxed">
+
+            <p
+                class="text-gray-500 text-sm md:text-base
+                       leading-relaxed">
+
                 نقدم مجموعة متنوعة من الخدمات الطلابية والأكاديمية والتقنية
                 لتلبية احتياجاتك بطريقة منظمة واحترافية.
+
             </p>
 
         </div>
+
 
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
 
             <!-- الخدمة 1 -->
-            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
+            <div
+                class="bg-white rounded-3xl p-7
+                       border border-gray-200 shadow-sm
+                       hover:shadow-lg hover:-translate-y-1
+                       transition duration-300">
 
-                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
+
+                <div
+                    class="w-14 h-14 rounded-2xl
+                           bg-[#d0a75f]/10 text-[#d0a75f]
+                           flex items-center justify-center
+                           text-2xl mb-5">
 
                     <i class="fas fa-graduation-cap"></i>
 
                 </div>
 
+
                 <h3 class="font-black text-lg mb-3">
+
                     الخدمات الأكاديمية
+
                 </h3>
 
-                <p class="text-gray-500 text-sm leading-relaxed mb-5">
+
+                <p
+                    class="text-gray-500 text-sm
+                           leading-relaxed mb-5">
+
                     خدمات ومساعدة أكاديمية مصممة لتلبية احتياجات الطلاب
                     والباحثين في مختلف التخصصات.
+
                 </p>
+
 
                 <a
                     href="services.html"
-                    class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
+                    class="text-[#1a222c] font-bold text-sm
+                           hover:text-[#d0a75f] transition">
 
                     اكتشف الخدمات
+
                     <i class="fas fa-arrow-left mr-1"></i>
 
                 </a>
@@ -327,29 +396,50 @@
             </div>
 
 
-            <!-- الخدمة 2 -->
-            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
 
-                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
+            <!-- الخدمة 2 -->
+            <div
+                class="bg-white rounded-3xl p-7
+                       border border-gray-200 shadow-sm
+                       hover:shadow-lg hover:-translate-y-1
+                       transition duration-300">
+
+
+                <div
+                    class="w-14 h-14 rounded-2xl
+                           bg-[#d0a75f]/10 text-[#d0a75f]
+                           flex items-center justify-center
+                           text-2xl mb-5">
 
                     <i class="fas fa-code"></i>
 
                 </div>
 
+
                 <h3 class="font-black text-lg mb-3">
+
                     البرمجة والحلول التقنية
+
                 </h3>
 
-                <p class="text-gray-500 text-sm leading-relaxed mb-5">
+
+                <p
+                    class="text-gray-500 text-sm
+                           leading-relaxed mb-5">
+
                     حلول برمجية ومشاريع تقنية تساعدك على تنفيذ متطلباتك
                     بطريقة منظمة وعملية.
+
                 </p>
+
 
                 <a
                     href="services.html"
-                    class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
+                    class="text-[#1a222c] font-bold text-sm
+                           hover:text-[#d0a75f] transition">
 
                     اكتشف الخدمات
+
                     <i class="fas fa-arrow-left mr-1"></i>
 
                 </a>
@@ -357,29 +447,50 @@
             </div>
 
 
-            <!-- الخدمة 3 -->
-            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
 
-                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
+            <!-- الخدمة 3 -->
+            <div
+                class="bg-white rounded-3xl p-7
+                       border border-gray-200 shadow-sm
+                       hover:shadow-lg hover:-translate-y-1
+                       transition duration-300">
+
+
+                <div
+                    class="w-14 h-14 rounded-2xl
+                           bg-[#d0a75f]/10 text-[#d0a75f]
+                           flex items-center justify-center
+                           text-2xl mb-5">
 
                     <i class="fas fa-chart-line"></i>
 
                 </div>
 
+
                 <h3 class="font-black text-lg mb-3">
+
                     تحليل البيانات
+
                 </h3>
 
-                <p class="text-gray-500 text-sm leading-relaxed mb-5">
+
+                <p
+                    class="text-gray-500 text-sm
+                           leading-relaxed mb-5">
+
                     تنظيم وتحليل البيانات وتقديم النتائج بصورة واضحة
                     تساعد على فهم المعلومات والاستفادة منها.
+
                 </p>
+
 
                 <a
                     href="services.html"
-                    class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
+                    class="text-[#1a222c] font-bold text-sm
+                           hover:text-[#d0a75f] transition">
 
                     اكتشف الخدمات
+
                     <i class="fas fa-arrow-left mr-1"></i>
 
                 </a>
@@ -387,29 +498,50 @@
             </div>
 
 
-            <!-- الخدمة 4 -->
-            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
 
-                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
+            <!-- الخدمة 4 -->
+            <div
+                class="bg-white rounded-3xl p-7
+                       border border-gray-200 shadow-sm
+                       hover:shadow-lg hover:-translate-y-1
+                       transition duration-300">
+
+
+                <div
+                    class="w-14 h-14 rounded-2xl
+                           bg-[#d0a75f]/10 text-[#d0a75f]
+                           flex items-center justify-center
+                           text-2xl mb-5">
 
                     <i class="fas fa-book-open"></i>
 
                 </div>
 
+
                 <h3 class="font-black text-lg mb-3">
+
                     الأبحاث والدراسات
+
                 </h3>
 
-                <p class="text-gray-500 text-sm leading-relaxed mb-5">
+
+                <p
+                    class="text-gray-500 text-sm
+                           leading-relaxed mb-5">
+
                     دعم في إعداد وتنظيم الأعمال البحثية والدراسات
                     وفق المتطلبات المحددة.
+
                 </p>
+
 
                 <a
                     href="services.html"
-                    class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
+                    class="text-[#1a222c] font-bold text-sm
+                           hover:text-[#d0a75f] transition">
 
                     اكتشف الخدمات
+
                     <i class="fas fa-arrow-left mr-1"></i>
 
                 </a>
@@ -417,29 +549,50 @@
             </div>
 
 
-            <!-- الخدمة 5 -->
-            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
 
-                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
+            <!-- الخدمة 5 -->
+            <div
+                class="bg-white rounded-3xl p-7
+                       border border-gray-200 shadow-sm
+                       hover:shadow-lg hover:-translate-y-1
+                       transition duration-300">
+
+
+                <div
+                    class="w-14 h-14 rounded-2xl
+                           bg-[#d0a75f]/10 text-[#d0a75f]
+                           flex items-center justify-center
+                           text-2xl mb-5">
 
                     <i class="fas fa-file-powerpoint"></i>
 
                 </div>
 
+
                 <h3 class="font-black text-lg mb-3">
+
                     العروض والتنسيق
+
                 </h3>
 
-                <p class="text-gray-500 text-sm leading-relaxed mb-5">
+
+                <p
+                    class="text-gray-500 text-sm
+                           leading-relaxed mb-5">
+
                     إعداد وتنسيق الملفات والعروض بصورة مرتبة وواضحة
                     ومناسبة للعرض والمناقشة.
+
                 </p>
+
 
                 <a
                     href="services.html"
-                    class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
+                    class="text-[#1a222c] font-bold text-sm
+                           hover:text-[#d0a75f] transition">
 
                     اكتشف الخدمات
+
                     <i class="fas fa-arrow-left mr-1"></i>
 
                 </a>
@@ -447,29 +600,50 @@
             </div>
 
 
-            <!-- الخدمة 6 -->
-            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
 
-                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
+            <!-- الخدمة 6 -->
+            <div
+                class="bg-white rounded-3xl p-7
+                       border border-gray-200 shadow-sm
+                       hover:shadow-lg hover:-translate-y-1
+                       transition duration-300">
+
+
+                <div
+                    class="w-14 h-14 rounded-2xl
+                           bg-[#d0a75f]/10 text-[#d0a75f]
+                           flex items-center justify-center
+                           text-2xl mb-5">
 
                     <i class="fas fa-comments"></i>
 
                 </div>
 
+
                 <h3 class="font-black text-lg mb-3">
+
                     الاستشارات والدعم
+
                 </h3>
 
-                <p class="text-gray-500 text-sm leading-relaxed mb-5">
+
+                <p
+                    class="text-gray-500 text-sm
+                           leading-relaxed mb-5">
+
                     استشارات ومتابعة لفهم متطلباتك وتحديد الطريقة
                     المناسبة لتنفيذ طلبك.
+
                 </p>
+
 
                 <a
                     href="contact.html"
-                    class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
+                    class="text-[#1a222c] font-bold text-sm
+                           hover:text-[#d0a75f] transition">
 
                     تواصل معنا
+
                     <i class="fas fa-arrow-left mr-1"></i>
 
                 </a>
@@ -479,11 +653,16 @@
         </div>
 
 
+
         <div class="text-center mt-10">
 
             <a
                 href="services.html"
-                class="inline-flex items-center gap-2 bg-[#1a222c] text-white px-7 py-3.5 rounded-xl font-bold text-sm hover:bg-[#d0a75f] hover:text-[#1a222c] transition">
+                class="inline-flex items-center gap-2
+                       bg-[#1a222c] text-white px-7 py-3.5
+                       rounded-xl font-bold text-sm
+                       hover:bg-[#d0a75f]
+                       hover:text-[#1a222c] transition">
 
                 عرض جميع الخدمات
 
@@ -498,6 +677,7 @@
 </section>
 
 
+
 <!-- ========================================================= -->
 <!-- 4. لماذا مسار التميز؟ -->
 <!-- ========================================================= -->
@@ -506,25 +686,43 @@
 
     <div class="max-w-7xl mx-auto">
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+        <div
+            class="grid grid-cols-1 lg:grid-cols-2
+                   gap-12 items-center">
 
 
             <div>
 
-                <span class="inline-block bg-[#d0a75f]/10 text-[#1a222c] px-4 py-1.5 rounded-full text-xs font-bold mb-5">
+
+                <span
+                    class="inline-block bg-[#d0a75f]/10
+                           text-[#1a222c] px-4 py-1.5
+                           rounded-full text-xs font-bold mb-5">
+
                     لماذا نحن؟
+
                 </span>
 
-                <h2 class="text-2xl md:text-4xl font-black leading-snug mb-5">
+
+                <h2
+                    class="text-2xl md:text-4xl
+                           font-black leading-snug mb-5">
 
                     أكثر من مجرد خدمة...
+
                     <span class="text-[#d0a75f]">
+
                         نحن مسار للإنجاز
+
                     </span>
 
                 </h2>
 
-                <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-8">
+
+                <p
+                    class="text-gray-500 text-sm md:text-base
+                           leading-relaxed mb-8">
 
                     نحرص على فهم احتياجك أولاً، ثم تقديم الخدمة بصورة منظمة
                     وواضحة، مع المحافظة على جودة العمل وسرية الملفات والمتابعة
@@ -532,9 +730,15 @@
 
                 </p>
 
+
                 <a
                     href="about.html"
-                    class="inline-flex items-center gap-2 border border-[#1a222c] text-[#1a222c] px-6 py-3 rounded-xl font-bold text-sm hover:bg-[#1a222c] hover:text-white transition">
+                    class="inline-flex items-center gap-2
+                           border border-[#1a222c]
+                           text-[#1a222c] px-6 py-3
+                           rounded-xl font-bold text-sm
+                           hover:bg-[#1a222c]
+                           hover:text-white transition">
 
                     تعرّف علينا أكثر
 
@@ -545,72 +749,117 @@
             </div>
 
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+            <div
+                class="grid grid-cols-1 sm:grid-cols-2 gap-5">
 
 
-                <div class="bg-[#f8fafc] border border-gray-200 rounded-3xl p-6">
+                <div
+                    class="bg-[#f8fafc] border border-gray-200
+                           rounded-3xl p-6">
 
                     <div class="text-[#d0a75f] text-2xl mb-4">
+
                         <i class="fas fa-shield-halved"></i>
+
                     </div>
 
                     <h3 class="font-black mb-2">
+
                         السرية والخصوصية
+
                     </h3>
 
-                    <p class="text-gray-500 text-xs leading-relaxed">
+                    <p
+                        class="text-gray-500 text-xs
+                               leading-relaxed">
+
                         الحفاظ على بياناتك وملفاتك وعدم مشاركتها مع أي طرف آخر.
+
                     </p>
 
                 </div>
 
 
-                <div class="bg-[#f8fafc] border border-gray-200 rounded-3xl p-6">
+
+                <div
+                    class="bg-[#f8fafc] border border-gray-200
+                           rounded-3xl p-6">
 
                     <div class="text-[#d0a75f] text-2xl mb-4">
+
                         <i class="fas fa-bolt"></i>
+
                     </div>
 
                     <h3 class="font-black mb-2">
+
                         سرعة الاستجابة
+
                     </h3>
 
-                    <p class="text-gray-500 text-xs leading-relaxed">
+                    <p
+                        class="text-gray-500 text-xs
+                               leading-relaxed">
+
                         استقبال طلبك ومراجعته والرد عليك بأسرع وقت ممكن.
+
                     </p>
 
                 </div>
 
 
-                <div class="bg-[#f8fafc] border border-gray-200 rounded-3xl p-6">
+
+                <div
+                    class="bg-[#f8fafc] border border-gray-200
+                           rounded-3xl p-6">
 
                     <div class="text-[#d0a75f] text-2xl mb-4">
+
                         <i class="fas fa-bullseye"></i>
+
                     </div>
 
                     <h3 class="font-black mb-2">
+
                         حسب متطلباتك
+
                     </h3>
 
-                    <p class="text-gray-500 text-xs leading-relaxed">
+                    <p
+                        class="text-gray-500 text-xs
+                               leading-relaxed">
+
                         فهم تفاصيل الطلب والعمل وفق المتطلبات المحددة.
+
                     </p>
 
                 </div>
 
 
-                <div class="bg-[#f8fafc] border border-gray-200 rounded-3xl p-6">
+
+                <div
+                    class="bg-[#f8fafc] border border-gray-200
+                           rounded-3xl p-6">
 
                     <div class="text-[#d0a75f] text-2xl mb-4">
+
                         <i class="fas fa-headset"></i>
+
                     </div>
 
                     <h3 class="font-black mb-2">
+
                         متابعة مستمرة
+
                     </h3>
 
-                    <p class="text-gray-500 text-xs leading-relaxed">
+                    <p
+                        class="text-gray-500 text-xs
+                               leading-relaxed">
+
                         التواصل والمتابعة حتى اكتمال الخدمة وتسليمها.
+
                     </p>
 
                 </div>
@@ -622,99 +871,181 @@
     </div>
 
 </section>
+
 
 
 <!-- ========================================================= -->
 <!-- 5. كيف نعمل؟ -->
 <!-- ========================================================= -->
 
-<section class="bg-[#f8fafc] text-[#1a222c] py-16 px-5 border-y border-gray-200">
+<section
+    class="bg-[#f8fafc] text-[#1a222c]
+           py-16 px-5 border-y border-gray-200">
 
     <div class="max-w-7xl mx-auto">
 
+
         <div class="text-center max-w-2xl mx-auto mb-12">
 
-            <span class="inline-block bg-[#d0a75f]/10 text-[#1a222c] px-4 py-1.5 rounded-full text-xs font-bold mb-4">
+
+            <span
+                class="inline-block bg-[#d0a75f]/10
+                       text-[#1a222c] px-4 py-1.5
+                       rounded-full text-xs font-bold mb-4">
+
                 خطوات بسيطة
+
             </span>
 
+
             <h2 class="text-2xl md:text-4xl font-black mb-4">
+
                 كيف نعمل؟
+
             </h2>
 
+
             <p class="text-gray-500 text-sm leading-relaxed">
+
                 جعلنا عملية طلب الخدمة بسيطة ومباشرة من أول تواصل حتى التسليم.
+
             </p>
 
         </div>
 
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <div
+            class="grid grid-cols-1 sm:grid-cols-2
+                   lg:grid-cols-4 gap-6">
 
 
-            <div class="bg-white rounded-3xl p-7 border border-gray-200 text-center shadow-sm">
+            <div
+                class="bg-white rounded-3xl p-7
+                       border border-gray-200
+                       text-center shadow-sm">
 
-                <div class="w-14 h-14 mx-auto rounded-full bg-[#1a222c] text-[#d0a75f] flex items-center justify-center font-black text-lg mb-5">
+                <div
+                    class="w-14 h-14 mx-auto rounded-full
+                           bg-[#1a222c] text-[#d0a75f]
+                           flex items-center justify-center
+                           font-black text-lg mb-5">
+
                     01
+
                 </div>
 
                 <h3 class="font-black mb-3">
+
                     أرسل طلبك
+
                 </h3>
 
-                <p class="text-gray-500 text-xs leading-relaxed">
+                <p
+                    class="text-gray-500 text-xs
+                           leading-relaxed">
+
                     تواصل معنا وأرسل تفاصيل الخدمة التي تحتاج إليها.
+
                 </p>
 
             </div>
 
 
-            <div class="bg-white rounded-3xl p-7 border border-gray-200 text-center shadow-sm">
 
-                <div class="w-14 h-14 mx-auto rounded-full bg-[#1a222c] text-[#d0a75f] flex items-center justify-center font-black text-lg mb-5">
+            <div
+                class="bg-white rounded-3xl p-7
+                       border border-gray-200
+                       text-center shadow-sm">
+
+                <div
+                    class="w-14 h-14 mx-auto rounded-full
+                           bg-[#1a222c] text-[#d0a75f]
+                           flex items-center justify-center
+                           font-black text-lg mb-5">
+
                     02
+
                 </div>
 
                 <h3 class="font-black mb-3">
+
                     نراجع المتطلبات
+
                 </h3>
 
-                <p class="text-gray-500 text-xs leading-relaxed">
+                <p
+                    class="text-gray-500 text-xs
+                           leading-relaxed">
+
                     نراجع طلبك ونحدد التفاصيل المطلوبة لتنفيذه.
+
                 </p>
 
             </div>
 
 
-            <div class="bg-white rounded-3xl p-7 border border-gray-200 text-center shadow-sm">
 
-                <div class="w-14 h-14 mx-auto rounded-full bg-[#1a222c] text-[#d0a75f] flex items-center justify-center font-black text-lg mb-5">
+            <div
+                class="bg-white rounded-3xl p-7
+                       border border-gray-200
+                       text-center shadow-sm">
+
+                <div
+                    class="w-14 h-14 mx-auto rounded-full
+                           bg-[#1a222c] text-[#d0a75f]
+                           flex items-center justify-center
+                           font-black text-lg mb-5">
+
                     03
+
                 </div>
 
                 <h3 class="font-black mb-3">
+
                     الاتفاق والبدء
+
                 </h3>
 
-                <p class="text-gray-500 text-xs leading-relaxed">
+                <p
+                    class="text-gray-500 text-xs
+                           leading-relaxed">
+
                     يتم الاتفاق على التكلفة والمدة ثم تبدأ مرحلة التنفيذ.
+
                 </p>
 
             </div>
 
 
-            <div class="bg-white rounded-3xl p-7 border border-gray-200 text-center shadow-sm">
 
-                <div class="w-14 h-14 mx-auto rounded-full bg-[#1a222c] text-[#d0a75f] flex items-center justify-center font-black text-lg mb-5">
+            <div
+                class="bg-white rounded-3xl p-7
+                       border border-gray-200
+                       text-center shadow-sm">
+
+                <div
+                    class="w-14 h-14 mx-auto rounded-full
+                           bg-[#1a222c] text-[#d0a75f]
+                           flex items-center justify-center
+                           font-black text-lg mb-5">
+
                     04
+
                 </div>
 
                 <h3 class="font-black mb-3">
+
                     التسليم والمتابعة
+
                 </h3>
 
-                <p class="text-gray-500 text-xs leading-relaxed">
+                <p
+                    class="text-gray-500 text-xs
+                           leading-relaxed">
+
                     تستلم الملفات وتتم المتابعة عند الحاجة إلى التعديل أو التوضيح.
+
                 </p>
 
             </div>
@@ -724,6 +1055,7 @@
     </div>
 
 </section>
+
 
 
 <!-- ========================================================= -->
@@ -735,20 +1067,40 @@
     <div class="max-w-7xl mx-auto">
 
 
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-10">
+        <div
+            class="flex flex-col md:flex-row
+                   md:items-end md:justify-between
+                   gap-5 mb-10">
+
 
             <div>
 
-                <span class="inline-block bg-[#d0a75f]/10 text-[#1a222c] px-4 py-1.5 rounded-full text-xs font-bold mb-4">
+
+                <span
+                    class="inline-block bg-[#d0a75f]/10
+                           text-[#1a222c] px-4 py-1.5
+                           rounded-full text-xs font-bold mb-4">
+
                     أعمالنا
+
                 </span>
 
-                <h2 class="text-2xl md:text-4xl font-black mb-3">
+
+                <h2
+                    class="text-2xl md:text-4xl
+                           font-black mb-3">
+
                     نماذج من أعمالنا السابقة
+
                 </h2>
 
-                <p class="text-gray-500 text-sm max-w-2xl leading-relaxed">
+
+                <p
+                    class="text-gray-500 text-sm
+                           max-w-2xl leading-relaxed">
+
                     تعرف على نماذج من الخدمات والأعمال التي تم تنفيذها سابقًا.
+
                 </p>
 
             </div>
@@ -756,9 +1108,12 @@
 
             <a
                 href="services.html"
-                class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition whitespace-nowrap">
+                class="text-[#1a222c] font-bold text-sm
+                       hover:text-[#d0a75f] transition
+                       whitespace-nowrap">
 
                 مشاهدة الخدمات
+
                 <i class="fas fa-arrow-left mr-1"></i>
 
             </a>
@@ -766,25 +1121,47 @@
         </div>
 
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- ================================================= -->
+        <!-- النماذج الأربعة -->
+        <!-- ================================================= -->
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
 
-            <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
+            <!-- النموذج الأول -->
+            <div
+                class="bg-[#f8fafc] rounded-3xl
+                       border border-gray-200 overflow-hidden">
 
-                <div class="h-44 flex items-center justify-center bg-gray-100">
 
-                    <i class="fas fa-laptop-code text-5xl text-[#d0a75f]"></i>
+                <div
+                    class="h-64 bg-gray-100 overflow-hidden">
+
+                    <img
+                        src="https://i.ibb.co/ymBywKwC/IMG-20260819-WA0007.jpg"
+                        alt="تصميم خرائط ذهنية ومفاهيمية ذكية"
+                        class="w-full h-full object-cover"
+                    >
 
                 </div>
 
+
                 <div class="p-6">
 
-                    <h3 class="font-black mb-2">
-                        مشاريع وحلول تقنية
+                    <h3 class="font-black mb-3 text-lg">
+
+                        تصميم خرائط ذهنية ومفاهيمية ذكية
+
                     </h3>
 
-                    <p class="text-gray-500 text-xs leading-relaxed">
-                        نماذج من الأعمال البرمجية والتقنية.
+
+                    <p
+                        class="text-gray-500 text-sm
+                               leading-relaxed">
+
+                        نحول المعلومات والبيانات المعقدة إلى تصاميم إنفوجرافيك إبداعية تجمع بين دقة المحتوى وجمال الإخراج البصري، مما يسهل وصول رسالتك بوضوح وتأثير عالٍ في العروض التقديمية والمشاريع الأكاديمية. 📊🎨
+
                     </p>
 
                 </div>
@@ -792,22 +1169,40 @@
             </div>
 
 
-            <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
 
-                <div class="h-44 flex items-center justify-center bg-gray-100">
+            <!-- النموذج الثاني -->
+            <div
+                class="bg-[#f8fafc] rounded-3xl
+                       border border-gray-200 overflow-hidden">
 
-                    <i class="fas fa-file-lines text-5xl text-[#d0a75f]"></i>
+
+                <div
+                    class="h-64 bg-gray-100 overflow-hidden">
+
+                    <img
+                        src="https://i.ibb.co/TDz7Ddzv/IMG-20260819-WA0008.jpg"
+                        alt="تصاميم ورسم هندسي معماري احترافي"
+                        class="w-full h-full object-cover"
+                    >
 
                 </div>
 
+
                 <div class="p-6">
 
-                    <h3 class="font-black mb-2">
-                        أعمال أكاديمية وبحثية
+                    <h3 class="font-black mb-3 text-lg">
+
+                        تصاميم ورسم هندسي معماري احترافي
+
                     </h3>
 
-                    <p class="text-gray-500 text-xs leading-relaxed">
-                        نماذج من الأعمال الأكاديمية والبحثية.
+
+                    <p
+                        class="text-gray-500 text-sm
+                               leading-relaxed">
+
+                        نحول أفكارك ورؤيتك إلى مخططات وتصاميم معمارية دقيقة تجمع بين جمال الإخراج البصري والاستغلال الأمثل للمساحات، مما يضمن تنفيذ مشروعك بأعلى درجات الفخامة والدقة الهندسية. 🏛️📐
+
                     </p>
 
                 </div>
@@ -815,22 +1210,81 @@
             </div>
 
 
-            <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
 
-                <div class="h-44 flex items-center justify-center bg-gray-100">
+            <!-- النموذج الثالث -->
+            <div
+                class="bg-[#f8fafc] rounded-3xl
+                       border border-gray-200 overflow-hidden">
 
-                    <i class="fas fa-chart-pie text-5xl text-[#d0a75f]"></i>
+
+                <div
+                    class="h-64 bg-gray-100 overflow-hidden">
+
+                    <img
+                        src="https://i.ibb.co/zWjZqsT0/IMG-20260819-WA0009.jpg"
+                        alt="تصميم بوسترات إعلانية وتفاعلية احترافية"
+                        class="w-full h-full object-cover"
+                    >
 
                 </div>
 
+
                 <div class="p-6">
 
-                    <h3 class="font-black mb-2">
-                        تحليل البيانات والمشاريع
+                    <h3 class="font-black mb-3 text-lg">
+
+                        تصميم بوسترات إعلانية وتفاعلية احترافية
+
                     </h3>
 
-                    <p class="text-gray-500 text-xs leading-relaxed">
-                        نماذج من أعمال تحليل البيانات والحلول التقنية.
+
+                    <p
+                        class="text-gray-500 text-sm
+                               leading-relaxed">
+
+                        نحول أفكارك ورسائلك التسويقية إلى تصاميم بوسترات بصرية جذابة تدمج بين قوة العبارة وتناسق العناصر الفنية، مما يضمن لفت الانتباه وإيصال هويتك أو فعاليتك للجمهور المستهدف بأعلى درجات التأثير والاحترافية. 📢✨
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- النموذج الرابع -->
+            <div
+                class="bg-[#f8fafc] rounded-3xl
+                       border border-gray-200 overflow-hidden">
+
+
+                <div
+                    class="h-64 bg-gray-100 overflow-hidden">
+
+                    <img
+                        src="https://i.ibb.co/N2QT0zft/spiral-null-1775862554823.jpg"
+                        alt="تصميم عروض تقديمية PowerPoint احترافية"
+                        class="w-full h-full object-cover"
+                    >
+
+                </div>
+
+
+                <div class="p-6">
+
+                    <h3 class="font-black mb-3 text-lg">
+
+                        تصميم عروض تقديمية (PowerPoint) احترافية
+
+                    </h3>
+
+
+                    <p
+                        class="text-gray-500 text-sm
+                               leading-relaxed">
+
+                        نصمم عروضكم التقديمية بأسلوب إبداعي يناسب كافة المجالات (الأكاديمية، التجارية، والتدريبية). نجمع بين التنسيق البصري الجذاب وسهولة عرض المعلومات، مع اهتمام دقيق بالهوية البصرية لضمان تقديم محتواكم بأفضل صورة ممكنة وأعلى مستويات الاحترافية. 💻✨
+
                     </p>
 
                 </div>
@@ -843,88 +1297,148 @@
     </div>
 
 </section>
+
 
 
 <!-- ========================================================= -->
 <!-- 7. آراء الطلاب -->
 <!-- ========================================================= -->
 
-<section class="bg-[#f8fafc] text-[#1a222c] py-16 px-5 border-y border-gray-200">
+<section
+    class="bg-[#f8fafc] text-[#1a222c]
+           py-16 px-5 border-y border-gray-200">
+
 
     <div class="max-w-5xl mx-auto text-center">
 
-        <span class="inline-block bg-[#d0a75f]/10 text-[#1a222c] px-4 py-1.5 rounded-full text-xs font-bold mb-4">
+
+        <span
+            class="inline-block bg-[#d0a75f]/10
+                   text-[#1a222c] px-4 py-1.5
+                   rounded-full text-xs font-bold mb-4">
+
             آراء الطلاب
+
         </span>
 
+
         <h2 class="text-2xl md:text-4xl font-black mb-4">
+
             ماذا يقول عملاؤنا؟
+
         </h2>
 
+
         <p class="text-gray-500 text-sm mb-10">
+
             تجارب وآراء تساعدك على التعرف أكثر على مستوى الخدمة.
+
         </p>
 
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-right">
+
+        <div
+            class="grid grid-cols-1 md:grid-cols-3
+                   gap-6 text-right">
 
 
-            <div class="bg-white border border-gray-200 rounded-3xl p-7 shadow-sm">
+            <div
+                class="bg-white border border-gray-200
+                       rounded-3xl p-7 shadow-sm">
+
 
                 <div class="text-[#d0a75f] mb-4">
+
                     ★★★★★
+
                 </div>
 
-                <p class="text-gray-600 text-sm leading-relaxed mb-6">
+
+                <p
+                    class="text-gray-600 text-sm
+                           leading-relaxed mb-6">
+
                     خدمة مرتبة والتواصل كان واضحًا من البداية حتى التسليم.
+
                 </p>
 
+
                 <div class="font-bold text-sm">
+
                     طالب جامعي
+
                 </div>
 
             </div>
 
 
-            <div class="bg-white border border-gray-200 rounded-3xl p-7 shadow-sm">
+
+            <div
+                class="bg-white border border-gray-200
+                       rounded-3xl p-7 shadow-sm">
+
 
                 <div class="text-[#d0a75f] mb-4">
+
                     ★★★★★
+
                 </div>
 
-                <p class="text-gray-600 text-sm leading-relaxed mb-6">
+
+                <p
+                    class="text-gray-600 text-sm
+                           leading-relaxed mb-6">
+
                     أكثر شيء أعجبني هو سرعة الرد وفهم تفاصيل الطلب.
+
                 </p>
 
+
                 <div class="font-bold text-sm">
+
                     طالب بكلية الهندسة
+
                 </div>
 
             </div>
 
 
-            <div class="bg-white border border-gray-200 rounded-3xl p-7 shadow-sm">
+
+            <div
+                class="bg-white border border-gray-200
+                       rounded-3xl p-7 shadow-sm">
+
 
                 <div class="text-[#d0a75f] mb-4">
+
                     ★★★★★
+
                 </div>
 
-                <p class="text-gray-600 text-sm leading-relaxed mb-6">
+
+                <p
+                    class="text-gray-600 text-sm
+                           leading-relaxed mb-6">
+
                     تجربة جيدة والتعامل كان واضحًا وسهلًا.
+
                 </p>
 
+
                 <div class="font-bold text-sm">
+
                     طالب دراسات عليا
+
                 </div>
 
             </div>
-
 
         </div>
 
     </div>
 
 </section>
+
 
 
 <!-- ========================================================= -->
@@ -938,110 +1452,210 @@
 
         <div class="text-center mb-10">
 
-            <span class="inline-block bg-[#d0a75f]/10 text-[#1a222c] px-4 py-1.5 rounded-full text-xs font-bold mb-4">
+
+            <span
+                class="inline-block bg-[#d0a75f]/10
+                       text-[#1a222c] px-4 py-1.5
+                       rounded-full text-xs font-bold mb-4">
+
                 أسئلة شائعة
+
             </span>
 
-            <h2 class="text-2xl md:text-4xl font-black mb-3">
+
+            <h2
+                class="text-2xl md:text-4xl
+                       font-black mb-3">
+
                 لديك استفسار؟
+
             </h2>
 
+
             <p class="text-gray-500 text-sm">
+
                 بعض الإجابات السريعة على الأسئلة التي قد تدور في ذهنك.
+
             </p>
 
         </div>
 
 
+
         <div class="space-y-4">
 
 
-            <details class="group bg-[#f8fafc] border border-gray-200 rounded-2xl p-5">
+            <details
+                class="group bg-[#f8fafc]
+                       border border-gray-200
+                       rounded-2xl p-5">
 
-                <summary class="cursor-pointer list-none flex items-center justify-between font-bold text-sm">
+
+                <summary
+                    class="cursor-pointer list-none
+                           flex items-center justify-between
+                           font-bold text-sm">
+
 
                     <span>
+
                         كيف أطلب خدمة؟
+
                     </span>
 
-                    <i class="fas fa-plus text-[#d0a75f] group-open:rotate-45 transition"></i>
+
+                    <i
+                        class="fas fa-plus text-[#d0a75f]
+                               group-open:rotate-45 transition">
+
+                    </i>
 
                 </summary>
 
-                <p class="text-gray-500 text-xs leading-relaxed mt-4">
+
+                <p
+                    class="text-gray-500 text-xs
+                           leading-relaxed mt-4">
+
                     يمكنك التواصل معنا مباشرة عبر واتساب وإرسال تفاصيل الخدمة التي تحتاج إليها.
+
                 </p>
 
             </details>
 
 
-            <details class="group bg-[#f8fafc] border border-gray-200 rounded-2xl p-5">
 
-                <summary class="cursor-pointer list-none flex items-center justify-between font-bold text-sm">
+            <details
+                class="group bg-[#f8fafc]
+                       border border-gray-200
+                       rounded-2xl p-5">
+
+
+                <summary
+                    class="cursor-pointer list-none
+                           flex items-center justify-between
+                           font-bold text-sm">
+
 
                     <span>
+
                         كيف يتم تحديد التكلفة؟
+
                     </span>
 
-                    <i class="fas fa-plus text-[#d0a75f] group-open:rotate-45 transition"></i>
+
+                    <i
+                        class="fas fa-plus text-[#d0a75f]
+                               group-open:rotate-45 transition">
+
+                    </i>
 
                 </summary>
 
-                <p class="text-gray-500 text-xs leading-relaxed mt-4">
+
+                <p
+                    class="text-gray-500 text-xs
+                           leading-relaxed mt-4">
+
                     تختلف التكلفة حسب نوع الخدمة وحجم العمل ومتطلباته،
                     ويتم الاتفاق على التفاصيل قبل البدء.
+
                 </p>
 
             </details>
 
 
-            <details class="group bg-[#f8fafc] border border-gray-200 rounded-2xl p-5">
 
-                <summary class="cursor-pointer list-none flex items-center justify-between font-bold text-sm">
+            <details
+                class="group bg-[#f8fafc]
+                       border border-gray-200
+                       rounded-2xl p-5">
+
+
+                <summary
+                    class="cursor-pointer list-none
+                           flex items-center justify-between
+                           font-bold text-sm">
+
 
                     <span>
+
                         هل يمكن طلب تعديلات بعد التسليم؟
+
                     </span>
 
-                    <i class="fas fa-plus text-[#d0a75f] group-open:rotate-45 transition"></i>
+
+                    <i
+                        class="fas fa-plus text-[#d0a75f]
+                               group-open:rotate-45 transition">
+
+                    </i>
 
                 </summary>
 
-                <p class="text-gray-500 text-xs leading-relaxed mt-4">
+
+                <p
+                    class="text-gray-500 text-xs
+                           leading-relaxed mt-4">
+
                     نعم، يتم متابعة الطلب بعد التسليم والتعامل مع التعديلات
                     المطلوبة حسب الاتفاق.
+
                 </p>
 
             </details>
 
 
-            <details class="group bg-[#f8fafc] border border-gray-200 rounded-2xl p-5">
 
-                <summary class="cursor-pointer list-none flex items-center justify-between font-bold text-sm">
+            <details
+                class="group bg-[#f8fafc]
+                       border border-gray-200
+                       rounded-2xl p-5">
+
+
+                <summary
+                    class="cursor-pointer list-none
+                           flex items-center justify-between
+                           font-bold text-sm">
+
 
                     <span>
+
                         كيف يتم استلام الملفات؟
+
                     </span>
 
-                    <i class="fas fa-plus text-[#d0a75f] group-open:rotate-45 transition"></i>
+
+                    <i
+                        class="fas fa-plus text-[#d0a75f]
+                               group-open:rotate-45 transition">
+
+                    </i>
 
                 </summary>
 
-                <p class="text-gray-500 text-xs leading-relaxed mt-4">
+
+                <p
+                    class="text-gray-500 text-xs
+                           leading-relaxed mt-4">
+
                     يتم تسليم الملفات بالطريقة المناسبة والمتفق عليها مع العميل.
+
                 </p>
 
             </details>
-
 
         </div>
 
 
+
         <div class="text-center mt-8">
+
 
             <a
                 href="contact.html"
-                class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
+                class="text-[#1a222c] font-bold text-sm
+                       hover:text-[#d0a75f] transition">
 
                 المزيد من الأسئلة والإجابات
 
@@ -1056,6 +1670,7 @@
 </section>
 
 
+
 <!-- ========================================================= -->
 <!-- 9. دعوة أخيرة للتواصل -->
 <!-- ========================================================= -->
@@ -1064,22 +1679,44 @@
 
     <div class="max-w-6xl mx-auto">
 
-        <div class="bg-[#1a222c] rounded-[2rem] p-8 md:p-12 text-white flex flex-col lg:flex-row items-center justify-between gap-8">
+
+        <div
+            class="bg-[#1a222c] rounded-[2rem]
+                   p-8 md:p-12 text-white
+                   flex flex-col lg:flex-row
+                   items-center justify-between
+                   gap-8">
 
 
-            <div class="text-center lg:text-right">
+            <div
+                class="text-center lg:text-right">
 
-                <span class="text-[#d0a75f] text-sm font-bold">
+
+                <span
+                    class="text-[#d0a75f]
+                           text-sm font-bold">
+
                     جاهز للبدء؟
+
                 </span>
 
-                <h2 class="text-2xl md:text-4xl font-black mt-3 mb-4">
+
+                <h2
+                    class="text-2xl md:text-4xl
+                           font-black mt-3 mb-4">
+
                     أخبرنا بما تحتاج إليه
+
                 </h2>
 
-                <p class="text-gray-300 text-sm leading-relaxed max-w-xl">
+
+                <p
+                    class="text-gray-300 text-sm
+                           leading-relaxed max-w-xl">
+
                     أرسل تفاصيل طلبك وسنتواصل معك لمراجعة المتطلبات
                     وتحديد الخطوات المناسبة.
+
                 </p>
 
             </div>
@@ -1087,14 +1724,17 @@
 
             <button
                 onclick="sendGeneralWhatsApp()"
-                class="bg-[#d0a75f] text-[#1a222c] font-black px-8 py-4 rounded-xl text-base hover:opacity-90 transition flex items-center gap-3 whitespace-nowrap">
+                class="bg-[#d0a75f] text-[#1a222c]
+                       font-black px-8 py-4 rounded-xl
+                       text-base hover:opacity-90 transition
+                       flex items-center gap-3
+                       whitespace-nowrap">
 
                 <i class="fab fa-whatsapp text-xl"></i>
 
                 ابدأ طلبك الآن
 
             </button>
-
 
         </div>
 
@@ -1103,44 +1743,79 @@
 </section>
 
 
+
 <!-- ========================================================= -->
-<!-- 10. الفوتر - تمت إضافته فقط -->
+<!-- 10. الفوتر -->
 <!-- ========================================================= -->
 
-<footer class="site-footer text-center px-5 py-10">
+<footer
+    class="bg-[#17212b]
+           border-t border-[#d0a75f]/20
+           text-center px-5 py-10">
+
 
     <div class="max-w-4xl mx-auto">
 
-        <!-- اسم المنصة + العبارة -->
-        <div class="footer-brand">
 
-            <span class="footer-gold">
+        <!-- اسم المنصة + العبارة -->
+        <div
+            class="font-['Cairo']
+                   text-base sm:text-lg md:text-xl
+                   font-extrabold leading-relaxed">
+
+
+            <span class="text-[#d0a75f]">
+
                 مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
+
             </span>
 
-            <span class="footer-separator">|</span>
 
-            <span class="footer-white">
+            <span
+                class="text-[#c9a45c]
+                       mx-2 font-bold">
+
+                |
+
+            </span>
+
+
+            <span class="text-gray-100">
+
                 جودة تُنجز، وثقة تُبنى.
+
             </span>
 
         </div>
 
 
-        <!-- الحقوق -->
-        <p class="footer-copy">
 
-            جميع الحقوق محفوظة © 2026 - مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
+        <!-- الحقوق -->
+        <p
+            class="text-gray-400 text-xs
+                   leading-loose mt-4">
+
+            جميع الحقوق محفوظة © 2026 -
+            مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
 
         </p>
 
 
+
         <!-- التطوير والإشراف -->
-        <p class="footer-copy mt-3">
+        <p
+            class="text-gray-400 text-xs
+                   leading-loose mt-3">
+
 
             تطوير وإشراف
-            <span class="developer">
+
+            <span
+                class="text-gray-300
+                       font-bold">
+
                 م. محمد الشراري
+
             </span>
 
         </p>
@@ -1148,6 +1823,7 @@
     </div>
 
 </footer>
+
 
 
 <!-- ========================================================= -->
@@ -1169,4 +1845,4 @@
 
 
 </body>
-    </html>
+</html>
