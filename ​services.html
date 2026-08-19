@@ -1,181 +1,644 @@
-<!DOCTYPE html>  
-<html lang="ar" dir="rtl">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>دليل الخدمات | مَسَارُ التَّمَيُّزِ</title>  
-    <!-- Tailwind CSS -->  
-    <script src="https://cdn.tailwindcss.com"></script>  
-    <!-- FontAwesome للأيقونات -->  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">  
-    <!-- خطوط المنصة -->  
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">  
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>دليل الخدمات | مَسَارُ التَّمَيُّزِ</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome للأيقونات -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- خطوط المنصة -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap"
+          rel="stylesheet">
+
     <script>
+
         tailwind.config = {
+
             theme: {
+
                 extend: {
+
                     colors: {
+
                         gold: '#d0a75f',
+
                         petrol: '#1a222c',
+
                         lightbg: '#f8fafc'
+
                     },
+
                     fontFamily: {
+
                         brand: ['Cairo', 'sans-serif'],
+
                         sans: ['Tajawal', 'sans-serif']
+
                     }
+
                 }
+
             }
+
         }
+
     </script>
-    <style>  
-        body {   
-            font-family: 'Tajawal', sans-serif;   
-            background-color: #f8fafc;   
-        }  
-        .brand-font {  
-            font-family: 'Cairo', sans-serif;  
-            font-weight: 800;  
-        }  
-        /* تنسيق إشعارات التوست */
+
+
+    <style>
+
+        body {
+
+            font-family: 'Tajawal', sans-serif;
+
+            background-color: #f8fafc;
+
+        }
+
+
+        .brand-font {
+
+            font-family: 'Cairo', sans-serif;
+
+            font-weight: 800;
+
+        }
+
+
+        /* ==================================================
+           تنسيق إشعارات التوست
+        ================================================== */
+
         .toast-notification {
+
             position: fixed;
+
             bottom: 20px;
+
             left: 20px;
+
             background: #1a222c;
+
             color: white;
+
             padding: 12px 20px;
+
             border-radius: 12px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+
+            box-shadow:
+                0 10px 25px -5px rgba(0, 0, 0, 0.2);
+
             display: flex;
+
             align-items: center;
+
             gap: 12px;
+
             z-index: 1000;
+
             border-right: 4px solid #d0a75f;
-            animation: slideInUp 0.3s ease forwards;
+
+            animation:
+                slideInUp 0.3s ease forwards;
+
         }
+
+
         @keyframes slideInUp {
-            from { transform: translateY(100px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+
+            from {
+
+                transform: translateY(100px);
+
+                opacity: 0;
+
+            }
+
+            to {
+
+                transform: translateY(0);
+
+                opacity: 1;
+
+            }
+
         }
+
+
+        /* ==================================================
+           الفوتر - نفس تنسيق صفحة من نحن
+        ================================================== */
+
+        .site-footer {
+
+            background: #17212b;
+
+            border-top: 1px solid rgba(201,164,92,.18);
+
+            color: #8e99a5;
+
+        }
+
+
+        .footer-brand {
+
+            font-family: 'Cairo', sans-serif;
+
+            font-size: clamp(1.05rem, 3vw, 1.45rem);
+
+            font-weight: 800;
+
+            line-height: 1.9;
+
+        }
+
+
+        .footer-gold {
+
+            color: #d0a75f;
+
+        }
+
+
+        .footer-white {
+
+            color: #f5f5f5;
+
+        }
+
+
+        .footer-separator {
+
+            color: #c9a45c;
+
+            margin: 0 7px;
+
+            font-weight: 700;
+
+        }
+
+
+        .footer-tagline {
+
+            color: #c7ccd1;
+
+            font-size: .95rem;
+
+            font-weight: 500;
+
+        }
+
+
+        .footer-copy {
+
+            color: #89939e;
+
+            font-size: .82rem;
+
+            line-height: 2;
+
+        }
+
+
+        .developer {
+
+            color: #89939e;
+
+            font-weight: 700;
+
+        }
+
+
+        /* ==================================================
+           تحسين الجوال
+        ================================================== */
+
+        @media (max-width: 640px) {
+
+            .site-footer {
+
+                padding-bottom: 35px;
+
+            }
+
+
+            .footer-brand {
+
+                font-size: 1rem;
+
+            }
+
+
+            .footer-tagline {
+
+                font-size: .88rem;
+
+            }
+
+
+            .developer-line {
+
+                position: relative;
+
+                top: -10px;
+
+            }
+
+        }
+
     </style>
-</head>  
-<body class="text-slate-800 min-h-screen flex flex-col justify-between">  
 
-<!-- 1. الهيدر (الشريط العلوي) -->  
-<header class="bg-petrol border-b border-slate-800 sticky top-0 z-50 text-white">  
-    <div class="flex justify-between items-center px-5 py-4 max-w-7xl mx-auto">  
-          
-        <!-- الشعار -->  
-        <button onclick="window.location.href='index.html'" class="flex items-center gap-3 focus:outline-none bg-transparent border-0 cursor-pointer">  
-            <img src="https://i.ibb.co/d48tW2sy/1787004624422.png" alt="شعار مسار التميز" class="h-9 w-auto object-contain">  
-            <span class="text-gold brand-font text-sm sm:text-base md:text-lg tracking-wide text-right">  
-                مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ  
-            </span>  
-        </button>  
+</head>
 
-        <!-- زر القائمة -->  
-        <button id="menu-btn" class="text-white text-2xl focus:outline-none p-1 cursor-pointer" aria-label="فتح القائمة">  
-            <i class="fas fa-bars"></i>  
-        </button>  
 
-    </div>  
+<body class="text-slate-800 min-h-screen flex flex-col justify-between">
 
-    <!-- القائمة المنسدلة -->  
-    <nav id="dropdown-menu" class="hidden bg-petrol border-b border-slate-800 shadow-2xl transition-all duration-300">  
-        <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col items-end text-right gap-6">  
-            <button onclick="window.location.href='index.html'" class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full text-right cursor-pointer">الرئيسية</button>  
-            <button onclick="window.location.href='services.html'" class="bg-transparent border-0 text-gold font-bold text-lg transition w-full text-right cursor-pointer">خدماتنا</button>  
-            <button onclick="window.location.href='about.html'" class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full text-right cursor-pointer">من نحن</button>  
-            <button onclick="window.location.href='contact.html'" class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full text-right cursor-pointer">تواصل معنا</button>  
-            <button onclick="window.location.href='admin.html'" class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full text-right cursor-pointer">لوحة التحكم</button>  
-              
-            <!-- زر الواتساب -->  
-            <button onclick="sendGeneralWhatsApp()" class="mt-2 bg-gold text-petrol font-bold py-3.5 px-8 rounded-lg text-base hover:opacity-90 transition w-full sm:w-auto text-center flex items-center justify-center gap-2 cursor-pointer">  
-                <i class="fab fa-whatsapp text-xl"></i> تواصل عبر واتساب  
-            </button>  
-        </div>  
-    </nav>  
-</header>  
 
-<!-- 2. محتوى صفحة الخدمات الرئيسي -->  
-<main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-8">  
-      
-    <!-- رأس القسم -->  
-    <div class="text-center space-y-3 max-w-2xl mx-auto">  
-        <span class="text-xs font-bold text-petrol bg-petrol/10 px-4 py-1.5 rounded-full inline-block">دليل الخدمات الأكاديمية</span>  
-        <h1 class="text-2xl sm:text-4xl font-black text-slate-900 brand-font">استكشف خدماتنا المتميزة</h1>  
-        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">  
-            نقدم لك باقة متكاملة من الخدمات الطلابية والأكاديمية والبحثية، مصممة خصيصاً لتلبي احتياجاتك بأعلى معايير الجودة والسرعة.  
-        </p>  
-    </div>  
+<!-- ==================================================
+     1. الهيدر
+================================================== -->
 
-    <!-- شريط البحث والتصفية -->  
-    <div class="bg-white p-4 sm:p-6 rounded-3xl border border-slate-200/80 shadow-sm space-y-4">  
-        
-        <!-- مربع البحث -->  
-        <div class="relative">  
-            <i class="fas fa-search absolute right-4 top-1/2 -translate-y-1/2 text-slate-400"></i>  
-            <input type="text" id="service-search-input" placeholder="ابحث عن خدمة أكاديمية، بحث، أو استشارة..." class="w-full bg-lightbg border border-slate-200 rounded-2xl py-3.5 pr-11 pl-4 text-xs sm:text-sm focus:outline-none focus:border-petrol transition text-slate-800 placeholder-slate-400">  
-        </div>  
+<header class="bg-petrol border-b border-slate-800 sticky top-0 z-50 text-white">
 
-        <!-- أزرار التصنيفات (تتولد تلقائياً عبر الجافاسكريبت) -->  
-        <div id="category-filter-buttons" class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">  
-            <!-- يتم تعبئتها بواسطة main.js -->  
-            <button class="category-btn bg-slate-900 text-gold px-4 py-2 rounded-xl text-xs font-bold transition border border-slate-800 flex items-center gap-2 shadow-sm">  
-                <i class="fas fa-th-large"></i>  
-                <span>الكل</span>  
-            </button>  
-        </div>  
+    <div class="flex justify-between items-center px-5 py-4 max-w-7xl mx-auto">
 
-    </div>  
 
-    <!-- شبكة عرض الخدمات -->  
-    <div id="all-services-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">  
-        <!-- حالة التحميل المبدئية -->  
-        <div class="col-span-full text-center py-20">  
-            <i class="fas fa-spinner fa-spin text-3xl text-petrol mb-3"></i>  
-            <p class="text-slate-500 font-bold text-xs">جاري تحميل الخدمات...</p>  
-        </div>  
-    </div>  
+        <!-- الشعار -->
 
-</main>  
+        <button
+            onclick="window.location.href='index.html'"
+            class="flex items-center gap-3 focus:outline-none bg-transparent border-0 cursor-pointer">
 
-<!-- 3. الفوتر (Footer) -->  
-<footer class="bg-petrol text-slate-400 border-t border-slate-800 py-8 px-4 mt-16">  
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-right">  
-        <p class="text-xs">&copy; 2026 مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ. جميع الحقوق محفوظة.</p>  
-        <div class="flex items-center gap-4 text-sm">  
-            <button onclick="sendGeneralWhatsApp()" class="text-gold hover:underline bg-transparent border-0 cursor-pointer">الدعم الفني</button>  
-            <span class="text-slate-600">|</span>  
-            <button onclick="window.location.href='index.html'" class="hover:text-white transition bg-transparent border-0 cursor-pointer">الرئيسية</button>  
-        </div>  
-    </div>  
-</footer>  
+            <img
+                src="https://i.ibb.co/d48tW2sy/1787004624422.png"
+                alt="شعار مسار التميز"
+                class="h-9 w-auto object-contain">
 
-<!-- ملف المحرك الرئيسي -->  
-<script src="main.js"></script>  
-<script>  
-    // تفاعل القائمة المنسدلة للهيدر
-    const menuBtn = document.getElementById('menu-btn');  
-    const dropdownMenu = document.getElementById('dropdown-menu');  
+            <span
+                class="text-gold brand-font text-sm sm:text-base md:text-lg tracking-wide text-right">
 
-    if (menuBtn && dropdownMenu) {  
-        menuBtn.addEventListener('click', (e) => {  
-            e.stopPropagation();  
-            dropdownMenu.classList.toggle('hidden');  
-        });  
+                مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
 
-        document.addEventListener('click', (event) => {  
-            if (!dropdownMenu.contains(event.target) && !menuBtn.contains(event.target)) {  
-                dropdownMenu.classList.add('hidden');  
-            }  
-        });  
-    }  
+            </span>
 
-    function sendGeneralWhatsApp() {  
-        window.open('https://wa.me/967736190956', '_blank');  
-    }  
+        </button>
+
+
+        <!-- زر القائمة -->
+
+        <button
+            id="menu-btn"
+            class="text-white text-2xl focus:outline-none p-1 cursor-pointer"
+            aria-label="فتح القائمة">
+
+            <i class="fas fa-bars"></i>
+
+        </button>
+
+    </div>
+
+
+    <!-- القائمة المنسدلة -->
+
+    <nav
+        id="dropdown-menu"
+        class="hidden bg-petrol border-b border-slate-800 shadow-2xl transition-all duration-300">
+
+        <div
+            class="max-w-7xl mx-auto px-6 py-6 flex flex-col items-end text-right gap-6">
+
+
+            <button
+                onclick="window.location.href='index.html'"
+                class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full text-right cursor-pointer">
+
+                الرئيسية
+
+            </button>
+
+
+            <button
+                onclick="window.location.href='services.html'"
+                class="bg-transparent border-0 text-gold font-bold text-lg transition w-full text-right cursor-pointer">
+
+                خدماتنا
+
+            </button>
+
+
+            <button
+                onclick="window.location.href='about.html'"
+                class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full text-right cursor-pointer">
+
+                من نحن
+
+            </button>
+
+
+            <button
+                onclick="window.location.href='contact.html'"
+                class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full text-right cursor-pointer">
+
+                تواصل معنا
+
+            </button>
+
+
+            <button
+                onclick="window.location.href='admin.html'"
+                class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full text-right cursor-pointer">
+
+                لوحة التحكم
+
+            </button>
+
+
+            <!-- زر الواتساب -->
+
+            <button
+                onclick="sendGeneralWhatsApp()"
+                class="mt-2 bg-gold text-petrol font-bold py-3.5 px-8 rounded-lg text-base hover:opacity-90 transition w-full sm:w-auto text-center flex items-center justify-center gap-2 cursor-pointer">
+
+                <i class="fab fa-whatsapp text-xl"></i>
+
+                تواصل عبر واتساب
+
+            </button>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+
+<!-- ==================================================
+     2. محتوى صفحة الخدمات الرئيسي
+================================================== -->
+
+<main
+    class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-8">
+
+
+    <!-- رأس القسم -->
+
+    <div class="text-center space-y-3 max-w-2xl mx-auto">
+
+        <span
+            class="text-xs font-bold text-petrol bg-petrol/10 px-4 py-1.5 rounded-full inline-block">
+
+            دليل الخدمات الأكاديمية
+
+        </span>
+
+
+        <h1
+            class="text-2xl sm:text-4xl font-black text-slate-900 brand-font">
+
+            استكشف خدماتنا المتميزة
+
+        </h1>
+
+
+        <p
+            class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+
+            نقدم لك باقة متكاملة من الخدمات الطلابية والأكاديمية والبحثية،
+            مصممة خصيصاً لتلبي احتياجاتك بأعلى معايير الجودة والسرعة.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         شريط البحث والتصفية
+    ================================================== -->
+
+    <div
+        class="bg-white p-4 sm:p-6 rounded-3xl border border-slate-200/80 shadow-sm space-y-4">
+
+
+        <!-- مربع البحث -->
+
+        <div class="relative">
+
+            <i
+                class="fas fa-search absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
+            </i>
+
+
+            <input
+                type="text"
+                id="service-search-input"
+                placeholder="ابحث عن خدمة أكاديمية، بحث، أو استشارة..."
+                class="w-full bg-lightbg border border-slate-200 rounded-2xl py-3.5 pr-11 pl-4 text-xs sm:text-sm focus:outline-none focus:border-petrol transition text-slate-800 placeholder-slate-400">
+
+        </div>
+
+
+
+        <!-- أزرار التصنيفات -->
+
+        <div
+            id="category-filter-buttons"
+            class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+
+            <!-- يتم تعبئتها بواسطة main.js -->
+
+            <button
+                class="category-btn bg-slate-900 text-gold px-4 py-2 rounded-xl text-xs font-bold transition border border-slate-800 flex items-center gap-2 shadow-sm">
+
+                <i class="fas fa-th-large"></i>
+
+                <span>
+                    الكل
+                </span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         شبكة عرض الخدمات
+    ================================================== -->
+
+    <div
+        id="all-services-grid"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+
+        <!-- حالة التحميل المبدئية -->
+
+        <div
+            class="col-span-full text-center py-20">
+
+            <i
+                class="fas fa-spinner fa-spin text-3xl text-petrol mb-3">
+            </i>
+
+
+            <p
+                class="text-slate-500 font-bold text-xs">
+
+                جاري تحميل الخدمات...
+
+            </p>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+<!-- ==================================================
+     3. الفوتر
+     نفس فوتر صفحة من نحن
+================================================== -->
+
+<footer
+    class="site-footer text-center px-5 py-10 mt-16">
+
+    <div class="max-w-4xl mx-auto">
+
+
+        <!-- اسم المنصة + العبارة -->
+
+        <div class="footer-brand">
+
+            <span class="footer-gold">
+
+                مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
+
+            </span>
+
+
+            <span class="footer-separator">
+
+                |
+
+            </span>
+
+
+            <span class="footer-white">
+
+                جودة تُنجز، وثقة تُبنى.
+
+            </span>
+
+        </div>
+
+
+
+        <!-- الحقوق -->
+
+        <p class="footer-copy">
+
+            جميع الحقوق محفوظة © 2026 - مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
+
+        </p>
+
+
+
+        <!-- التطوير والإشراف -->
+
+        <p class="footer-copy mt-3 developer-line">
+
+            تطوير وإشراف
+
+            <span class="developer">
+
+                م.محمد الشراري
+
+            </span>
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- ==================================================
+     ملف المحرك الرئيسي
+================================================== -->
+
+<script src="main.js"></script>
+
+
+
+<!-- ==================================================
+     JavaScript الخاص بالقائمة والواتساب
+================================================== -->
+
+<script>
+
+    const menuBtn =
+        document.getElementById('menu-btn');
+
+
+    const dropdownMenu =
+        document.getElementById('dropdown-menu');
+
+
+    if (menuBtn && dropdownMenu) {
+
+        menuBtn.addEventListener('click', (e) => {
+
+            e.stopPropagation();
+
+            dropdownMenu.classList.toggle('hidden');
+
+        });
+
+
+        document.addEventListener('click', (event) => {
+
+            if (
+                !dropdownMenu.contains(event.target) &&
+                !menuBtn.contains(event.target)
+            ) {
+
+                dropdownMenu.classList.add('hidden');
+
+            }
+
+        });
+
+    }
+
+
+    function sendGeneralWhatsApp() {
+
+        window.open(
+            'https://wa.me/967736190956',
+            '_blank'
+        );
+
+    }
+
 </script>
 
-</body>  
+
+</body>
+
 </html>
