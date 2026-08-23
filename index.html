@@ -52,6 +52,53 @@
             border-color: #d0a75f;
         }
 
+
+        /* =========================================================
+           الفاصل الموجي الفخم بين الواجهة والقسم الفاتح
+        ========================================================= */
+
+        .luxury-wave {
+            position: relative;
+            width: 100%;
+            height: 110px;
+            overflow: hidden;
+            line-height: 0;
+            background: #f8fafc;
+            margin-top: -1px;
+        }
+
+        .luxury-wave svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 110px;
+            display: block;
+        }
+
+        .luxury-wave .wave-main {
+            fill: #1a222c;
+        }
+
+        .luxury-wave .wave-highlight {
+            fill: none;
+            stroke: #d0a75f;
+            stroke-width: 1.2;
+            opacity: 0.45;
+        }
+
+        @media (max-width: 768px) {
+
+            .luxury-wave {
+                height: 75px;
+            }
+
+            .luxury-wave svg {
+                height: 75px;
+            }
+
+        }
+
     </style>
 
 </head>
@@ -78,7 +125,7 @@
             >
 
             <span class="text-gold brand-font text-sm sm:text-base md:text-lg tracking-wide">
-                مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
+                مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَابِيَّةِ
             </span>
 
         </a>
@@ -299,6 +346,51 @@
     </div>
 
 </main>
+
+
+<!-- ========================================================= -->
+<!-- الفاصل الموجي الفخم SVG -->
+<!-- ========================================================= -->
+
+<div class="luxury-wave" aria-hidden="true">
+
+    <svg
+        viewBox="0 0 1440 110"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+
+        <!-- الموجة الرئيسية -->
+        <path
+            class="wave-main"
+            d="
+                M0,0
+                C120,45 210,75 330,48
+                C450,20 535,5 650,38
+                C770,72 850,92 970,55
+                C1090,18 1180,5 1280,35
+                C1340,52 1390,58 1440,38
+                L1440,0
+                Z
+            "
+        />
+
+        <!-- اللمسة الذهبية الفاخرة -->
+        <path
+            class="wave-highlight"
+            d="
+                M0,4
+                C120,49 210,79 330,52
+                C450,24 535,9 650,42
+                C770,76 850,96 970,59
+                C1090,22 1180,9 1280,39
+                C1340,56 1390,62 1440,42
+            "
+        />
+
+    </svg>
+
+</div>
 
 
 
@@ -1626,4 +1718,4 @@
 
 </body>
 
-                        </html>
+    </html>
