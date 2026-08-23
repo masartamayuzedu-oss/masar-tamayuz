@@ -7,18 +7,39 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>دليل الخدمات | مَسَارُ التَّمَيُّزِ</title>
+    <title>خدماتنا | مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَابِيَّةِ</title>
 
-    <!-- Tailwind CSS -->
+
+    <!-- ==================================================
+         Tailwind CSS
+    ================================================== -->
+
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- FontAwesome للأيقونات -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- خطوط المنصة -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap"
-          rel="stylesheet">
+    <!-- ==================================================
+         FontAwesome
+    ================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+
+    <!-- ==================================================
+         خطوط المنصة
+    ================================================== -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- ==================================================
+         إعدادات Tailwind
+    ================================================== -->
 
     <script>
 
@@ -55,7 +76,18 @@
     </script>
 
 
+    <!-- ==================================================
+         التنسيقات
+    ================================================== -->
+
     <style>
+
+        html {
+
+            scroll-behavior: smooth;
+
+        }
+
 
         body {
 
@@ -76,67 +108,78 @@
 
 
         /* ==================================================
-           تنسيق إشعارات التوست
+           شريط التمرير للتصنيفات
         ================================================== */
 
-        .toast-notification {
+        .scrollbar-none::-webkit-scrollbar {
 
-            position: fixed;
-
-            bottom: 20px;
-
-            left: 20px;
-
-            background: #1a222c;
-
-            color: white;
-
-            padding: 12px 20px;
-
-            border-radius: 12px;
-
-            box-shadow:
-                0 10px 25px -5px rgba(0, 0, 0, 0.2);
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 12px;
-
-            z-index: 1000;
-
-            border-right: 4px solid #d0a75f;
-
-            animation:
-                slideInUp 0.3s ease forwards;
+            display: none;
 
         }
 
 
-        @keyframes slideInUp {
+        .scrollbar-none {
 
-            from {
+            -ms-overflow-style: none;
 
-                transform: translateY(100px);
-
-                opacity: 0;
-
-            }
-
-            to {
-
-                transform: translateY(0);
-
-                opacity: 1;
-
-            }
+            scrollbar-width: none;
 
         }
 
 
         /* ==================================================
-           الفوتر - نفس تنسيق صفحة من نحن
+           بطاقة الخدمة
+        ================================================== */
+
+        .service-card {
+
+            transition:
+
+                transform .3s ease,
+
+                box-shadow .3s ease,
+
+                border-color .3s ease;
+
+        }
+
+
+        .service-card:hover {
+
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 20px 40px rgba(26, 34, 44, .10);
+
+            border-color: rgba(208, 167, 95, .45);
+
+        }
+
+
+        /* ==================================================
+           أيقونة الخدمة
+        ================================================== */
+
+        .service-icon {
+
+            transition:
+
+                transform .3s ease,
+
+                background-color .3s ease;
+
+        }
+
+
+        .service-card:hover .service-icon {
+
+            transform: scale(1.08);
+
+        }
+
+
+        /* ==================================================
+           الفوتر
         ================================================== */
 
         .site-footer {
@@ -188,17 +231,6 @@
         }
 
 
-        .footer-tagline {
-
-            color: #c7ccd1;
-
-            font-size: .95rem;
-
-            font-weight: 500;
-
-        }
-
-
         .footer-copy {
 
             color: #89939e;
@@ -220,7 +252,67 @@
 
 
         /* ==================================================
-           تحسين الجوال
+           إشعار التوست
+        ================================================== */
+
+        .toast-notification {
+
+            position: fixed;
+
+            bottom: 20px;
+
+            left: 20px;
+
+            background: #1a222c;
+
+            color: white;
+
+            padding: 13px 20px;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 15px 35px rgba(0,0,0,.20);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            z-index: 1000;
+
+            border-right: 4px solid #d0a75f;
+
+            animation:
+                slideInUp .3s ease forwards;
+
+        }
+
+
+        @keyframes slideInUp {
+
+            from {
+
+                transform: translateY(100px);
+
+                opacity: 0;
+
+            }
+
+            to {
+
+                transform: translateY(0);
+
+                opacity: 1;
+
+            }
+
+        }
+
+
+        /* ==================================================
+           الجوال
         ================================================== */
 
         @media (max-width: 640px) {
@@ -238,22 +330,6 @@
 
             }
 
-
-            .footer-tagline {
-
-                font-size: .88rem;
-
-            }
-
-
-            .developer-line {
-
-                position: relative;
-
-                top: -10px;
-
-            }
-
         }
 
     </style>
@@ -261,44 +337,57 @@
 </head>
 
 
-<body class="text-slate-800 min-h-screen flex flex-col justify-between">
+<body class="text-slate-800 min-h-screen flex flex-col">
 
 
-<!-- ==================================================
+<!-- =========================================================
      1. الهيدر
-================================================== -->
+========================================================= -->
 
-<header class="bg-petrol border-b border-slate-800 sticky top-0 z-50 text-white">
+<header
+    class="bg-[#1a222c] border-b border-gray-800 sticky top-0 z-50 text-white">
 
-    <div class="flex justify-between items-center px-5 py-4 max-w-7xl mx-auto">
+    <div
+        class="flex justify-between items-center px-5 py-4 max-w-7xl mx-auto">
 
 
-        <!-- الشعار -->
+        <!-- =================================================
+             الشعار واسم المنصة
+        ================================================= -->
 
-        <button
-            onclick="window.location.href='index.html'"
-            class="flex items-center gap-3 focus:outline-none bg-transparent border-0 cursor-pointer">
+        <a
+            href="index.html"
+            class="flex items-center gap-3 no-underline cursor-pointer">
 
             <img
                 src="https://i.ibb.co/d48tW2sy/1787004624422.png"
                 alt="شعار مسار التميز"
-                class="h-9 w-auto object-contain">
+                class="h-9 w-auto object-contain"
+            >
+
 
             <span
-                class="text-gold brand-font text-sm sm:text-base md:text-lg tracking-wide text-right">
+                class="text-[#d0a75f] brand-font
+                       text-sm sm:text-base md:text-lg
+                       tracking-wide">
 
-                مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
+                مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَابِيَّةِ
 
             </span>
 
-        </button>
+        </a>
 
 
-        <!-- زر القائمة -->
+        <!-- =================================================
+             زر القائمة
+        ================================================= -->
 
         <button
             id="menu-btn"
-            class="text-white text-2xl focus:outline-none p-1 cursor-pointer"
+            type="button"
+            class="text-white text-2xl
+                   focus:outline-none
+                   p-1 cursor-pointer"
             aria-label="فتح القائمة">
 
             <i class="fas fa-bars"></i>
@@ -308,68 +397,126 @@
     </div>
 
 
-    <!-- القائمة المنسدلة -->
+    <!-- =================================================
+         القائمة المنسدلة
+    ================================================= -->
 
     <nav
         id="dropdown-menu"
-        class="hidden bg-petrol border-b border-slate-800 shadow-2xl transition-all duration-300">
+        class="hidden
+               bg-[#1a222c]
+               border-t border-gray-800
+               border-b border-gray-800
+               shadow-2xl">
 
         <div
-            class="max-w-7xl mx-auto px-6 py-6 flex flex-col items-end text-right gap-6">
+            class="max-w-7xl mx-auto
+                   px-6 py-6
+                   flex flex-col
+                   items-end text-right
+                   gap-5">
 
 
-            <button
-                onclick="window.location.href='index.html'"
-                class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full text-right cursor-pointer">
+            <!-- الرئيسية -->
+
+            <a
+                href="index.html"
+                class="text-gray-200
+                       font-semibold
+                       text-base
+                       hover:text-[#d0a75f]
+                       transition
+                       w-full block">
 
                 الرئيسية
 
-            </button>
+            </a>
 
 
-            <button
-                onclick="window.location.href='services.html'"
-                class="bg-transparent border-0 text-gold font-bold text-lg transition w-full text-right cursor-pointer">
+            <!-- خدماتنا -->
+
+            <a
+                href="services.html"
+                class="text-[#d0a75f]
+                       font-bold
+                       text-base
+                       transition
+                       w-full block">
 
                 خدماتنا
 
-            </button>
+            </a>
 
 
-            <button
-                onclick="window.location.href='about.html'"
-                class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full text-right cursor-pointer">
+            <!-- من نحن -->
+
+            <a
+                href="about.html"
+                class="text-gray-200
+                       font-semibold
+                       text-base
+                       hover:text-[#d0a75f]
+                       transition
+                       w-full block">
 
                 من نحن
 
-            </button>
+            </a>
 
 
-            <button
-                onclick="window.location.href='contact.html'"
-                class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full text-right cursor-pointer">
+            <!-- تواصل معنا -->
+
+            <a
+                href="contact.html"
+                class="text-gray-200
+                       font-semibold
+                       text-base
+                       hover:text-[#d0a75f]
+                       transition
+                       w-full block">
 
                 تواصل معنا
 
-            </button>
+            </a>
 
 
-            <button
-                onclick="window.location.href='admin.html'"
-                class="bg-transparent border-0 text-gray-200 font-semibold text-lg hover:text-gold transition w-full text-right cursor-pointer">
+            <!-- لوحة التحكم -->
+
+            <a
+                href="admin.html"
+                class="text-gray-200
+                       font-semibold
+                       text-base
+                       hover:text-[#d0a75f]
+                       transition
+                       w-full block">
 
                 لوحة التحكم
 
-            </button>
+            </a>
 
 
-            <!-- زر الواتساب -->
+            <!-- واتساب -->
 
             <button
                 onclick="sendGeneralWhatsApp()"
-                class="mt-2 bg-gold text-petrol font-bold py-3.5 px-8 rounded-lg text-base hover:opacity-90 transition w-full sm:w-auto text-center flex items-center justify-center gap-2 cursor-pointer">
+                type="button"
+                class="mt-2
+                       bg-[#d0a75f]
+                       text-[#1a222c]
+                       font-bold
+                       py-3
+                       px-5
+                       rounded-xl
+                       text-sm
+                       hover:opacity-90
+                       transition
+                       w-full
+                       flex items-center
+                       justify-center
+                       gap-2">
 
-                <i class="fab fa-whatsapp text-xl"></i>
+                <i class="fab fa-whatsapp text-lg"></i>
 
                 تواصل عبر واتساب
 
@@ -383,162 +530,1502 @@
 
 
 
-<!-- ==================================================
-     2. محتوى صفحة الخدمات الرئيسي
-================================================== -->
+<!-- =========================================================
+     2. الصفحة الرئيسية للخدمات
+========================================================= -->
 
 <main
-    class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-8">
+    class="flex-grow">
 
 
-    <!-- رأس القسم -->
+    <!-- =====================================================
+         مقدمة صفحة الخدمات
+    ===================================================== -->
 
-    <div class="text-center space-y-3 max-w-2xl mx-auto">
-
-        <span
-            class="text-xs font-bold text-petrol bg-petrol/10 px-4 py-1.5 rounded-full inline-block">
-
-            دليل الخدمات الأكاديمية
-
-        </span>
-
-
-        <h1
-            class="text-2xl sm:text-4xl font-black text-slate-900 brand-font">
-
-            استكشف خدماتنا المتميزة
-
-        </h1>
-
-
-        <p
-            class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-
-            نقدم لك باقة متكاملة من الخدمات الطلابية والأكاديمية والبحثية،
-            مصممة خصيصاً لتلبي احتياجاتك بأعلى معايير الجودة والسرعة.
-
-        </p>
-
-    </div>
-
-
-
-    <!-- ==================================================
-         شريط البحث والتصفية
-    ================================================== -->
-
-    <div
-        class="bg-white p-4 sm:p-6 rounded-3xl border border-slate-200/80 shadow-sm space-y-4">
-
-
-        <!-- مربع البحث -->
-
-        <div class="relative">
-
-            <i
-                class="fas fa-search absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
-            </i>
-
-
-            <input
-                type="text"
-                id="service-search-input"
-                placeholder="ابحث عن خدمة أكاديمية، بحث، أو استشارة..."
-                class="w-full bg-lightbg border border-slate-200 rounded-2xl py-3.5 pr-11 pl-4 text-xs sm:text-sm focus:outline-none focus:border-petrol transition text-slate-800 placeholder-slate-400">
-
-        </div>
-
-
-
-        <!-- أزرار التصنيفات -->
+    <section
+        class="bg-[#f8fafc]
+               px-5
+               pt-12
+               pb-8">
 
         <div
-            id="category-filter-buttons"
-            class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-
-            <!-- يتم تعبئتها بواسطة main.js -->
-
-            <button
-                class="category-btn bg-slate-900 text-gold px-4 py-2 rounded-xl text-xs font-bold transition border border-slate-800 flex items-center gap-2 shadow-sm">
-
-                <i class="fas fa-th-large"></i>
-
-                <span>
-                    الكل
-                </span>
-
-            </button>
-
-        </div>
-
-    </div>
+            class="max-w-7xl
+                   mx-auto
+                   text-center">
 
 
+            <span
+                class="inline-block
+                       bg-[#d0a75f]/10
+                       text-[#1a222c]
+                       px-5
+                       py-2
+                       rounded-full
+                       text-xs
+                       font-bold
+                       mb-5">
 
-    <!-- ==================================================
-         شبكة عرض الخدمات
-    ================================================== -->
+                خدمات مَسَارُ التَّمَيُّزِ
 
-    <div
-        id="all-services-grid"
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            </span>
 
 
-        <!-- حالة التحميل المبدئية -->
+            <h1
+                class="text-3xl
+                       md:text-5xl
+                       font-black
+                       text-[#1a222c]
+                       brand-font
+                       leading-snug
+                       mb-5">
 
-        <div
-            class="col-span-full text-center py-20">
+                خدماتنا بين يديك
 
-            <i
-                class="fas fa-spinner fa-spin text-3xl text-petrol mb-3">
-            </i>
+            </h1>
 
 
             <p
-                class="text-slate-500 font-bold text-xs">
+                class="text-gray-500
+                       text-sm
+                       md:text-base
+                       leading-relaxed
+                       max-w-2xl
+                       mx-auto">
 
-                جاري تحميل الخدمات...
+                نقدم مجموعة متكاملة من الخدمات الطلابية والأكاديمية
+                والبحثية والتقنية والإبداعية، لمساعدتك على إنجاز
+                أعمالك بجودة واحترافية.
 
             </p>
 
         </div>
 
-    </div>
+    </section>
+
+
+
+    <!-- =====================================================
+         شريط البحث والتصنيفات
+    ===================================================== -->
+
+    <section
+        class="px-5 pb-10 bg-[#f8fafc]">
+
+        <div
+            class="max-w-7xl
+                   mx-auto">
+
+
+            <div
+                class="bg-white
+                       p-4 sm:p-6
+                       rounded-3xl
+                       border border-gray-200
+                       shadow-sm">
+
+
+                <!-- البحث -->
+
+                <div class="relative mb-5">
+
+                    <i
+                        class="fas fa-search
+                               absolute right-4
+                               top-1/2
+                               -translate-y-1/2
+                               text-gray-400">
+                    </i>
+
+
+                    <input
+                        type="text"
+                        id="service-search-input"
+                        placeholder="ابحث عن الخدمة التي تحتاجها..."
+                        class="w-full
+                               bg-[#f8fafc]
+                               border border-gray-200
+                               rounded-2xl
+                               py-4
+                               pr-12
+                               pl-4
+                               text-sm
+                               focus:outline-none
+                               focus:border-[#d0a75f]
+                               transition
+                               text-[#1a222c]"
+                    >
+
+                </div>
+
+
+                <!-- التصنيفات -->
+
+                <div
+                    id="category-filter-buttons"
+                    class="flex
+                           items-center
+                           gap-2
+                           overflow-x-auto
+                           pb-1
+                           scrollbar-none">
+
+
+                    <button
+                        type="button"
+                        data-category="all"
+                        class="category-btn
+                               active-category
+                               bg-[#1a222c]
+                               text-[#d0a75f]
+                               px-5 py-2.5
+                               rounded-xl
+                               text-xs
+                               font-bold
+                               whitespace-nowrap
+                               border border-[#1a222c]">
+
+                        <i class="fas fa-th-large ml-1"></i>
+
+                        جميع الخدمات
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        data-category="academic"
+                        class="category-btn
+                               bg-white
+                               text-[#1a222c]
+                               px-5 py-2.5
+                               rounded-xl
+                               text-xs
+                               font-bold
+                               whitespace-nowrap
+                               border border-gray-200
+                               hover:border-[#d0a75f]
+                               transition">
+
+                        <i class="fas fa-graduation-cap ml-1"></i>
+
+                        الخدمات الأكاديمية
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        data-category="research"
+                        class="category-btn
+                               bg-white
+                               text-[#1a222c]
+                               px-5 py-2.5
+                               rounded-xl
+                               text-xs
+                               font-bold
+                               whitespace-nowrap
+                               border border-gray-200
+                               hover:border-[#d0a75f]
+                               transition">
+
+                        <i class="fas fa-book-open ml-1"></i>
+
+                        البحوث والدراسات
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        data-category="technology"
+                        class="category-btn
+                               bg-white
+                               text-[#1a222c]
+                               px-5 py-2.5
+                               rounded-xl
+                               text-xs
+                               font-bold
+                               whitespace-nowrap
+                               border border-gray-200
+                               hover:border-[#d0a75f]
+                               transition">
+
+                        <i class="fas fa-code ml-1"></i>
+
+                        التقنية والبرمجة
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        data-category="design"
+                        class="category-btn
+                               bg-white
+                               text-[#1a222c]
+                               px-5 py-2.5
+                               rounded-xl
+                               text-xs
+                               font-bold
+                               whitespace-nowrap
+                               border border-gray-200
+                               hover:border-[#d0a75f]
+                               transition">
+
+                        <i class="fas fa-palette ml-1"></i>
+
+                        التصميم والإبداع
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        data-category="engineering"
+                        class="category-btn
+                               bg-white
+                               text-[#1a222c]
+                               px-5 py-2.5
+                               rounded-xl
+                               text-xs
+                               font-bold
+                               whitespace-nowrap
+                               border border-gray-200
+                               hover:border-[#d0a75f]
+                               transition">
+
+                        <i class="fas fa-drafting-compass ml-1"></i>
+
+                        الهندسة
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         قائمة الخدمات
+    ===================================================== -->
+
+    <section
+        class="bg-white
+               px-5
+               py-14
+               border-t border-gray-200">
+
+
+        <div
+            class="max-w-7xl
+                   mx-auto">
+
+
+            <!-- عنوان -->
+
+            <div
+                class="text-center
+                       max-w-2xl
+                       mx-auto
+                       mb-12">
+
+
+                <span
+                    class="inline-block
+                           bg-[#d0a75f]/10
+                           text-[#1a222c]
+                           px-4 py-1.5
+                           rounded-full
+                           text-xs
+                           font-bold
+                           mb-4">
+
+                    دليل الخدمات
+
+                </span>
+
+
+                <h2
+                    class="text-2xl
+                           md:text-4xl
+                           font-black
+                           text-[#1a222c]
+                           mb-4">
+
+                    اختر الخدمة التي تحتاجها
+
+                </h2>
+
+
+                <p
+                    class="text-gray-500
+                           text-sm
+                           leading-relaxed">
+
+                    يمكنك استعراض الخدمات واختيار ما يناسب احتياجك،
+                    ثم التواصل معنا مباشرة عبر واتساب.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 شبكة الخدمات
+            ================================================= -->
+
+            <div
+                id="services-grid"
+                class="grid
+                       grid-cols-1
+                       sm:grid-cols-2
+                       lg:grid-cols-3
+                       gap-6">
+
+
+                <!-- =============================================
+                     الخدمة 1
+                ============================================== -->
+
+                <div
+                    class="service-card
+                           bg-[#f8fafc]
+                           rounded-3xl
+                           p-7
+                           border border-gray-200"
+                    data-category="academic"
+                    data-search="مشاريع التخرج مشروع تخرج أكاديمي طلاب جامعة">
+
+                    <div
+                        class="service-icon
+                               w-14 h-14
+                               rounded-2xl
+                               bg-[#d0a75f]/10
+                               text-[#d0a75f]
+                               flex items-center
+                               justify-center
+                               text-2xl
+                               mb-5">
+
+                        <i class="fas fa-graduation-cap"></i>
+
+                    </div>
+
+
+                    <h3
+                        class="font-black
+                               text-lg
+                               text-[#1a222c]
+                               mb-3">
+
+                        مشاريع التخرج
+
+                    </h3>
+
+
+                    <p
+                        class="text-gray-500
+                               text-sm
+                               leading-relaxed
+                               mb-6">
+
+                        دعم وتنفيذ مشاريع التخرج من مرحلة الفكرة
+                        والتخطيط حتى الإخراج النهائي وفق المتطلبات.
+
+                    </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('مشاريع التخرج')"
+                        class="w-full
+                               bg-[#1a222c]
+                               text-white
+                               font-bold
+                               py-3
+                               rounded-xl
+                               hover:bg-[#d0a75f]
+                               hover:text-[#1a222c]
+                               transition
+                               flex items-center
+                               justify-center
+                               gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     الخدمة 2
+                ============================================== -->
+
+                <div
+                    class="service-card
+                           bg-[#f8fafc]
+                           rounded-3xl
+                           p-7
+                           border border-gray-200"
+                    data-category="technology"
+                    data-search="برمجة تقنية معلومات مواقع إلكترونية تطبيقات أنظمة">
+
+                    <div
+                        class="service-icon
+                               w-14 h-14
+                               rounded-2xl
+                               bg-[#d0a75f]/10
+                               text-[#d0a75f]
+                               flex items-center
+                               justify-center
+                               text-2xl
+                               mb-5">
+
+                        <i class="fas fa-code"></i>
+
+                    </div>
+
+
+                    <h3
+                        class="font-black
+                               text-lg
+                               text-[#1a222c]
+                               mb-3">
+
+                        البرمجة وتقنية المعلومات
+
+                    </h3>
+
+
+                    <p
+                        class="text-gray-500
+                               text-sm
+                               leading-relaxed
+                               mb-6">
+
+                        تطوير مواقع وحلول برمجية ومشاريع تقنية
+                        مصممة وفق احتياجك ومتطلبات مشروعك.
+
+                    </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('البرمجة وتقنية المعلومات')"
+                        class="w-full
+                               bg-[#1a222c]
+                               text-white
+                               font-bold
+                               py-3
+                               rounded-xl
+                               hover:bg-[#d0a75f]
+                               hover:text-[#1a222c]
+                               transition
+                               flex items-center
+                               justify-center
+                               gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     الخدمة 3
+                ============================================== -->
+
+                <div
+                    class="service-card
+                           bg-[#f8fafc]
+                           rounded-3xl
+                           p-7
+                           border border-gray-200"
+                    data-category="research"
+                    data-search="إحصاء تحليل بيانات SPSS بيانات إحصائية">
+
+                    <div
+                        class="service-icon
+                               w-14 h-14
+                               rounded-2xl
+                               bg-[#d0a75f]/10
+                               text-[#d0a75f]
+                               flex items-center
+                               justify-center
+                               text-2xl
+                               mb-5">
+
+                        <i class="fas fa-chart-line"></i>
+
+                    </div>
+
+
+                    <h3
+                        class="font-black
+                               text-lg
+                               text-[#1a222c]
+                               mb-3">
+
+                        الإحصاء وتحليل البيانات
+
+                    </h3>
+
+
+                    <p
+                        class="text-gray-500
+                               text-sm
+                               leading-relaxed
+                               mb-6">
+
+                        تحليل البيانات وتنظيمها وعرض النتائج
+                        بطريقة واضحة ومناسبة للأعمال الأكاديمية.
+
+                    </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('الإحصاء وتحليل البيانات')"
+                        class="w-full
+                               bg-[#1a222c]
+                               text-white
+                               font-bold
+                               py-3
+                               rounded-xl
+                               hover:bg-[#d0a75f]
+                               hover:text-[#1a222c]
+                               transition
+                               flex items-center
+                               justify-center
+                               gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     الخدمة 4
+                ============================================== -->
+
+                <div
+                    class="service-card
+                           bg-[#f8fafc]
+                           rounded-3xl
+                           p-7
+                           border border-gray-200"
+                    data-category="design"
+                    data-search="تصميم عروض تقديمية بوربوينت PowerPoint تصميم">
+
+                    <div
+                        class="service-icon
+                               w-14 h-14
+                               rounded-2xl
+                               bg-[#d0a75f]/10
+                               text-[#d0a75f]
+                               flex items-center
+                               justify-center
+                               text-2xl
+                               mb-5">
+
+                        <i class="fas fa-palette"></i>
+
+                    </div>
+
+
+                    <h3
+                        class="font-black
+                               text-lg
+                               text-[#1a222c]
+                               mb-3">
+
+                        التصميم والعروض التقديمية
+
+                    </h3>
+
+
+                    <p
+                        class="text-gray-500
+                               text-sm
+                               leading-relaxed
+                               mb-6">
+
+                        تصميم عروض تقديمية ومواد بصرية احترافية
+                        تجمع بين وضوح المحتوى وجاذبية التصميم.
+
+                    </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('التصميم والعروض التقديمية')"
+                        class="w-full
+                               bg-[#1a222c]
+                               text-white
+                               font-bold
+                               py-3
+                               rounded-xl
+                               hover:bg-[#d0a75f]
+                               hover:text-[#1a222c]
+                               transition
+                               flex items-center
+                               justify-center
+                               gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     الخدمة 5
+                ============================================== -->
+
+                <div
+                    class="service-card
+                           bg-[#f8fafc]
+                           rounded-3xl
+                           p-7
+                           border border-gray-200"
+                    data-category="engineering"
+                    data-search="هندسة مخططات معمارية رسم هندسي تصميم معماري">
+
+                    <div
+                        class="service-icon
+                               w-14 h-14
+                               rounded-2xl
+                               bg-[#d0a75f]/10
+                               text-[#d0a75f]
+                               flex items-center
+                               justify-center
+                               text-2xl
+                               mb-5">
+
+                        <i class="fas fa-drafting-compass"></i>
+
+                    </div>
+
+
+                    <h3
+                        class="font-black
+                               text-lg
+                               text-[#1a222c]
+                               mb-3">
+
+                        الهندسة والمخططات
+
+                    </h3>
+
+
+                    <p
+                        class="text-gray-500
+                               text-sm
+                               leading-relaxed
+                               mb-6">
+
+                        إعداد وتصميم المخططات الهندسية والمعمارية
+                        وإخراجها بصورة دقيقة واحترافية.
+
+                    </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('الهندسة والمخططات')"
+                        class="w-full
+                               bg-[#1a222c]
+                               text-white
+                               font-bold
+                               py-3
+                               rounded-xl
+                               hover:bg-[#d0a75f]
+                               hover:text-[#1a222c]
+                               transition
+                               flex items-center
+                               justify-center
+                               gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     الخدمة 6
+                ============================================== -->
+
+                <div
+                    class="service-card
+                           bg-[#f8fafc]
+                           rounded-3xl
+                           p-7
+                           border border-gray-200"
+                    data-category="research"
+                    data-search="دراسات عليا رسائل علمية ماجستير دكتوراه بحث علمي">
+
+                    <div
+                        class="service-icon
+                               w-14 h-14
+                               rounded-2xl
+                               bg-[#d0a75f]/10
+                               text-[#d0a75f]
+                               flex items-center
+                               justify-center
+                               text-2xl
+                               mb-5">
+
+                        <i class="fas fa-book-open"></i>
+
+                    </div>
+
+
+                    <h3
+                        class="font-black
+                               text-lg
+                               text-[#1a222c]
+                               mb-3">
+
+                        الدراسات العليا والرسائل العلمية
+
+                    </h3>
+
+
+                    <p
+                        class="text-gray-500
+                               text-sm
+                               leading-relaxed
+                               mb-6">
+
+                        دعم أكاديمي في متطلبات الدراسات العليا
+                        والرسائل والبحوث العلمية وفق متطلبات العمل.
+
+                    </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('الدراسات العليا والرسائل العلمية')"
+                        class="w-full
+                               bg-[#1a222c]
+                               text-white
+                               font-bold
+                               py-3
+                               rounded-xl
+                               hover:bg-[#d0a75f]
+                               hover:text-[#1a222c]
+                               transition
+                               flex items-center
+                               justify-center
+                               gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     الخدمة 7
+                ============================================== -->
+
+                <div
+                    class="service-card
+                           bg-[#f8fafc]
+                           rounded-3xl
+                           p-7
+                           border border-gray-200"
+                    data-category="academic"
+                    data-search="واجبات بحوث تقارير تكليفات طلابية">
+
+                    <div
+                        class="service-icon
+                               w-14 h-14
+                               rounded-2xl
+                               bg-[#d0a75f]/10
+                               text-[#d0a75f]
+                               flex items-center
+                               justify-center
+                               text-2xl
+                               mb-5">
+
+                        <i class="fas fa-file-lines"></i>
+
+                    </div>
+
+
+                    <h3
+                        class="font-black
+                               text-lg
+                               text-[#1a222c]
+                               mb-3">
+
+                        الواجبات والبحوث والتقارير
+
+                    </h3>
+
+
+                    <p
+                        class="text-gray-500
+                               text-sm
+                               leading-relaxed
+                               mb-6">
+
+                        إعداد وتنسيق الواجبات والبحوث والتقارير
+                        والمشاريع الكتابية وفق متطلباتك.
+
+                    </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('الواجبات والبحوث والتقارير')"
+                        class="w-full
+                               bg-[#1a222c]
+                               text-white
+                               font-bold
+                               py-3
+                               rounded-xl
+                               hover:bg-[#d0a75f]
+                               hover:text-[#1a222c]
+                               transition
+                               flex items-center
+                               justify-center
+                               gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     الخدمة 8
+                ============================================== -->
+
+                <div
+                    class="service-card
+                           bg-[#f8fafc]
+                           rounded-3xl
+                           p-7
+                           border border-gray-200"
+                    data-category="design"
+                    data-search="خرائط ذهنية مفاهيمية تصميم أفكار">
+
+                    <div
+                        class="service-icon
+                               w-14 h-14
+                               rounded-2xl
+                               bg-[#d0a75f]/10
+                               text-[#d0a75f]
+                               flex items-center
+                               justify-center
+                               text-2xl
+                               mb-5">
+
+                        <i class="fas fa-diagram-project"></i>
+
+                    </div>
+
+
+                    <h3
+                        class="font-black
+                               text-lg
+                               text-[#1a222c]
+                               mb-3">
+
+                        الخرائط الذهنية والمفاهيمية
+
+                    </h3>
+
+
+                    <p
+                        class="text-gray-500
+                               text-sm
+                               leading-relaxed
+                               mb-6">
+
+                        تحويل الأفكار والمعلومات إلى خرائط منظمة
+                        تسهّل الفهم والمراجعة والعرض.
+
+                    </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('تصميم خرائط ذهنية ومفاهيمية')"
+                        class="w-full
+                               bg-[#1a222c]
+                               text-white
+                               font-bold
+                               py-3
+                               rounded-xl
+                               hover:bg-[#d0a75f]
+                               hover:text-[#1a222c]
+                               transition
+                               flex items-center
+                               justify-center
+                               gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     الخدمة 9
+                ============================================== -->
+
+                <div
+                    class="service-card
+                           bg-[#f8fafc]
+                           rounded-3xl
+                           p-7
+                           border border-gray-200"
+                    data-category="design"
+                    data-search="بوسترات إعلانات تصاميم إعلانية منشورات">
+
+                    <div
+                        class="service-icon
+                               w-14 h-14
+                               rounded-2xl
+                               bg-[#d0a75f]/10
+                               text-[#d0a75f]
+                               flex items-center
+                               justify-center
+                               text-2xl
+                               mb-5">
+
+                        <i class="fas fa-image"></i>
+
+                    </div>
+
+
+                    <h3
+                        class="font-black
+                               text-lg
+                               text-[#1a222c]
+                               mb-3">
+
+                        تصميم البوسترات والإعلانات
+
+                    </h3>
+
+
+                    <p
+                        class="text-gray-500
+                               text-sm
+                               leading-relaxed
+                               mb-6">
+
+                        تصميم بوسترات وإعلانات ومنشورات بصرية
+                        جذابة تناسب الفعاليات والمشاريع والأعمال.
+
+                    </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('تصميم البوسترات والإعلانات')"
+                        class="w-full
+                               bg-[#1a222c]
+                               text-white
+                               font-bold
+                               py-3
+                               rounded-xl
+                               hover:bg-[#d0a75f]
+                               hover:text-[#1a222c]
+                               transition
+                               flex items-center
+                               justify-center
+                               gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     الخدمة 10
+                ============================================== -->
+
+                <div
+                    class="service-card
+                           bg-[#f8fafc]
+                           rounded-3xl
+                           p-7
+                           border border-gray-200"
+                    data-category="design"
+                    data-search="انفوجرافيك بيانات معلومات تصميم">
+
+                    <div
+                        class="service-icon
+                               w-14 h-14
+                               rounded-2xl
+                               bg-[#d0a75f]/10
+                               text-[#d0a75f]
+                               flex items-center
+                               justify-center
+                               text-2xl
+                               mb-5">
+
+                        <i class="fas fa-chart-pie"></i>
+
+                    </div>
+
+
+                    <h3
+                        class="font-black
+                               text-lg
+                               text-[#1a222c]
+                               mb-3">
+
+                        الإنفوجرافيك وعروض البيانات
+
+                    </h3>
+
+
+                    <p
+                        class="text-gray-500
+                               text-sm
+                               leading-relaxed
+                               mb-6">
+
+                        تحويل البيانات والمعلومات المعقدة إلى
+                        تصاميم إنفوجرافيك واضحة وجذابة.
+
+                    </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('تصميم إنفوجرافيك وعروض بيانات')"
+                        class="w-full
+                               bg-[#1a222c]
+                               text-white
+                               font-bold
+                               py-3
+                               rounded-xl
+                               hover:bg-[#d0a75f]
+                               hover:text-[#1a222c]
+                               transition
+                               flex items-center
+                               justify-center
+                               gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     الخدمة 11
+                ============================================== -->
+
+                <div
+                    class="service-card
+                           bg-[#f8fafc]
+                           rounded-3xl
+                           p-7
+                           border border-gray-200"
+                    data-category="academic"
+                    data-search="سيرة ذاتية CV ATS وظيفة توظيف">
+
+                    <div
+                        class="service-icon
+                               w-14 h-14
+                               rounded-2xl
+                               bg-[#d0a75f]/10
+                               text-[#d0a75f]
+                               flex items-center
+                               justify-center
+                               text-2xl
+                               mb-5">
+
+                        <i class="fas fa-file-user"></i>
+
+                    </div>
+
+
+                    <h3
+                        class="font-black
+                               text-lg
+                               text-[#1a222c]
+                               mb-3">
+
+                        تصميم وتنسيق السيرة الذاتية CV
+
+                    </h3>
+
+
+                    <p
+                        class="text-gray-500
+                               text-sm
+                               leading-relaxed
+                               mb-6">
+
+                        تصميم وتنسيق السيرة الذاتية بالعربية أو
+                        الإنجليزية بصورة احترافية ومنظمة.
+
+                    </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('تصميم وتنسيق السيرة الذاتية CV')"
+                        class="w-full
+                               bg-[#1a222c]
+                               text-white
+                               font-bold
+                               py-3
+                               rounded-xl
+                               hover:bg-[#d0a75f]
+                               hover:text-[#1a222c]
+                               transition
+                               flex items-center
+                               justify-center
+                               gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     الخدمة 12
+                ============================================== -->
+
+                <div
+                    class="service-card
+                           bg-[#f8fafc]
+                           rounded-3xl
+                           p-7
+                           border border-gray-200"
+                    data-category="academic"
+                    data-search="استشارات دعم توجيه استشارة أكاديمية">
+
+                    <div
+                        class="service-icon
+                               w-14 h-14
+                               rounded-2xl
+                               bg-[#d0a75f]/10
+                               text-[#d0a75f]
+                               flex items-center
+                               justify-center
+                               text-2xl
+                               mb-5">
+
+                        <i class="fas fa-comments"></i>
+
+                    </div>
+
+
+                    <h3
+                        class="font-black
+                               text-lg
+                               text-[#1a222c]
+                               mb-3">
+
+                        الاستشارات والدعم
+
+                    </h3>
+
+
+                    <p
+                        class="text-gray-500
+                               text-sm
+                               leading-relaxed
+                               mb-6">
+
+                        استشارات ومتابعة لفهم احتياجك وتحديد
+                        الحل والطريقة الأنسب لطلبك.
+
+                    </p>
+
+
+                    <button
+                        onclick="sendConsultationWhatsApp()"
+                        class="w-full
+                               bg-[#1a222c]
+                               text-white
+                               font-bold
+                               py-3
+                               rounded-xl
+                               hover:bg-[#d0a75f]
+                               hover:text-[#1a222c]
+                               transition
+                               flex items-center
+                               justify-center
+                               gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        تواصل معنا
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 لا توجد نتائج
+            ================================================= -->
+
+            <div
+                id="no-results"
+                class="hidden
+                       text-center
+                       py-16">
+
+                <div
+                    class="w-20 h-20
+                           mx-auto
+                           rounded-full
+                           bg-[#d0a75f]/10
+                           text-[#d0a75f]
+                           flex items-center
+                           justify-center
+                           text-3xl
+                           mb-5">
+
+                    <i class="fas fa-search"></i>
+
+                </div>
+
+
+                <h3
+                    class="font-black
+                           text-xl
+                           text-[#1a222c]
+                           mb-3">
+
+                    لم نجد الخدمة المطلوبة
+
+                </h3>
+
+
+                <p
+                    class="text-gray-500
+                           text-sm
+                           mb-6">
+
+                    جرّب البحث بكلمة أخرى أو تواصل معنا مباشرة.
+
+                </p>
+
+
+                <button
+                    onclick="sendGeneralWhatsApp()"
+                    class="bg-[#d0a75f]
+                           text-[#1a222c]
+                           font-bold
+                           px-6
+                           py-3
+                           rounded-xl
+                           hover:opacity-90
+                           transition">
+
+                    <i class="fab fa-whatsapp ml-2"></i>
+
+                    تواصل معنا
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         دعوة أخيرة
+    ===================================================== -->
+
+    <section
+        class="bg-[#f8fafc]
+               px-5
+               py-14
+               border-t border-gray-200">
+
+
+        <div
+            class="max-w-6xl
+                   mx-auto">
+
+
+            <div
+                class="bg-[#1a222c]
+                       rounded-[2rem]
+                       p-8
+                       md:p-12
+                       text-white
+                       flex flex-col
+                       lg:flex-row
+                       items-center
+                       justify-between
+                       gap-8">
+
+
+                <div
+                    class="text-center
+                           lg:text-right">
+
+                    <span
+                        class="text-[#d0a75f]
+                               text-sm
+                               font-bold">
+
+                        لم تجد ما تبحث عنه؟
+
+                    </span>
+
+
+                    <h2
+                        class="text-2xl
+                               md:text-3xl
+                               font-black
+                               mt-3
+                               mb-4">
+
+                        أخبرنا بما تحتاج إليه
+
+                    </h2>
+
+
+                    <p
+                        class="text-gray-300
+                               text-sm
+                               leading-relaxed
+                               max-w-xl">
+
+                        إذا لم تجد الخدمة التي تبحث عنها ضمن القائمة،
+                        أرسل لنا تفاصيل طلبك وسنراجع إمكانية تنفيذه.
+
+                    </p>
+
+                </div>
+
+
+                <button
+                    onclick="sendGeneralWhatsApp()"
+                    class="bg-[#d0a75f]
+                           text-[#1a222c]
+                           font-black
+                           px-8
+                           py-4
+                           rounded-xl
+                           text-base
+                           hover:opacity-90
+                           transition
+                           flex items-center
+                           gap-3
+                           whitespace-nowrap">
+
+                    <i class="fab fa-whatsapp text-xl"></i>
+
+                    اطلب خدمتك الآن
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
 
 </main>
 
 
 
-<!-- ==================================================
+<!-- =========================================================
      3. الفوتر
-     نفس فوتر صفحة من نحن
-================================================== -->
+========================================================= -->
 
 <footer
-    class="site-footer text-center px-5 py-10 mt-16">
+    class="site-footer
+           text-center
+           px-5
+           py-10
+           mt-auto">
 
-    <div class="max-w-4xl mx-auto">
+
+    <div
+        class="max-w-4xl
+               mx-auto">
 
 
-        <!-- اسم المنصة + العبارة -->
+        <div
+            class="footer-brand">
 
-        <div class="footer-brand">
 
-            <span class="footer-gold">
+            <span
+                class="footer-gold">
 
-                مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
+                مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَابِيَّةِ
 
             </span>
 
 
-            <span class="footer-separator">
+            <span
+                class="footer-separator">
 
                 |
 
             </span>
 
 
-            <span class="footer-white">
+            <span
+                class="footer-white">
 
                 جودة تُنجز، وثقة تُبنى.
 
@@ -547,20 +2034,17 @@
         </div>
 
 
+        <p
+            class="footer-copy mt-4">
 
-        <!-- الحقوق -->
-
-        <p class="footer-copy">
-
-            جميع الحقوق محفوظة © 2026 - مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
+            جميع الحقوق محفوظة © 2026 -
+            مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَابِيَّةِ
 
         </p>
 
 
-
-        <!-- التطوير والإشراف -->
-
-        <p class="footer-copy mt-3 developer-line">
+        <p
+            class="footer-copy mt-3">
 
             تطوير وإشراف
 
@@ -578,19 +2062,110 @@
 
 
 
-<!-- ==================================================
-     ملف المحرك الرئيسي
-================================================== -->
-
-<script src="main.js"></script>
-
-
-
-<!-- ==================================================
-     JavaScript الخاص بالقائمة والواتساب
-================================================== -->
+<!-- =========================================================
+     JavaScript
+========================================================= -->
 
 <script>
+
+
+    /* ========================================================
+       رقم واتساب
+    ======================================================== */
+
+    const WHATSAPP_NUMBER = '967736190956';
+
+
+
+    /* ========================================================
+       فتح واتساب
+    ======================================================== */
+
+    function openWhatsApp(message) {
+
+        const encodedMessage =
+            encodeURIComponent(message);
+
+
+        window.open(
+            `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`,
+            '_blank'
+        );
+
+    }
+
+
+
+    /* ========================================================
+       طلب عام
+    ======================================================== */
+
+    function sendGeneralWhatsApp() {
+
+        const message =
+`السلام عليكم،
+أرغب في طلب خدمة من منصة مَسَارُ التَّمَيُّزِ للخدمات الطلابية.
+
+لدي طلب وأرغب في إرسال تفاصيله لمعرفة إمكانية التنفيذ والتكلفة والمدة المناسبة.
+
+وشكرًا لكم.`;
+
+
+        openWhatsApp(message);
+
+    }
+
+
+
+    /* ========================================================
+       طلب خدمة محددة
+    ======================================================== */
+
+    function sendServiceWhatsApp(serviceName) {
+
+        const message =
+`السلام عليكم،
+أرغب في الاستفسار وطلب خدمة:
+
+( ${serviceName} )
+
+من منصة مَسَارُ التَّمَيُّزِ للخدمات الطلابية.
+
+أرغب في معرفة التفاصيل والتكلفة والمدة المناسبة لتنفيذ الخدمة.
+
+وشكرًا لكم.`;
+
+
+        openWhatsApp(message);
+
+    }
+
+
+
+    /* ========================================================
+       الاستشارات
+    ======================================================== */
+
+    function sendConsultationWhatsApp() {
+
+        const message =
+`السلام عليكم،
+أرغب في الاستفادة من خدمة الاستشارات والدعم لدى منصة مَسَارُ التَّمَيُّزِ للخدمات الطلابية.
+
+أود توضيح احتياجي والحصول على التوجيه والحل الأنسب لطلبي.
+
+وشكرًا لكم.`;
+
+
+        openWhatsApp(message);
+
+    }
+
+
+
+    /* ========================================================
+       القائمة
+    ======================================================== */
 
     const menuBtn =
         document.getElementById('menu-btn');
@@ -602,43 +2177,229 @@
 
     if (menuBtn && dropdownMenu) {
 
-        menuBtn.addEventListener('click', (e) => {
 
-            e.stopPropagation();
+        menuBtn.addEventListener(
+            'click',
+            function(event) {
 
-            dropdownMenu.classList.toggle('hidden');
+                event.stopPropagation();
 
-        });
-
-
-        document.addEventListener('click', (event) => {
-
-            if (
-                !dropdownMenu.contains(event.target) &&
-                !menuBtn.contains(event.target)
-            ) {
-
-                dropdownMenu.classList.add('hidden');
+                dropdownMenu.classList.toggle('hidden');
 
             }
-
-        });
-
-    }
+        );
 
 
-    function sendGeneralWhatsApp() {
+        document.addEventListener(
+            'click',
+            function(event) {
 
-        window.open(
-            'https://wa.me/967736190956',
-            '_blank'
+                if (
+                    !dropdownMenu.contains(event.target) &&
+                    !menuBtn.contains(event.target)
+                ) {
+
+                    dropdownMenu.classList.add('hidden');
+
+                }
+
+            }
         );
 
     }
+
+
+
+    /* ========================================================
+       البحث في الخدمات
+    ======================================================== */
+
+    const searchInput =
+        document.getElementById('service-search-input');
+
+
+    const serviceCards =
+        document.querySelectorAll('.service-card');
+
+
+    const noResults =
+        document.getElementById('no-results');
+
+
+    let currentCategory = 'all';
+
+
+
+    function filterServices() {
+
+        const searchText =
+            searchInput.value
+                .trim()
+                .toLowerCase();
+
+
+        let visibleCount = 0;
+
+
+        serviceCards.forEach(
+            function(card) {
+
+
+                const category =
+                    card.dataset.category || '';
+
+
+                const searchData =
+                    card.dataset.search || '';
+
+
+                const title =
+                    card.querySelector('h3')?.textContent || '';
+
+
+                const description =
+                    card.querySelector('p')?.textContent || '';
+
+
+                const fullText =
+                    (
+                        searchData +
+                        ' ' +
+                        title +
+                        ' ' +
+                        description
+                    ).toLowerCase();
+
+
+                const categoryMatch =
+                    currentCategory === 'all' ||
+                    category === currentCategory;
+
+
+                const searchMatch =
+                    searchText === '' ||
+                    fullText.includes(searchText);
+
+
+                if (
+                    categoryMatch &&
+                    searchMatch
+                ) {
+
+                    card.classList.remove('hidden');
+
+                    visibleCount++;
+
+                }
+
+                else {
+
+                    card.classList.add('hidden');
+
+                }
+
+            }
+        );
+
+
+        if (visibleCount === 0) {
+
+            noResults.classList.remove('hidden');
+
+        }
+
+        else {
+
+            noResults.classList.add('hidden');
+
+        }
+
+    }
+
+
+
+    /* ========================================================
+       البحث المباشر
+    ======================================================== */
+
+    if (searchInput) {
+
+        searchInput.addEventListener(
+            'input',
+            filterServices
+        );
+
+    }
+
+
+
+    /* ========================================================
+       أزرار التصنيفات
+    ======================================================== */
+
+    const categoryButtons =
+        document.querySelectorAll('.category-btn');
+
+
+    categoryButtons.forEach(
+        function(button) {
+
+
+            button.addEventListener(
+                'click',
+                function() {
+
+
+                    currentCategory =
+                        button.dataset.category;
+
+
+                    categoryButtons.forEach(
+                        function(btn) {
+
+                            btn.classList.remove(
+                                'bg-[#1a222c]',
+                                'text-[#d0a75f]',
+                                'border-[#1a222c]'
+                            );
+
+
+                            btn.classList.add(
+                                'bg-white',
+                                'text-[#1a222c]',
+                                'border-gray-200'
+                            );
+
+                        }
+                    );
+
+
+                    button.classList.remove(
+                        'bg-white',
+                        'text-[#1a222c]',
+                        'border-gray-200'
+                    );
+
+
+                    button.classList.add(
+                        'bg-[#1a222c]',
+                        'text-[#d0a75f]',
+                        'border-[#1a222c]'
+                    );
+
+
+                    filterServices();
+
+                }
+            );
+
+        }
+    );
+
 
 </script>
 
 
 </body>
 
-</html>
+    </html>
