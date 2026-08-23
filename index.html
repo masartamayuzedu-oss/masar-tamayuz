@@ -11,20 +11,15 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- FontAwesome للأيقونات -->
+    <!-- FontAwesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- خطوط المنصة -->
+    <!-- الخطوط -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap"
           rel="stylesheet">
 
-
     <style>
-
-        /* =========================================================
-           الإعدادات العامة
-        ========================================================= */
 
         html {
             scroll-behavior: smooth;
@@ -78,7 +73,7 @@
             >
 
             <span class="text-gold brand-font text-sm sm:text-base md:text-lg tracking-wide">
-                مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
+                مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَابِيَّةِ
             </span>
 
         </a>
@@ -100,7 +95,6 @@
                        py-4 px-5 flex flex-col items-end
                        text-right gap-4 z-50">
 
-
                 <a
                     href="index.html"
                     class="text-gold font-bold text-base transition w-full block">
@@ -111,7 +105,7 @@
 
 
                 <a
-                    href="#work-samples"
+                    href="#services"
                     class="text-gray-200 font-semibold text-base hover:text-gold transition w-full block">
 
                     خدماتنا
@@ -210,7 +204,6 @@
 
     <div class="flex flex-col w-full max-w-sm gap-4">
 
-
         <button
             onclick="sendGeneralWhatsApp()"
             class="bg-gold text-[#1a222c]
@@ -223,9 +216,8 @@
         </button>
 
 
-        <!-- الانتقال الناعم إلى نماذج الأعمال -->
         <a
-            href="#work-samples"
+            href="#services"
             class="border border-gray-600 text-white
                    font-bold py-4 rounded-md text-lg
                    transition hover:bg-gray-800
@@ -256,7 +248,6 @@
         class="flex flex-wrap justify-center items-center
                gap-6 md:gap-10 mt-14
                text-sm font-bold">
-
 
         <div class="flex items-center gap-2">
 
@@ -303,32 +294,44 @@
 
 
 <!-- ========================================================= -->
-<!-- 3. الخدمات المميزة -->
+<!-- 3. الخدمات المميزة - تم تطويرها إلى 12 خدمة -->
 <!-- ========================================================= -->
 
 <section
+    id="services"
     class="bg-[#f8fafc] text-[#1a222c]
            py-16 px-5 border-t border-gray-200">
-
 
     <div class="max-w-7xl mx-auto">
 
 
-        <div class="text-center max-w-2xl mx-auto mb-12">
+        <!-- عنوان القسم -->
+
+        <div class="text-center max-w-3xl mx-auto mb-12">
 
             <span
-                class="inline-block bg-[#d0a75f]/10
-                       text-[#1a222c] px-4 py-1.5
-                       rounded-full text-xs font-bold mb-4">
+                class="inline-flex items-center gap-2
+                       bg-[#d0a75f]/10
+                       text-[#1a222c]
+                       px-5 py-2
+                       rounded-full
+                       text-xs font-bold mb-5">
+
+                <i class="fas fa-layer-group text-[#d0a75f]"></i>
 
                 خدماتنا المميزة
 
             </span>
 
 
-            <h2 class="text-2xl md:text-4xl font-black mb-4">
+            <h2
+                class="text-2xl md:text-4xl
+                       font-black leading-tight mb-4">
 
-                خدمات تساعدك على إنجاز أعمالك باحترافية
+                حلول متكاملة تساعدك على
+                <span class="text-[#d0a75f]">
+                    إنجاز أعمالك باحترافية
+                </span>
 
             </h2>
 
@@ -337,8 +340,9 @@
                 class="text-gray-500 text-sm md:text-base
                        leading-relaxed">
 
-                نقدم خدمات طلابية وأكاديمية وتقنية متنوعة، مصممة لتلبية
-                احتياجاتك وتنفيذ أعمالك بجودة واحترافية.
+                نقدم مجموعة متكاملة من الخدمات الأكاديمية والتقنية
+                والإبداعية والهندسية، المصممة لتلبية احتياجاتك
+                وتنفيذ أعمالك بجودة واحترافية.
 
             </p>
 
@@ -346,13 +350,19 @@
 
 
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- ================================================= -->
+        <!-- بطاقات الخدمات -->
+        <!-- ================================================= -->
+
+        <div
+            class="grid grid-cols-1 sm:grid-cols-2
+                   lg:grid-cols-3 gap-6">
 
 
-            <!-- الخدمة 1 -->
-            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
+            <!-- 01 -->
+            <div class="group bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
 
-                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
+                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-6 group-hover:bg-[#1a222c] transition">
 
                     <i class="fas fa-graduation-cap"></i>
 
@@ -362,26 +372,152 @@
                     مشاريع التخرج
                 </h3>
 
-                <p class="text-gray-500 text-sm leading-relaxed mb-5">
-                    تنفيذ ودعم مشاريع التخرج من الفكرة إلى الإنجاز.
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    تنفيذ ودعم مشاريع التخرج من الفكرة والتخطيط
+                    إلى الإنجاز والإخراج النهائي بصورة احترافية.
                 </p>
 
-                <a href="#work-samples"
-                   class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
+                <button
+                    onclick="sendServiceWhatsApp('مشاريع التخرج')"
+                    class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl hover:bg-[#d0a75f] hover:text-[#1a222c] transition flex items-center justify-center gap-2">
 
-                    اكتشف الخدمات
-                    <i class="fas fa-arrow-left mr-1"></i>
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    اطلب هذه الخدمة
 
-                </a>
+                </button>
 
             </div>
 
 
 
-            <!-- الخدمة 2 -->
-            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
+            <!-- 02 -->
+            <div class="group bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
 
-                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
+                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-6 group-hover:bg-[#1a222c] transition">
+
+                    <i class="fas fa-book-open"></i>
+
+                </div>
+
+                <h3 class="font-black text-lg mb-3">
+                    الدراسات العليا والرسائل العلمية
+                </h3>
+
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    دعم أكاديمي متكامل لمتطلبات الدراسات العليا
+                    والرسائل والمشاريع العلمية وفق المتطلبات المحددة.
+                </p>
+
+                <button
+                    onclick="sendServiceWhatsApp('الدراسات العليا والرسائل العلمية')"
+                    class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl hover:bg-[#d0a75f] hover:text-[#1a222c] transition flex items-center justify-center gap-2">
+
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    اطلب هذه الخدمة
+
+                </button>
+
+            </div>
+
+
+
+            <!-- 03 -->
+            <div class="group bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+
+                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-6 group-hover:bg-[#1a222c] transition">
+
+                    <i class="fas fa-file-lines"></i>
+
+                </div>
+
+                <h3 class="font-black text-lg mb-3">
+                    البحوث والتقارير والواجبات
+                </h3>
+
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    إعداد وتنسيق البحوث والتقارير والواجبات
+                    وفق المتطلبات والتعليمات المحددة.
+                </p>
+
+                <button
+                    onclick="sendServiceWhatsApp('البحوث والتقارير والواجبات')"
+                    class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl hover:bg-[#d0a75f] hover:text-[#1a222c] transition flex items-center justify-center gap-2">
+
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    اطلب هذه الخدمة
+
+                </button>
+
+            </div>
+
+
+
+            <!-- 04 -->
+            <div class="group bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+
+                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-6 group-hover:bg-[#1a222c] transition">
+
+                    <i class="fas fa-file-signature"></i>
+
+                </div>
+
+                <h3 class="font-black text-lg mb-3">
+                    التنسيق الأكاديمي والبحثي
+                </h3>
+
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    تنسيق الأبحاث والملفات الأكاديمية وترتيب العناوين
+                    والفهارس والمحتوى وفق المتطلبات المطلوبة.
+                </p>
+
+                <button
+                    onclick="sendServiceWhatsApp('التنسيق الأكاديمي والبحثي')"
+                    class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl hover:bg-[#d0a75f] hover:text-[#1a222c] transition flex items-center justify-center gap-2">
+
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    اطلب هذه الخدمة
+
+                </button>
+
+            </div>
+
+
+
+            <!-- 05 -->
+            <div class="group bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+
+                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-6 group-hover:bg-[#1a222c] transition">
+
+                    <i class="fas fa-spell-check"></i>
+
+                </div>
+
+                <h3 class="font-black text-lg mb-3">
+                    التدقيق اللغوي والمراجعة
+                </h3>
+
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    مراجعة النصوص وتدقيق الأخطاء اللغوية والإملائية
+                    وتحسين وضوح المحتوى مع الحفاظ على معناه.
+                </p>
+
+                <button
+                    onclick="sendServiceWhatsApp('التدقيق اللغوي والمراجعة')"
+                    class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl hover:bg-[#d0a75f] hover:text-[#1a222c] transition flex items-center justify-center gap-2">
+
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    اطلب هذه الخدمة
+
+                </button>
+
+            </div>
+
+
+
+            <!-- 06 -->
+            <div class="group bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+
+                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-6 group-hover:bg-[#1a222c] transition">
 
                     <i class="fas fa-code"></i>
 
@@ -391,26 +527,59 @@
                     البرمجة وتقنية المعلومات
                 </h3>
 
-                <p class="text-gray-500 text-sm leading-relaxed mb-5">
-                    حلول برمجية ومشاريع تقنية مصممة وفق احتياجك.
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    حلول برمجية ومشاريع تقنية مصممة وفق احتياجك،
+                    مع التركيز على الجودة وسهولة الاستخدام.
                 </p>
 
-                <a href="#work-samples"
-                   class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
+                <button
+                    onclick="sendServiceWhatsApp('البرمجة وتقنية المعلومات')"
+                    class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl hover:bg-[#d0a75f] hover:text-[#1a222c] transition flex items-center justify-center gap-2">
 
-                    اكتشف الخدمات
-                    <i class="fas fa-arrow-left mr-1"></i>
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    اطلب هذه الخدمة
 
-                </a>
+                </button>
 
             </div>
 
 
 
-            <!-- الخدمة 3 -->
-            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
+            <!-- 07 -->
+            <div class="group bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
 
-                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
+                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-6 group-hover:bg-[#1a222c] transition">
+
+                    <i class="fas fa-globe"></i>
+
+                </div>
+
+                <h3 class="font-black text-lg mb-3">
+                    تصميم وتطوير المواقع الإلكترونية
+                </h3>
+
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    تصميم مواقع وصفحات ويب عصرية ومتجاوبة
+                    تعمل باحترافية على الجوال والكمبيوتر.
+                </p>
+
+                <button
+                    onclick="sendServiceWhatsApp('تصميم وتطوير المواقع الإلكترونية')"
+                    class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl hover:bg-[#d0a75f] hover:text-[#1a222c] transition flex items-center justify-center gap-2">
+
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    اطلب هذه الخدمة
+
+                </button>
+
+            </div>
+
+
+
+            <!-- 08 -->
+            <div class="group bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+
+                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-6 group-hover:bg-[#1a222c] transition">
 
                     <i class="fas fa-chart-line"></i>
 
@@ -420,26 +589,59 @@
                     الإحصاء وتحليل البيانات
                 </h3>
 
-                <p class="text-gray-500 text-sm leading-relaxed mb-5">
-                    تحليل دقيق للبيانات وتحويلها إلى نتائج واضحة.
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    تحليل البيانات وتحويلها إلى نتائج واضحة
+                    تساعد على فهم المعلومات وعرضها بصورة احترافية.
                 </p>
 
-                <a href="#work-samples"
-                   class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
+                <button
+                    onclick="sendServiceWhatsApp('الإحصاء وتحليل البيانات')"
+                    class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl hover:bg-[#d0a75f] hover:text-[#1a222c] transition flex items-center justify-center gap-2">
 
-                    اكتشف الخدمات
-                    <i class="fas fa-arrow-left mr-1"></i>
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    اطلب هذه الخدمة
 
-                </a>
+                </button>
 
             </div>
 
 
 
-            <!-- الخدمة 4 -->
-            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
+            <!-- 09 -->
+            <div class="group bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
 
-                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
+                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-6 group-hover:bg-[#1a222c] transition">
+
+                    <i class="fas fa-square-poll-vertical"></i>
+
+                </div>
+
+                <h3 class="font-black text-lg mb-3">
+                    الاستبيانات وتحليل النتائج
+                </h3>
+
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    تنظيم بيانات الاستبيانات وتحليل النتائج
+                    وعرضها بطريقة واضحة وسهلة الفهم.
+                </p>
+
+                <button
+                    onclick="sendServiceWhatsApp('الاستبيانات وتحليل النتائج')"
+                    class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl hover:bg-[#d0a75f] hover:text-[#1a222c] transition flex items-center justify-center gap-2">
+
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    اطلب هذه الخدمة
+
+                </button>
+
+            </div>
+
+
+
+            <!-- 10 -->
+            <div class="group bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+
+                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-6 group-hover:bg-[#1a222c] transition">
 
                     <i class="fas fa-palette"></i>
 
@@ -449,26 +651,28 @@
                     التصميم والعروض التقديمية
                 </h3>
 
-                <p class="text-gray-500 text-sm leading-relaxed mb-5">
-                    تصاميم وعروض احترافية تجمع بين الجودة وجاذبية العرض.
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    تصاميم وعروض تقديمية احترافية تجمع بين
+                    جودة المحتوى وجاذبية الإخراج البصري.
                 </p>
 
-                <a href="#work-samples"
-                   class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
+                <button
+                    onclick="sendServiceWhatsApp('التصميم والعروض التقديمية')"
+                    class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl hover:bg-[#d0a75f] hover:text-[#1a222c] transition flex items-center justify-center gap-2">
 
-                    اكتشف الخدمات
-                    <i class="fas fa-arrow-left mr-1"></i>
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    اطلب هذه الخدمة
 
-                </a>
+                </button>
 
             </div>
 
 
 
-            <!-- الخدمة 5 -->
-            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
+            <!-- 11 -->
+            <div class="group bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
 
-                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
+                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-6 group-hover:bg-[#1a222c] transition">
 
                     <i class="fas fa-drafting-compass"></i>
 
@@ -478,103 +682,48 @@
                     الهندسة والمخططات
                 </h3>
 
-                <p class="text-gray-500 text-sm leading-relaxed mb-5">
-                    مخططات وتصاميم هندسية ومعمارية بدقة واحترافية.
-                </p>
-
-                <a href="#work-samples"
-                   class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
-
-                    اكتشف الخدمات
-                    <i class="fas fa-arrow-left mr-1"></i>
-
-                </a>
-
-            </div>
-
-
-
-            <!-- الخدمة 6 -->
-            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
-
-                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
-
-                    <i class="fas fa-graduation-cap"></i>
-
-                </div>
-
-                <h3 class="font-black text-lg mb-3">
-                    الدراسات العليا والرسائل العلمية
-                </h3>
-
-                <p class="text-gray-500 text-sm leading-relaxed mb-5">
-                    دعم أكاديمي متكامل لمتطلبات الدراسات العليا.
-                </p>
-
-                <a href="#work-samples"
-                   class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
-
-                    اكتشف الخدمات
-                    <i class="fas fa-arrow-left mr-1"></i>
-
-                </a>
-
-            </div>
-
-
-
-            <!-- الخدمة 7 -->
-            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
-
-                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
-
-                    <i class="fas fa-file-lines"></i>
-
-                </div>
-
-                <h3 class="font-black text-lg mb-3">
-                    الواجبات والبحوث والتقارير
-                </h3>
-
-                <p class="text-gray-500 text-sm leading-relaxed mb-5">
-                    إعداد وتنسيق الواجبات والبحوث والتقارير وفق متطلباتك.
-                </p>
-
-                <a href="#work-samples"
-                   class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
-
-                    اكتشف الخدمات
-                    <i class="fas fa-arrow-left mr-1"></i>
-
-                </a>
-
-            </div>
-
-
-
-            <!-- الخدمة 8 -->
-            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
-
-                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
-
-                    <i class="fas fa-comments"></i>
-
-                </div>
-
-                <h3 class="font-black text-lg mb-3">
-                    الاستشارات والدعم
-                </h3>
-
-                <p class="text-gray-500 text-sm leading-relaxed mb-5">
-                    استشارات ومتابعة لفهم احتياجك وتحديد الحل والطريقة الأنسب لطلبك.
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    مخططات وتصاميم هندسية ومعمارية بدقة
+                    واحترافية، مع الاهتمام بجودة الإخراج.
                 </p>
 
                 <button
-                    onclick="sendConsultationWhatsApp()"
-                    class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition cursor-pointer">
+                    onclick="sendServiceWhatsApp('الهندسة والمخططات')"
+                    class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl hover:bg-[#d0a75f] hover:text-[#1a222c] transition flex items-center justify-center gap-2">
 
-                    تواصل معنا
-                    <i class="fas fa-arrow-left mr-1"></i>
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    اطلب هذه الخدمة
+
+                </button>
+
+            </div>
+
+
+
+            <!-- 12 -->
+            <div class="group bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+
+                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-6 group-hover:bg-[#1a222c] transition">
+
+                    <i class="fas fa-id-card"></i>
+
+                </div>
+
+                <h3 class="font-black text-lg mb-3">
+                    تصميم السيرة الذاتية والملفات المهنية
+                </h3>
+
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    تصميم وتنسيق السير الذاتية والملفات المهنية
+                    بصورة عصرية تبرز مهاراتك وخبراتك باحترافية.
+                </p>
+
+                <button
+                    onclick="sendServiceWhatsApp('تصميم السيرة الذاتية والملفات المهنية')"
+                    class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl hover:bg-[#d0a75f] hover:text-[#1a222c] transition flex items-center justify-center gap-2">
+
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    اطلب هذه الخدمة
 
                 </button>
 
@@ -584,21 +733,30 @@
 
 
 
-        <div class="text-center mt-10">
+        <!-- طلب خدمة مخصصة -->
 
-            <a
-                href="#work-samples"
-                class="inline-flex items-center gap-2
-                       bg-[#1a222c] text-white px-7 py-3.5
+        <div class="text-center mt-12">
+
+            <p class="text-gray-500 text-sm mb-4">
+                لم تجد الخدمة التي تبحث عنها؟
+            </p>
+
+
+            <button
+                onclick="sendGeneralWhatsApp()"
+                class="inline-flex items-center justify-center
+                       gap-2 bg-[#1a222c]
+                       text-white px-8 py-3.5
                        rounded-xl font-bold text-sm
                        hover:bg-[#d0a75f]
-                       hover:text-[#1a222c] transition">
+                       hover:text-[#1a222c]
+                       transition">
 
-                عرض جميع الخدمات
+                <i class="fab fa-whatsapp text-lg"></i>
 
-                <i class="fas fa-arrow-left"></i>
+                اطلب خدمة مخصصة
 
-            </a>
+            </button>
 
         </div>
 
@@ -676,9 +834,7 @@
                     </h3>
 
                     <p class="text-gray-500 text-xs leading-relaxed">
-
                         نتعامل مع معلوماتك وملفاتك بمسؤولية، ونحرص على الحفاظ على خصوصيتها وسريتها طوال مراحل العمل.
-
                     </p>
 
                 </div>
@@ -748,9 +904,7 @@
 <!-- 5. كيف نعمل؟ -->
 <!-- ========================================================= -->
 
-<section
-    class="bg-[#f8fafc] text-[#1a222c]
-           py-16 px-5 border-y border-gray-200">
+<section class="bg-[#f8fafc] text-[#1a222c] py-16 px-5 border-y border-gray-200">
 
     <div class="max-w-7xl mx-auto">
 
@@ -852,9 +1006,7 @@
 <!-- 6. نماذج من الأعمال -->
 <!-- ========================================================= -->
 
-<section
-    id="work-samples"
-    class="bg-white text-[#1a222c] py-16 px-5">
+<section id="work-samples" class="bg-white text-[#1a222c] py-16 px-5">
 
     <div class="max-w-7xl mx-auto">
 
@@ -866,11 +1018,9 @@
                     أعمالنا
                 </span>
 
-
                 <h2 class="text-2xl md:text-4xl font-black mb-3">
                     نماذج من أعمالنا السابقة
                 </h2>
-
 
                 <p class="text-gray-500 text-sm max-w-2xl leading-relaxed">
                     تعرف على نماذج من الخدمات والأعمال التي تم تنفيذها سابقًا.
@@ -878,30 +1028,13 @@
 
             </div>
 
-
-            <a
-                href="#work-samples"
-                class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition whitespace-nowrap">
-
-                مشاهدة الخدمات
-
-                <i class="fas fa-arrow-left mr-1"></i>
-
-            </a>
-
         </div>
 
-
-
-        <!-- ================================================= -->
-        <!-- النماذج -->
-        <!-- ================================================= -->
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
 
-            <!-- النموذج الأول -->
-
+            <!-- النموذج 1 -->
             <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
 
                 <div class="h-64 bg-gray-100 overflow-hidden">
@@ -914,31 +1047,21 @@
 
                 </div>
 
-
                 <div class="p-6">
 
                     <h3 class="font-black mb-3 text-lg">
                         تصميم خرائط ذهنية ومفاهيمية ذكية
                     </h3>
 
-
                     <p class="text-gray-500 text-sm leading-relaxed mb-5">
-
-                        نحوّل الأفكار والمعلومات إلى خرائط ذهنية ومفاهيمية منظمة
-                        تساعد على تبسيط المحتوى وربط الأفكار وعرضها بصورة واضحة
-                        وجذابة وسهلة الفهم.
-
+                        نحوّل الأفكار والمعلومات إلى خرائط ذهنية ومفاهيمية منظمة تساعد على تبسيط المحتوى وربط الأفكار وعرضها بصورة واضحة وجذابة وسهلة الفهم.
                     </p>
-
 
                     <button
                         onclick="sendServiceWhatsApp('تصميم خريطة ذهنية ومفاهيمية ذكية')"
-                        class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl
-                               hover:bg-[#d0a75f] hover:text-[#1a222c]
-                               transition flex items-center justify-center gap-2">
+                        class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl hover:bg-[#d0a75f] hover:text-[#1a222c] transition flex items-center justify-center gap-2">
 
                         <i class="fab fa-whatsapp text-lg"></i>
-
                         اطلب هذه الخدمة
 
                     </button>
@@ -949,8 +1072,7 @@
 
 
 
-            <!-- النموذج الثاني -->
-
+            <!-- النموذج 2 -->
             <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
 
                 <div class="h-64 bg-gray-100 overflow-hidden">
@@ -963,29 +1085,21 @@
 
                 </div>
 
-
                 <div class="p-6">
 
                     <h3 class="font-black mb-3 text-lg">
                         تصاميم ورسم هندسي معماري احترافي
                     </h3>
 
-
                     <p class="text-gray-500 text-sm leading-relaxed mb-5">
-
                         نحول أفكارك ورؤيتك إلى مخططات وتصاميم معمارية دقيقة تجمع بين جمال الإخراج البصري والاستغلال الأمثل للمساحات، مما يضمن تنفيذ مشروعك بأعلى درجات الفخامة والدقة الهندسية.
-
                     </p>
-
 
                     <button
                         onclick="sendServiceWhatsApp('تصميم ورسم هندسي معماري احترافي')"
-                        class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl
-                               hover:bg-[#d0a75f] hover:text-[#1a222c]
-                               transition flex items-center justify-center gap-2">
+                        class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl hover:bg-[#d0a75f] hover:text-[#1a222c] transition flex items-center justify-center gap-2">
 
                         <i class="fab fa-whatsapp text-lg"></i>
-
                         اطلب هذه الخدمة
 
                     </button>
@@ -996,8 +1110,7 @@
 
 
 
-            <!-- النموذج الثالث -->
-
+            <!-- النموذج 3 -->
             <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
 
                 <div class="h-64 bg-gray-100 overflow-hidden">
@@ -1010,29 +1123,21 @@
 
                 </div>
 
-
                 <div class="p-6">
 
                     <h3 class="font-black mb-3 text-lg">
                         تصميم بوسترات إعلانية وتفاعلية احترافية
                     </h3>
 
-
                     <p class="text-gray-500 text-sm leading-relaxed mb-5">
-
                         نحول أفكارك ورسائلك التسويقية إلى تصاميم بوسترات بصرية جذابة تدمج بين قوة العبارة وتناسق العناصر الفنية، مما يضمن لفت الانتباه وإيصال هويتك أو فعاليتك للجمهور المستهدف بأعلى درجات التأثير والاحترافية.
-
                     </p>
-
 
                     <button
                         onclick="sendServiceWhatsApp('تصميم بوسترات إعلانية وتفاعلية احترافية')"
-                        class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl
-                               hover:bg-[#d0a75f] hover:text-[#1a222c]
-                               transition flex items-center justify-center gap-2">
+                        class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl hover:bg-[#d0a75f] hover:text-[#1a222c] transition flex items-center justify-center gap-2">
 
                         <i class="fab fa-whatsapp text-lg"></i>
-
                         اطلب هذه الخدمة
 
                     </button>
@@ -1043,8 +1148,7 @@
 
 
 
-            <!-- النموذج الرابع -->
-
+            <!-- النموذج 4 -->
             <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
 
                 <div class="h-64 bg-gray-100 overflow-hidden">
@@ -1057,29 +1161,21 @@
 
                 </div>
 
-
                 <div class="p-6">
 
                     <h3 class="font-black mb-3 text-lg">
                         تصميم عروض تقديمية (PowerPoint) احترافية
                     </h3>
 
-
                     <p class="text-gray-500 text-sm leading-relaxed mb-5">
-
-                        نصمم عروضكم التقديمية بأسلوب إبداعي يناسب كافة المجالات (الأكاديمية، التجارية، والتدريبية). نجمع بين التنسيق البصري الجذاب وسهولة عرض المعلومات، مع اهتمام دقيق بالهوية البصرية لضمان تقديم محتواكم بأفضل صورة ممكنة وأعلى مستويات الاحترافية.
-
+                        نصمم عروضكم التقديمية بأسلوب إبداعي يناسب كافة المجالات الأكاديمية والتجارية والتدريبية، مع الاهتمام بالهوية البصرية وسهولة عرض المعلومات.
                     </p>
-
 
                     <button
                         onclick="sendServiceWhatsApp('تصميم عروض تقديمية PowerPoint احترافية')"
-                        class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl
-                               hover:bg-[#d0a75f] hover:text-[#1a222c]
-                               transition flex items-center justify-center gap-2">
+                        class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl hover:bg-[#d0a75f] hover:text-[#1a222c] transition flex items-center justify-center gap-2">
 
                         <i class="fab fa-whatsapp text-lg"></i>
-
                         اطلب هذه الخدمة
 
                     </button>
@@ -1090,8 +1186,7 @@
 
 
 
-            <!-- النموذج الخامس -->
-
+            <!-- النموذج 5 -->
             <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
 
                 <div class="h-64 bg-gray-100 overflow-hidden">
@@ -1104,29 +1199,21 @@
 
                 </div>
 
-
                 <div class="p-6">
 
                     <h3 class="font-black mb-3 text-lg">
                         تصميم إنفوجرافيك وعروض بيانات احترافية
                     </h3>
 
-
                     <p class="text-gray-500 text-sm leading-relaxed mb-5">
-
-                        نحول المعلومات والبيانات المعقدة إلى تصاميم إنفوجرافيك إبداعية تجمع بين دقة المحتوى وجمال الإخراج البصري، مما يسهل وصول رسالتك بوضوح وتأثير عالٍ في العروض التقديمية والمشاريع الأكاديمية.
-
+                        نحول المعلومات والبيانات المعقدة إلى تصاميم إنفوجرافيك إبداعية تجمع بين دقة المحتوى وجمال الإخراج البصري.
                     </p>
-
 
                     <button
                         onclick="sendServiceWhatsApp('تصميم إنفوجرافيك وعروض بيانات احترافية')"
-                        class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl
-                               hover:bg-[#d0a75f] hover:text-[#1a222c]
-                               transition flex items-center justify-center gap-2">
+                        class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl hover:bg-[#d0a75f] hover:text-[#1a222c] transition flex items-center justify-center gap-2">
 
                         <i class="fab fa-whatsapp text-lg"></i>
-
                         اطلب هذه الخدمة
 
                     </button>
@@ -1137,8 +1224,7 @@
 
 
 
-            <!-- النموذج السادس -->
-
+            <!-- النموذج 6 -->
             <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
 
                 <div class="h-64 bg-gray-100 overflow-hidden">
@@ -1151,29 +1237,21 @@
 
                 </div>
 
-
                 <div class="p-6">
 
                     <h3 class="font-black mb-3 text-lg">
                         تصميم وتنسيق سيرة ذاتية (CV) احترافية
                     </h3>
 
-
                     <p class="text-gray-500 text-sm leading-relaxed mb-5">
-
-                        نحول خبراتك ومهاراتك إلى سيرة ذاتية متكاملة باللغة العربية أو الإنجليزية، مصممة وفق معايير أنظمة الفرز الآلي (ATS) لضمان سهولة قراءة بياناتك، مع الحفاظ على ترتيب منطقي وتنسيق بصري عصري يبرز نقاط قوتك ويضمن لملفك حضوراً مهنياً قوياً يلفت انتباه أصحاب العمل.
-
+                        نحول خبراتك ومهاراتك إلى سيرة ذاتية متكاملة باللغة العربية أو الإنجليزية، مصممة وفق معايير أنظمة الفرز الآلي ATS مع تنسيق بصري عصري.
                     </p>
 
-
                     <button
-                        onclick="sendServiceWhatsApp('تصميم وتنسيق سيرة ذاتية (CV) احترافية')"
-                        class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl
-                               hover:bg-[#d0a75f] hover:text-[#1a222c]
-                               transition flex items-center justify-center gap-2">
+                        onclick="sendServiceWhatsApp('تصميم وتنسيق سيرة ذاتية CV احترافية')"
+                        class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl hover:bg-[#d0a75f] hover:text-[#1a222c] transition flex items-center justify-center gap-2">
 
                         <i class="fab fa-whatsapp text-lg"></i>
-
                         اطلب هذه الخدمة
 
                     </button>
@@ -1181,7 +1259,6 @@
                 </div>
 
             </div>
-
 
         </div>
 
@@ -1195,9 +1272,7 @@
 <!-- 7. آراء الطلاب -->
 <!-- ========================================================= -->
 
-<section
-    class="bg-[#f8fafc] text-[#1a222c]
-           py-16 px-5 border-y border-gray-200">
+<section class="bg-[#f8fafc] text-[#1a222c] py-16 px-5 border-y border-gray-200">
 
     <div class="max-w-5xl mx-auto text-center">
 
@@ -1291,11 +1366,9 @@
                 أسئلة شائعة
             </span>
 
-
             <h2 class="text-2xl md:text-4xl font-black mb-3">
                 لديك استفسار؟
             </h2>
-
 
             <p class="text-gray-500 text-sm">
                 بعض الإجابات السريعة على الأسئلة التي قد تدور في ذهنك.
@@ -1321,13 +1394,10 @@
 
 
                 <p class="text-gray-500 text-xs leading-relaxed mt-4">
-
                     يمكنك التواصل معنا مباشرة عبر واتساب وإرسال تفاصيل الخدمة التي تحتاج إليها.
-
                 </p>
 
             </details>
-
 
 
             <details class="group bg-[#f8fafc] border border-gray-200 rounded-2xl p-5">
@@ -1344,14 +1414,10 @@
 
 
                 <p class="text-gray-500 text-xs leading-relaxed mt-4">
-
-                    تختلف التكلفة حسب نوع الخدمة وحجم العمل ومتطلباته،
-                    ويتم الاتفاق على التفاصيل قبل البدء.
-
+                    تختلف التكلفة حسب نوع الخدمة وحجم العمل ومتطلباته، ويتم الاتفاق على التفاصيل قبل البدء.
                 </p>
 
             </details>
-
 
 
             <details class="group bg-[#f8fafc] border border-gray-200 rounded-2xl p-5">
@@ -1368,14 +1434,10 @@
 
 
                 <p class="text-gray-500 text-xs leading-relaxed mt-4">
-
-                    نعم، يتم متابعة الطلب بعد التسليم والتعامل مع التعديلات
-                    المطلوبة حسب الاتفاق.
-
+                    نعم، يتم متابعة الطلب بعد التسليم والتعامل مع التعديلات المطلوبة حسب الاتفاق.
                 </p>
 
             </details>
-
 
 
             <details class="group bg-[#f8fafc] border border-gray-200 rounded-2xl p-5">
@@ -1392,9 +1454,7 @@
 
 
                 <p class="text-gray-500 text-xs leading-relaxed mt-4">
-
                     يتم تسليم الملفات بالطريقة المناسبة والمتفق عليها مع العميل.
-
                 </p>
 
             </details>
@@ -1406,8 +1466,7 @@
 
             <a
                 href="contact.html"
-                class="text-[#1a222c] font-bold text-sm
-                       hover:text-[#d0a75f] transition">
+                class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
 
                 المزيد من الأسئلة والإجابات
 
@@ -1452,10 +1511,8 @@
 
 
                 <p class="text-gray-300 text-sm leading-relaxed max-w-xl">
-
                     أرسل تفاصيل طلبك وسنتواصل معك لمراجعة المتطلبات
                     وتحديد الخطوات المناسبة.
-
                 </p>
 
             </div>
@@ -1547,15 +1604,9 @@
 
 <script>
 
-    /*
-     * رقم واتساب المنصة
-     */
     const WHATSAPP_NUMBER = '967736190956';
 
 
-    /*
-     * فتح واتساب برسالة مخصصة
-     */
     function openWhatsApp(message) {
 
         const encodedMessage = encodeURIComponent(message);
@@ -1568,9 +1619,6 @@
     }
 
 
-    /*
-     * الرسالة العامة
-     */
     function sendGeneralWhatsApp() {
 
         const message =
@@ -1586,9 +1634,6 @@
     }
 
 
-    /*
-     * رسالة الاستشارات والدعم
-     */
     function sendConsultationWhatsApp() {
 
         const message =
@@ -1604,9 +1649,6 @@
     }
 
 
-    /*
-     * رسالة مخصصة لكل خدمة
-     */
     function sendServiceWhatsApp(serviceName) {
 
         const message =
@@ -1626,4 +1668,4 @@
 
 </body>
 
-                        </html>
+                    </html>
