@@ -19,6 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap"
           rel="stylesheet">
 
+
     <style>
 
         /* =========================================================
@@ -31,7 +32,8 @@
 
         body {
             font-family: 'Tajawal', sans-serif;
-            background-color: #1a222c;
+            background-color: #f8fafc;
+            overflow-x: hidden;
         }
 
         .brand-font {
@@ -53,24 +55,310 @@
 
 
         /* =========================================================
-           الموجة الفخمة بين القسم الداكن والقسم الفاتح
+           الواجهة الرئيسية الفخمة
         ========================================================= */
 
         .hero-section {
             position: relative;
+            background:
+                radial-gradient(
+                    circle at 50% 35%,
+                    rgba(208, 167, 95, 0.075) 0%,
+                    rgba(208, 167, 95, 0.025) 28%,
+                    transparent 60%
+                ),
+                linear-gradient(
+                    180deg,
+                    #0d1722 0%,
+                    #111d29 55%,
+                    #17232e 100%
+                );
+
             overflow: hidden;
-            padding-bottom: 190px !important;
         }
+
+
+        /* توهج ذهبي خفيف */
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            width: 650px;
+            height: 650px;
+            left: -320px;
+            top: 100px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(208,167,95,0.08) 0%,
+                    rgba(208,167,95,0.025) 35%,
+                    transparent 70%
+                );
+
+            pointer-events: none;
+        }
+
+
+        .hero-section::after {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            right: -250px;
+            bottom: 130px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(208,167,95,0.07) 0%,
+                    rgba(208,167,95,0.02) 40%,
+                    transparent 72%
+                );
+
+            pointer-events: none;
+        }
+
+
+        /* =========================================================
+           زخارف خلفية ذهبية
+        ========================================================= */
+
+        .hero-decoration {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.65;
+        }
+
+        .hero-decoration-right {
+            right: -130px;
+            bottom: 100px;
+            width: 430px;
+            height: 430px;
+        }
+
+        .hero-decoration-left {
+            left: -180px;
+            bottom: 70px;
+            width: 420px;
+            height: 420px;
+            opacity: 0.35;
+        }
+
+
+        /* =========================================================
+           شارة المنصة
+        ========================================================= */
+
+        .hero-badge {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-width: 260px;
+            height: 54px;
+
+            color: #d0a75f;
+
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+
+            background: rgba(13, 23, 34, 0.65);
+
+            clip-path: polygon(
+                9% 0,
+                91% 0,
+                100% 50%,
+                91% 100%,
+                9% 100%,
+                0 50%
+            );
+
+            isolation: isolate;
+        }
+
+
+        .hero-badge::before {
+            content: "";
+            position: absolute;
+            inset: 1px;
+
+            background: #101b27;
+
+            clip-path: polygon(
+                9% 0,
+                91% 0,
+                100% 50%,
+                91% 100%,
+                9% 100%,
+                0 50%
+            );
+
+            z-index: -1;
+        }
+
+
+        .hero-badge::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background: linear-gradient(
+                90deg,
+                transparent 5%,
+                #d0a75f 20%,
+                #f3d48b 50%,
+                #d0a75f 80%,
+                transparent 95%
+            );
+
+            clip-path: polygon(
+                9% 0,
+                91% 0,
+                100% 50%,
+                91% 100%,
+                9% 100%,
+                0 50%,
+                9% 2px,
+                90.5% 2px,
+                97.5% 50%,
+                90.5% calc(100% - 2px),
+                9% calc(100% - 2px),
+                2.5% 50%,
+                9% 0
+            );
+
+            opacity: 0.95;
+            z-index: -2;
+        }
+
+
+        /* =========================================================
+           عنوان الواجهة
+        ========================================================= */
+
+        .hero-title {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-shadow:
+                0 2px 20px rgba(255,255,255,0.03);
+        }
+
+
+        /* =========================================================
+           أزرار الواجهة
+        ========================================================= */
+
+        .hero-button {
+            position: relative;
+            min-height: 66px;
+            border-radius: 12px;
+
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 800;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease;
+        }
+
+
+        .hero-button:hover {
+            transform: translateY(-2px);
+        }
+
+
+        .hero-button-primary {
+            background:
+                linear-gradient(
+                    135deg,
+                    #d0a75f 0%,
+                    #e1ba73 50%,
+                    #c79a4f 100%
+                );
+
+            color: #101b27;
+
+            box-shadow:
+                0 12px 30px rgba(208,167,95,0.18);
+        }
+
+
+        .hero-button-primary:hover {
+            box-shadow:
+                0 16px 38px rgba(208,167,95,0.28);
+        }
+
+
+        .hero-button-outline {
+            background: rgba(13,23,34,0.38);
+            color: white;
+            border: 1px solid rgba(208,167,95,0.8);
+        }
+
+
+        .hero-button-outline:hover {
+            background: rgba(208,167,95,0.08);
+            border-color: #e3bd78;
+        }
+
+
+        /* =========================================================
+           إحصائيات الواجهة
+        ========================================================= */
+
+        .hero-stats {
+            position: relative;
+            z-index: 5;
+        }
+
+
+        .hero-stat {
+            position: relative;
+            min-width: 160px;
+        }
+
+
+        .hero-stat + .hero-stat::before {
+            content: "";
+            position: absolute;
+
+            right: -1px;
+            top: 8px;
+
+            width: 1px;
+            height: 58px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    transparent,
+                    rgba(208,167,95,0.85),
+                    transparent
+                );
+        }
+
+
+        /* =========================================================
+           الموجة الفخمة أسفل الـ Hero
+        ========================================================= */
 
         .hero-wave {
             position: absolute;
-            left: 0;
             bottom: -1px;
+            left: 0;
+
             width: 100%;
             height: 190px;
-            z-index: 5;
+
+            z-index: 10;
+
             pointer-events: none;
         }
+
 
         .hero-wave svg {
             display: block;
@@ -80,34 +368,99 @@
 
 
         /* =========================================================
-           تحسين الموجة للجوال
+           تحسين الجوال
         ========================================================= */
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
 
             .hero-section {
-                padding-bottom: 150px !important;
+                min-height: 1060px;
+            }
+
+            .hero-badge {
+                min-width: 225px;
+                height: 50px;
+                font-size: 16px;
+            }
+
+            .hero-title {
+                font-size: 38px !important;
+                line-height: 1.45 !important;
+            }
+
+            .hero-description {
+                font-size: 15px !important;
+                line-height: 2 !important;
+            }
+
+            .hero-button {
+                min-height: 64px;
+            }
+
+            .hero-stats {
+                gap: 28px !important;
+            }
+
+            .hero-stat {
+                min-width: 130px;
+            }
+
+            .hero-stat + .hero-stat::before {
+                display: none;
             }
 
             .hero-wave {
-                height: 150px;
+                height: 145px;
             }
 
+            .hero-decoration-right {
+                right: -220px;
+                bottom: 120px;
+                width: 420px;
+                height: 420px;
+            }
+
+            .hero-decoration-left {
+                left: -240px;
+                bottom: 100px;
+            }
         }
+
+
+        @media (max-width: 420px) {
+
+            .hero-section {
+                min-height: 1040px;
+            }
+
+            .hero-title {
+                font-size: 34px !important;
+            }
+
+            .hero-badge {
+                min-width: 215px;
+                font-size: 15px;
+            }
+
+            .hero-wave {
+                height: 125px;
+            }
+        }
+
 
     </style>
 
 </head>
 
 
-<body class="text-white min-h-screen flex flex-col relative">
+<body class="text-white min-h-screen flex flex-col">
 
 
 <!-- ========================================================= -->
 <!-- 1. الهيدر -->
 <!-- ========================================================= -->
 
-<header class="bg-[#1a222c] sticky top-0 z-50">
+<header class="bg-[#0d1722] border-b border-white/10 sticky top-0 z-50">
 
     <div class="flex justify-between items-center px-5 py-4 max-w-7xl mx-auto">
 
@@ -138,8 +491,8 @@
 
 
             <div
-                class="absolute left-0 mt-3 w-60 bg-[#1a222c]
-                       border border-gray-700 rounded-2xl shadow-2xl
+                class="absolute left-0 mt-3 w-60 bg-[#101b27]
+                       border border-[#d0a75f]/30 rounded-2xl shadow-2xl
                        py-4 px-5 flex flex-col items-end
                        text-right gap-4 z-50">
 
@@ -191,7 +544,7 @@
 
                 <button
                     onclick="sendGeneralWhatsApp()"
-                    class="mt-2 bg-gold text-[#1a222c]
+                    class="mt-2 bg-gold text-[#101b27]
                            font-bold py-2.5 px-4 rounded-lg
                            text-sm hover:opacity-90 transition
                            w-full text-center flex items-center
@@ -214,136 +567,313 @@
 
 
 <!-- ========================================================= -->
-<!-- 2. الواجهة الرئيسية -->
+<!-- 2. الواجهة الرئيسية الفخمة -->
 <!-- ========================================================= -->
 
-<main
-    class="hero-section flex-grow flex flex-col items-center justify-center
-           text-center px-5 py-12 bg-[#1a222c]">
+<section class="hero-section">
 
 
-    <div
-        class="border border-gold text-gold px-6 py-1.5
-               rounded-full text-sm font-bold mb-8">
+    <!-- زخرفة يمين -->
+    <svg
+        class="hero-decoration hero-decoration-right"
+        viewBox="0 0 500 500"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
 
-        منصة موثوقة لخدماتك
+        <circle
+            cx="250"
+            cy="250"
+            r="190"
+            stroke="#d0a75f"
+            stroke-width="1"
+            opacity="0.28"/>
 
-    </div>
+        <circle
+            cx="250"
+            cy="250"
+            r="225"
+            stroke="#d0a75f"
+            stroke-width="1"
+            opacity="0.16"/>
 
+        <circle
+            cx="250"
+            cy="250"
+            r="260"
+            stroke="#d0a75f"
+            stroke-width="1"
+            opacity="0.09"/>
 
-    <h1
-        class="text-3xl md:text-5xl font-black
-               leading-snug mb-5 text-white">
-
-        إنجازك يبدأ من هنا
-
-    </h1>
-
-
-    <p
-        class="text-gray-300 text-sm md:text-base
-               max-w-lg leading-relaxed mb-10">
-
-        منصة متخصصة في تقديم الخدمات الطلابية والأكاديمية وخدمات الدراسات العليا،
-        إلى جانب الحلول التقنية والإبداعية، باحترافية وجودة عالية، لنساعدك على
-        إنجاز ما تحتاجه بسهولة، وتوفير وقتك وجهدك.
-
-    </p>
-
-
-    <div class="flex flex-col w-full max-w-sm gap-4">
-
-
-        <button
-            onclick="sendGeneralWhatsApp()"
-            class="bg-gold text-[#1a222c]
-                   font-bold py-4 rounded-md text-lg
-                   transition hover:opacity-95
-                   w-full cursor-pointer">
-
-            اطلب خدمتك الآن
-
-        </button>
+    </svg>
 
 
-        <a
-            href="#work-samples"
-            class="border border-gray-600 text-white
-                   font-bold py-4 rounded-md text-lg
-                   transition hover:bg-gray-800
-                   w-full block text-center
-                   no-underline cursor-pointer">
+    <!-- زخرفة يسار -->
+    <svg
+        class="hero-decoration hero-decoration-left"
+        viewBox="0 0 500 500"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
 
-            استكشف خدماتنا
+        <circle
+            cx="250"
+            cy="250"
+            r="170"
+            stroke="#d0a75f"
+            stroke-width="1"
+            opacity="0.22"/>
 
-        </a>
+        <circle
+            cx="250"
+            cy="250"
+            r="215"
+            stroke="#d0a75f"
+            stroke-width="1"
+            opacity="0.12"/>
 
+    </svg>
 
-        <a
-            href="about.html"
-            class="border border-gray-600 text-white
-                   font-bold py-4 rounded-md text-lg
-                   transition hover:bg-gray-800
-                   w-full block text-center
-                   no-underline cursor-pointer">
-
-            تعرّف علينا
-
-        </a>
-
-    </div>
 
 
     <div
-        class="flex flex-wrap justify-center items-center
-               gap-6 md:gap-10 mt-14
-               text-sm font-bold">
+        class="relative z-20
+               max-w-5xl mx-auto
+               px-5
+               pt-16
+               md:pt-20
+               pb-44
+               text-center">
 
 
-        <div class="flex items-center gap-2">
+        <!-- الشارة -->
 
-            <span class="text-gold text-lg">
-                +100
-            </span>
+        <div class="mb-8">
 
-            <span class="text-gray-300">
-                خدمة منجزة
-            </span>
+            <span class="hero-badge">
 
-        </div>
+                منصة موثوقة لخدماتك
 
-
-        <div class="flex items-center gap-2">
-
-            <span class="text-gold text-lg">
-                <i class="fas fa-check-circle"></i>
-            </span>
-
-            <span class="text-gray-300">
-                دعم ومتابعة مستمرة
             </span>
 
         </div>
 
 
-        <div class="flex items-center gap-2">
 
-            <span class="text-gold text-lg">
-                100%
-            </span>
+        <!-- العنوان -->
 
-            <span class="text-gray-300">
-                سرية تامة
-            </span>
+        <h1
+            class="hero-title
+                   text-4xl
+                   md:text-6xl
+                   lg:text-7xl
+                   leading-tight
+                   text-white
+                   mb-7">
+
+            إنجازك يبدأ من هنا
+
+        </h1>
+
+
+
+        <!-- الوصف -->
+
+        <p
+            class="hero-description
+                   text-gray-300
+                   text-base
+                   md:text-lg
+                   lg:text-xl
+                   max-w-3xl
+                   mx-auto
+                   leading-loose
+                   mb-10">
+
+            منصة متخصصة في تقديم الخدمات الطلابية والأكاديمية وخدمات الدراسات العليا،
+            إلى جانب الحلول التقنية والإبداعية، باحترافية وجودة عالية،
+            لنساعدك على إنجاز ما تحتاجه بسهولة، وتوفير وقتك وجهدك.
+
+        </p>
+
+
+
+        <!-- الأزرار -->
+
+        <div
+            class="flex flex-col
+                   w-full
+                   max-w-xl
+                   mx-auto
+                   gap-4">
+
+
+            <!-- الطلب -->
+
+            <button
+                onclick="sendGeneralWhatsApp()"
+                class="hero-button hero-button-primary
+                       w-full
+                       text-lg
+                       md:text-xl
+                       flex items-center
+                       justify-center
+                       gap-4">
+
+                اطلب خدمتك الآن
+
+                <i class="fas fa-chevron-left text-sm"></i>
+
+            </button>
+
+
+
+            <!-- الخدمات -->
+
+            <a
+                href="#work-samples"
+                class="hero-button hero-button-outline
+                       w-full
+                       text-lg
+                       md:text-xl
+                       flex items-center
+                       justify-center
+                       gap-4
+                       no-underline">
+
+                استكشف خدماتنا
+
+                <i class="fas fa-chevron-left text-sm"></i>
+
+            </a>
+
+
+
+            <!-- من نحن -->
+
+            <a
+                href="about.html"
+                class="hero-button hero-button-outline
+                       w-full
+                       text-lg
+                       md:text-xl
+                       flex items-center
+                       justify-center
+                       gap-4
+                       no-underline">
+
+                تعرّف علينا
+
+                <i class="fas fa-chevron-left text-sm"></i>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- الإحصائيات -->
+        <!-- ================================================= -->
+
+        <div
+            class="hero-stats
+                   flex
+                   flex-wrap
+                   justify-center
+                   items-center
+                   gap-10
+                   md:gap-0
+                   mt-12
+                   md:mt-14">
+
+
+            <!-- سرية -->
+
+            <div class="hero-stat flex flex-col items-center gap-1">
+
+                <span
+                    class="text-[#d0a75f]
+                           text-2xl
+                           md:text-3xl
+                           font-black">
+
+                    100%
+
+                </span>
+
+                <span
+                    class="text-gray-200
+                           text-sm
+                           md:text-base">
+
+                    سرية تامة
+
+                </span>
+
+            </div>
+
+
+
+            <!-- الدعم -->
+
+            <div class="hero-stat flex flex-col items-center gap-1">
+
+                <span
+                    class="text-[#d0a75f]
+                           text-2xl
+                           md:text-3xl">
+
+                    <i class="fas fa-circle-check"></i>
+
+                </span>
+
+                <span
+                    class="text-gray-200
+                           text-sm
+                           md:text-base">
+
+                    دعم ومتابعة مستمرة
+
+                </span>
+
+            </div>
+
+
+
+            <!-- الخدمات -->
+
+            <div class="hero-stat flex flex-col items-center gap-1">
+
+                <span
+                    class="text-[#d0a75f]
+                           text-2xl
+                           md:text-3xl
+                           font-black">
+
+                    +100
+
+                </span>
+
+                <span
+                    class="text-gray-200
+                           text-sm
+                           md:text-base">
+
+                    خدمة منجزة
+
+                </span>
+
+            </div>
+
 
         </div>
 
     </div>
 
 
-    <!-- =========================================================
-         التعرج الفخم الجديد
-         ========================================================= -->
+
+    <!-- ===================================================== -->
+    <!-- الموجة الفخمة متعددة الطبقات -->
+    <!-- ===================================================== -->
 
     <div class="hero-wave">
 
@@ -352,86 +882,119 @@
             preserveAspectRatio="none"
             xmlns="http://www.w3.org/2000/svg">
 
-            <!-- الطبقة الخلفية -->
-            <path
-                d="M0 72
-                   C120 145 220 160 350 120
-                   C500 75 570 40 710 78
-                   C850 116 920 160 1070 120
-                   C1200 85 1290 35 1440 80
-                   L1440 190
-                   L0 190 Z"
-                fill="#17212b"/>
 
+            <!-- الطبقة الخارجية الكحلية -->
 
-            <!-- الموجة الداكنة الثانية -->
             <path
-                d="M0 94
-                   C130 168 230 175 370 132
-                   C510 88 600 62 720 96
-                   C850 130 930 174 1080 137
-                   C1210 105 1305 54 1440 100
-                   L1440 190
-                   L0 190 Z"
-                fill="#1a222c"/>
+                d="
+                M0 105
+                C120 170 190 174 310 132
+                C420 94 500 78 610 108
+                C730 140 790 174 910 146
+                C1020 120 1110 82 1210 103
+                C1310 124 1370 145 1440 105
+                L1440 190
+                L0 190
+                Z
+                "
+                fill="#17232e"
+            />
 
 
             <!-- الخط الذهبي الرئيسي -->
+
             <path
-                d="M0 86
-                   C130 160 230 170 370 126
-                   C510 82 600 56 720 90
-                   C850 125 930 166 1080 130
-                   C1210 98 1305 48 1440 94"
+                d="
+                M0 107
+                C120 172 190 176 310 134
+                C420 96 500 80 610 110
+                C730 142 790 176 910 148
+                C1020 122 1110 84 1210 105
+                C1310 126 1370 147 1440 107
+                "
                 fill="none"
                 stroke="#d0a75f"
-                stroke-width="5"
-                stroke-linecap="round"/>
+                stroke-width="7"
+            />
 
 
-            <!-- الخط الذهبي الرفيع -->
+            <!-- خط ذهبي داخلي -->
+
             <path
-                d="M0 103
-                   C135 176 235 184 375 141
-                   C515 96 600 72 725 105
-                   C850 138 935 181 1085 145
-                   C1215 112 1310 66 1440 110"
+                d="
+                M0 120
+                C120 185 190 188 310 147
+                C420 109 500 93 610 123
+                C730 155 790 188 910 161
+                C1020 135 1110 97 1210 118
+                C1310 139 1370 160 1440 120
+                "
+                fill="none"
+                stroke="#e5c27c"
+                stroke-width="2"
+                opacity="0.95"
+            />
+
+
+            <!-- خط ذهبي علوي رفيع -->
+
+            <path
+                d="
+                M0 93
+                C120 158 190 162 310 120
+                C420 82 500 66 610 96
+                C730 128 790 162 910 134
+                C1020 108 1110 70 1210 91
+                C1310 112 1370 133 1440 93
+                "
                 fill="none"
                 stroke="#c9a45c"
                 stroke-width="1.5"
-                stroke-linecap="round"
-                opacity="0.9"/>
+                opacity="0.9"
+            />
 
 
-            <!-- الطبقة البيضاء التي تدخل تحت الموجة -->
+            <!-- طبقة انتقالية بيضاء -->
+
             <path
-                d="M0 126
-                   C120 192 235 198 375 155
-                   C520 112 610 90 730 122
-                   C850 154 940 198 1090 160
-                   C1220 128 1310 86 1440 125
-                   L1440 190
-                   L0 190 Z"
-                fill="#f8fafc"/>
+                d="
+                M0 142
+                C120 195 195 198 310 161
+                C425 124 500 111 610 137
+                C730 166 795 194 910 174
+                C1020 154 1110 119 1210 136
+                C1310 153 1370 170 1440 140
+                L1440 190
+                L0 190
+                Z
+                "
+                fill="#f8fafc"
+            />
 
 
-            <!-- خط ذهبي رفيع فوق القسم الفاتح -->
+            <!-- الخط الذهبي الأخير فوق الأبيض -->
+
             <path
-                d="M0 126
-                   C120 192 235 198 375 155
-                   C520 112 610 90 730 122
-                   C850 154 940 198 1090 160
-                   C1220 128 1310 86 1440 125"
+                d="
+                M0 142
+                C120 195 195 198 310 161
+                C425 124 500 111 610 137
+                C730 166 795 194 910 174
+                C1020 154 1110 119 1210 136
+                C1310 153 1370 170 1440 140
+                "
                 fill="none"
                 stroke="#d0a75f"
-                stroke-width="1.5"
-                stroke-linecap="round"/>
+                stroke-width="2"
+                opacity="0.8"
+            />
+
 
         </svg>
 
     </div>
 
-</main>
+</section>
 
 
 
@@ -449,16 +1012,24 @@
         <div class="text-center max-w-2xl mx-auto mb-12">
 
             <span
-                class="inline-block bg-[#d0a75f]/10
-                       text-[#1a222c] px-4 py-1.5
-                       rounded-full text-xs font-bold mb-4">
+                class="inline-block
+                       bg-[#d0a75f]/10
+                       text-[#1a222c]
+                       px-5 py-2
+                       rounded-full
+                       text-xs
+                       font-bold
+                       mb-5">
 
                 خدماتنا المميزة
 
             </span>
 
 
-            <h2 class="text-2xl md:text-4xl font-black mb-4">
+            <h2
+                class="text-2xl md:text-4xl
+                       font-black
+                       mb-4">
 
                 خدمات تساعدك على إنجاز أعمالك باحترافية
 
@@ -466,7 +1037,8 @@
 
 
             <p
-                class="text-gray-500 text-sm md:text-base
+                class="text-gray-500
+                       text-sm md:text-base
                        leading-relaxed">
 
                 نقدم خدمات طلابية وأكاديمية وتقنية متنوعة، مصممة لتلبية
@@ -478,10 +1050,16 @@
 
 
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+            class="grid
+                   grid-cols-1
+                   sm:grid-cols-2
+                   lg:grid-cols-3
+                   gap-6">
 
 
             <!-- الخدمة 1 -->
+
             <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
 
                 <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
@@ -509,7 +1087,9 @@
             </div>
 
 
+
             <!-- الخدمة 2 -->
+
             <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
 
                 <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
@@ -537,7 +1117,9 @@
             </div>
 
 
+
             <!-- الخدمة 3 -->
+
             <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
 
                 <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
@@ -565,7 +1147,9 @@
             </div>
 
 
+
             <!-- الخدمة 4 -->
+
             <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
 
                 <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
@@ -593,7 +1177,9 @@
             </div>
 
 
+
             <!-- الخدمة 5 -->
+
             <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
 
                 <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
@@ -621,7 +1207,9 @@
             </div>
 
 
+
             <!-- الخدمة 6 -->
+
             <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
 
                 <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
@@ -649,7 +1237,9 @@
             </div>
 
 
+
             <!-- الخدمة 7 -->
+
             <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
 
                 <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
@@ -677,7 +1267,9 @@
             </div>
 
 
+
             <!-- الخدمة 8 -->
+
             <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
 
                 <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
@@ -989,15 +1581,18 @@
                     أعمالنا
                 </span>
 
+
                 <h2 class="text-2xl md:text-4xl font-black mb-3">
                     نماذج من أعمالنا السابقة
                 </h2>
+
 
                 <p class="text-gray-500 text-sm max-w-2xl leading-relaxed">
                     تعرف على نماذج من الخدمات والأعمال التي تم تنفيذها سابقًا.
                 </p>
 
             </div>
+
 
             <a
                 href="#work-samples"
@@ -1012,10 +1607,11 @@
         </div>
 
 
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
 
-            <!-- النموذج الأول -->
+            <!-- النموذج 1 -->
 
             <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
 
@@ -1029,17 +1625,20 @@
 
                 </div>
 
+
                 <div class="p-6">
 
                     <h3 class="font-black mb-3 text-lg">
                         تصميم خرائط ذهنية ومفاهيمية ذكية
                     </h3>
 
+
                     <p class="text-gray-500 text-sm leading-relaxed mb-5">
                         نحوّل الأفكار والمعلومات إلى خرائط ذهنية ومفاهيمية منظمة
                         تساعد على تبسيط المحتوى وربط الأفكار وعرضها بصورة واضحة
                         وجذابة وسهلة الفهم.
                     </p>
+
 
                     <button
                         onclick="sendServiceWhatsApp('تصميم خريطة ذهنية ومفاهيمية ذكية')"
@@ -1058,7 +1657,8 @@
             </div>
 
 
-            <!-- النموذج الثاني -->
+
+            <!-- النموذج 2 -->
 
             <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
 
@@ -1072,15 +1672,18 @@
 
                 </div>
 
+
                 <div class="p-6">
 
                     <h3 class="font-black mb-3 text-lg">
                         تصاميم ورسم هندسي معماري احترافي
                     </h3>
 
+
                     <p class="text-gray-500 text-sm leading-relaxed mb-5">
                         نحول أفكارك ورؤيتك إلى مخططات وتصاميم معمارية دقيقة تجمع بين جمال الإخراج البصري والاستغلال الأمثل للمساحات، مما يضمن تنفيذ مشروعك بأعلى درجات الفخامة والدقة الهندسية.
                     </p>
+
 
                     <button
                         onclick="sendServiceWhatsApp('تصميم ورسم هندسي معماري احترافي')"
@@ -1099,7 +1702,8 @@
             </div>
 
 
-            <!-- النموذج الثالث -->
+
+            <!-- النموذج 3 -->
 
             <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
 
@@ -1113,15 +1717,18 @@
 
                 </div>
 
+
                 <div class="p-6">
 
                     <h3 class="font-black mb-3 text-lg">
                         تصميم بوسترات إعلانية وتفاعلية احترافية
                     </h3>
 
+
                     <p class="text-gray-500 text-sm leading-relaxed mb-5">
                         نحول أفكارك ورسائلك التسويقية إلى تصاميم بوسترات بصرية جذابة تدمج بين قوة العبارة وتناسق العناصر الفنية، مما يضمن لفت الانتباه وإيصال هويتك أو فعاليتك للجمهور المستهدف بأعلى درجات التأثير والاحترافية.
                     </p>
+
 
                     <button
                         onclick="sendServiceWhatsApp('تصميم بوسترات إعلانية وتفاعلية احترافية')"
@@ -1140,7 +1747,8 @@
             </div>
 
 
-            <!-- النموذج الرابع -->
+
+            <!-- النموذج 4 -->
 
             <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
 
@@ -1154,15 +1762,18 @@
 
                 </div>
 
+
                 <div class="p-6">
 
                     <h3 class="font-black mb-3 text-lg">
                         تصميم عروض تقديمية (PowerPoint) احترافية
                     </h3>
 
+
                     <p class="text-gray-500 text-sm leading-relaxed mb-5">
                         نصمم عروضكم التقديمية بأسلوب إبداعي يناسب كافة المجالات (الأكاديمية، التجارية، والتدريبية). نجمع بين التنسيق البصري الجذاب وسهولة عرض المعلومات، مع اهتمام دقيق بالهوية البصرية لضمان تقديم محتواكم بأفضل صورة ممكنة وأعلى مستويات الاحترافية.
                     </p>
+
 
                     <button
                         onclick="sendServiceWhatsApp('تصميم عروض تقديمية PowerPoint احترافية')"
@@ -1181,7 +1792,8 @@
             </div>
 
 
-            <!-- النموذج الخامس -->
+
+            <!-- النموذج 5 -->
 
             <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
 
@@ -1195,15 +1807,18 @@
 
                 </div>
 
+
                 <div class="p-6">
 
                     <h3 class="font-black mb-3 text-lg">
                         تصميم إنفوجرافيك وعروض بيانات احترافية
                     </h3>
 
+
                     <p class="text-gray-500 text-sm leading-relaxed mb-5">
                         نحول المعلومات والبيانات المعقدة إلى تصاميم إنفوجرافيك إبداعية تجمع بين دقة المحتوى وجمال الإخراج البصري، مما يسهل وصول رسالتك بوضوح وتأثير عالٍ في العروض التقديمية والمشاريع الأكاديمية.
                     </p>
+
 
                     <button
                         onclick="sendServiceWhatsApp('تصميم إنفوجرافيك وعروض بيانات احترافية')"
@@ -1222,7 +1837,8 @@
             </div>
 
 
-            <!-- النموذج السادس -->
+
+            <!-- النموذج 6 -->
 
             <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
 
@@ -1236,15 +1852,18 @@
 
                 </div>
 
+
                 <div class="p-6">
 
                     <h3 class="font-black mb-3 text-lg">
                         تصميم وتنسيق سيرة ذاتية (CV) احترافية
                     </h3>
 
+
                     <p class="text-gray-500 text-sm leading-relaxed mb-5">
                         نحول خبراتك ومهاراتك إلى سيرة ذاتية متكاملة باللغة العربية أو الإنجليزية، مصممة وفق معايير أنظمة الفرز الآلي (ATS) لضمان سهولة قراءة بياناتك، مع الحفاظ على ترتيب منطقي وتنسيق بصري عصري يبرز نقاط قوتك ويضمن لملفك حضوراً مهنياً قوياً يلفت انتباه أصحاب العمل.
                     </p>
+
 
                     <button
                         onclick="sendServiceWhatsApp('تصميم وتنسيق سيرة ذاتية (CV) احترافية')"
@@ -1261,6 +1880,7 @@
                 </div>
 
             </div>
+
 
         </div>
 
@@ -1284,9 +1904,11 @@
             آراء الطلاب
         </span>
 
+
         <h2 class="text-2xl md:text-4xl font-black mb-4">
             ماذا يقول عملاؤنا؟
         </h2>
+
 
         <p class="text-gray-500 text-sm mb-10">
             تجارب وآراء تساعدك على التعرف أكثر على مستوى الخدمة.
@@ -1368,9 +1990,11 @@
                 أسئلة شائعة
             </span>
 
+
             <h2 class="text-2xl md:text-4xl font-black mb-3">
                 لديك استفسار؟
             </h2>
+
 
             <p class="text-gray-500 text-sm">
                 بعض الإجابات السريعة على الأسئلة التي قد تدور في ذهنك.
@@ -1394,11 +2018,15 @@
 
                 </summary>
 
+
                 <p class="text-gray-500 text-xs leading-relaxed mt-4">
+
                     يمكنك التواصل معنا مباشرة عبر واتساب وإرسال تفاصيل الخدمة التي تحتاج إليها.
+
                 </p>
 
             </details>
+
 
 
             <details class="group bg-[#f8fafc] border border-gray-200 rounded-2xl p-5">
@@ -1413,12 +2041,16 @@
 
                 </summary>
 
+
                 <p class="text-gray-500 text-xs leading-relaxed mt-4">
+
                     تختلف التكلفة حسب نوع الخدمة وحجم العمل ومتطلباته،
                     ويتم الاتفاق على التفاصيل قبل البدء.
+
                 </p>
 
             </details>
+
 
 
             <details class="group bg-[#f8fafc] border border-gray-200 rounded-2xl p-5">
@@ -1433,12 +2065,16 @@
 
                 </summary>
 
+
                 <p class="text-gray-500 text-xs leading-relaxed mt-4">
+
                     نعم، يتم متابعة الطلب بعد التسليم والتعامل مع التعديلات
                     المطلوبة حسب الاتفاق.
+
                 </p>
 
             </details>
+
 
 
             <details class="group bg-[#f8fafc] border border-gray-200 rounded-2xl p-5">
@@ -1453,8 +2089,11 @@
 
                 </summary>
 
+
                 <p class="text-gray-500 text-xs leading-relaxed mt-4">
+
                     يتم تسليم الملفات بالطريقة المناسبة والمتفق عليها مع العميل.
+
                 </p>
 
             </details>
@@ -1512,8 +2151,10 @@
 
 
                 <p class="text-gray-300 text-sm leading-relaxed max-w-xl">
+
                     أرسل تفاصيل طلبك وسنتواصل معك لمراجعة المتطلبات
                     وتحديد الخطوات المناسبة.
+
                 </p>
 
             </div>
