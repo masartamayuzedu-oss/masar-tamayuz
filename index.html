@@ -1,1125 +1,168 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>مسار التميز للخدمات الطلابية</title>
+    <title>مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَابِيَّةِ</title>
 
-    <!-- الخطوط -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome للأيقونات -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- خطوط المنصة -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap"
+          rel="stylesheet">
+
 
     <style>
-        /* =========================================================
-           RESET
-        ========================================================= */
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* =========================================================
+           الإعدادات العامة
+        ========================================================= */
 
         html {
             scroll-behavior: smooth;
         }
 
         body {
-            font-family: "Tajawal", sans-serif;
-            background: #f7f5f0;
-            color: #17212b;
-            overflow-x: hidden;
+            font-family: 'Tajawal', sans-serif;
+            background-color: #1a222c;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        button {
-            font-family: inherit;
-        }
-
-
-        /* =========================================================
-           VARIABLES
-        ========================================================= */
-
-        :root {
-            --navy: #07131f;
-            --navy-2: #0b1824;
-            --navy-3: #101f2c;
-
-            --gold: #c9a45c;
-            --gold-light: #e3bf72;
-            --gold-dark: #9e7838;
-
-            --white: #ffffff;
-            --cream: #f7f5f0;
-
-            --border: rgba(201, 164, 92, 0.75);
-        }
-
-
-        /* =========================================================
-           HEADER
-        ========================================================= */
-
-        header {
-            height: 132px;
-            width: 100%;
-            position: absolute;
-            top: 0;
-            right: 0;
-            z-index: 100;
-
-            border-bottom: 1px solid rgba(255,255,255,0.13);
-
-            background:
-                linear-gradient(
-                    to bottom,
-                    rgba(5,15,25,0.35),
-                    rgba(5,15,25,0.08)
-                );
-
-            backdrop-filter: blur(4px);
-        }
-
-        .header-inner {
-            width: min(1400px, 92%);
-            height: 100%;
-            margin: auto;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            direction: ltr;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            direction: rtl;
-        }
-
-        .brand-logo {
-            width: 74px;
-            height: 74px;
-            object-fit: contain;
-            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.35));
-        }
-
-        .brand-name {
-            color: var(--gold-light);
-            font-family: "Cairo", sans-serif;
-            font-size: clamp(21px, 2vw, 31px);
+        .brand-font {
+            font-family: 'Cairo', sans-serif;
             font-weight: 800;
-            white-space: nowrap;
         }
 
-        .menu-button {
-            width: 52px;
-            height: 52px;
-            border: 0;
-            background: transparent;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 7px;
-
-            cursor: pointer;
-            direction: ltr;
+        .text-gold {
+            color: #d0a75f;
         }
 
-        .menu-button span {
-            display: block;
-            height: 4px;
-            border-radius: 20px;
-            background: white;
-            transition: 0.3s;
+        .bg-gold {
+            background-color: #d0a75f;
         }
 
-        .menu-button span:nth-child(1) {
-            width: 43px;
+        .border-gold {
+            border-color: #d0a75f;
         }
 
-        .menu-button span:nth-child(2) {
-            width: 43px;
-        }
-
-        .menu-button span:nth-child(3) {
-            width: 31px;
-        }
-
-
-        /* =========================================================
-           HERO
-        ========================================================= */
-
-        .hero {
-            position: relative;
-            min-height: 1040px;
-
-            padding-top: 175px;
-
-            background:
-                radial-gradient(
-                    circle at 16% 42%,
-                    rgba(201,164,92,0.09),
-                    transparent 25%
-                ),
-                radial-gradient(
-                    circle at 88% 65%,
-                    rgba(201,164,92,0.07),
-                    transparent 25%
-                ),
-                linear-gradient(
-                    135deg,
-                    #06121d 0%,
-                    #0b1824 48%,
-                    #081521 100%
-                );
-
-            overflow: hidden;
-        }
-
-
-        /* دوائر زخرفية جانبية */
-
-        .hero::before {
-            content: "";
-            position: absolute;
-
-            width: 760px;
-            height: 760px;
-
-            right: -440px;
-            bottom: 70px;
-
-            border: 1px solid rgba(201,164,92,0.14);
-            border-radius: 50%;
-
-            box-shadow:
-                0 0 0 30px rgba(201,164,92,0.025),
-                0 0 0 60px rgba(201,164,92,0.02);
-
-            pointer-events: none;
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-
-            width: 600px;
-            height: 600px;
-
-            left: -420px;
-            bottom: 90px;
-
-            border: 1px solid rgba(201,164,92,0.08);
-            border-radius: 50%;
-
-            pointer-events: none;
-        }
-
-
-        /* محتوى الهيرو */
-
-        .hero-content {
-            position: relative;
-            z-index: 5;
-
-            width: min(850px, 90%);
-            margin: auto;
-
-            text-align: center;
-        }
-
-
-        /* الشارة */
-
-        .hero-badge {
-            position: relative;
-
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-
-            min-width: 285px;
-            height: 58px;
-
-            padding: 0 32px;
-
-            color: var(--gold-light);
-
-            font-family: "Cairo", sans-serif;
-            font-size: 21px;
-            font-weight: 600;
-
-            margin-bottom: 32px;
-        }
-
-        /* إطار الشارة بشكل هندسي */
-
-        .hero-badge::before {
-            content: "";
-
-            position: absolute;
-            inset: 0;
-
-            border: 1.5px solid var(--gold);
-
-            clip-path: polygon(
-                9% 0,
-                91% 0,
-                100% 50%,
-                91% 100%,
-                9% 100%,
-                0 50%
-            );
-
-            box-shadow:
-                0 0 12px rgba(201,164,92,0.18);
-        }
-
-        .hero-badge::after {
-            content: "";
-
-            position: absolute;
-
-            width: 9px;
-            height: 9px;
-
-            top: -4px;
-            right: 16%;
-
-            border-radius: 50%;
-
-            background: var(--gold-light);
-
-            box-shadow:
-                0 0 8px var(--gold-light),
-                0 0 20px var(--gold);
-        }
-
-
-        /* العنوان */
-
-        .hero h1 {
-            font-family: "Cairo", sans-serif;
-
-            color: #ffffff;
-
-            font-size: clamp(46px, 6vw, 78px);
-            line-height: 1.25;
-
-            font-weight: 900;
-
-            margin-bottom: 28px;
-
-            text-shadow:
-                0 3px 18px rgba(0,0,0,0.25);
-        }
-
-
-        /* الوصف */
-
-        .hero-description {
-            color: rgba(255,255,255,0.82);
-
-            font-size: clamp(17px, 2vw, 24px);
-
-            line-height: 2;
-
-            max-width: 850px;
-
-            margin: 0 auto 38px;
-        }
-
-
-        /* =========================================================
-           BUTTONS
-        ========================================================= */
-
-        .hero-buttons {
-            width: min(500px, 100%);
-            margin: auto;
-
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .hero-btn {
-            min-height: 76px;
-
-            border-radius: 10px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-family: "Cairo", sans-serif;
-
-            font-size: 24px;
-            font-weight: 800;
-
-            cursor: pointer;
-
-            transition:
-                transform 0.25s ease,
-                box-shadow 0.25s ease,
-                background 0.25s ease;
-
-            position: relative;
-        }
-
-        .hero-btn:hover {
-            transform: translateY(-3px);
-        }
-
-        .hero-btn.primary {
-            background:
-                linear-gradient(
-                    135deg,
-                    #d9ad5d,
-                    #c79b4c
-                );
-
-            color: #111a22;
-
-            box-shadow:
-                0 12px 30px rgba(201,164,92,0.16);
-        }
-
-        .hero-btn.primary:hover {
-            box-shadow:
-                0 16px 38px rgba(201,164,92,0.27);
-        }
-
-        .hero-btn.secondary {
-            color: white;
-
-            border: 1.5px solid var(--gold);
-
-            background: rgba(255,255,255,0.015);
-        }
-
-        .hero-btn.secondary:hover {
-            background: rgba(201,164,92,0.07);
-        }
-
-        .arrow {
-            position: absolute;
-            left: 28px;
-
-            font-size: 32px;
-            font-weight: 400;
-
-            line-height: 1;
-        }
-
-
-        /* =========================================================
-           STATS
-        ========================================================= */
-
-        .stats {
-            width: min(900px, 92%);
-
-            margin: 48px auto 0;
-
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-
-            direction: rtl;
-        }
-
-        .stat {
-            min-height: 92px;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            position: relative;
-        }
-
-        .stat:not(:last-child)::after {
-            content: "";
-
-            position: absolute;
-
-            left: 0;
-            top: 15%;
-
-            height: 70%;
-            width: 1px;
-
-            background:
-                linear-gradient(
-                    transparent,
-                    rgba(201,164,92,0.75),
-                    transparent
-                );
-        }
-
-        .stat-number {
-            color: var(--gold-light);
-
-            font-family: "Cairo", sans-serif;
-            font-size: 30px;
-            font-weight: 800;
-
-            line-height: 1.1;
-        }
-
-        .stat-text {
-            color: white;
-
-            font-size: 20px;
-
-            margin-top: 8px;
-        }
-
-        .stat-icon {
-            width: 34px;
-            height: 34px;
-
-            border: 2px solid var(--gold);
-
-            border-radius: 50%;
-
-            color: var(--gold-light);
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 19px;
-        }
-
-
-        /* =========================================================
-           ⭐ الفاصل الفخم - SVG
-        ========================================================= */
-
-        .luxury-divider {
-            position: absolute;
-
-            left: 0;
-            right: 0;
-
-            bottom: -1px;
-
-            width: 100%;
-
-            height: 230px;
-
-            z-index: 10;
-
-            pointer-events: none;
-        }
-
-        .luxury-divider svg {
-            display: block;
-
-            width: 100%;
-            height: 100%;
-
-            overflow: visible;
-        }
-
-        /*
-          هذه الطبقات هي التي تصنع شكل الصورة المرجعية:
-          - طبقة كحلية
-          - خط ذهبي سميك
-          - خطوط ذهبية رفيعة
-          - طبقة كريمية
-        */
-
-        .wave-dark {
-            fill: var(--navy);
-        }
-
-        .wave-gold-main {
-            fill: none;
-
-            stroke: #d6aa55;
-
-            stroke-width: 24;
-
-            stroke-linecap: round;
-            stroke-linejoin: round;
-
-            filter:
-                drop-shadow(
-                    0 0 7px rgba(201,164,92,0.22)
-                );
-        }
-
-        .wave-gold-secondary {
-            fill: none;
-
-            stroke: #a9833f;
-
-            stroke-width: 5;
-
-            stroke-linecap: round;
-        }
-
-        .wave-gold-thin {
-            fill: none;
-
-            stroke: #e0bd78;
-
-            stroke-width: 2;
-
-            stroke-linecap: round;
-
-            opacity: 0.85;
-        }
-
-        .wave-cream {
-            fill: var(--cream);
-        }
-
-
-        /* =========================================================
-           SERVICES
-        ========================================================= */
-
-        .services {
-            position: relative;
-
-            background: var(--cream);
-
-            padding:
-                90px 5%
-                120px;
-
-            text-align: center;
-        }
-
-        .section-badge {
-            display: inline-flex;
-
-            padding: 10px 27px;
-
-            border-radius: 50px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #eee7d9,
-                    #f7f3ea
-                );
-
-            color: #17212b;
-
-            font-family: "Cairo", sans-serif;
-
-            font-size: 18px;
-            font-weight: 700;
-
-            margin-bottom: 22px;
-
-            box-shadow:
-                0 4px 15px rgba(0,0,0,0.03);
-        }
-
-        .services h2 {
-            font-family: "Cairo", sans-serif;
-
-            color: #101b26;
-
-            font-size: clamp(31px, 4vw, 49px);
-
-            line-height: 1.5;
-
-            font-weight: 900;
-
-            margin-bottom: 18px;
-        }
-
-        .services-intro {
-            max-width: 800px;
-
-            margin: auto;
-
-            color: #69717a;
-
-            font-size: 20px;
-
-            line-height: 1.9;
-        }
-
-
-        /* =========================================================
-           CARDS
-        ========================================================= */
-
-        .services-grid {
-            max-width: 1350px;
-
-            margin: 60px auto 0;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, minmax(0, 1fr));
-
-            gap: 28px;
-
-            text-align: right;
-        }
-
-        .service-card {
-            background: rgba(255,255,255,0.92);
-
-            border: 1px solid rgba(20,30,40,0.07);
-
-            border-radius: 22px;
-
-            padding: 38px 32px;
-
-            min-height: 320px;
-
-            box-shadow:
-                0 12px 40px rgba(18,31,43,0.06);
-
-            transition:
-                transform 0.3s ease,
-                box-shadow 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-
-            box-shadow:
-                0 22px 55px rgba(18,31,43,0.10);
-        }
-
-        .service-icon {
-            width: 78px;
-            height: 78px;
-
-            border-radius: 50%;
-
-            margin-bottom: 25px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #f3ecdf,
-                    #faf7f0
-                );
-
-            border: 1px solid rgba(201,164,92,0.12);
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            color: var(--gold);
-
-            font-size: 32px;
-        }
-
-        .service-card h3 {
-            color: #101b26;
-
-            font-family: "Cairo", sans-serif;
-
-            font-size: 24px;
-
-            margin-bottom: 15px;
-        }
-
-        .service-card p {
-            color: #747b82;
-
-            font-size: 18px;
-
-            line-height: 1.9;
-        }
-
-
-        /* =========================================================
-           FOOTER
-        ========================================================= */
-
-        footer {
-            background: #07131f;
-
-            color: rgba(255,255,255,0.75);
-
-            text-align: center;
-
-            padding: 40px 20px;
-        }
-
-        footer strong {
-            color: var(--gold-light);
-        }
-
-
-        /* =========================================================
-           TABLET
-        ========================================================= */
-
-        @media (max-width: 900px) {
-
-            header {
-                height: 105px;
-            }
-
-            .brand-logo {
-                width: 60px;
-                height: 60px;
-            }
-
-            .brand-name {
-                font-size: 19px;
-            }
-
-            .hero {
-                min-height: 930px;
-                padding-top: 145px;
-            }
-
-            .hero-description {
-                font-size: 17px;
-            }
-
-            .hero-btn {
-                min-height: 68px;
-                font-size: 21px;
-            }
-
-            .stats {
-                margin-top: 38px;
-            }
-
-            .stat-number {
-                font-size: 26px;
-            }
-
-            .stat-text {
-                font-size: 17px;
-            }
-
-            .luxury-divider {
-                height: 190px;
-            }
-
-            .services {
-                padding-top: 75px;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-
-        /* =========================================================
-           MOBILE
-        ========================================================= */
-
-        @media (max-width: 600px) {
-
-            header {
-                height: 92px;
-            }
-
-            .header-inner {
-                width: 91%;
-            }
-
-            .brand {
-                gap: 9px;
-            }
-
-            .brand-logo {
-                width: 49px;
-                height: 49px;
-            }
-
-            .brand-name {
-                font-size: 14px;
-            }
-
-            .menu-button {
-                width: 43px;
-                height: 43px;
-                gap: 6px;
-            }
-
-            .menu-button span {
-                height: 3px;
-            }
-
-            .menu-button span:nth-child(1),
-            .menu-button span:nth-child(2) {
-                width: 31px;
-            }
-
-            .menu-button span:nth-child(3) {
-                width: 23px;
-            }
-
-
-            /* HERO */
-
-            .hero {
-                min-height: 1050px;
-
-                padding-top: 145px;
-            }
-
-            .hero-content {
-                width: 89%;
-            }
-
-            .hero-badge {
-                min-width: 225px;
-                height: 48px;
-
-                font-size: 16px;
-
-                padding: 0 22px;
-
-                margin-bottom: 28px;
-            }
-
-            .hero h1 {
-                font-size: 38px;
-
-                line-height: 1.35;
-
-                margin-bottom: 22px;
-            }
-
-            .hero-description {
-                font-size: 15px;
-
-                line-height: 2;
-
-                margin-bottom: 28px;
-            }
-
-
-            /* BUTTONS */
-
-            .hero-buttons {
-                width: 100%;
-                gap: 12px;
-            }
-
-            .hero-btn {
-                min-height: 59px;
-
-                border-radius: 9px;
-
-                font-size: 18px;
-            }
-
-            .arrow {
-                left: 18px;
-                font-size: 25px;
-            }
-
-
-            /* STATS */
-
-            .stats {
-                width: 95%;
-
-                margin-top: 40px;
-
-                grid-template-columns:
-                    repeat(2, 1fr);
-
-                row-gap: 30px;
-            }
-
-            .stat {
-                min-height: 70px;
-            }
-
-            .stat:last-child {
-                grid-column: 1 / -1;
-            }
-
-            .stat:not(:last-child)::after {
-                display: none;
-            }
-
-            .stat-number {
-                font-size: 23px;
-            }
-
-            .stat-text {
-                font-size: 14px;
-
-                margin-top: 5px;
-            }
-
-            .stat-icon {
-                width: 29px;
-                height: 29px;
-
-                font-size: 15px;
-            }
-
-
-            /*
-              الفاصل على الجوال:
-              لا نغيّر شكل الموجة،
-              فقط نزيد ارتفاع منطقة الرسم
-              حتى تبقى التموجات واضحة.
-            */
-
-            .luxury-divider {
-                height: 145px;
-            }
-
-
-            /* SERVICES */
-
-            .services {
-                padding:
-                    55px 18px
-                    80px;
-            }
-
-            .section-badge {
-                font-size: 14px;
-                padding: 8px 21px;
-            }
-
-            .services h2 {
-                font-size: 27px;
-                line-height: 1.55;
-            }
-
-            .services-intro {
-                font-size: 15px;
-                line-height: 1.9;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-
-                gap: 18px;
-
-                margin-top: 38px;
-            }
-
-            .service-card {
-                min-height: auto;
-
-                padding: 30px 25px;
-
-                border-radius: 18px;
-            }
-
-            .service-icon {
-                width: 65px;
-                height: 65px;
-
-                font-size: 27px;
-            }
-
-            .service-card h3 {
-                font-size: 21px;
-            }
-
-            .service-card p {
-                font-size: 15px;
-            }
-        }
-
-
-        /* =========================================================
-           SMALL MOBILE
-        ========================================================= */
-
-        @media (max-width: 380px) {
-
-            .brand-name {
-                font-size: 12px;
-            }
-
-            .hero {
-                padding-top: 135px;
-                min-height: 1000px;
-            }
-
-            .hero h1 {
-                font-size: 34px;
-            }
-
-            .hero-description {
-                font-size: 14px;
-            }
-
-            .hero-btn {
-                font-size: 17px;
-            }
-
-            .luxury-divider {
-                height: 130px;
-            }
-        }
     </style>
+
 </head>
 
 
-<body>
+<body class="text-white min-h-screen flex flex-col relative">
 
 
-<!-- =========================================================
-     HEADER
-========================================================= -->
+<!-- ========================================================= -->
+<!-- 1. الهيدر -->
+<!-- ========================================================= -->
 
-<header>
+<header class="bg-[#1a222c] border-b border-gray-800 sticky top-0 z-50">
 
-    <div class="header-inner">
+    <div class="flex justify-between items-center px-5 py-4 max-w-7xl mx-auto">
 
-        <!-- القائمة -->
-        <button class="menu-button" aria-label="القائمة">
+        <a href="index.html"
+           class="flex items-center gap-3 no-underline cursor-pointer">
 
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </button>
-
-
-        <!-- الهوية -->
-        <div class="brand">
-
-            <!-- ضع شعارك بجانب index.html باسم logo.png -->
             <img
-                src="logo.png"
+                src="https://i.ibb.co/d48tW2sy/1787004624422.png"
                 alt="شعار مسار التميز"
-                class="brand-logo"
+                class="h-9 w-auto object-contain"
             >
 
-            <div class="brand-name">
+            <span class="text-gold brand-font text-sm sm:text-base md:text-lg tracking-wide">
                 مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَّابِيَّةِ
+            </span>
+
+        </a>
+
+
+        <details class="relative">
+
+            <summary
+                class="list-none text-white text-2xl focus:outline-none p-1 cursor-pointer select-none">
+
+                <i class="fas fa-bars"></i>
+
+            </summary>
+
+
+            <div
+                class="absolute left-0 mt-3 w-60 bg-[#1a222c]
+                       border border-gray-700 rounded-2xl shadow-2xl
+                       py-4 px-5 flex flex-col items-end
+                       text-right gap-4 z-50">
+
+
+                <a
+                    href="index.html"
+                    class="text-gold font-bold text-base transition w-full block">
+
+                    الرئيسية
+
+                </a>
+
+
+                <a
+                    href="#work-samples"
+                    class="text-gray-200 font-semibold text-base hover:text-gold transition w-full block">
+
+                    خدماتنا
+
+                </a>
+
+
+                <a
+                    href="about.html"
+                    class="text-gray-200 font-semibold text-base hover:text-gold transition w-full block">
+
+                    من نحن
+
+                </a>
+
+
+                <a
+                    href="contact.html"
+                    class="text-gray-200 font-semibold text-base hover:text-gold transition w-full block">
+
+                    تواصل معنا
+
+                </a>
+
+
+                <a
+                    href="admin.html"
+                    class="text-gray-200 font-semibold text-base hover:text-gold transition w-full block">
+
+                    لوحة التحكم
+
+                </a>
+
+
+                <button
+                    onclick="sendGeneralWhatsApp()"
+                    class="mt-2 bg-gold text-[#1a222c]
+                           font-bold py-2.5 px-4 rounded-lg
+                           text-sm hover:opacity-90 transition
+                           w-full text-center flex items-center
+                           justify-center gap-2 cursor-pointer">
+
+                    <i class="fab fa-whatsapp text-lg"></i>
+
+                    تواصل عبر واتساب
+
+                </button>
+
             </div>
 
-        </div>
+        </details>
 
     </div>
 
@@ -1127,465 +170,1460 @@
 
 
 
-<!-- =========================================================
-     HERO
-========================================================= -->
+<!-- ========================================================= -->
+<!-- 2. الواجهة الرئيسية -->
+<!-- ========================================================= -->
 
-<section class="hero">
+<main
+    class="flex-grow flex flex-col items-center justify-center
+           text-center px-5 py-12">
 
 
-    <div class="hero-content">
+    <div
+        class="border border-gold text-gold px-6 py-1.5
+               rounded-full text-sm font-bold mb-8">
+
+        منصة موثوقة لخدماتك
+
+    </div>
 
 
-        <!-- الشارة -->
+    <h1
+        class="text-3xl md:text-5xl font-black
+               leading-snug mb-5 text-white">
 
-        <div class="hero-badge">
-            منصة موثوقة لخدماتك
+        إنجازك يبدأ من هنا
+
+    </h1>
+
+
+    <p
+        class="text-gray-300 text-sm md:text-base
+               max-w-lg leading-relaxed mb-10">
+
+        منصة متخصصة في تقديم الخدمات الطلابية والأكاديمية وخدمات الدراسات العليا،
+        إلى جانب الحلول التقنية والإبداعية، باحترافية وجودة عالية، لنساعدك على
+        إنجاز ما تحتاجه بسهولة، وتوفير وقتك وجهدك.
+
+    </p>
+
+
+    <div class="flex flex-col w-full max-w-sm gap-4">
+
+
+        <button
+            onclick="sendGeneralWhatsApp()"
+            class="bg-gold text-[#1a222c]
+                   font-bold py-4 rounded-md text-lg
+                   transition hover:opacity-95
+                   w-full cursor-pointer">
+
+            اطلب خدمتك الآن
+
+        </button>
+
+
+        <!-- الانتقال الناعم إلى نماذج الأعمال -->
+        <a
+            href="#work-samples"
+            class="border border-gray-600 text-white
+                   font-bold py-4 rounded-md text-lg
+                   transition hover:bg-gray-800
+                   w-full block text-center
+                   no-underline cursor-pointer">
+
+            استكشف خدماتنا
+
+        </a>
+
+
+        <a
+            href="about.html"
+            class="border border-gray-600 text-white
+                   font-bold py-4 rounded-md text-lg
+                   transition hover:bg-gray-800
+                   w-full block text-center
+                   no-underline cursor-pointer">
+
+            تعرّف علينا
+
+        </a>
+
+    </div>
+
+
+    <div
+        class="flex flex-wrap justify-center items-center
+               gap-6 md:gap-10 mt-14
+               text-sm font-bold">
+
+
+        <div class="flex items-center gap-2">
+
+            <span class="text-gold text-lg">
+                +100
+            </span>
+
+            <span class="text-gray-300">
+                خدمة منجزة
+            </span>
+
         </div>
 
 
-        <!-- العنوان -->
+        <div class="flex items-center gap-2">
 
-        <h1>
-            إنجازك يبدأ من هنا
-        </h1>
+            <span class="text-gold text-lg">
+                <i class="fas fa-check-circle"></i>
+            </span>
+
+            <span class="text-gray-300">
+                دعم ومتابعة مستمرة
+            </span>
+
+        </div>
 
 
-        <!-- الوصف -->
+        <div class="flex items-center gap-2">
 
-        <p class="hero-description">
+            <span class="text-gold text-lg">
+                100%
+            </span>
 
-            منصة متخصصة في تقديم الخدمات الطلابية والأكاديمية وخدمات
-            الدراسات العليا، إلى جانب الحلول التقنية والإبداعية،
-            باحترافية وجودة عالية. لنساعدك على إنجاز ما تحتاجه بسهولة،
-            وتوفير وقتك وجهدك.
+            <span class="text-gray-300">
+                سرية تامة
+            </span>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+<!-- ========================================================= -->
+<!-- 3. الخدمات المميزة -->
+<!-- ========================================================= -->
+
+<section
+    class="bg-[#f8fafc] text-[#1a222c]
+           py-16 px-5 border-t border-gray-200">
+
+
+    <div class="max-w-7xl mx-auto">
+
+
+        <div class="text-center max-w-2xl mx-auto mb-12">
+
+            <span
+                class="inline-block bg-[#d0a75f]/10
+                       text-[#1a222c] px-4 py-1.5
+                       rounded-full text-xs font-bold mb-4">
+
+                خدماتنا المميزة
+
+            </span>
+
+
+            <h2 class="text-2xl md:text-4xl font-black mb-4">
+
+                خدمات تساعدك على إنجاز أعمالك باحترافية
+
+            </h2>
+
+
+            <p
+                class="text-gray-500 text-sm md:text-base
+                       leading-relaxed">
+
+                نقدم خدمات طلابية وأكاديمية وتقنية متنوعة، مصممة لتلبية
+                احتياجاتك وتنفيذ أعمالك بجودة واحترافية.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+
+            <!-- الخدمة 1 -->
+            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
+
+                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
+
+                    <i class="fas fa-graduation-cap"></i>
+
+                </div>
+
+                <h3 class="font-black text-lg mb-3">
+                    مشاريع التخرج
+                </h3>
+
+                <p class="text-gray-500 text-sm leading-relaxed mb-5">
+                    تنفيذ ودعم مشاريع التخرج من الفكرة إلى الإنجاز.
+                </p>
+
+                <a href="#work-samples"
+                   class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
+
+                    اكتشف الخدمات
+                    <i class="fas fa-arrow-left mr-1"></i>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- الخدمة 2 -->
+            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
+
+                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
+
+                    <i class="fas fa-code"></i>
+
+                </div>
+
+                <h3 class="font-black text-lg mb-3">
+                    البرمجة وتقنية المعلومات
+                </h3>
+
+                <p class="text-gray-500 text-sm leading-relaxed mb-5">
+                    حلول برمجية ومشاريع تقنية مصممة وفق احتياجك.
+                </p>
+
+                <a href="#work-samples"
+                   class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
+
+                    اكتشف الخدمات
+                    <i class="fas fa-arrow-left mr-1"></i>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- الخدمة 3 -->
+            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
+
+                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
+
+                    <i class="fas fa-chart-line"></i>
+
+                </div>
+
+                <h3 class="font-black text-lg mb-3">
+                    الإحصاء وتحليل البيانات
+                </h3>
+
+                <p class="text-gray-500 text-sm leading-relaxed mb-5">
+                    تحليل دقيق للبيانات وتحويلها إلى نتائج واضحة.
+                </p>
+
+                <a href="#work-samples"
+                   class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
+
+                    اكتشف الخدمات
+                    <i class="fas fa-arrow-left mr-1"></i>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- الخدمة 4 -->
+            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
+
+                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
+
+                    <i class="fas fa-palette"></i>
+
+                </div>
+
+                <h3 class="font-black text-lg mb-3">
+                    التصميم والعروض التقديمية
+                </h3>
+
+                <p class="text-gray-500 text-sm leading-relaxed mb-5">
+                    تصاميم وعروض احترافية تجمع بين الجودة وجاذبية العرض.
+                </p>
+
+                <a href="#work-samples"
+                   class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
+
+                    اكتشف الخدمات
+                    <i class="fas fa-arrow-left mr-1"></i>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- الخدمة 5 -->
+            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
+
+                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
+
+                    <i class="fas fa-drafting-compass"></i>
+
+                </div>
+
+                <h3 class="font-black text-lg mb-3">
+                    الهندسة والمخططات
+                </h3>
+
+                <p class="text-gray-500 text-sm leading-relaxed mb-5">
+                    مخططات وتصاميم هندسية ومعمارية بدقة واحترافية.
+                </p>
+
+                <a href="#work-samples"
+                   class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
+
+                    اكتشف الخدمات
+                    <i class="fas fa-arrow-left mr-1"></i>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- الخدمة 6 -->
+            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
+
+                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
+
+                    <i class="fas fa-graduation-cap"></i>
+
+                </div>
+
+                <h3 class="font-black text-lg mb-3">
+                    الدراسات العليا والرسائل العلمية
+                </h3>
+
+                <p class="text-gray-500 text-sm leading-relaxed mb-5">
+                    دعم أكاديمي متكامل لمتطلبات الدراسات العليا.
+                </p>
+
+                <a href="#work-samples"
+                   class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
+
+                    اكتشف الخدمات
+                    <i class="fas fa-arrow-left mr-1"></i>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- الخدمة 7 -->
+            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
+
+                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
+
+                    <i class="fas fa-file-lines"></i>
+
+                </div>
+
+                <h3 class="font-black text-lg mb-3">
+                    الواجبات والبحوث والتقارير
+                </h3>
+
+                <p class="text-gray-500 text-sm leading-relaxed mb-5">
+                    إعداد وتنسيق الواجبات والبحوث والتقارير وفق متطلباتك.
+                </p>
+
+                <a href="#work-samples"
+                   class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition">
+
+                    اكتشف الخدمات
+                    <i class="fas fa-arrow-left mr-1"></i>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- الخدمة 8 -->
+            <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
+
+                <div class="w-14 h-14 rounded-2xl bg-[#d0a75f]/10 text-[#d0a75f] flex items-center justify-center text-2xl mb-5">
+
+                    <i class="fas fa-comments"></i>
+
+                </div>
+
+                <h3 class="font-black text-lg mb-3">
+                    الاستشارات والدعم
+                </h3>
+
+                <p class="text-gray-500 text-sm leading-relaxed mb-5">
+                    استشارات ومتابعة لفهم احتياجك وتحديد الحل والطريقة الأنسب لطلبك.
+                </p>
+
+                <button
+                    onclick="sendConsultationWhatsApp()"
+                    class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition cursor-pointer">
+
+                    تواصل معنا
+                    <i class="fas fa-arrow-left mr-1"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="text-center mt-10">
+
+            <a
+                href="#work-samples"
+                class="inline-flex items-center gap-2
+                       bg-[#1a222c] text-white px-7 py-3.5
+                       rounded-xl font-bold text-sm
+                       hover:bg-[#d0a75f]
+                       hover:text-[#1a222c] transition">
+
+                عرض جميع الخدمات
+
+                <i class="fas fa-arrow-left"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================================================= -->
+<!-- 4. لماذا مسار التميز؟ -->
+<!-- ========================================================= -->
+
+<section class="bg-white text-[#1a222c] py-16 px-5">
+
+    <div class="max-w-7xl mx-auto">
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            <div>
+
+                <span class="inline-block bg-[#d0a75f]/10 text-[#1a222c] px-4 py-1.5 rounded-full text-xs font-bold mb-5">
+                    لماذا نحن؟
+                </span>
+
+
+                <h2 class="text-2xl md:text-4xl font-black leading-snug mb-5">
+
+                    أكثر من مجرد خدمة...
+
+                    <span class="text-[#d0a75f]">
+                        نحن مسار للإنجاز
+                    </span>
+
+                </h2>
+
+
+                <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-8">
+
+                    نحرص على فهم احتياجك أولاً، ثم تقديم الخدمة بصورة منظمة
+                    وواضحة، مع المحافظة على جودة العمل وسرية الملفات والمتابعة
+                    حتى اكتمال الطلب.
+
+                </p>
+
+
+                <a
+                    href="about.html"
+                    class="inline-flex items-center gap-2
+                           border border-[#1a222c]
+                           text-[#1a222c] px-6 py-3
+                           rounded-xl font-bold text-sm
+                           hover:bg-[#1a222c]
+                           hover:text-white transition">
+
+                    تعرّف علينا أكثر
+
+                    <i class="fas fa-arrow-left"></i>
+
+                </a>
+
+            </div>
+
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+                <div class="bg-[#f8fafc] border border-gray-200 rounded-3xl p-6">
+
+                    <div class="text-[#d0a75f] text-2xl mb-4">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+
+                    <h3 class="font-black mb-2">
+                        الخصوصية والأمان
+                    </h3>
+
+                    <p class="text-gray-500 text-xs leading-relaxed">
+
+                        نتعامل مع معلوماتك وملفاتك بمسؤولية، ونحرص على الحفاظ على خصوصيتها وسريتها طوال مراحل العمل.
+
+                    </p>
+
+                </div>
+
+
+                <div class="bg-[#f8fafc] border border-gray-200 rounded-3xl p-6">
+
+                    <div class="text-[#d0a75f] text-2xl mb-4">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+
+                    <h3 class="font-black mb-2">
+                        سرعة الاستجابة
+                    </h3>
+
+                    <p class="text-gray-500 text-xs leading-relaxed">
+                        استقبال طلبك ومراجعته والرد عليك بأسرع وقت ممكن.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-[#f8fafc] border border-gray-200 rounded-3xl p-6">
+
+                    <div class="text-[#d0a75f] text-2xl mb-4">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+
+                    <h3 class="font-black mb-2">
+                        حسب متطلباتك
+                    </h3>
+
+                    <p class="text-gray-500 text-xs leading-relaxed">
+                        فهم تفاصيل الطلب والعمل وفق المتطلبات المحددة.
+                    </p>
+
+                </div>
+
+
+                <div class="bg-[#f8fafc] border border-gray-200 rounded-3xl p-6">
+
+                    <div class="text-[#d0a75f] text-2xl mb-4">
+                        <i class="fas fa-headset"></i>
+                    </div>
+
+                    <h3 class="font-black mb-2">
+                        متابعة مستمرة
+                    </h3>
+
+                    <p class="text-gray-500 text-xs leading-relaxed">
+                        التواصل والمتابعة حتى اكتمال الخدمة وتسليمها.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================================================= -->
+<!-- 5. كيف نعمل؟ -->
+<!-- ========================================================= -->
+
+<section
+    class="bg-[#f8fafc] text-[#1a222c]
+           py-16 px-5 border-y border-gray-200">
+
+    <div class="max-w-7xl mx-auto">
+
+        <div class="text-center max-w-2xl mx-auto mb-12">
+
+            <span class="inline-block bg-[#d0a75f]/10 text-[#1a222c] px-4 py-1.5 rounded-full text-xs font-bold mb-4">
+                خطوات بسيطة
+            </span>
+
+            <h2 class="text-2xl md:text-4xl font-black mb-4">
+                كيف نعمل؟
+            </h2>
+
+            <p class="text-gray-500 text-sm leading-relaxed">
+                جعلنا عملية طلب الخدمة بسيطة ومباشرة من أول تواصل حتى التسليم.
+            </p>
+
+        </div>
+
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <div class="bg-white rounded-3xl p-7 border border-gray-200 text-center shadow-sm">
+
+                <div class="w-14 h-14 mx-auto rounded-full bg-[#1a222c] text-[#d0a75f] flex items-center justify-center font-black text-lg mb-5">
+                    01
+                </div>
+
+                <h3 class="font-black mb-3">
+                    أرسل طلبك
+                </h3>
+
+                <p class="text-gray-500 text-xs leading-relaxed">
+                    تواصل معنا وأرسل تفاصيل الخدمة التي تحتاج إليها.
+                </p>
+
+            </div>
+
+
+            <div class="bg-white rounded-3xl p-7 border border-gray-200 text-center shadow-sm">
+
+                <div class="w-14 h-14 mx-auto rounded-full bg-[#1a222c] text-[#d0a75f] flex items-center justify-center font-black text-lg mb-5">
+                    02
+                </div>
+
+                <h3 class="font-black mb-3">
+                    نراجع المتطلبات
+                </h3>
+
+                <p class="text-gray-500 text-xs leading-relaxed">
+                    نراجع طلبك ونحدد التفاصيل المطلوبة لتنفيذه.
+                </p>
+
+            </div>
+
+
+            <div class="bg-white rounded-3xl p-7 border border-gray-200 text-center shadow-sm">
+
+                <div class="w-14 h-14 mx-auto rounded-full bg-[#1a222c] text-[#d0a75f] flex items-center justify-center font-black text-lg mb-5">
+                    03
+                </div>
+
+                <h3 class="font-black mb-3">
+                    الاتفاق والبدء
+                </h3>
+
+                <p class="text-gray-500 text-xs leading-relaxed">
+                    يتم الاتفاق على التكلفة والمدة ثم تبدأ مرحلة التنفيذ.
+                </p>
+
+            </div>
+
+
+            <div class="bg-white rounded-3xl p-7 border border-gray-200 text-center shadow-sm">
+
+                <div class="w-14 h-14 mx-auto rounded-full bg-[#1a222c] text-[#d0a75f] flex items-center justify-center font-black text-lg mb-5">
+                    04
+                </div>
+
+                <h3 class="font-black mb-3">
+                    التسليم والمتابعة
+                </h3>
+
+                <p class="text-gray-500 text-xs leading-relaxed">
+                    تستلم الملفات وتتم المتابعة عند الحاجة إلى التعديل أو التوضيح.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================================================= -->
+<!-- 6. نماذج من الأعمال -->
+<!-- ========================================================= -->
+
+<section
+    id="work-samples"
+    class="bg-white text-[#1a222c] py-16 px-5">
+
+    <div class="max-w-7xl mx-auto">
+
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-10">
+
+            <div>
+
+                <span class="inline-block bg-[#d0a75f]/10 text-[#1a222c] px-4 py-1.5 rounded-full text-xs font-bold mb-4">
+                    أعمالنا
+                </span>
+
+
+                <h2 class="text-2xl md:text-4xl font-black mb-3">
+                    نماذج من أعمالنا السابقة
+                </h2>
+
+
+                <p class="text-gray-500 text-sm max-w-2xl leading-relaxed">
+                    تعرف على نماذج من الخدمات والأعمال التي تم تنفيذها سابقًا.
+                </p>
+
+            </div>
+
+
+            <a
+                href="#work-samples"
+                class="text-[#1a222c] font-bold text-sm hover:text-[#d0a75f] transition whitespace-nowrap">
+
+                مشاهدة الخدمات
+
+                <i class="fas fa-arrow-left mr-1"></i>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- النماذج -->
+        <!-- ================================================= -->
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+
+            <!-- النموذج الأول -->
+
+            <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
+
+                <div class="h-64 bg-gray-100 overflow-hidden">
+
+                    <img
+                        src="https://i.ibb.co/ymBywKwC/IMG-20260819-WA0007.jpg"
+                        alt="تصميم خرائط ذهنية ومفاهيمية ذكية"
+                        class="w-full h-full object-cover"
+                    >
+
+                </div>
+
+
+                <div class="p-6">
+
+                    <h3 class="font-black mb-3 text-lg">
+                        تصميم خرائط ذهنية ومفاهيمية ذكية
+                    </h3>
+
+
+                    <p class="text-gray-500 text-sm leading-relaxed mb-5">
+
+                        نحوّل الأفكار والمعلومات إلى خرائط ذهنية ومفاهيمية منظمة
+                        تساعد على تبسيط المحتوى وربط الأفكار وعرضها بصورة واضحة
+                        وجذابة وسهلة الفهم.
+
+                    </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('تصميم خريطة ذهنية ومفاهيمية ذكية')"
+                        class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl
+                               hover:bg-[#d0a75f] hover:text-[#1a222c]
+                               transition flex items-center justify-center gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- النموذج الثاني -->
+
+            <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
+
+                <div class="h-64 bg-gray-100 overflow-hidden">
+
+                    <img
+                        src="https://i.ibb.co/TDz7Ddzv/IMG-20260819-WA0008.jpg"
+                        alt="تصاميم ورسم هندسي معماري احترافي"
+                        class="w-full h-full object-cover"
+                    >
+
+                </div>
+
+
+                <div class="p-6">
+
+                    <h3 class="font-black mb-3 text-lg">
+                        تصاميم ورسم هندسي معماري احترافي
+                    </h3>
+
+
+                    <p class="text-gray-500 text-sm leading-relaxed mb-5">
+
+                        نحول أفكارك ورؤيتك إلى مخططات وتصاميم معمارية دقيقة تجمع بين جمال الإخراج البصري والاستغلال الأمثل للمساحات، مما يضمن تنفيذ مشروعك بأعلى درجات الفخامة والدقة الهندسية.
+
+                    </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('تصميم ورسم هندسي معماري احترافي')"
+                        class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl
+                               hover:bg-[#d0a75f] hover:text-[#1a222c]
+                               transition flex items-center justify-center gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- النموذج الثالث -->
+
+            <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
+
+                <div class="h-64 bg-gray-100 overflow-hidden">
+
+                    <img
+                        src="https://i.ibb.co/zWjZqsT0/IMG-20260819-WA0009.jpg"
+                        alt="تصميم بوسترات إعلانية وتفاعلية احترافية"
+                        class="w-full h-full object-cover"
+                    >
+
+                </div>
+
+
+                <div class="p-6">
+
+                    <h3 class="font-black mb-3 text-lg">
+                        تصميم بوسترات إعلانية وتفاعلية احترافية
+                    </h3>
+
+
+                    <p class="text-gray-500 text-sm leading-relaxed mb-5">
+
+                        نحول أفكارك ورسائلك التسويقية إلى تصاميم بوسترات بصرية جذابة تدمج بين قوة العبارة وتناسق العناصر الفنية، مما يضمن لفت الانتباه وإيصال هويتك أو فعاليتك للجمهور المستهدف بأعلى درجات التأثير والاحترافية.
+
+                    </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('تصميم بوسترات إعلانية وتفاعلية احترافية')"
+                        class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl
+                               hover:bg-[#d0a75f] hover:text-[#1a222c]
+                               transition flex items-center justify-center gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- النموذج الرابع -->
+
+            <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
+
+                <div class="h-64 bg-gray-100 overflow-hidden">
+
+                    <img
+                        src="https://i.ibb.co/N2QT0zft/spiral-null-1775862554823.jpg"
+                        alt="تصميم عروض تقديمية PowerPoint احترافية"
+                        class="w-full h-full object-cover"
+                    >
+
+                </div>
+
+
+                <div class="p-6">
+
+                    <h3 class="font-black mb-3 text-lg">
+                        تصميم عروض تقديمية (PowerPoint) احترافية
+                    </h3>
+
+
+                    <p class="text-gray-500 text-sm leading-relaxed mb-5">
+
+                        نصمم عروضكم التقديمية بأسلوب إبداعي يناسب كافة المجالات (الأكاديمية، التجارية، والتدريبية). نجمع بين التنسيق البصري الجذاب وسهولة عرض المعلومات، مع اهتمام دقيق بالهوية البصرية لضمان تقديم محتواكم بأفضل صورة ممكنة وأعلى مستويات الاحترافية.
+
+                    </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('تصميم عروض تقديمية PowerPoint احترافية')"
+                        class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl
+                               hover:bg-[#d0a75f] hover:text-[#1a222c]
+                               transition flex items-center justify-center gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- النموذج الخامس -->
+
+            <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
+
+                <div class="h-64 bg-gray-100 overflow-hidden">
+
+                    <img
+                        src="https://i.ibb.co/6qV8g2g/IMG-20260819-WA0000.jpg"
+                        alt="تصميم إنفوجرافيك وعروض بيانات احترافية"
+                        class="w-full h-full object-cover"
+                    >
+
+                </div>
+
+
+                <div class="p-6">
+
+                    <h3 class="font-black mb-3 text-lg">
+                        تصميم إنفوجرافيك وعروض بيانات احترافية
+                    </h3>
+
+
+                    <p class="text-gray-500 text-sm leading-relaxed mb-5">
+
+                        نحول المعلومات والبيانات المعقدة إلى تصاميم إنفوجرافيك إبداعية تجمع بين دقة المحتوى وجمال الإخراج البصري، مما يسهل وصول رسالتك بوضوح وتأثير عالٍ في العروض التقديمية والمشاريع الأكاديمية.
+
+                    </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('تصميم إنفوجرافيك وعروض بيانات احترافية')"
+                        class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl
+                               hover:bg-[#d0a75f] hover:text-[#1a222c]
+                               transition flex items-center justify-center gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- النموذج السادس -->
+
+            <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
+
+                <div class="h-64 bg-gray-100 overflow-hidden">
+
+                    <img
+                        src="https://i.ibb.co/Y7315LNf/IMG-20260819-WA0001.jpg"
+                        alt="تصميم وتنسيق سيرة ذاتية CV احترافية"
+                        class="w-full h-full object-cover"
+                    >
+
+                </div>
+
+
+                <div class="p-6">
+
+                    <h3 class="font-black mb-3 text-lg">
+                        تصميم وتنسيق سيرة ذاتية (CV) احترافية
+                    </h3>
+
+
+                    <p class="text-gray-500 text-sm leading-relaxed mb-5">
+
+                        نحول خبراتك ومهاراتك إلى سيرة ذاتية متكاملة باللغة العربية أو الإنجليزية، مصممة وفق معايير أنظمة الفرز الآلي (ATS) لضمان سهولة قراءة بياناتك، مع الحفاظ على ترتيب منطقي وتنسيق بصري عصري يبرز نقاط قوتك ويضمن لملفك حضوراً مهنياً قوياً يلفت انتباه أصحاب العمل.
+
+                    </p>
+
+
+                    <button
+                        onclick="sendServiceWhatsApp('تصميم وتنسيق سيرة ذاتية (CV) احترافية')"
+                        class="w-full bg-[#1a222c] text-white font-bold py-3 rounded-xl
+                               hover:bg-[#d0a75f] hover:text-[#1a222c]
+                               transition flex items-center justify-center gap-2">
+
+                        <i class="fab fa-whatsapp text-lg"></i>
+
+                        اطلب هذه الخدمة
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================================================= -->
+<!-- 7. آراء الطلاب -->
+<!-- ========================================================= -->
+
+<section
+    class="bg-[#f8fafc] text-[#1a222c]
+           py-16 px-5 border-y border-gray-200">
+
+    <div class="max-w-5xl mx-auto text-center">
+
+        <span class="inline-block bg-[#d0a75f]/10 text-[#1a222c] px-4 py-1.5 rounded-full text-xs font-bold mb-4">
+            آراء الطلاب
+        </span>
+
+
+        <h2 class="text-2xl md:text-4xl font-black mb-4">
+            ماذا يقول عملاؤنا؟
+        </h2>
+
+
+        <p class="text-gray-500 text-sm mb-10">
+            تجارب وآراء تساعدك على التعرف أكثر على مستوى الخدمة.
+        </p>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-right">
+
+
+            <div class="bg-white border border-gray-200 rounded-3xl p-7 shadow-sm">
+
+                <div class="text-[#d0a75f] mb-4">
+                    ★★★★★
+                </div>
+
+                <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                    خدمة مرتبة والتواصل كان واضحًا من البداية حتى التسليم.
+                </p>
+
+                <div class="font-bold text-sm">
+                    عبدالله
+                </div>
+
+            </div>
+
+
+            <div class="bg-white border border-gray-200 rounded-3xl p-7 shadow-sm">
+
+                <div class="text-[#d0a75f] mb-4">
+                    ★★★★★
+                </div>
+
+                <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                    أكثر شيء أعجبني هو سرعة الرد وفهم تفاصيل الطلب.
+                </p>
+
+                <div class="font-bold text-sm">
+                    طالب بكلية الهندسة
+                </div>
+
+            </div>
+
+
+            <div class="bg-white border border-gray-200 rounded-3xl p-7 shadow-sm">
+
+                <div class="text-[#d0a75f] mb-4">
+                    ★★★★★
+                </div>
+
+                <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                    تجربة جيدة والتعامل كان واضحًا وسهلًا.
+                </p>
+
+                <div class="font-bold text-sm">
+                    مرام
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================================================= -->
+<!-- 8. الأسئلة الشائعة -->
+<!-- ========================================================= -->
+
+<section class="bg-white text-[#1a222c] py-16 px-5">
+
+    <div class="max-w-4xl mx-auto">
+
+        <div class="text-center mb-10">
+
+            <span class="inline-block bg-[#d0a75f]/10 text-[#1a222c] px-4 py-1.5 rounded-full text-xs font-bold mb-4">
+                أسئلة شائعة
+            </span>
+
+
+            <h2 class="text-2xl md:text-4xl font-black mb-3">
+                لديك استفسار؟
+            </h2>
+
+
+            <p class="text-gray-500 text-sm">
+                بعض الإجابات السريعة على الأسئلة التي قد تدور في ذهنك.
+            </p>
+
+        </div>
+
+
+        <div class="space-y-4">
+
+
+            <details class="group bg-[#f8fafc] border border-gray-200 rounded-2xl p-5">
+
+                <summary class="cursor-pointer list-none flex items-center justify-between font-bold text-sm">
+
+                    <span>
+                        كيف أطلب خدمة؟
+                    </span>
+
+                    <i class="fas fa-plus text-[#d0a75f] group-open:rotate-45 transition"></i>
+
+                </summary>
+
+
+                <p class="text-gray-500 text-xs leading-relaxed mt-4">
+
+                    يمكنك التواصل معنا مباشرة عبر واتساب وإرسال تفاصيل الخدمة التي تحتاج إليها.
+
+                </p>
+
+            </details>
+
+
+
+            <details class="group bg-[#f8fafc] border border-gray-200 rounded-2xl p-5">
+
+                <summary class="cursor-pointer list-none flex items-center justify-between font-bold text-sm">
+
+                    <span>
+                        كيف يتم تحديد التكلفة؟
+                    </span>
+
+                    <i class="fas fa-plus text-[#d0a75f] group-open:rotate-45 transition"></i>
+
+                </summary>
+
+
+                <p class="text-gray-500 text-xs leading-relaxed mt-4">
+
+                    تختلف التكلفة حسب نوع الخدمة وحجم العمل ومتطلباته،
+                    ويتم الاتفاق على التفاصيل قبل البدء.
+
+                </p>
+
+            </details>
+
+
+
+            <details class="group bg-[#f8fafc] border border-gray-200 rounded-2xl p-5">
+
+                <summary class="cursor-pointer list-none flex items-center justify-between font-bold text-sm">
+
+                    <span>
+                        هل يمكن طلب تعديلات بعد التسليم؟
+                    </span>
+
+                    <i class="fas fa-plus text-[#d0a75f] group-open:rotate-45 transition"></i>
+
+                </summary>
+
+
+                <p class="text-gray-500 text-xs leading-relaxed mt-4">
+
+                    نعم، يتم متابعة الطلب بعد التسليم والتعامل مع التعديلات
+                    المطلوبة حسب الاتفاق.
+
+                </p>
+
+            </details>
+
+
+
+            <details class="group bg-[#f8fafc] border border-gray-200 rounded-2xl p-5">
+
+                <summary class="cursor-pointer list-none flex items-center justify-between font-bold text-sm">
+
+                    <span>
+                        كيف يتم استلام الملفات؟
+                    </span>
+
+                    <i class="fas fa-plus text-[#d0a75f] group-open:rotate-45 transition"></i>
+
+                </summary>
+
+
+                <p class="text-gray-500 text-xs leading-relaxed mt-4">
+
+                    يتم تسليم الملفات بالطريقة المناسبة والمتفق عليها مع العميل.
+
+                </p>
+
+            </details>
+
+        </div>
+
+
+        <div class="text-center mt-8">
+
+            <a
+                href="contact.html"
+                class="text-[#1a222c] font-bold text-sm
+                       hover:text-[#d0a75f] transition">
+
+                المزيد من الأسئلة والإجابات
+
+                <i class="fas fa-arrow-left mr-1"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================================================= -->
+<!-- 9. دعوة أخيرة للتواصل -->
+<!-- ========================================================= -->
+
+<section class="px-5 py-12 bg-white">
+
+    <div class="max-w-6xl mx-auto">
+
+        <div
+            class="bg-[#1a222c] rounded-[2rem]
+                   p-8 md:p-12 text-white
+                   flex flex-col lg:flex-row
+                   items-center justify-between
+                   gap-8">
+
+
+            <div class="text-center lg:text-right">
+
+                <span class="text-[#d0a75f] text-sm font-bold">
+                    جاهز للبدء؟
+                </span>
+
+
+                <h2 class="text-2xl md:text-4xl font-black mt-3 mb-4">
+                    أخبرنا بما تحتاج إليه
+                </h2>
+
+
+                <p class="text-gray-300 text-sm leading-relaxed max-w-xl">
+
+                    أرسل تفاصيل طلبك وسنتواصل معك لمراجعة المتطلبات
+                    وتحديد الخطوات المناسبة.
+
+                </p>
+
+            </div>
+
+
+            <button
+                onclick="sendGeneralWhatsApp()"
+                class="bg-[#d0a75f] text-[#1a222c]
+                       font-black px-8 py-4 rounded-xl
+                       text-base hover:opacity-90 transition
+                       flex items-center gap-3
+                       whitespace-nowrap">
+
+                <i class="fab fa-whatsapp text-xl"></i>
+
+                ابدأ طلبك الآن
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================================================= -->
+<!-- 10. الفوتر -->
+<!-- ========================================================= -->
+
+<footer
+    class="bg-[#17212b]
+           border-t border-[#d0a75f]/20
+           text-center px-5 py-10">
+
+    <div class="max-w-4xl mx-auto">
+
+
+        <div
+            class="font-['Cairo']
+                   text-base sm:text-lg md:text-xl
+                   font-extrabold leading-relaxed">
+
+            <span class="text-[#d0a75f]">
+                مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَابِيَّةِ
+            </span>
+
+
+            <span class="text-[#c9a45c] mx-2 font-bold">
+                |
+            </span>
+
+
+            <span class="text-gray-100">
+                جودة تُنجز، وثقة تُبنى.
+            </span>
+
+        </div>
+
+
+        <p class="text-gray-400 text-xs leading-loose mt-4">
+
+            جميع الحقوق محفوظة © 2026 -
+            مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَابِيَّةِ
 
         </p>
 
 
-        <!-- الأزرار -->
+        <p class="text-gray-400 text-xs leading-loose mt-3">
 
-        <div class="hero-buttons">
+            تصميم وتطوير :
 
-            <a href="#" class="hero-btn primary">
+            <span class="text-gray-400">
+                م.محمد الشراري
+            </span>
 
-                <span>
-                    اطلب خدمتك الآن
-                </span>
-
-                <span class="arrow">
-                    ‹
-                </span>
-
-            </a>
-
-
-            <a href="#services" class="hero-btn secondary">
-
-                <span>
-                    استكشف خدماتنا
-                </span>
-
-                <span class="arrow">
-                    ‹
-                </span>
-
-            </a>
-
-
-            <a href="#" class="hero-btn secondary">
-
-                <span>
-                    تعرّف علينا
-                </span>
-
-                <span class="arrow">
-                    ‹
-                </span>
-
-            </a>
-
-        </div>
-
-
-
-        <!-- الإحصائيات -->
-
-        <div class="stats">
-
-
-            <div class="stat">
-
-                <div class="stat-number">
-                    100+
-                </div>
-
-                <div class="stat-text">
-                    خدمة منجزة
-                </div>
-
-            </div>
-
-
-            <div class="stat">
-
-                <div class="stat-icon">
-                    ✓
-                </div>
-
-                <div class="stat-text">
-                    دعم ومتابعة مستمرة
-                </div>
-
-            </div>
-
-
-            <div class="stat">
-
-                <div class="stat-number">
-                    100%
-                </div>
-
-                <div class="stat-text">
-                    سرية تامة
-                </div>
-
-            </div>
-
-
-        </div>
+        </p>
 
     </div>
-
-
-
-    <!-- =====================================================
-         ⭐ الفاصل الفخم
-         
-         SVG مرن بالكامل.
-         لا تستخدم صورة.
-         يتكيف مع عرض الشاشة.
-    ====================================================== -->
-
-    <div class="luxury-divider">
-
-        <svg
-            viewBox="0 0 1440 230"
-            preserveAspectRatio="none"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-
-
-            <!-- الطبقة الكريمية الرئيسية -->
-
-            <path
-                class="wave-cream"
-                d="
-                M0 151
-
-                C100 215 190 225 285 164
-
-                C390 96 485 90 590 139
-
-                C710 196 770 219 895 154
-
-                C1015 92 1105 103 1200 151
-
-                C1300 203 1370 208 1440 157
-
-                L1440 230
-                L0 230
-                Z
-                "
-            />
-
-
-            <!-- الشريط الذهبي السميك -->
-
-            <path
-                class="wave-gold-main"
-                d="
-                M-15 142
-
-                C95 215 190 217 292 153
-
-                C395 89 486 86 598 136
-
-                C710 188 780 214 895 149
-
-                C1010 86 1108 98 1202 146
-
-                C1300 196 1375 204 1455 147
-                "
-            />
-
-
-            <!-- الطبقة الذهبية الداخلية -->
-
-            <path
-                class="wave-gold-secondary"
-                d="
-                M-10 161
-
-                C98 225 194 229 296 166
-
-                C400 101 489 99 600 148
-
-                C715 201 785 225 901 163
-
-                C1015 101 1107 111 1205 159
-
-                C1302 209 1380 215 1450 159
-                "
-            />
-
-
-            <!-- خط ذهبي رفيع -->
-
-            <path
-                class="wave-gold-thin"
-                d="
-                M-10 175
-
-                C98 238 198 241 302 176
-
-                C406 112 494 111 607 160
-
-                C720 211 790 239 906 177
-
-                C1020 115 1112 125 1210 173
-
-                C1308 223 1384 230 1450 174
-                "
-            />
-
-
-            <!-- خط ذهبي رفيع علوي -->
-
-            <path
-                class="wave-gold-thin"
-                d="
-                M-10 127
-
-                C90 193 184 199 286 139
-
-                C392 77 486 74 596 124
-
-                C708 177 776 197 890 137
-
-                C1007 76 1099 87 1195 134
-
-                C1294 185 1371 190 1450 135
-                "
-            />
-
-        </svg>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SERVICES
-========================================================= -->
-
-<section class="services" id="services">
-
-
-    <div class="section-badge">
-        خدماتنا المميزة
-    </div>
-
-
-    <h2>
-        خدمات تساعدك على إنجاز أعمالك باحترافية
-    </h2>
-
-
-    <p class="services-intro">
-
-        نقدم خدمات طلابية وأكاديمية وتقنية متنوعة،
-        مصممة لتلبية احتياجاتك وتنفيذ أعمالك بجودة واحترافية.
-
-    </p>
-
-
-
-    <div class="services-grid">
-
-
-        <!-- الخدمة الأولى -->
-
-        <article class="service-card">
-
-            <div class="service-icon">
-                🎓
-            </div>
-
-            <h3>
-                مشاريع التخرج
-            </h3>
-
-            <p>
-                تنفيذ ودعم مشاريع التخرج من الفكرة إلى الإنجاز،
-                بما يساعدك على تقديم مشروعك بصورة احترافية.
-            </p>
-
-        </article>
-
-
-
-        <!-- الخدمة الثانية -->
-
-        <article class="service-card">
-
-            <div class="service-icon">
-                &lt;/&gt;
-            </div>
-
-            <h3>
-                البرمجة وتقنية المعلومات
-            </h3>
-
-            <p>
-                حلول برمجية ومشاريع تقنية مصممة وفق احتياجاتك،
-                مع الاهتمام بالجودة وسهولة الاستخدام.
-            </p>
-
-        </article>
-
-
-
-        <!-- الخدمة الثالثة -->
-
-        <article class="service-card">
-
-            <div class="service-icon">
-                📊
-            </div>
-
-            <h3>
-                الإحصاء وتحليل البيانات
-            </h3>
-
-            <p>
-                تحليل دقيق للبيانات وتحويلها إلى نتائج واضحة
-                تساعدك في إنجاز أعمالك ودراساتك.
-            </p>
-
-        </article>
-
-
-
-        <!-- الخدمة الرابعة -->
-
-        <article class="service-card">
-
-            <div class="service-icon">
-                📚
-            </div>
-
-            <h3>
-                البحوث والدراسات
-            </h3>
-
-            <p>
-                إعداد وتنسيق البحوث والدراسات بأسلوب منظم
-                واحترافي يناسب متطلباتك.
-            </p>
-
-        </article>
-
-
-
-        <!-- الخدمة الخامسة -->
-
-        <article class="service-card">
-
-            <div class="service-icon">
-                ✏️
-            </div>
-
-            <h3>
-                التصميم والإبداع
-            </h3>
-
-            <p>
-                تصاميم إبداعية متنوعة للإعلانات والعروض
-                والمشاريع والمواد البصرية.
-            </p>
-
-        </article>
-
-
-
-        <!-- الخدمة السادسة -->
-
-        <article class="service-card">
-
-            <div class="service-icon">
-                💡
-            </div>
-
-            <h3>
-                الحلول التقنية والإبداعية
-            </h3>
-
-            <p>
-                حلول متخصصة تجمع بين التقنية والإبداع
-                لتلبية احتياجاتك بطريقة عملية واحترافية.
-            </p>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
-<footer>
-
-    <p>
-        جميع الحقوق محفوظة © 2026
-        <strong>
-            مسار التميز للخدمات الطلابية
-        </strong>
-    </p>
 
 </footer>
 
 
 
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
+<!-- ========================================================= -->
+<!-- الواتساب -->
+<!-- ========================================================= -->
 
 <script>
 
     /*
-       القائمة حالياً زر بصري فقط.
-       ويمكن ربطه لاحقاً بصفحة/قائمة الموقع الحالية
-       بدون التأثير على تصميم الفاصل.
-    */
+     * رقم واتساب المنصة
+     */
+    const WHATSAPP_NUMBER = '967736190956';
 
-    const menuButton = document.querySelector(".menu-button");
 
-    menuButton.addEventListener("click", function () {
+    /*
+     * فتح واتساب برسالة مخصصة
+     */
+    function openWhatsApp(message) {
 
-        alert("القائمة الرئيسية");
+        const encodedMessage = encodeURIComponent(message);
 
-    });
+        window.open(
+            `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`,
+            '_blank'
+        );
+
+    }
+
+
+    /*
+     * الرسالة العامة
+     */
+    function sendGeneralWhatsApp() {
+
+        const message =
+`السلام عليكم،
+أرغب في طلب خدمة من منصة مَسَارُ التَّمَيُّزِ للخدمات الطلابية.
+
+لدي طلب وأرغب في إرسال تفاصيله لمعرفة إمكانية التنفيذ والتكلفة والمدة المناسبة.
+
+وشكرًا لكم.`;
+
+        openWhatsApp(message);
+
+    }
+
+
+    /*
+     * رسالة الاستشارات والدعم
+     */
+    function sendConsultationWhatsApp() {
+
+        const message =
+`السلام عليكم،
+أرغب في الاستفادة من خدمة الاستشارات والدعم لدى منصة مَسَارُ التَّمَيُّزِ للخدمات الطلابية.
+
+أود توضيح احتياجي والحصول على التوجيه والحل الأنسب لطلبي.
+
+وشكرًا لكم.`;
+
+        openWhatsApp(message);
+
+    }
+
+
+    /*
+     * رسالة مخصصة لكل خدمة
+     */
+    function sendServiceWhatsApp(serviceName) {
+
+        const message =
+`السلام عليكم،
+أرغب في الاستفسار وطلب خدمة: ( ${serviceName} ) لدى منصة مَسَارُ التَّمَيُّزِ للخدمات الطلابية.
+
+أرغب في معرفة التفاصيل والتكلفة والمدة المناسبة لتنفيذ الخدمة.
+
+وشكرًا لكم.`;
+
+        openWhatsApp(message);
+
+    }
 
 </script>
 
 
 </body>
-</html>
+
+                        </html>
