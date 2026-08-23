@@ -11,14 +11,13 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- FontAwesome للأيقونات -->
+    <!-- FontAwesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- خطوط المنصة -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap"
           rel="stylesheet">
-
 
     <style>
 
@@ -54,47 +53,44 @@
 
 
         /* =========================================================
-           الفاصل الموجي الفخم بين الواجهة والقسم الفاتح
+           الموجة الفخمة بين القسم الداكن والقسم الفاتح
         ========================================================= */
 
-        .luxury-wave {
+        .hero-section {
             position: relative;
-            width: 100%;
-            height: 110px;
             overflow: hidden;
-            line-height: 0;
-            background: #f8fafc;
-            margin-top: -1px;
+            padding-bottom: 190px !important;
         }
 
-        .luxury-wave svg {
+        .hero-wave {
             position: absolute;
-            top: 0;
             left: 0;
+            bottom: -1px;
             width: 100%;
-            height: 110px;
+            height: 190px;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .hero-wave svg {
             display: block;
+            width: 100%;
+            height: 100%;
         }
 
-        .luxury-wave .wave-main {
-            fill: #1a222c;
-        }
 
-        .luxury-wave .wave-highlight {
-            fill: none;
-            stroke: #d0a75f;
-            stroke-width: 1.2;
-            opacity: 0.45;
-        }
+        /* =========================================================
+           تحسين الموجة للجوال
+        ========================================================= */
 
-        @media (max-width: 768px) {
+        @media (max-width: 640px) {
 
-            .luxury-wave {
-                height: 75px;
+            .hero-section {
+                padding-bottom: 150px !important;
             }
 
-            .luxury-wave svg {
-                height: 75px;
+            .hero-wave {
+                height: 150px;
             }
 
         }
@@ -111,7 +107,7 @@
 <!-- 1. الهيدر -->
 <!-- ========================================================= -->
 
-<header class="bg-[#1a222c] border-b border-gray-800 sticky top-0 z-50">
+<header class="bg-[#1a222c] sticky top-0 z-50">
 
     <div class="flex justify-between items-center px-5 py-4 max-w-7xl mx-auto">
 
@@ -222,8 +218,8 @@
 <!-- ========================================================= -->
 
 <main
-    class="flex-grow flex flex-col items-center justify-center
-           text-center px-5 py-12">
+    class="hero-section flex-grow flex flex-col items-center justify-center
+           text-center px-5 py-12 bg-[#1a222c]">
 
 
     <div
@@ -270,7 +266,6 @@
         </button>
 
 
-        <!-- الانتقال الناعم إلى نماذج الأعمال -->
         <a
             href="#work-samples"
             class="border border-gray-600 text-white
@@ -345,52 +340,98 @@
 
     </div>
 
+
+    <!-- =========================================================
+         التعرج الفخم الجديد
+         ========================================================= -->
+
+    <div class="hero-wave">
+
+        <svg
+            viewBox="0 0 1440 190"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg">
+
+            <!-- الطبقة الخلفية -->
+            <path
+                d="M0 72
+                   C120 145 220 160 350 120
+                   C500 75 570 40 710 78
+                   C850 116 920 160 1070 120
+                   C1200 85 1290 35 1440 80
+                   L1440 190
+                   L0 190 Z"
+                fill="#17212b"/>
+
+
+            <!-- الموجة الداكنة الثانية -->
+            <path
+                d="M0 94
+                   C130 168 230 175 370 132
+                   C510 88 600 62 720 96
+                   C850 130 930 174 1080 137
+                   C1210 105 1305 54 1440 100
+                   L1440 190
+                   L0 190 Z"
+                fill="#1a222c"/>
+
+
+            <!-- الخط الذهبي الرئيسي -->
+            <path
+                d="M0 86
+                   C130 160 230 170 370 126
+                   C510 82 600 56 720 90
+                   C850 125 930 166 1080 130
+                   C1210 98 1305 48 1440 94"
+                fill="none"
+                stroke="#d0a75f"
+                stroke-width="5"
+                stroke-linecap="round"/>
+
+
+            <!-- الخط الذهبي الرفيع -->
+            <path
+                d="M0 103
+                   C135 176 235 184 375 141
+                   C515 96 600 72 725 105
+                   C850 138 935 181 1085 145
+                   C1215 112 1310 66 1440 110"
+                fill="none"
+                stroke="#c9a45c"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                opacity="0.9"/>
+
+
+            <!-- الطبقة البيضاء التي تدخل تحت الموجة -->
+            <path
+                d="M0 126
+                   C120 192 235 198 375 155
+                   C520 112 610 90 730 122
+                   C850 154 940 198 1090 160
+                   C1220 128 1310 86 1440 125
+                   L1440 190
+                   L0 190 Z"
+                fill="#f8fafc"/>
+
+
+            <!-- خط ذهبي رفيع فوق القسم الفاتح -->
+            <path
+                d="M0 126
+                   C120 192 235 198 375 155
+                   C520 112 610 90 730 122
+                   C850 154 940 198 1090 160
+                   C1220 128 1310 86 1440 125"
+                fill="none"
+                stroke="#d0a75f"
+                stroke-width="1.5"
+                stroke-linecap="round"/>
+
+        </svg>
+
+    </div>
+
 </main>
-
-
-<!-- ========================================================= -->
-<!-- الفاصل الموجي الفخم SVG -->
-<!-- ========================================================= -->
-
-<div class="luxury-wave" aria-hidden="true">
-
-    <svg
-        viewBox="0 0 1440 110"
-        preserveAspectRatio="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-
-        <!-- الموجة الرئيسية -->
-        <path
-            class="wave-main"
-            d="
-                M0,0
-                C120,45 210,75 330,48
-                C450,20 535,5 650,38
-                C770,72 850,92 970,55
-                C1090,18 1180,5 1280,35
-                C1340,52 1390,58 1440,38
-                L1440,0
-                Z
-            "
-        />
-
-        <!-- اللمسة الذهبية الفاخرة -->
-        <path
-            class="wave-highlight"
-            d="
-                M0,4
-                C120,49 210,79 330,52
-                C450,24 535,9 650,42
-                C770,76 850,96 970,59
-                C1090,22 1180,9 1280,39
-                C1340,56 1390,62 1440,42
-            "
-        />
-
-    </svg>
-
-</div>
 
 
 
@@ -400,8 +441,7 @@
 
 <section
     class="bg-[#f8fafc] text-[#1a222c]
-           py-16 px-5 border-t border-gray-200">
-
+           py-16 px-5">
 
     <div class="max-w-7xl mx-auto">
 
@@ -469,7 +509,6 @@
             </div>
 
 
-
             <!-- الخدمة 2 -->
             <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
 
@@ -496,7 +535,6 @@
                 </a>
 
             </div>
-
 
 
             <!-- الخدمة 3 -->
@@ -527,7 +565,6 @@
             </div>
 
 
-
             <!-- الخدمة 4 -->
             <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
 
@@ -554,7 +591,6 @@
                 </a>
 
             </div>
-
 
 
             <!-- الخدمة 5 -->
@@ -585,7 +621,6 @@
             </div>
 
 
-
             <!-- الخدمة 6 -->
             <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
 
@@ -614,7 +649,6 @@
             </div>
 
 
-
             <!-- الخدمة 7 -->
             <div class="bg-white rounded-3xl p-7 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
 
@@ -641,7 +675,6 @@
                 </a>
 
             </div>
-
 
 
             <!-- الخدمة 8 -->
@@ -768,9 +801,7 @@
                     </h3>
 
                     <p class="text-gray-500 text-xs leading-relaxed">
-
                         نتعامل مع معلوماتك وملفاتك بمسؤولية، ونحرص على الحفاظ على خصوصيتها وسريتها طوال مراحل العمل.
-
                     </p>
 
                 </div>
@@ -958,18 +989,15 @@
                     أعمالنا
                 </span>
 
-
                 <h2 class="text-2xl md:text-4xl font-black mb-3">
                     نماذج من أعمالنا السابقة
                 </h2>
-
 
                 <p class="text-gray-500 text-sm max-w-2xl leading-relaxed">
                     تعرف على نماذج من الخدمات والأعمال التي تم تنفيذها سابقًا.
                 </p>
 
             </div>
-
 
             <a
                 href="#work-samples"
@@ -983,11 +1011,6 @@
 
         </div>
 
-
-
-        <!-- ================================================= -->
-        <!-- النماذج -->
-        <!-- ================================================= -->
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
@@ -1006,22 +1029,17 @@
 
                 </div>
 
-
                 <div class="p-6">
 
                     <h3 class="font-black mb-3 text-lg">
                         تصميم خرائط ذهنية ومفاهيمية ذكية
                     </h3>
 
-
                     <p class="text-gray-500 text-sm leading-relaxed mb-5">
-
                         نحوّل الأفكار والمعلومات إلى خرائط ذهنية ومفاهيمية منظمة
                         تساعد على تبسيط المحتوى وربط الأفكار وعرضها بصورة واضحة
                         وجذابة وسهلة الفهم.
-
                     </p>
-
 
                     <button
                         onclick="sendServiceWhatsApp('تصميم خريطة ذهنية ومفاهيمية ذكية')"
@@ -1040,7 +1058,6 @@
             </div>
 
 
-
             <!-- النموذج الثاني -->
 
             <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
@@ -1055,20 +1072,15 @@
 
                 </div>
 
-
                 <div class="p-6">
 
                     <h3 class="font-black mb-3 text-lg">
                         تصاميم ورسم هندسي معماري احترافي
                     </h3>
 
-
                     <p class="text-gray-500 text-sm leading-relaxed mb-5">
-
                         نحول أفكارك ورؤيتك إلى مخططات وتصاميم معمارية دقيقة تجمع بين جمال الإخراج البصري والاستغلال الأمثل للمساحات، مما يضمن تنفيذ مشروعك بأعلى درجات الفخامة والدقة الهندسية.
-
                     </p>
-
 
                     <button
                         onclick="sendServiceWhatsApp('تصميم ورسم هندسي معماري احترافي')"
@@ -1087,7 +1099,6 @@
             </div>
 
 
-
             <!-- النموذج الثالث -->
 
             <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
@@ -1102,20 +1113,15 @@
 
                 </div>
 
-
                 <div class="p-6">
 
                     <h3 class="font-black mb-3 text-lg">
                         تصميم بوسترات إعلانية وتفاعلية احترافية
                     </h3>
 
-
                     <p class="text-gray-500 text-sm leading-relaxed mb-5">
-
                         نحول أفكارك ورسائلك التسويقية إلى تصاميم بوسترات بصرية جذابة تدمج بين قوة العبارة وتناسق العناصر الفنية، مما يضمن لفت الانتباه وإيصال هويتك أو فعاليتك للجمهور المستهدف بأعلى درجات التأثير والاحترافية.
-
                     </p>
-
 
                     <button
                         onclick="sendServiceWhatsApp('تصميم بوسترات إعلانية وتفاعلية احترافية')"
@@ -1134,7 +1140,6 @@
             </div>
 
 
-
             <!-- النموذج الرابع -->
 
             <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
@@ -1149,20 +1154,15 @@
 
                 </div>
 
-
                 <div class="p-6">
 
                     <h3 class="font-black mb-3 text-lg">
                         تصميم عروض تقديمية (PowerPoint) احترافية
                     </h3>
 
-
                     <p class="text-gray-500 text-sm leading-relaxed mb-5">
-
                         نصمم عروضكم التقديمية بأسلوب إبداعي يناسب كافة المجالات (الأكاديمية، التجارية، والتدريبية). نجمع بين التنسيق البصري الجذاب وسهولة عرض المعلومات، مع اهتمام دقيق بالهوية البصرية لضمان تقديم محتواكم بأفضل صورة ممكنة وأعلى مستويات الاحترافية.
-
                     </p>
-
 
                     <button
                         onclick="sendServiceWhatsApp('تصميم عروض تقديمية PowerPoint احترافية')"
@@ -1181,7 +1181,6 @@
             </div>
 
 
-
             <!-- النموذج الخامس -->
 
             <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
@@ -1196,20 +1195,15 @@
 
                 </div>
 
-
                 <div class="p-6">
 
                     <h3 class="font-black mb-3 text-lg">
                         تصميم إنفوجرافيك وعروض بيانات احترافية
                     </h3>
 
-
                     <p class="text-gray-500 text-sm leading-relaxed mb-5">
-
                         نحول المعلومات والبيانات المعقدة إلى تصاميم إنفوجرافيك إبداعية تجمع بين دقة المحتوى وجمال الإخراج البصري، مما يسهل وصول رسالتك بوضوح وتأثير عالٍ في العروض التقديمية والمشاريع الأكاديمية.
-
                     </p>
-
 
                     <button
                         onclick="sendServiceWhatsApp('تصميم إنفوجرافيك وعروض بيانات احترافية')"
@@ -1228,7 +1222,6 @@
             </div>
 
 
-
             <!-- النموذج السادس -->
 
             <div class="bg-[#f8fafc] rounded-3xl border border-gray-200 overflow-hidden">
@@ -1243,20 +1236,15 @@
 
                 </div>
 
-
                 <div class="p-6">
 
                     <h3 class="font-black mb-3 text-lg">
                         تصميم وتنسيق سيرة ذاتية (CV) احترافية
                     </h3>
 
-
                     <p class="text-gray-500 text-sm leading-relaxed mb-5">
-
                         نحول خبراتك ومهاراتك إلى سيرة ذاتية متكاملة باللغة العربية أو الإنجليزية، مصممة وفق معايير أنظمة الفرز الآلي (ATS) لضمان سهولة قراءة بياناتك، مع الحفاظ على ترتيب منطقي وتنسيق بصري عصري يبرز نقاط قوتك ويضمن لملفك حضوراً مهنياً قوياً يلفت انتباه أصحاب العمل.
-
                     </p>
-
 
                     <button
                         onclick="sendServiceWhatsApp('تصميم وتنسيق سيرة ذاتية (CV) احترافية')"
@@ -1273,7 +1261,6 @@
                 </div>
 
             </div>
-
 
         </div>
 
@@ -1297,11 +1284,9 @@
             آراء الطلاب
         </span>
 
-
         <h2 class="text-2xl md:text-4xl font-black mb-4">
             ماذا يقول عملاؤنا؟
         </h2>
-
 
         <p class="text-gray-500 text-sm mb-10">
             تجارب وآراء تساعدك على التعرف أكثر على مستوى الخدمة.
@@ -1383,11 +1368,9 @@
                 أسئلة شائعة
             </span>
 
-
             <h2 class="text-2xl md:text-4xl font-black mb-3">
                 لديك استفسار؟
             </h2>
-
 
             <p class="text-gray-500 text-sm">
                 بعض الإجابات السريعة على الأسئلة التي قد تدور في ذهنك.
@@ -1411,15 +1394,11 @@
 
                 </summary>
 
-
                 <p class="text-gray-500 text-xs leading-relaxed mt-4">
-
                     يمكنك التواصل معنا مباشرة عبر واتساب وإرسال تفاصيل الخدمة التي تحتاج إليها.
-
                 </p>
 
             </details>
-
 
 
             <details class="group bg-[#f8fafc] border border-gray-200 rounded-2xl p-5">
@@ -1434,16 +1413,12 @@
 
                 </summary>
 
-
                 <p class="text-gray-500 text-xs leading-relaxed mt-4">
-
                     تختلف التكلفة حسب نوع الخدمة وحجم العمل ومتطلباته،
                     ويتم الاتفاق على التفاصيل قبل البدء.
-
                 </p>
 
             </details>
-
 
 
             <details class="group bg-[#f8fafc] border border-gray-200 rounded-2xl p-5">
@@ -1458,16 +1433,12 @@
 
                 </summary>
 
-
                 <p class="text-gray-500 text-xs leading-relaxed mt-4">
-
                     نعم، يتم متابعة الطلب بعد التسليم والتعامل مع التعديلات
                     المطلوبة حسب الاتفاق.
-
                 </p>
 
             </details>
-
 
 
             <details class="group bg-[#f8fafc] border border-gray-200 rounded-2xl p-5">
@@ -1482,11 +1453,8 @@
 
                 </summary>
 
-
                 <p class="text-gray-500 text-xs leading-relaxed mt-4">
-
                     يتم تسليم الملفات بالطريقة المناسبة والمتفق عليها مع العميل.
-
                 </p>
 
             </details>
@@ -1544,10 +1512,8 @@
 
 
                 <p class="text-gray-300 text-sm leading-relaxed max-w-xl">
-
                     أرسل تفاصيل طلبك وسنتواصل معك لمراجعة المتطلبات
                     وتحديد الخطوات المناسبة.
-
                 </p>
 
             </div>
@@ -1639,15 +1605,9 @@
 
 <script>
 
-    /*
-     * رقم واتساب المنصة
-     */
     const WHATSAPP_NUMBER = '967736190956';
 
 
-    /*
-     * فتح واتساب برسالة مخصصة
-     */
     function openWhatsApp(message) {
 
         const encodedMessage = encodeURIComponent(message);
@@ -1660,9 +1620,6 @@
     }
 
 
-    /*
-     * الرسالة العامة
-     */
     function sendGeneralWhatsApp() {
 
         const message =
@@ -1678,9 +1635,6 @@
     }
 
 
-    /*
-     * رسالة الاستشارات والدعم
-     */
     function sendConsultationWhatsApp() {
 
         const message =
@@ -1696,9 +1650,6 @@
     }
 
 
-    /*
-     * رسالة مخصصة لكل خدمة
-     */
     function sendServiceWhatsApp(serviceName) {
 
         const message =
