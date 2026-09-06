@@ -1,222 +1,2289 @@
-/* ==========================================================================
-   مَسَارُ التَّمَيُّزِ - منصة الخدمات الطلابية والأكاديمية
-   Main Stylesheet (style.css)
-   ========================================================================== */
+/* ============================================================
+   مَسَارُ التَّمَيُّزِ
+   Global Design System — V2
+   الهوية البصرية المعتمدة من الصفحة الرئيسية
+   ============================================================ */
 
-/* 1. المتغيرات العامة والجذور (CSS Root Variables) */
+
+/* ============================================================
+   01 — ROOT / BRAND TOKENS
+   ============================================================ */
+
 :root {
-    --color-navy: #0f172a;
-    --color-petrol: #0d5c75;
-    --color-gold: #d4af37;
-    --color-gold-hover: #b89628;
-    --color-light-bg: #f8fafc;
-    --color-emerald: #10b981;
-    --color-rose: #f43f5e;
-    
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    --shadow-gold: 0 10px 25px -5px rgba(212, 175, 55, 0.25);
-    
-    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-normal: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --ink: #1a222c;
+    --ink-deep: #111820;
+    --ink-soft: #222d38;
+    --petrol: #17343b;
+
+    --gold: #d0a75f;
+    --gold-light: #e2c98f;
+    --gold-soft: #f5ecdc;
+    --gold-faint: rgba(208, 167, 95, 0.09);
+
+    --paper: #f8fafc;
+    --paper-2: #f2f5f7;
+    --white: #ffffff;
+
+    --text: #1a222c;
+    --muted: #69727d;
+    --muted-light: #9aa3ad;
+
+    --line: #e5e8eb;
+    --line-dark: rgba(255, 255, 255, 0.08);
+
+    --success: #3f9b73;
+    --danger: #b94a48;
+
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 26px;
+    --radius-2xl: 32px;
+
+    --shadow-sm:
+        0 6px 18px rgba(26, 34, 44, 0.05);
+
+    --shadow-md:
+        0 14px 35px rgba(26, 34, 44, 0.08);
+
+    --shadow-lg:
+        0 24px 60px rgba(26, 34, 44, 0.12);
+
+    --transition:
+        0.25s ease;
+
+    --container:
+        1180px;
 }
 
-/* 2. الإعدادات الأساسية والتمرير السلس (Base & Reset) */
+
+/* ============================================================
+   02 — RESET
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 html {
     scroll-behavior: smooth;
-    -webkit-tap-highlight-color: transparent;
+    scroll-padding-top: 90px;
 }
 
 body {
-    font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
-    background-color: var(--color-light-bg);
-    color: #334155;
-    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+
+    font-family: "Tajawal", sans-serif;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f8fafc 0%,
+            #f7f9fb 100%
+        );
+
+    color: var(--text);
+
+    line-height: 1.8;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
-/* التحديد وتظليل النصوص */
+body,
+button,
+input,
+textarea,
+select {
+    font-family: "Tajawal", sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+    font-size: inherit;
+}
+
+button {
+    border: 0;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
 ::selection {
-    background-color: var(--color-gold);
-    color: var(--color-navy);
+    background: rgba(208, 167, 95, 0.25);
+    color: var(--ink);
 }
 
-/* 3. شريط التمرير المخصص (Custom Scrollbar) */
+
+/* ============================================================
+   03 — SCROLLBAR
+   ============================================================ */
+
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 9px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #0f172a;
+    background: #edf0f2;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #1e293b;
-    border-radius: 4px;
-    border: 2px solid #0f172a;
+    background: #b7a071;
+    border-radius: 20px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-gold);
+    background: var(--gold);
 }
 
-/* 4. التحريكات والمؤثرات البصرية (Keyframes & Animations) */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+
+/* ============================================================
+   04 — CONTAINER
+   ============================================================ */
+
+.site-shell {
+    width: min(
+        var(--container),
+        calc(100% - 32px)
+    );
+
+    margin-inline: auto;
 }
 
-@keyframes pulseGlow {
-    0%, 100% {
-        box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-    }
-    50% {
-        box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
-    }
-}
 
-@keyframes shimmer {
-    0% {
-        background-position: -200% 0;
-    }
-    100% {
-        background-position: 200% 0;
-    }
-}
+/* ============================================================
+   05 — HEADER
+   ============================================================ */
 
-.animate-fade-in {
-    animation: fadeIn 0.4s ease-out forwards;
-}
-
-.animate-pulse-glow {
-    animation: pulseGlow 3s infinite ease-in-out;
-}
-
-/* 5. تصميم بطاقات الخدمات والأعمال (Custom Card Enhancements) */
-.service-card {
-    transition: var(--transition-normal);
+.site-header {
     position: relative;
-    overflow: hidden;
+
+    background:
+        rgba(26, 34, 44, 0.97);
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.07);
+
+    backdrop-filter:
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
-.service-card::after {
-    content: '';
+.nav-wrap {
+    min-height: 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+/* ============================================================
+   06 — BRAND
+   ============================================================ */
+
+.brand-link {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 0;
+}
+
+.brand-logo {
+    width: auto;
+    height: 44px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
+}
+
+.brand-title {
+    display: block;
+
+    color: var(--gold);
+
+    font-family: "Cairo", sans-serif;
+    font-weight: 900;
+
+    font-size: 16px;
+
+    line-height: 1.35;
+
+    white-space: nowrap;
+}
+
+.brand-subtitle {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #aeb7c1;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+
+/* ============================================================
+   07 — MENU
+   ============================================================ */
+
+.menu-details {
+    position: relative;
+}
+
+.menu-trigger {
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+
+    padding: 0;
+
+    border-radius: 14px;
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-size: 23px;
+
+    transition:
+        color var(--transition),
+        background var(--transition),
+        transform var(--transition);
+}
+
+.menu-trigger::-webkit-details-marker {
+    display: none;
+}
+
+.menu-trigger:hover {
+    color: var(--gold);
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    transform: translateY(-1px);
+}
+
+.menu-details[open] .menu-trigger {
+    color: var(--gold);
+
+    background:
+        rgba(208, 167, 95, 0.08);
+}
+
+
+/* ============================================================
+   08 — DROPDOWN MENU
+   ============================================================ */
+
+.mobile-menu {
     position: absolute;
-    top: 0;
+
+    top: 56px;
+    left: 0;
+
+    width: 255px;
+
+    padding: 12px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+
+    background:
+        rgba(26, 34, 44, 0.99);
+
+    border:
+        1px solid #39434f;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 25px 65px rgba(0, 0, 0, 0.35);
+
+    z-index: 100;
+}
+
+.mobile-menu a {
+    display: block;
+
+    padding: 12px 14px;
+
+    border-radius: 12px;
+
+    color: #e8edf2;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    transition:
+        color var(--transition),
+        background var(--transition),
+        transform var(--transition);
+}
+
+.mobile-menu a:hover {
+    color: var(--gold);
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    transform: translateX(-2px);
+}
+
+.mobile-menu a[href="about.html"] {
+    /* مساحة لتناسق العناصر */
+}
+
+
+/* ============================================================
+   09 — WHATSAPP BUTTON
+   ============================================================ */
+
+.menu-wa,
+.footer-wa {
+    width: 100%;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 8px;
+
+    padding: 12px 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d0a75f,
+            #c59a50
+        );
+
+    color: var(--ink);
+
+    border-radius: 12px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        filter var(--transition);
+}
+
+.menu-wa:hover,
+.footer-wa:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.02);
+
+    box-shadow:
+        0 10px 24px rgba(208, 167, 95, 0.2);
+}
+
+.menu-wa i,
+.footer-wa i {
+    font-size: 17px;
+}
+
+
+/* ============================================================
+   10 — PAGE HERO
+   ============================================================ */
+
+.page-hero {
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(208, 167, 95, 0.08),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(23, 52, 59, 0.8),
+            transparent 34%
+        ),
+
+        var(--ink);
+
+    color: #ffffff;
+
+    padding:
+        78px 0 68px;
+}
+
+.page-hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 460px;
+    height: 460px;
+
+    border:
+        1px solid rgba(208, 167, 95, 0.09);
+
+    border-radius: 50%;
+
+    left: -220px;
+    top: -240px;
+}
+
+.page-hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    border:
+        1px solid rgba(208, 167, 95, 0.06);
+
+    border-radius: 50%;
+
+    right: -130px;
+    bottom: -160px;
+}
+
+.page-hero .site-shell {
+    position: relative;
+
+    z-index: 2;
+}
+
+.page-hero h1 {
+    margin:
+        18px 0 10px;
+
+    font-family: "Cairo", sans-serif;
+
+    font-size:
+        clamp(2rem, 5vw, 3.7rem);
+
+    font-weight: 900;
+
+    line-height: 1.35;
+
+    letter-spacing: -0.5px;
+}
+
+.page-hero p {
+    max-width: 720px;
+
+    margin: 0;
+
+    color: #cbd3db;
+
+    font-size: 15px;
+
+    line-height: 2;
+}
+
+
+/* ============================================================
+   11 — EYEBROW / GOLD BADGE
+   ============================================================ */
+
+.eyebrow {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding:
+        7px 15px;
+
+    color: var(--gold);
+
+    background:
+        rgba(208, 167, 95, 0.08);
+
+    border:
+        1px solid rgba(208, 167, 95, 0.38);
+
+    border-radius: 999px;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    line-height: 1.4;
+}
+
+.eyebrow i {
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   12 — SECTIONS
+   ============================================================ */
+
+.section {
+    padding:
+        76px 0;
+}
+
+.section.pt-0 {
+    padding-top: 0;
+}
+
+.section-head {
+    max-width: 730px;
+
+    margin:
+        0 auto 40px;
+
+    text-align: center;
+}
+
+.section-head h2 {
+    margin:
+        10px 0 10px;
+
+    color: var(--ink);
+
+    font-family: "Cairo", sans-serif;
+
+    font-size:
+        clamp(1.7rem, 4vw, 2.55rem);
+
+    font-weight: 900;
+
+    line-height: 1.45;
+}
+
+.section-head p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 2;
+}
+
+
+/* ============================================================
+   13 — SURFACE / CARDS
+   ============================================================ */
+
+.surface {
+    background:
+        rgba(255, 255, 255, 0.96);
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        var(--radius-xl);
+
+    box-shadow:
+        var(--shadow-sm);
+
+    transition:
+        box-shadow var(--transition),
+        transform var(--transition),
+        border-color var(--transition);
+}
+
+.surface:hover {
+    border-color:
+        rgba(208, 167, 95, 0.3);
+
+    box-shadow:
+        var(--shadow-md);
+}
+
+
+/* ============================================================
+   14 — SERVICE CARDS
+   ============================================================ */
+
+.service-card {
+    position: relative;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        var(--radius-xl);
+
+    box-shadow:
+        var(--shadow-sm);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.service-card::before {
+    content: "";
+
+    position: absolute;
+
     right: 0;
-    width: 4px;
-    height: 100%;
-    background: transparent;
-    transition: var(--transition-fast);
+    left: 0;
+    top: 0;
+
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+
+    opacity: 0;
+
+    transition:
+        opacity var(--transition);
 }
 
 .service-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-xl);
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(208, 167, 95, 0.35);
+
+    box-shadow:
+        var(--shadow-lg);
 }
 
-.service-card:hover::after {
-    background: var(--color-gold);
+.service-card:hover::before {
+    opacity: 1;
 }
 
-/* 6. أزرار الفلترة وتبويبات الأقسام (Category & Filter Buttons) */
-.category-btn {
-    transition: var(--transition-fast);
+.service-card img {
+    width: 100%;
+
+    height: 190px;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.5s ease;
+}
+
+.service-card:hover img {
+    transform:
+        scale(1.025);
+}
+
+.card-body {
+    padding: 23px;
+}
+
+.card-body h3 {
+    margin:
+        12px 0 8px;
+
+    color: var(--ink);
+
+    font-family: "Cairo", sans-serif;
+
+    font-size: 18px;
+
+    font-weight: 900;
+
+    line-height: 1.55;
+}
+
+.card-body p {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 2;
+
+    margin:
+        0 0 17px;
+}
+
+
+/* ============================================================
+   15 — TAG
+   ============================================================ */
+
+.tag {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;
+
+    padding:
+        5px 11px;
+
+    background:
+        var(--gold-soft);
+
+    color:
+        #8b6934;
+
+    border-radius:
+        999px;
+
+    font-size:
+        11px;
+
+    font-weight:
+        900;
+
+    line-height:
+        1.5;
+}
+
+
+/* ============================================================
+   16 — BUTTONS
+   ============================================================ */
+
+.btn-gold,
+.btn-dark,
+.btn-outline {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 46px;
+
+    padding:
+        11px 19px;
+
+    border-radius:
+        12px;
+
+    font-size:
+        13px;
+
+    font-weight:
+        900;
+
     cursor: pointer;
-    user-select: none;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition);
+}
+
+.btn-gold {
+    background:
+        linear-gradient(
+            135deg,
+            #d0a75f,
+            #c79c53
+        );
+
+    color:
+        var(--ink);
+
+    border:
+        1px solid transparent;
+
+    box-shadow:
+        0 7px 20px rgba(208, 167, 95, 0.15);
+}
+
+.btn-gold:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 13px 28px rgba(208, 167, 95, 0.22);
+}
+
+.btn-dark {
+    background:
+        var(--ink);
+
+    color:
+        #ffffff;
+
+    border:
+        1px solid var(--ink);
+}
+
+.btn-dark:hover {
+    background:
+        var(--ink-soft);
+
+    transform:
+        translateY(-2px);
+}
+
+.btn-outline {
+    background:
+        #ffffff;
+
+    color:
+        var(--ink);
+
+    border:
+        1px solid #cfd5db;
+}
+
+.btn-outline:hover {
+    color:
+        #8b6934;
+
+    border-color:
+        var(--gold);
+
+    background:
+        var(--gold-soft);
+}
+
+
+/* ============================================================
+   17 — SEARCH
+   ============================================================ */
+
+.search-box {
+    position: relative;
+
+    width:
+        min(560px, 100%);
+
+    margin:
+        0 auto 24px;
+}
+
+.search-box input {
+    width: 100%;
+
+    min-height: 54px;
+
+    padding:
+        13px 48px 13px 17px;
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid #d9dee3;
+
+    border-radius:
+        15px;
+
+    color:
+        var(--ink);
+
+    outline:
+        none;
+
+    font-size:
+        13px;
+
+    box-shadow:
+        0 5px 20px rgba(26, 34, 44, 0.035);
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.search-box input::placeholder {
+    color:
+        #a0a8b1;
+}
+
+.search-box input:focus {
+    border-color:
+        var(--gold);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(208, 167, 95, 0.12);
+}
+
+.search-box i {
+    position: absolute;
+
+    right: 17px;
+
+    top: 17px;
+
+    color:
+        #9aa3ad;
+
+    font-size:
+        16px;
+
+    pointer-events: none;
+}
+
+
+/* ============================================================
+   18 — CATEGORY FILTERS
+   ============================================================ */
+
+.filters {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-bottom:
+        28px;
+}
+
+.category-btn {
+    min-height: 40px;
+
+    padding:
+        8px 14px;
+
+    background:
+        #ffffff;
+
+    color:
+        #59636d;
+
+    border:
+        1px solid #d9dee3;
+
+    border-radius:
+        999px;
+
+    font-size:
+        11px;
+
+    font-weight:
+        900;
+
+    cursor:
+        pointer;
+
+    transition:
+        all var(--transition);
+}
+
+.category-btn:hover {
+    color:
+        #8b6934;
+
+    border-color:
+        var(--gold);
+
+    background:
+        var(--gold-soft);
 }
 
 .category-btn.active {
-    background-color: var(--color-navy) !important;
-    color: var(--color-gold) !important;
-    border-color: var(--color-gold) !important;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+    color:
+        var(--gold);
+
+    background:
+        var(--ink);
+
+    border-color:
+        var(--ink);
+
+    box-shadow:
+        0 7px 18px rgba(26, 34, 44, 0.12);
 }
 
-.category-btn:hover:not(.active) {
-    background-color: #cbd5e1;
-    color: var(--color-navy);
+
+/* ============================================================
+   19 — ABOUT PAGE
+   ============================================================ */
+
+.split-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.08fr 0.92fr;
+
+    gap:
+        24px;
+
+    align-items:
+        stretch;
 }
 
-/* 7. لوحة التحكم والجدولة (Admin Dashboard Custom Component) */
-.tab-btn {
-    transition: var(--transition-fast);
-    position: relative;
+.info-card {
+    padding:
+        32px;
 }
 
-.tab-btn.active {
-    color: var(--color-navy) !important;
-    border-bottom-color: var(--color-navy) !important;
+.info-card h3 {
+    margin:
+        14px 0 10px;
+
+    font-family:
+        "Cairo", sans-serif;
+
+    font-weight:
+        900;
+
+    line-height:
+        1.5;
 }
 
-.tab-btn.active::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: var(--color-gold);
-    border-radius: 2px 2px 0 0;
+.info-card > p {
+    margin:
+        0;
+
+    line-height:
+        2.1;
 }
 
-/* 8. حقول الإدخال والتركيز (Custom Form Focus States) */
-input:focus, textarea:focus, select:focus {
-    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
+.info-card.bg-dark {
+    background:
+        var(--ink);
+
+    color:
+        #ffffff;
 }
 
-/* تخصيص السهم في قوائم الإدخال */
+
+/* ============================================================
+   20 — FEATURE LIST
+   ============================================================ */
+
+.feature-list {
+    display:
+        grid;
+
+    gap:
+        12px;
+
+    margin-top:
+        22px;
+}
+
+.feature-list > div {
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        12px;
+
+    padding:
+        15px;
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        15px;
+
+    transition:
+        transform var(--transition),
+        border-color var(--transition);
+}
+
+.feature-list > div:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(208, 167, 95, 0.35);
+}
+
+.feature-list i {
+    flex-shrink:
+        0;
+
+    margin-top:
+        5px;
+
+    color:
+        var(--gold);
+}
+
+.feature-list b {
+    color:
+        var(--ink);
+
+    font-size:
+        13px;
+
+    font-weight:
+        900;
+}
+
+.feature-list p {
+    margin:
+        3px 0 0;
+
+    color:
+        var(--muted);
+
+    font-size:
+        11px;
+
+    line-height:
+        1.9;
+}
+
+
+/* ============================================================
+   21 — STAT CARDS
+   ============================================================ */
+
+.stat-strip {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        12px;
+
+    margin-top:
+        30px;
+}
+
+.stat {
+    padding:
+        18px;
+
+    text-align:
+        center;
+
+    background:
+        rgba(255, 255, 255, 0.045);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius:
+        18px;
+}
+
+.stat strong {
+    display:
+        block;
+
+    color:
+        var(--gold);
+
+    font-family:
+        "Cairo", sans-serif;
+
+    font-size:
+        22px;
+
+    font-weight:
+        900;
+
+    line-height:
+        1.4;
+}
+
+.stat span {
+    display:
+        block;
+
+    margin-top:
+        3px;
+
+    color:
+        #b8c1ca;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+}
+
+
+/* ============================================================
+   22 — CONTACT CARDS
+   ============================================================ */
+
+.contact-grid {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        18px;
+}
+
+.contact-card {
+    padding:
+        30px 25px;
+
+    text-align:
+        center;
+}
+
+.contact-card h3 {
+    margin:
+        0 0 8px;
+
+    font-family:
+        "Cairo", sans-serif;
+
+    font-size:
+        18px;
+
+    font-weight:
+        900;
+}
+
+.contact-card p {
+    margin:
+        0;
+
+    line-height:
+        2;
+}
+
+.icon-box {
+    width:
+        60px;
+
+    height:
+        60px;
+
+    margin:
+        0 auto 17px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    color:
+        #96723a;
+
+    background:
+        var(--gold-soft);
+
+    border:
+        1px solid rgba(208, 167, 95, 0.18);
+
+    border-radius:
+        18px;
+
+    font-size:
+        22px;
+}
+
+
+/* ============================================================
+   23 — FAQ
+   ============================================================ */
+
+.faq {
+    display:
+        grid;
+
+    gap:
+        12px;
+
+    max-width:
+        850px;
+
+    margin-inline:
+        auto;
+}
+
+.faq details {
+    overflow:
+        hidden;
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        17px;
+
+    box-shadow:
+        0 5px 18px rgba(26, 34, 44, 0.025);
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.faq details:hover {
+    border-color:
+        rgba(208, 167, 95, 0.32);
+}
+
+.faq details[open] {
+    border-color:
+        rgba(208, 167, 95, 0.45);
+
+    box-shadow:
+        var(--shadow-sm);
+}
+
+.faq summary {
+    position:
+        relative;
+
+    padding:
+        18px 22px;
+
+    cursor:
+        pointer;
+
+    color:
+        var(--ink);
+
+    font-size:
+        13px;
+
+    font-weight:
+        900;
+
+    list-style:
+        none;
+
+    transition:
+        color var(--transition);
+}
+
+.faq summary::-webkit-details-marker {
+    display:
+        none;
+}
+
+.faq summary::before {
+    content:
+        "+";
+
+    position:
+        absolute;
+
+    left:
+        20px;
+
+    top:
+        15px;
+
+    color:
+        var(--gold);
+
+    font-size:
+        20px;
+
+    font-family:
+        Arial, sans-serif;
+
+    transition:
+        transform var(--transition);
+}
+
+.faq details[open] summary {
+    color:
+        #8b6934;
+}
+
+.faq details[open] summary::before {
+    content:
+        "−";
+}
+
+.faq p {
+    margin:
+        0;
+
+    padding:
+        0 22px 20px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        12px;
+
+    line-height:
+        2;
+}
+
+
+/* ============================================================
+   24 — CTA
+   ============================================================ */
+
+.cta {
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        25px;
+
+    padding:
+        36px;
+
+    color:
+        #ffffff;
+
+    background:
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(208, 167, 95, 0.10),
+            transparent 28%
+        ),
+
+        var(--ink);
+
+    border:
+        1px solid rgba(208, 167, 95, 0.12);
+
+    border-radius:
+        var(--radius-2xl);
+
+    box-shadow:
+        var(--shadow-lg);
+}
+
+.cta::after {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        220px;
+
+    height:
+        220px;
+
+    left:
+        -110px;
+
+    bottom:
+        -150px;
+
+    border:
+        1px solid rgba(208, 167, 95, 0.08);
+
+    border-radius:
+        50%;
+}
+
+.cta > * {
+    position:
+        relative;
+
+    z-index:
+        1;
+}
+
+.cta h2 {
+    margin:
+        0 0 7px;
+
+    font-family:
+        "Cairo", sans-serif;
+
+    font-size:
+        clamp(1.4rem, 3vw, 2rem);
+
+    font-weight:
+        900;
+
+    line-height:
+        1.5;
+}
+
+.cta p {
+    margin:
+        0;
+
+    color:
+        #bdc6cf;
+
+    font-size:
+        13px;
+}
+
+
+/* ============================================================
+   25 — SERVICE DETAILS
+   ============================================================ */
+
+#detail-cover-container {
+    overflow:
+        hidden;
+
+    background:
+        var(--paper-2);
+}
+
+#detail-cover-img {
+    transition:
+        transform 0.5s ease;
+}
+
+#detail-cover-container:hover #detail-cover-img {
+    transform:
+        scale(1.02);
+}
+
+#detail-full-description {
+    color:
+        #5f6974;
+
+    line-height:
+        2.15;
+}
+
+#detail-price-info,
+#detail-execution-time {
+    color:
+        var(--ink);
+
+    font-family:
+        "Cairo", sans-serif;
+
+    font-weight:
+        900;
+}
+
+
+/* ============================================================
+   26 — REVIEW CARDS
+   ============================================================ */
+
+.review-card {
+    background:
+        #ffffff;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        18px;
+
+    padding:
+        20px;
+
+    box-shadow:
+        var(--shadow-sm);
+}
+
+.review-card .stars {
+    color:
+        var(--gold);
+}
+
+
+/* ============================================================
+   27 — FORM ELEMENTS
+   ============================================================ */
+
+input,
+textarea,
 select {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%3c64748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-    background-position: left 0.75rem center;
-    background-repeat: no-repeat;
-    background-size: 1.25em 1.25em;
-    padding-left: 2.5rem !important;
+    color:
+        var(--ink);
+
+    background:
+        #ffffff;
 }
 
-/* 9. مؤشرات التحميل والتشغيل (Skeleton & Loading States) */
-.skeleton-loader {
-    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
-    border-radius: 0.75rem;
+input::placeholder,
+textarea::placeholder {
+    color:
+        #a0a8b1;
 }
 
-/* 10. إشعارات النظام (Toast Notifications) */
+input:focus,
+textarea:focus,
+select:focus {
+    outline:
+        none;
+
+    border-color:
+        var(--gold) !important;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(208, 167, 95, 0.10);
+}
+
+textarea {
+    resize:
+        vertical;
+}
+
+
+/* ============================================================
+   28 — FOOTER
+   ============================================================ */
+
+.site-footer {
+    margin-top:
+        30px;
+
+    padding:
+        58px 0 18px;
+
+    color:
+        #aeb7c1;
+
+    background:
+        linear-gradient(
+            180deg,
+            #121820,
+            #10161d
+        );
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.04);
+}
+
+.footer-grid {
+    display:
+        grid;
+
+    grid-template-columns:
+        1.5fr 0.7fr 0.9fr;
+
+    gap:
+        44px;
+
+    padding-bottom:
+        35px;
+}
+
+.footer-brand p,
+.site-footer p {
+    margin:
+        16px 0 0;
+
+    color:
+        #9da7b1;
+
+    font-size:
+        12px;
+
+    line-height:
+        2.05;
+}
+
+.site-footer h4 {
+    margin:
+        0 0 14px;
+
+    color:
+        #ffffff;
+
+    font-family:
+        "Cairo", sans-serif;
+
+    font-size:
+        15px;
+
+    font-weight:
+        900;
+}
+
+.footer-links {
+    display:
+        grid;
+
+    gap:
+        8px;
+
+    font-size:
+        12px;
+}
+
+.footer-links a {
+    width:
+        fit-content;
+
+    color:
+        #aeb7c1;
+
+    transition:
+        color var(--transition),
+        transform var(--transition);
+}
+
+.footer-links a:hover {
+    color:
+        var(--gold);
+
+    transform:
+        translateX(-3px);
+}
+
+.footer-bottom {
+    padding-top:
+        17px;
+
+    color:
+        #727c87;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.07);
+
+    text-align:
+        center;
+
+    font-size:
+        10px;
+}
+
+
+/* ============================================================
+   29 — TOAST
+   ============================================================ */
+
 .toast-notification {
-    position: fixed;
-    bottom: 2rem;
-    left: 2rem;
-    z-index: 9999;
-    padding: 1rem 1.5rem;
-    border-radius: 1rem;
-    background-color: var(--color-navy);
-    color: #ffffff;
-    box-shadow: var(--shadow-xl);
-    border-right: 4px solid var(--color-gold);
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    animation: fadeIn 0.3s ease-out forwards;
+    position:
+        fixed;
+
+    right:
+        18px;
+
+    bottom:
+        22px;
+
+    z-index:
+        9999;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    max-width:
+        min(380px, calc(100% - 36px));
+
+    padding:
+        13px 16px;
+
+    color:
+        #ffffff;
+
+    background:
+        var(--ink);
+
+    border:
+        1px solid var(--gold);
+
+    border-radius:
+        14px;
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.28);
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    animation:
+        toastIn 0.3s ease;
 }
 
-/* 11. تخصيص الشاشات الصغيرة والتجاوب (Responsive Helper Classes) */
-@media (max-width: 640px) {
-    .container-custom {
-        padding-left: 1rem;
-        padding-right: 1rem;
+@keyframes toastIn {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(12px);
     }
-    
-    .toast-notification {
-        left: 1rem;
-        right: 1rem;
-        bottom: 1rem;
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
     }
 }
+
+
+/* ============================================================
+   30 — UTILITY BRAND CLASSES
+   ============================================================ */
+
+.bg-petrol {
+    background:
+        var(--ink);
+}
+
+.text-petrol {
+    color:
+        var(--ink);
+}
+
+.border-petrol {
+    border-color:
+        var(--ink);
+}
+
+.bg-lightbg {
+    background:
+        var(--paper);
+}
+
+.text-gold {
+    color:
+        var(--gold);
+}
+
+.bg-gold {
+    background:
+        var(--gold);
+}
+
+.border-gold {
+    border-color:
+        var(--gold);
+}
+
+
+/* ============================================================
+   31 — LOADING STATES
+   ============================================================ */
+
+.loading-card {
+    min-height:
+        180px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    color:
+        var(--muted);
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        20px;
+}
+
+.loading-spinner {
+    width:
+        32px;
+
+    height:
+        32px;
+
+    border:
+        3px solid rgba(208, 167, 95, 0.20);
+
+    border-top-color:
+        var(--gold);
+
+    border-radius:
+        50%;
+
+    animation:
+        spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+/* ============================================================
+   32 — EMPTY STATE
+   ============================================================ */
+
+.empty-state {
+    padding:
+        55px 25px;
+
+    text-align:
+        center;
+
+    color:
+        var(--muted);
+
+    background:
+        #ffffff;
+
+    border:
+        1px dashed #d9dee3;
+
+    border-radius:
+        22px;
+}
+
+.empty-state i {
+    display:
+        block;
+
+    margin-bottom:
+        12px;
+
+    color:
+        var(--gold);
+
+    font-size:
+        30px;
+}
+
+
+/* ============================================================
+   33 — RESPONSIVE TABLET
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+    .split-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .contact-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .footer-grid {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .footer-brand {
+        grid-column:
+            1 / -1;
+    }
+
+    .section {
+        padding:
+            62px 0;
+    }
+
+    .page-hero {
+        padding:
+            62px 0 56px;
+    }
+
+}
+
+
+/* ============================================================
+   34 — RESPONSIVE MOBILE
+   ============================================================ */
+
+@media (max-width: 640px) {
+
+    .site-shell {
+        width:
+            min(
+                100% - 22px,
+                var(--container)
+            );
+    }
+
+    .nav-wrap {
+        min-height:
+            70px;
+    }
+
+    .brand-logo {
+        height:
+            38px;
+    }
+
+    .brand-title {
+        font-size:
+            12px;
+    }
+
+    .brand-subtitle {
+        display:
+            none;
+    }
+
+    .menu-trigger {
+        width:
+            43px;
+
+        height:
+            43px;
+    }
+
+    .mobile-menu {
+        top:
+            53px;
+
+        width:
+            230px;
+    }
+
+    .page-hero {
+        padding:
+            52px 0 48px;
+    }
+
+    .page-hero h1 {
+        font-size:
+            2rem;
+    }
+
+    .page-hero p {
+        font-size:
+            13px;
+
+        line-height:
+            2;
+    }
+
+    .section {
+        padding:
+            52px 0;
+    }
+
+    .section-head {
+        margin-bottom:
+            30px;
+    }
+
+    .section-head h2 {
+        font-size:
+            1.7rem;
+    }
+
+    .section-head p {
+        font-size:
+            12px;
+    }
+
+    .info-card {
+        padding:
+            23px;
+    }
+
+    .contact-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .stat-strip {
+        grid-template-columns:
+            1fr;
+    }
+
+    .cta {
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+
+        padding:
+            27px 22px;
+
+        text-align:
+            center;
+    }
+
+    .cta .btn-gold {
+        width:
+            100%;
+    }
+
+    .footer-grid {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            30px;
+    }
+
+    .footer-brand {
+        grid-column:
+            auto;
+    }
+
+    .site-footer {
+        padding-top:
+            45px;
+    }
+
+    .service-card img {
+        height:
+            180px;
+    }
+
+    .card-body {
+        padding:
+            20px;
+    }
+
+    .search-box input {
+        min-height:
+            51px;
+    }
+
+}
+
+
+/* ============================================================
+   35 — SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 400px) {
+
+    .brand-title {
+        font-size:
+            11px;
+    }
+
+    .brand-logo {
+        height:
+            34px;
+    }
+
+    .mobile-menu {
+        width:
+            215px;
+    }
+
+    .eyebrow {
+        padding:
+            6px 12px;
+
+        font-size:
+            10px;
+    }
+
+    .page-hero h1 {
+        font-size:
+            1.8rem;
+    }
+
+    .card-body {
+        padding:
+            18px;
+    }
+
+}
+
+
+/* ============================================================
+   36 — ACCESSIBILITY
+   ============================================================ */
+
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline:
+        3px solid rgba(208, 167, 95, 0.45);
+
+    outline-offset:
+        3px;
+}
+
+
+/* ============================================================
+   END OF DESIGN SYSTEM
+   مَسَارُ التَّمَيُّزِ — V2
+   ============================================================ */
