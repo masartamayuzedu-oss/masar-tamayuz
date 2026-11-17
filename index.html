@@ -482,7 +482,7 @@
 
         @keyframes heroTitleSheenSweep {
             0% {
-                transform: translateX(130%) skewX(-22deg);
+                transform: translateX(-160%) skewX(-22deg);
                 opacity: 0;
             }
             20% {
@@ -492,7 +492,7 @@
                 opacity: 0.9;
             }
             100% {
-                transform: translateX(-160%) skewX(-22deg);
+                transform: translateX(130%) skewX(-22deg);
                 opacity: 0;
             }
         }
@@ -1144,6 +1144,206 @@
             border-radius: 999px;
         }
     </style>
+
+<style id="hero-premium-redesign-v2">
+/* إعادة تصميم الواجهة الافتتاحية بما يتوافق مع هوية الأخضر الملكي والذهب */
+#hero.hero-luxury-bg {
+    background:
+        radial-gradient(ellipse at 82% 12%, rgba(197,160,74,.16), transparent 38%),
+        radial-gradient(ellipse at 12% 82%, rgba(45,91,66,.22), transparent 42%),
+        linear-gradient(145deg, #071f18 0%, #0b3024 48%, #041711 100%);
+    padding-top: clamp(2.6rem, 7vw, 4.8rem);
+    padding-bottom: clamp(3.1rem, 7vw, 5rem);
+}
+#hero.hero-luxury-bg::before {
+    background:
+        radial-gradient(circle at 22% 24%, rgba(197,160,74,.11) 0%, transparent 44%),
+        radial-gradient(circle at 78% 72%, rgba(177,143,65,.075) 0%, transparent 48%);
+}
+#hero.hero-luxury-bg::after {
+    background-image:
+        linear-gradient(rgba(238,224,183,.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(238,224,183,.028) 1px, transparent 1px);
+}
+#hero .hero-seq-kicker {
+    color: #fff9e8;
+    background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+    border: 1px solid rgba(197,160,74,.58);
+    box-shadow: 0 10px 28px rgba(0,0,0,.16), inset 0 1px 0 rgba(255,255,255,.12);
+    padding: .62rem 1.15rem;
+    margin-bottom: clamp(1.2rem, 3.5vw, 2rem);
+}
+#hero .hero-seq-kicker span { color: #fff8e5; }
+#hero .hero-display-title {
+    color: #fff9e9;
+    font-size: clamp(2.05rem, 7vw, 3.55rem);
+    line-height: 1.35;
+    text-shadow: 0 5px 22px rgba(0,0,0,.18);
+}
+#hero .hero-word-emerald {
+    background: linear-gradient(135deg, #fffdf4 0%, #e9e2c8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+#hero .hero-word-gold {
+    background: linear-gradient(135deg, #e7cf8a 0%, #c5a04a 48%, #f3e2b1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+#hero .hero-title-spotlight {
+    background: radial-gradient(ellipse at center, rgba(232,207,143,.12) 0%, rgba(197,160,74,.06) 48%, transparent 74%);
+}
+#hero .hero-description-text {
+    color: rgba(246,241,224,.92);
+    font-size: clamp(.96rem, 2.2vw, 1.13rem);
+    font-weight: 500;
+    line-height: 1.9;
+    max-width: 700px;
+    text-wrap: pretty;
+    margin-bottom: clamp(1.6rem, 4vw, 2.4rem);
+}
+#hero .hero-ornate-divider { margin-top: .85rem; }
+#hero .hero-cta-stack {
+    max-width: 330px;
+    gap: .72rem;
+    margin-bottom: clamp(1.8rem, 4.5vw, 2.7rem);
+}
+#hero .hero-cta {
+    width: 100%;
+    height: 52px;
+    min-height: 52px;
+    max-height: 52px;
+    border-radius: 14px;
+    font-size: .94rem;
+    letter-spacing: .005em;
+    box-shadow: 0 7px 18px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.10);
+}
+#hero .hero-cta-primary {
+    background: linear-gradient(120deg, #b88d35 0%, #e5c875 48%, #987027 100%);
+    color: #09291f;
+    border-color: rgba(197,160,74,.72);
+}
+#hero .hero-cta-secondary {
+    color: #fff9e9;
+    background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+    border: 1px solid rgba(197,160,74,.42);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+}
+#hero .hero-cta-secondary i { color: #d8b65e; }
+#hero .hero-cta:focus-visible {
+    outline: 3px solid #e5c875;
+    outline-offset: 3px;
+}
+#hero .hero-trust-grid {
+    max-width: 680px;
+    gap: .58rem;
+}
+#hero .hero-trust-card {
+    min-height: 94px;
+    padding: .7rem .35rem;
+    border-radius: 16px;
+    background: linear-gradient(155deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+    border: 1px solid rgba(220,190,112,.43);
+    box-shadow: 0 8px 22px rgba(0,0,0,.13), inset 0 1px 0 rgba(255,255,255,.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+#hero .hero-trust-card::before {
+    background: linear-gradient(90deg, transparent, rgba(211,176,91,.78), transparent);
+}
+#hero .hero-trust-icon {
+    width: 30px;
+    height: 30px;
+    color: #f0d68b;
+    background: rgba(197,160,74,.12);
+    border-color: rgba(197,160,74,.38);
+    margin-bottom: .3rem;
+}
+#hero .hero-trust-number {
+    background: linear-gradient(135deg, #fff8df 10%, #e3c36f 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+#hero .hero-trust-label,
+#hero .hero-trust-single-text {
+    color: rgba(250,246,231,.94);
+}
+#hero .hero-section-bridge {
+    background: linear-gradient(to bottom, transparent, rgba(2,18,13,.24));
+}
+@media (max-width: 480px) {
+    #hero .hero-display-title { font-size: clamp(1.9rem, 8vw, 2.55rem); }
+    #hero .hero-description-text { padding-inline: .35rem; }
+    #hero .hero-cta-stack { max-width: min(100%, 310px); }
+    #hero .hero-cta { height: 49px; min-height: 49px; max-height: 49px; font-size: .9rem; }
+    #hero .hero-trust-grid { gap: .42rem; }
+    #hero .hero-trust-card { min-height: 88px; padding: .58rem .22rem; }
+    #hero .hero-trust-label,
+    #hero .hero-trust-single-text { font-size: clamp(.62rem, 2.6vw, .78rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+    #hero .hero-cta,
+    #hero .hero-trust-card { transition: none !important; }
+}
+</style>
+
+
+    <style id="hero-reference-palette-override">
+        /* لوحة ألوان الواجهة الافتتاحية مطابقة لمرجع المستخدم */
+        #hero.hero-luxury-bg {
+            background:
+                radial-gradient(ellipse at 8% 82%, rgba(190, 211, 201, 0.58) 0%, rgba(225, 235, 229, 0.22) 34%, transparent 58%),
+                radial-gradient(ellipse at 92% 12%, rgba(250, 244, 220, 0.72) 0%, transparent 46%),
+                linear-gradient(145deg, #fffefb 0%, #fbfaf4 54%, #f5f7f1 100%) !important;
+            isolation: isolate;
+        }
+        #hero.hero-luxury-bg::before {
+            background:
+                radial-gradient(circle at 18% 76%, rgba(177, 202, 190, 0.25) 0%, transparent 48%),
+                radial-gradient(circle at 82% 20%, rgba(222, 196, 126, 0.12) 0%, transparent 46%) !important;
+        }
+        #hero.hero-luxury-bg::after {
+            background-image:
+                repeating-linear-gradient(45deg, transparent 0 34px, rgba(190, 169, 112, 0.075) 35px, transparent 36px 70px),
+                repeating-linear-gradient(-45deg, transparent 0 34px, rgba(190, 169, 112, 0.065) 35px, transparent 36px 70px) !important;
+            background-size: 70px 70px !important;
+            mask-image: none !important;
+            -webkit-mask-image: none !important;
+            opacity: .72;
+        }
+        #hero .hero-seq-kicker {
+            color: #fff8dc !important;
+            background: linear-gradient(145deg, #456b63 0%, #365b54 100%) !important;
+            border: 1px solid rgba(190, 161, 83, .78) !important;
+            box-shadow: 0 8px 22px rgba(37, 72, 61, .14) !important;
+        }
+        #hero .hero-seq-kicker-icon { color: #e3c15d !important; }
+        #hero .hero-cta-secondary {
+            color: #fff8df !important;
+            background: #456961 !important;
+            border: 1px solid rgba(190, 164, 94, .9) !important;
+            box-shadow: 0 8px 20px rgba(35, 75, 63, .13) !important;
+        }
+        #hero .hero-cta-secondary i { color: #e5c45e !important; }
+        #hero .hero-cta-secondary:hover,
+        #hero .hero-cta-secondary:focus-visible {
+            background: #365b54 !important;
+            box-shadow: 0 12px 25px rgba(35, 75, 63, .2) !important;
+        }
+        #hero .hero-cta-primary {
+            background: linear-gradient(135deg, #c7a34b 0%, #f4e5a4 48%, #c19a3e 100%) !important;
+            color: #173d31 !important;
+            border: 1px solid rgba(160, 126, 47, .72) !important;
+        }
+        #hero .hero-cta-primary i { color: #173d31 !important; }
+        #hero .hero-description-text { color: #354d44 !important; }
+        #hero .hero-trust-card {
+            background: rgba(255, 254, 249, .92) !important;
+            border-color: rgba(190, 169, 112, .55) !important;
+        }
+    </style>
+
 </head>
 <body class="royal-lattice-bg selection:bg-gold24 selection:text-obsidian">
 
@@ -1205,7 +1405,7 @@
         <!-- القائمة المنسدلة لجميع روابط الموقع -->
         <div id="mobile-nav-drawer" class="hidden bg-[#021d16]/98 border-t border-gold24/20 px-6 py-5 space-y-3.5 shadow-xl">
             <a href="#hero" onclick="closeMobileNav()" class="block text-goldLight font-bold py-1.5">الرئيسية</a>
-            <a href="#offers" onclick="closeMobileNav()" class="block text-ivory hover:text-goldLight font-bold py-1.5">العروض الملكية والعدّاد</a>
+            <a href="#offers" onclick="closeMobileNav()" class="block text-ivory hover:text-goldLight font-bold py-1.5">العروض الحصرية</a>
             <a href="#services" onclick="closeMobileNav()" class="block text-ivory hover:text-goldLight font-bold py-1.5">خدماتنا المرقّمة</a>
             <a href="#calculator" onclick="closeMobileNav()" class="block text-ivory hover:text-goldLight font-bold py-1.5">حاسبة الخصم والطلب</a>
             <a href="#portfolio" onclick="closeMobileNav()" class="block text-ivory hover:text-goldLight font-bold py-1.5">معرض الأعمال</a>
@@ -1265,11 +1465,8 @@
                 <!-- المرحلة 2: العنوان الرئيسي بتتابع الكلمات والخط الزخرفي -->
                 <div class="relative mb-6">
                     <div class="hero-title-spotlight" aria-hidden="true"></div>
-                    <h1 class="hero-display-title relative inline-block overflow-hidden py-1" aria-label="إنجازك يبدأ من هنا">
-                        <span class="hero-title-word hero-word-1 hero-word-emerald">إنجازك</span>
-                        <span class="hero-title-word hero-word-2 mx-1.5 sm:mx-2">يبدأ</span>
-                        <span class="hero-title-word hero-word-3 ml-1.5 sm:ml-2">من</span>
-                        <span class="hero-title-word hero-word-4 hero-word-gold">هنا</span>
+                    <h1 id="hero-main-title" class="hero-display-title relative inline-block overflow-visible py-3 sm:py-4" aria-label="إنجازك يبدأ من هنا">
+                        <span class="hero-title-editable">إنجازك يبدأ من هنا</span>
                         <span class="hero-title-sheen-pass" aria-hidden="true"></span>
                     </h1>
 
@@ -1310,7 +1507,7 @@
                                 <i class="fas fa-check-double"></i>
                             </div>
                             <div id="trust-counter-projects" class="hero-trust-number" dir="ltr">+100</div>
-                            <div class="hero-trust-label">خدمة منجزة</div>
+                            <div id="trust-label-projects" class="hero-trust-label">خدمة منجزة</div>
                         </div>
 
                         <!-- البطاقة 2 -->
@@ -1318,7 +1515,7 @@
                             <div class="hero-trust-icon">
                                 <i class="fas fa-headset"></i>
                             </div>
-                            <div class="hero-trust-single-text">دعم ومتابعة مستمرة</div>
+                            <div id="trust-label-support" class="hero-trust-single-text">دعم ومتابعة مستمرة</div>
                         </div>
 
                         <!-- البطاقة 3 -->
@@ -1327,7 +1524,7 @@
                                 <i class="fas fa-shield-halved"></i>
                             </div>
                             <div id="trust-counter-privacy" class="hero-trust-number" dir="ltr">100%</div>
-                            <div class="hero-trust-label">سرية تامة</div>
+                            <div id="trust-label-privacy" class="hero-trust-label">سرية تامة</div>
                         </div>
                     </div>
                 </div>
@@ -1344,18 +1541,18 @@
                     <div>
                         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold24/15 border border-gold24/35 text-goldLight text-xs font-bold mb-3">
                             <i class="fas fa-fire-flame-curved text-gold24"></i>
-                            <span>باقات موسمية لفترة محدودة</span>
+                            <span id="offers-season-label">باقات موسمية لفترة محدودة</span>
                         </div>
                         <h2 class="text-2xl sm:text-4xl font-black text-ivory">
-                            العروض <span class="gold-24k-text">الملكية الحصرية</span>
+                            <span id="offers-heading-main" class="text-ivory">العروض</span> <span id="offers-heading-accent" class="gold-24k-text">الحصرية</span>
                         </h2>
-                        <p class="text-champagne text-sm mt-2 max-w-xl">
+                        <p id="offers-description" class="text-champagne text-sm mt-2 max-w-xl">
                             اغتنم باقات التوفير المصممة لطلاب الجامعات والدراسات العليا قبل انتهاء العدّاد التنازلي.
                         </p>
                     </div>
 
-                    <!-- العدّاد التنازلي الحي -->
-                    <div class="velvet-card rounded-2xl p-4 sm:p-5 flex flex-wrap items-center gap-4 self-start lg:self-auto">
+                    <!-- العدّاد التنازلي الحي: يمكن للمشرف إخفاؤه أو إظهاره -->
+                    <div id="offers-countdown-box" class="velvet-card rounded-2xl p-4 sm:p-5 flex flex-wrap items-center gap-4 self-start lg:self-auto">
                         <div class="flex items-center gap-2 text-xs sm:text-sm font-extrabold text-goldLight">
                             <span class="w-2.5 h-2.5 rounded-full bg-gold24 animate-ping"></span>
                             <span>ينتهي العرض خلال:</span>
@@ -1399,13 +1596,13 @@
                 <div class="text-center max-w-2xl mx-auto mb-14">
                     <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold24/15 border border-gold24/35 text-goldLight text-xs font-bold mb-4">
                         <i class="fas fa-gem text-gold24"></i>
-                        <span>منظومة الخدمات المتكاملة</span>
+                        <span style="color:#123b32;">منظومة الخدمات المتكاملة</span>
                     </span>
                     <h2 class="text-2xl sm:text-4xl font-black text-ivory mb-4">
-                        خدماتنا الأكاديمية <span class="gold-24k-text">والبحثية المرقّمة</span>
+                        <span class="gold-24k-text">خدماتنا الأكاديمية والبحثية المرقّمة</span>
                     </h2>
-                    <p class="text-champagne text-sm sm:text-base leading-relaxed">
-                        اختر الخدمة المطلوبة ليتم نقلها مباشرة إلى حاسبة التسعير الفوري وخصم الزملاء في الأسفل.
+                    <p class="text-sm sm:text-base leading-relaxed" style="color:#26332f;">
+                        اختر الخدمة الأكاديمية التي تحتاج إليها، وانتقل مباشرةً إلى حاسبة التسعير الفوري لمعرفة التكلفة والاستفادة من خصومات الزملاء.
                     </p>
                 </div>
 
@@ -1614,10 +1811,10 @@
                     <div>
                         <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold24/15 border border-gold24/35 text-goldLight text-xs font-bold mb-3">
                             <i class="fas fa-award text-gold24"></i>
-                            <span>نماذج موثقة بتقدير امتياز</span>
+                            <span style="color:#123b32;">نماذج موثقة بتقدير امتياز</span>
                         </span>
                         <h2 class="text-2xl sm:text-4xl font-black text-ivory">
-                            معرض الأعمال <span class="gold-24k-text">والإنجازات</span>
+                            <span class="gold-24k-text">معرض الأعمال والإنجازات</span>
                         </h2>
                     </div>
 
@@ -1862,7 +2059,7 @@
                 <h4>خدماتنا وعروضنا</h4>
                 <ul class="masar-links-list">
                   <li><a href="#services">خدماتنا</a></li>
-                  <li><a href="#offers">العروض الملكية</a></li>
+                  <li><a href="#offers">العروض الحصرية</a></li>
                   <li><a href="#calculator">حاسبة الخصم</a></li>
                 </ul>
               </div>
@@ -2102,6 +2299,16 @@
                         <i class="fas fa-hourglass-half text-gold24 ml-2"></i> ضبط العدّاد التنازلي الحي في الصفحة الرئيسية
                     </h2>
                     <p class="text-xs text-champagne mb-5">حدد تاريخ ووقت انتهاء العروض أو استخدم أزرار الضبط السريع:</p>
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-5 p-4 rounded-2xl bg-obsidian/65 border border-gold24/20">
+                        <div>
+                            <p class="text-sm font-extrabold text-ivory">ظهور عدّاد العرض في الموقع</p>
+                            <p class="text-xs text-champagne mt-1">يمكنك إخفاء مربع الأيام والساعات والدقائق والثواني بالكامل دون حذف العروض.</p>
+                        </div>
+                        <button type="button" id="toggle-countdown-visibility-btn" onclick="toggleCountdownVisibility()"
+                            class="px-4 py-2.5 rounded-xl gold-24k-bg text-xs font-black cursor-pointer transition">
+                            إخفاء العدّاد من الموقع
+                        </button>
+                    </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
                         <div>
                             <label class="block text-xs font-bold text-goldLight mb-1.5">تاريخ ووقت انتهاء العرض</label>
@@ -2295,9 +2502,56 @@
                                 <input type="text" id="set-admin-pass" required class="royal-input text-sm font-mono" dir="ltr">
                             </div>
                             <div class="sm:col-span-2">
+                                <label class="block text-xs font-bold text-goldLight mb-1.5">عنوان الواجهة الرئيسية المتحرك</label>
+                                <input type="text" id="set-hero-title" maxlength="90" required placeholder="إنجازك يبدأ من هنا" class="royal-input text-sm">
+                                <p class="text-[11px] text-goldLight/70 mt-1">يمكنك تغيير العبارة من هنا في أي وقت دون تعديل الكود.</p>
+                            </div>
+                            <div class="sm:col-span-2">
                                 <label class="block text-xs font-bold text-goldLight mb-1.5">النص الوصفي في الواجهة الرئيسية</label>
                                 <textarea id="set-hero-desc" rows="2" required class="royal-input text-sm"></textarea>
                             </div>
+
+                            <div class="sm:col-span-2 rounded-2xl border border-gold24/25 bg-obsidian/45 p-4 space-y-3">
+                                <div class="flex items-center justify-between gap-3 flex-wrap">
+                                    <h3 class="font-black text-goldLight"><i class="fas fa-heading ml-2"></i>محرر عناوين الموقع وأحجامها</h3>
+                                    <span class="text-[11px] text-champagne/75">تحكم بالنص وحجم الخط لكل عنوان رئيسي أو فرعي</span>
+                                </div>
+                                <div id="admin-heading-controls" class="space-y-3">
+                                    <p class="text-xs text-champagne/70">جارٍ تجهيز عناوين الموقع...</p>
+                                </div>
+                                <button type="button" onclick="saveAllHeadingControls()" class="gold-24k-bg font-black px-6 py-3 rounded-xl text-sm cursor-pointer">
+                                    <i class="fas fa-save ml-1.5"></i> حفظ تعديلات جميع العناوين والأحجام
+                                </button>
+                                <p class="text-[11px] text-goldLight/70">يشمل العناوين الرئيسية والفرعية الثابتة في أقسام الموقع. تبقى التعديلات محفوظة على هذا المتصفح.</p>
+                            </div>
+
+                            <div class="sm:col-span-2 rounded-2xl border border-gold24/25 bg-obsidian/45 p-4 space-y-4">
+                                <h3 class="font-black text-goldLight"><i class="fas fa-tags ml-2"></i>تعديل نصوص قسم العروض</h3>
+                                <div><label class="block text-xs font-bold text-champagne mb-1.5">الشارة العلوية</label><input id="set-offers-season-label" type="text" class="royal-input text-sm"></div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div><label class="block text-xs font-bold text-champagne mb-1.5">العنوان – الكلمة الأولى</label><input id="set-offers-heading-main" type="text" class="royal-input text-sm"></div>
+                                    <div><label class="block text-xs font-bold text-champagne mb-1.5">العنوان – الكلمة الذهبية</label><input id="set-offers-heading-accent" type="text" class="royal-input text-sm"></div>
+                                </div>
+                                <div><label class="block text-xs font-bold text-champagne mb-1.5">الوصف أسفل العنوان</label><textarea id="set-offers-description" rows="2" class="royal-input text-sm"></textarea></div>
+                                <div><label class="block text-xs font-bold text-champagne mb-1.5">رسالة عدم وجود عروض نشطة</label><input id="set-offers-empty-message" type="text" class="royal-input text-sm"></div>
+                            </div>
+
+                            <div class="sm:col-span-2 rounded-2xl border border-gold24/25 bg-obsidian/45 p-4 space-y-4">
+                                <h3 class="font-black text-goldLight"><i class="fas fa-chart-simple ml-2"></i>تعديل بطاقات الثقة الثلاث</h3>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div><label class="block text-xs font-bold text-champagne mb-1.5">رقم البطاقة الأولى</label><input id="set-trust-projects-number" type="text" class="royal-input text-sm"></div>
+                                    <div><label class="block text-xs font-bold text-champagne mb-1.5">وصف البطاقة الأولى</label><input id="set-trust-projects-label" type="text" class="royal-input text-sm"></div>
+                                    <div><label class="block text-xs font-bold text-champagne mb-1.5">نص البطاقة الثانية</label><input id="set-trust-support-label" type="text" class="royal-input text-sm"></div>
+                                    <div><label class="block text-xs font-bold text-champagne mb-1.5">رقم البطاقة الثالثة</label><input id="set-trust-privacy-number" type="text" class="royal-input text-sm"></div>
+                                    <div class="sm:col-span-2"><label class="block text-xs font-bold text-champagne mb-1.5">وصف البطاقة الثالثة</label><input id="set-trust-privacy-label" type="text" class="royal-input text-sm"></div>
+                                </div>
+                                <div class="pt-2">
+                                    <button type="button" onclick="saveVisualTexts()" class="gold-24k-bg font-black px-6 py-3 rounded-xl text-sm cursor-pointer">
+                                        <i class="fas fa-save ml-1.5"></i> حفظ تعديلات العناوين والبطاقات
+                                    </button>
+                                </div>
+                            </div>
+
                             <div class="sm:col-span-2 flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-gold24/20">
                                 <button type="submit" class="gold-24k-bg font-black px-8 py-3.5 rounded-xl text-sm cursor-pointer">
                                     <i class="fas fa-save ml-1.5"></i> حفظ جميع الإعدادات
@@ -2401,11 +2655,27 @@
                 platformName: 'مسار التميز للخدمات الطلابية',
                 platformSub: 'البوابة الأكاديمية الملكية للنخبة',
                 heroDesc: 'منصة متخصصة في تقديم الخدمات الطلابية والأكاديمية وخدمات الدراسات العليا، إلى جانب الحلول التقنية والإبداعية، باحترافية وجودة عالية، لنساعدك على إنجاز ما تحتاجه بسهولة، وتوفير وقتك وجهدك.',
+                heroTitle: 'إنجازك يبدأ من هنا',
                 whatsappNumber: '967736190956',
                 adminPassword: 'admin123',
                 customLogoDataUrl: ''
             },
             countdownTarget: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString(),
+            showCountdown: true,
+            offersSection: {
+                seasonLabel: 'باقات موسمية لفترة محدودة',
+                headingMain: 'العروض',
+                headingAccent: 'الحصرية',
+                description: 'اغتنم باقات التوفير المصممة لطلاب الجامعات والدراسات العليا قبل انتهاء العدّاد التنازلي.',
+                emptyMessage: 'لا توجد عروض نشطة حالياً.'
+            },
+            heroTrust: {
+                projectsNumber: '+100',
+                projectsLabel: 'خدمة منجزة',
+                supportLabel: 'دعم ومتابعة مستمرة',
+                privacyNumber: '100%',
+                privacyLabel: 'سرية تامة'
+            },
             services: [
                 {
                     id: 1,
@@ -2572,6 +2842,9 @@
                 return {
                     brand: mergedBrand,
                     countdownTarget: parsed.countdownTarget || DEFAULT_STATE.countdownTarget,
+                    showCountdown: typeof parsed.showCountdown === 'boolean' ? parsed.showCountdown : DEFAULT_STATE.showCountdown,
+                    offersSection: { ...DEFAULT_STATE.offersSection, ...(parsed.offersSection || {}) },
+                    heroTrust: { ...DEFAULT_STATE.heroTrust, ...(parsed.heroTrust || {}) },
                     services: Array.isArray(parsed.services) && parsed.services.length ? parsed.services : DEFAULT_STATE.services,
                     offers: Array.isArray(parsed.offers) ? parsed.offers : DEFAULT_STATE.offers,
                     portfolio: Array.isArray(parsed.portfolio) ? parsed.portfolio : DEFAULT_STATE.portfolio
@@ -2629,6 +2902,30 @@
         /* =====================================================================
            6. عرض وتحديث الهوية والشعار في جميع أجزاء الموقع
         ===================================================================== */
+        function escapeHtml(value) {
+            return String(value ?? '').replace(/[&<>"']/g, char => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[char]));
+        }
+
+        function renderEditableSectionTexts() {
+            const offers = { ...DEFAULT_STATE.offersSection, ...(appState.offersSection || {}) };
+            const trust = { ...DEFAULT_STATE.heroTrust, ...(appState.heroTrust || {}) };
+            const setText = (id, value) => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = value;
+            };
+            setText('offers-season-label', offers.seasonLabel);
+            setText('offers-heading-main', offers.headingMain);
+            setText('offers-heading-accent', offers.headingAccent);
+            setText('offers-description', offers.description);
+            setText('trust-counter-projects', trust.projectsNumber);
+            setText('trust-label-projects', trust.projectsLabel);
+            setText('trust-label-support', trust.supportLabel);
+            setText('trust-counter-privacy', trust.privacyNumber);
+            setText('trust-label-privacy', trust.privacyLabel);
+        }
+
         function renderBrandIdentity() {
             const b = appState.brand;
             document.title = `${b.platformName} | ${b.platformSub}`;
@@ -2637,6 +2934,14 @@
             document.getElementById('navbar-platform-sub').innerText = b.platformSub;
             const heroSubEl = document.getElementById('hero-subheadline');
             if (heroSubEl) heroSubEl.innerText = b.heroDesc;
+            const heroTitleEl = document.getElementById('hero-main-title');
+            if (heroTitleEl) {
+                const titleText = b.heroTitle || DEFAULT_STATE.brand.heroTitle;
+                const titleSpan = heroTitleEl.querySelector('.hero-title-editable');
+                if (titleSpan) titleSpan.textContent = titleText;
+                heroTitleEl.setAttribute('aria-label', titleText);
+            }
+            renderEditableSectionTexts();
             document.getElementById('footer-platform-name').innerText = b.platformName;
             document.getElementById('footer-copy-name').innerText = b.platformName;
 
@@ -2744,8 +3049,44 @@
            7. العدّاد التنازلي الحي للعروض (Live Glowing Countdown)
         ===================================================================== */
         let countdownInterval = null;
+
+        function renderCountdownVisibility() {
+            const countdownBox = document.getElementById('offers-countdown-box');
+            const toggleButton = document.getElementById('toggle-countdown-visibility-btn');
+            const isVisible = appState.showCountdown !== false;
+
+            if (countdownBox) countdownBox.classList.toggle('hidden', !isVisible);
+            if (toggleButton) {
+                toggleButton.innerText = isVisible ? 'إخفاء العدّاد من الموقع' : 'إظهار العدّاد في الموقع';
+                toggleButton.setAttribute('aria-pressed', String(isVisible));
+            }
+        }
+
+        function toggleCountdownVisibility() {
+            appState.showCountdown = appState.showCountdown === false;
+            persistAppState();
+            renderCountdownVisibility();
+
+            if (appState.showCountdown) {
+                startLiveCountdown();
+                showToast('تم إظهار عدّاد العرض في الموقع');
+            } else {
+                if (countdownInterval) {
+                    clearInterval(countdownInterval);
+                    countdownInterval = null;
+                }
+                showToast('تم إخفاء مربع عدّاد العرض من الموقع');
+            }
+        }
+
         function startLiveCountdown() {
-            if (countdownInterval) clearInterval(countdownInterval);
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
+                countdownInterval = null;
+            }
+
+            renderCountdownVisibility();
+            if (appState.showCountdown === false) return;
 
             function updateClock() {
                 const target = new Date(appState.countdownTarget).getTime();
@@ -2776,7 +3117,7 @@
         function renderPublicOffers() {
             const grid = document.getElementById('offers-grid');
             if (!appState.offers.length) {
-                grid.innerHTML = `<div class="col-span-full text-center py-12 text-champagne">لا توجد عروض نشطة حالياً.</div>`;
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-champagne">${escapeHtml(appState.offersSection?.emptyMessage || DEFAULT_STATE.offersSection.emptyMessage)}</div>`;
                 return;
             }
 
@@ -2819,7 +3160,7 @@
                                 <span class="block text-xs text-champagne/60 line-through">بدلاً من ${offer.oldPrice} ر.س</span>
                                 <span class="font-amiri text-3xl font-bold gold-24k-text">${offer.newPrice} ر.س</span>
                             </div>
-                            <span class="text-xs text-emerald-300 font-bold bg-emerald-500/15 px-3 py-1 rounded-lg border border-emerald-400/25">
+                            <span class="text-xs text-goldLight font-bold bg-gold24/15 px-3 py-1 rounded-lg border border-gold24/35">
                                 وفّر ${offer.oldPrice - offer.newPrice} ر.س
                             </span>
                         </div>
@@ -3605,12 +3946,27 @@
 
         /* --- هوية المنصة والإعدادات --- */
         function populateAdminSettingsForm() {
+            buildAdminHeadingControls();
             const b = appState.brand;
             document.getElementById('set-platform-name').value = b.platformName;
             document.getElementById('set-platform-sub').value = b.platformSub;
             document.getElementById('set-whatsapp').value = b.whatsappNumber;
             document.getElementById('set-admin-pass').value = b.adminPassword;
+            document.getElementById('set-hero-title').value = b.heroTitle || DEFAULT_STATE.brand.heroTitle;
             document.getElementById('set-hero-desc').value = b.heroDesc;
+
+            const offers = { ...DEFAULT_STATE.offersSection, ...(appState.offersSection || {}) };
+            const trust = { ...DEFAULT_STATE.heroTrust, ...(appState.heroTrust || {}) };
+            document.getElementById('set-offers-season-label').value = offers.seasonLabel;
+            document.getElementById('set-offers-heading-main').value = offers.headingMain;
+            document.getElementById('set-offers-heading-accent').value = offers.headingAccent;
+            document.getElementById('set-offers-description').value = offers.description;
+            document.getElementById('set-offers-empty-message').value = offers.emptyMessage;
+            document.getElementById('set-trust-projects-number').value = trust.projectsNumber;
+            document.getElementById('set-trust-projects-label').value = trust.projectsLabel;
+            document.getElementById('set-trust-support-label').value = trust.supportLabel;
+            document.getElementById('set-trust-privacy-number').value = trust.privacyNumber;
+            document.getElementById('set-trust-privacy-label').value = trust.privacyLabel;
 
             const dt = new Date(appState.countdownTarget);
             const localIso = new Date(dt.getTime() - dt.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
@@ -3625,11 +3981,141 @@
             appState.brand.platformSub = document.getElementById('set-platform-sub').value.trim();
             appState.brand.whatsappNumber = document.getElementById('set-whatsapp').value.trim();
             appState.brand.adminPassword = document.getElementById('set-admin-pass').value.trim() || 'admin123';
+            appState.brand.heroTitle = document.getElementById('set-hero-title').value.trim() || DEFAULT_STATE.brand.heroTitle;
             appState.brand.heroDesc = document.getElementById('set-hero-desc').value.trim();
+
+            appState.offersSection = {
+                seasonLabel: document.getElementById('set-offers-season-label').value.trim(),
+                headingMain: document.getElementById('set-offers-heading-main').value.trim(),
+                headingAccent: document.getElementById('set-offers-heading-accent').value.trim(),
+                description: document.getElementById('set-offers-description').value.trim(),
+                emptyMessage: document.getElementById('set-offers-empty-message').value.trim()
+            };
+            appState.heroTrust = {
+                projectsNumber: document.getElementById('set-trust-projects-number').value.trim(),
+                projectsLabel: document.getElementById('set-trust-projects-label').value.trim(),
+                supportLabel: document.getElementById('set-trust-support-label').value.trim(),
+                privacyNumber: document.getElementById('set-trust-privacy-number').value.trim(),
+                privacyLabel: document.getElementById('set-trust-privacy-label').value.trim()
+            };
 
             persistAppState();
             renderBrandIdentity();
             showToast('تم حفظ هوية المنصة والإعدادات بنجاح!');
+        }
+
+        function saveVisualTexts() {
+            appState.offersSection = {
+                seasonLabel: document.getElementById('set-offers-season-label').value.trim() || DEFAULT_STATE.offersSection.seasonLabel,
+                headingMain: document.getElementById('set-offers-heading-main').value.trim() || DEFAULT_STATE.offersSection.headingMain,
+                headingAccent: document.getElementById('set-offers-heading-accent').value.trim() || DEFAULT_STATE.offersSection.headingAccent,
+                description: document.getElementById('set-offers-description').value.trim() || DEFAULT_STATE.offersSection.description,
+                emptyMessage: document.getElementById('set-offers-empty-message').value.trim() || DEFAULT_STATE.offersSection.emptyMessage
+            };
+            appState.heroTrust = {
+                projectsNumber: document.getElementById('set-trust-projects-number').value.trim() || DEFAULT_STATE.heroTrust.projectsNumber,
+                projectsLabel: document.getElementById('set-trust-projects-label').value.trim() || DEFAULT_STATE.heroTrust.projectsLabel,
+                supportLabel: document.getElementById('set-trust-support-label').value.trim() || DEFAULT_STATE.heroTrust.supportLabel,
+                privacyNumber: document.getElementById('set-trust-privacy-number').value.trim() || DEFAULT_STATE.heroTrust.privacyNumber,
+                privacyLabel: document.getElementById('set-trust-privacy-label').value.trim() || DEFAULT_STATE.heroTrust.privacyLabel
+            };
+            persistAppState();
+            renderBrandIdentity();
+            renderPublicOffers();
+            showToast('تم حفظ نصوص العروض وبطاقات الثقة بنجاح');
+        }
+
+        /* محرر موحد لعناوين الموقع وأحجامها */
+        const HEADING_EDITOR_STORAGE_KEY = 'masar_heading_editor_overrides_v1';
+
+        function getPublicEditableHeadings() {
+            return Array.from(document.querySelectorAll('h1, h2, h3, h4'))
+                .filter(el => {
+                    if (!el || el.closest('#admin-panel, #admin-gate-modal, [role="dialog"], .service-card, .offer-card, .portfolio-card, .modal')) return false;
+                    if (el.id === 'confirm-title' || el.id === 'lb-title') return false;
+                    return (el.textContent || '').trim().length > 0;
+                });
+        }
+
+        function getHeadingDisplayText(el) {
+            return (el.getAttribute('data-admin-original-text') || el.textContent || '').replace(/\s+/g, ' ').trim();
+        }
+
+        function loadHeadingOverrides() {
+            try { return JSON.parse(localStorage.getItem(HEADING_EDITOR_STORAGE_KEY) || '{}') || {}; }
+            catch (_) { return {}; }
+        }
+
+        function applyHeadingText(el, value) {
+            const text = String(value || '').trim();
+            if (!text) return;
+            const preferred = el.querySelector('.hero-title-editable') || el.querySelector('.gold-24k-text') || el.querySelector('span');
+            if (preferred) {
+                preferred.textContent = text;
+                Array.from(el.childNodes).forEach(node => {
+                    if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) node.textContent = '';
+                });
+                el.querySelectorAll('span').forEach(span => { if (span !== preferred && !span.classList.contains('hero-title-sheen-pass')) span.textContent = ''; });
+            } else {
+                el.textContent = text;
+            }
+            if (el.id === 'hero-main-title') el.setAttribute('aria-label', text);
+        }
+
+        function applySavedHeadingOverrides() {
+            const saved = loadHeadingOverrides();
+            getPublicEditableHeadings().forEach((el, index) => {
+                const key = el.getAttribute('data-admin-heading-key') || `site-heading-${index + 1}`;
+                const item = saved[key];
+                if (!item) return;
+                if (item.text) applyHeadingText(el, item.text);
+                if (item.size && Number.isFinite(Number(item.size))) el.style.setProperty('font-size', `${Math.max(12, Math.min(64, Number(item.size)))}px`, 'important');
+            });
+        }
+
+        function buildAdminHeadingControls() {
+            const host = document.getElementById('admin-heading-controls');
+            if (!host) return;
+            const headings = getPublicEditableHeadings();
+            const saved = loadHeadingOverrides();
+            host.innerHTML = '';
+            if (!headings.length) {
+                host.innerHTML = '<p class="text-xs text-champagne/70">لم يتم العثور على عناوين قابلة للتحرير.</p>';
+                return;
+            }
+            headings.forEach((el, index) => {
+                const key = `site-heading-${index + 1}`;
+                el.setAttribute('data-admin-heading-key', key);
+                if (!el.hasAttribute('data-admin-original-text')) el.setAttribute('data-admin-original-text', (el.textContent || '').replace(/\s+/g, ' ').trim());
+                const originalText = getHeadingDisplayText(el);
+                const current = saved[key] || {};
+                const size = current.size || Math.round(parseFloat(getComputedStyle(el).fontSize) || 24);
+                const card = document.createElement('div');
+                card.className = 'admin-heading-control';
+                card.innerHTML = `\n                    <div class="text-xs font-black text-champagne mb-2">${el.tagName.toLowerCase()} · ${originalText.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}</div>\n                    <div class="heading-control-grid">\n                        <div><label for="heading-text-${key}">نص العنوان</label><input id="heading-text-${key}" type="text" class="royal-input text-sm" maxlength="160"></div>\n                        <div><label for="heading-size-${key}">الحجم (px)</label><input id="heading-size-${key}" type="number" class="royal-input text-sm" min="12" max="64" step="1"></div>\n                    </div>`;
+                host.appendChild(card);
+                card.querySelector(`#heading-text-${key}`).value = current.text || originalText;
+                card.querySelector(`#heading-size-${key}`).value = size;
+            });
+        }
+
+        function saveAllHeadingControls() {
+            const headings = getPublicEditableHeadings();
+            const saved = loadHeadingOverrides();
+            headings.forEach((el, index) => {
+                const key = el.getAttribute('data-admin-heading-key') || `site-heading-${index + 1}`;
+                const textInput = document.getElementById(`heading-text-${key}`);
+                const sizeInput = document.getElementById(`heading-size-${key}`);
+                if (!textInput || !sizeInput) return;
+                const text = textInput.value.trim();
+                const size = Math.max(12, Math.min(64, Number(sizeInput.value) || 24));
+                if (!text) return;
+                saved[key] = { text, size };
+                applyHeadingText(el, text);
+                el.style.setProperty('font-size', `${size}px`, 'important');
+            });
+            localStorage.setItem(HEADING_EDITOR_STORAGE_KEY, JSON.stringify(saved));
+            showToast('تم حفظ نصوص وأحجام عناوين الموقع بنجاح');
         }
 
         function restoreDefaultSvgLogo() {
@@ -3668,8 +4154,146 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             refreshEntirePublicSite();
+            applySavedHeadingOverrides();
+            buildAdminHeadingControls();
             initHeroIntersectionObserver();
         });
     </script>
+
+<style id="hero-title-and-trust-contrast-fix">
+    /* تباين فاخر وواضح لبطاقات الثقة على الخلفية العاجية */
+    #hero .hero-trust-card {
+        background: linear-gradient(155deg, rgba(255,255,251,.98) 0%, rgba(246,244,232,.97) 100%) !important;
+        border: 1px solid rgba(174,139,61,.48) !important;
+        box-shadow: 0 9px 24px rgba(34,65,52,.10), inset 0 1px 0 rgba(255,255,255,.98) !important;
+    }
+    #hero .hero-trust-icon {
+        color: #94701f !important;
+        background: linear-gradient(145deg,#f7f0d9,#eee5c7) !important;
+        border: 1px solid rgba(160,126,48,.35) !important;
+    }
+    #hero .hero-trust-number {
+        background: linear-gradient(135deg,#8a641b 0%,#bd963b 48%,#765414 100%) !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        color: #8a641b !important;
+        text-shadow: none !important;
+    }
+    #hero .hero-trust-label,
+    #hero .hero-trust-single-text {
+        color: #214638 !important;
+        -webkit-text-fill-color: #214638 !important;
+        font-weight: 800 !important;
+    }
+    /* عنوان رئيسي قابل للتغيير مع حركة ضوء وتنفس هادئة ومتكررة */
+    #hero .hero-title-editable {
+        display: inline-block;
+        color: #174333;
+        background: linear-gradient(105deg,#174333 0%,#245844 34%,#9a7629 52%,#174333 72%,#245844 100%);
+        background-size: 220% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: heroHeadlineGlow 8s ease-in-out infinite, heroHeadlineFloat 5.5s ease-in-out infinite;
+        will-change: background-position, transform, filter;
+        text-shadow: 0 5px 20px rgba(145,112,39,.08);
+    }
+    @keyframes heroHeadlineGlow {
+        0%,100% { background-position: 100% 50%; filter: drop-shadow(0 2px 0 rgba(190,154,70,.05)); }
+        50% { background-position: 0% 50%; filter: drop-shadow(0 5px 12px rgba(181,145,57,.22)); }
+    }
+    @keyframes heroHeadlineFloat {
+        0%,100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+    }
+    /* مساحة آمنة لحروف العربية والهمزات حتى لا تُقص أعلى العنوان أو أسفله */
+    #hero #hero-main-title {
+        overflow: visible !important;
+        line-height: 1.48 !important;
+        padding: .20em .10em .30em !important;
+        margin: -.12em -.10em -.18em !important;
+    }
+
+    /* خط زخرفي ذهبي بحركة ضوء متدفقة، مع بقاء اللون الذهبي الأصلي */
+    #hero .hero-title-line-fill {
+        background: linear-gradient(90deg,
+            rgba(184,142,51,.28) 0%,
+            #b88e33 24%,
+            #f0d98c 50%,
+            #b88e33 76%,
+            rgba(184,142,51,.28) 100%) !important;
+        background-size: 220% 100% !important;
+    }
+    #hero .hero-in-view .hero-title-line-fill {
+        animation: drawGoldLine .95s cubic-bezier(.22,1,.36,1) 1.5s forwards,
+                   heroLineLightFlow 4.8s ease-in-out 2.5s infinite !important;
+    }
+    #hero .hero-title-line-gem {
+        animation: heroGemPulse 3.2s ease-in-out 2.2s infinite;
+    }
+    @keyframes heroLineLightFlow {
+        0%,100% { background-position: 100% 50%; filter: drop-shadow(0 0 1px rgba(184,142,51,.25)); }
+        50% { background-position: 0% 50%; filter: drop-shadow(0 0 7px rgba(202,164,77,.72)); }
+    }
+    @keyframes heroGemPulse {
+        0%,100% { box-shadow: 0 0 8px rgba(184,142,51,.28); }
+        50% { box-shadow: 0 0 16px 4px rgba(202,164,77,.58); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        #hero .hero-title-editable,
+        #hero .hero-title-line-fill,
+        #hero .hero-title-line-gem { animation: none !important; }
+    }
+</style>
+
+
+<style id="heading-spacing-and-classic-divider-fix">
+    /* مساحة إضافية تمنع قص الهمزات والحروف العربية أعلى وأسفل العنوان */
+    #hero #hero-main-title {
+        display: inline-block !important;
+        overflow: visible !important;
+        line-height: 1.55 !important;
+        padding: .30em .14em .42em !important;
+        margin: 0 !important;
+        vertical-align: middle;
+    }
+    #hero #hero-main-title .hero-title-editable {
+        display: inline-block !important;
+        line-height: 1.5 !important;
+        padding: .05em 0 .16em !important;
+        overflow: visible !important;
+    }
+    /* إعادة الخط الذهبي الهادئ السابق دون سهم أو حركة رسم مبالغ فيها */
+    #hero .hero-ornate-divider {
+        width: min(250px, 62vw) !important;
+        height: 14px !important;
+        margin: .75rem auto 0 !important;
+    }
+    #hero .hero-title-line-fill {
+        width: 100% !important;
+        height: 2px !important;
+        transform: scaleX(1) !important;
+        opacity: 1 !important;
+        background: linear-gradient(90deg, transparent 0%, rgba(184,142,51,.48) 18%, #b88e33 50%, rgba(184,142,51,.48) 82%, transparent 100%) !important;
+        animation: none !important;
+        filter: none !important;
+    }
+    #hero .hero-title-line-gem {
+        opacity: 1 !important;
+        width: 8px !important; height: 8px !important;
+        animation: none !important;
+        transform: rotate(45deg) !important;
+        box-shadow: 0 0 7px rgba(184,142,51,.28) !important;
+    }
+    @media (prefers-reduced-motion: reduce) {
+        #hero #hero-main-title, #hero #hero-main-title * { animation: none !important; }
+    }
+    .admin-heading-control { border:1px solid rgba(197,160,74,.22); border-radius:14px; padding:12px; background:rgba(255,255,255,.035); }
+    .admin-heading-control label { display:block; color:#ead9a0; font-size:11px; font-weight:800; margin-bottom:6px; }
+    .admin-heading-control input { width:100%; min-width:0; }
+    .admin-heading-control .heading-control-grid { display:grid; grid-template-columns:minmax(0,1fr) 92px; gap:9px; align-items:end; }
+</style>
+
 </body>
     </html>
