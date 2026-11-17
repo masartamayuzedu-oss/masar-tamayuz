@@ -1344,6 +1344,7 @@
         }
     </style>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" onerror="this.onerror=null;var fallback=document.createElement('script');fallback.src='https://unpkg.com/@supabase/supabase-js@2';fallback.dataset.supabaseFallback='1';fallback.onerror=function(){window.__supabaseSdkLoadError=true;};document.head.appendChild(fallback);"></script>
 </head>
 <body class="royal-lattice-bg selection:bg-gold24 selection:text-obsidian">
 
@@ -1411,7 +1412,7 @@
             <a href="#portfolio" onclick="closeMobileNav()" class="block text-ivory hover:text-goldLight font-bold py-1.5">معرض الأعمال</a>
             <div class="pt-3 border-t border-gold24/15 flex flex-wrap gap-3">
                 <a href="#calculator" onclick="closeMobileNav()" class="flex-1 text-center gold-24k-bg font-black py-3 px-4 rounded-xl text-sm">اطلب خدمتك الآن</a>
-                <button onclick="closeMobileNav(); openAdminGate();" class="px-4 py-3 rounded-xl border border-gold24/40 text-goldLight font-bold text-sm"><i class="fas fa-lock ml-1"></i> المشرف</button>
+                
             </div>
         </div>
     </header>
@@ -2084,7 +2085,7 @@
             trigger.addEventListener('click', function () {
               taps++;
               clearTimeout(timer);
-              if (taps === 3) {
+              if (taps === 4) {
                 taps = 0;
                 if (typeof openAdminGate === 'function') {
                   openAdminGate();
@@ -2151,17 +2152,18 @@
                 </button>
             </div>
 
-            <div class="mb-5 p-3.5 rounded-2xl bg-gold24/10 border border-gold24/35 flex items-center justify-between text-xs">
-                <span class="text-champagne"><i class="fas fa-key text-gold24 ml-1"></i> كلمة المرور الافتراضية للمعاينة:</span>
-                <code class="px-2.5 py-1 rounded-lg bg-obsidian text-goldLight font-mono font-bold select-all" dir="ltr">admin123</code>
-            </div>
-
             <form onsubmit="verifyAdminPassword(event)" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-bold text-goldLight mb-2">أدخل كلمة مرور المشرف</label>
-                    <input type="password" id="admin-pass-input" required placeholder="••••••••"
+                    <label class="block text-xs font-bold text-goldLight mb-2">البريد الإلكتروني للمشرف</label>
+                    <input type="email" id="admin-email-input" required autocomplete="username" placeholder="admin@example.com"
+                           class="royal-input text-center font-bold" dir="ltr">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-goldLight mb-2">كلمة مرور حساب المشرف</label>
+                    <input type="password" id="admin-pass-input" required autocomplete="current-password" placeholder="••••••••"
                            class="royal-input text-center tracking-widest font-bold" dir="ltr">
                 </div>
+                <p class="text-[10px] text-champagne/70 text-center">تسجيل الدخول محمي عبر Supabase Auth والتحقق من صلاحية المشرف.</p>
                 <button type="submit"
                     class="w-full gold-24k-bg font-black py-3.5 rounded-xl text-sm shadow-lg flex items-center justify-center gap-2 cursor-pointer">
                     <i class="fas fa-unlock-alt"></i>
@@ -2459,110 +2461,215 @@
             <!-- =============================================================
                  تبويب 4: هوية المنصة والإعدادات (Brand & Settings)
             ============================================================= -->
-            <div id="admin-tab-settings" class="admin-tab-content hidden space-y-8">
-                <div class="velvet-card rounded-3xl p-6 sm:p-8">
-                    <h2 class="text-lg sm:text-xl font-black text-goldLight mb-6">
-                        <i class="fas fa-crown text-gold24 ml-2"></i> تخصيص شعار وهوية المنصة وإعدادات التواصل
-                    </h2>
+            <div id="admin-tab-settings" class="admin-tab-content hidden space-y-6">
+                <div class="velvet-card rounded-3xl p-5 sm:p-8">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+                        <h2 class="text-lg sm:text-xl font-black text-goldLight">
+                            <i class="fas fa-sliders text-gold24 ml-2"></i> لوحة إعدادات المنصة والهوية الملكية
+                        </h2>
+                        <span class="text-xs text-champagne/75">اضغط على أي قسم لفتح إعداداته وتعديلها</span>
+                    </div>
 
-                    <form onsubmit="saveBrandSettings(event)" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                        <!-- رفع شعار مخصص للمنصة -->
-                        <div class="lg:col-span-4 text-center p-5 rounded-2xl bg-obsidian/70 border border-gold24/25">
-                            <label class="block text-xs font-bold text-goldLight mb-3">شعار المنصة الحالي</label>
-                            <div id="settings-logo-preview" class="w-24 h-24 mx-auto rounded-full p-1 gold-24k-bg mb-4 shadow-lg">
-                                <div id="settings-logo-inner" class="w-full h-full rounded-full bg-obsidian flex items-center justify-center overflow-hidden"></div>
+                    <form onsubmit="saveBrandSettings(event)" class="space-y-4">
+
+                        <!-- =================================================
+                             القسم 1: شعار المنصة والهوية البصرية
+                        ================================================= -->
+                        <div class="settings-accordion rounded-2xl border border-gold24/30 bg-obsidian/55 overflow-hidden">
+                            <button type="button" onclick="toggleSettingsSection('sec-brand-logo', this)"
+                                class="w-full flex items-center justify-between p-4 sm:p-5 text-right bg-emeraldVelvet/40 hover:bg-emeraldVelvet/70 transition cursor-pointer">
+                                <span class="flex items-center gap-3 font-black text-sm sm:text-base text-goldLight">
+                                    <i class="fas fa-crown text-gold24 w-5 text-center"></i>
+                                    <span>1. شعار المنصة والهوية البصرية</span>
+                                </span>
+                                <i class="fas fa-chevron-down text-gold24 transition-transform duration-300 accordion-arrow"></i>
+                            </button>
+                            <div id="sec-brand-logo" class="settings-accordion-body hidden p-5 border-t border-gold24/20">
+                                <div class="max-w-sm mx-auto text-center p-5 rounded-2xl bg-obsidian/70 border border-gold24/25">
+                                    <label class="block text-xs font-bold text-goldLight mb-3">شعار المنصة الحالي</label>
+                                    <div id="settings-logo-preview" class="w-24 h-24 mx-auto rounded-full p-1 gold-24k-bg mb-4 shadow-lg">
+                                        <div id="settings-logo-inner" class="w-full h-full rounded-full bg-obsidian flex items-center justify-center overflow-hidden"></div>
+                                    </div>
+                                    <button type="button" onclick="document.getElementById('logo-file-input').click()"
+                                        class="w-full py-2.5 px-4 rounded-xl border border-gold24/45 bg-emeraldVelvet/50 hover:bg-gold24 hover:text-obsidian text-goldLight text-xs font-bold transition mb-2 cursor-pointer">
+                                        <i class="fas fa-upload ml-1"></i> رفع شعار مخصص من جهازك
+                                    </button>
+                                    <button type="button" onclick="restoreDefaultSvgLogo()"
+                                        class="w-full py-2 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-champagne text-[11px] font-bold transition cursor-pointer">
+                                        استعادة الشعار الملكي الافتراضي
+                                    </button>
+                                    <input type="file" id="logo-file-input" accept="image/*" class="hidden" onchange="handleDeviceImageSelect(this, 'logo')">
+                                </div>
                             </div>
-                            <button type="button" onclick="document.getElementById('logo-file-input').click()"
-                                class="w-full py-2.5 px-4 rounded-xl border border-gold24/45 bg-emeraldVelvet/50 hover:bg-gold24 hover:text-obsidian text-goldLight text-xs font-bold transition mb-2 cursor-pointer">
-                                <i class="fas fa-upload ml-1"></i> رفع شعار مخصص من جهازك
-                            </button>
-                            <button type="button" onclick="restoreDefaultSvgLogo()"
-                                class="w-full py-2 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-champagne text-[11px] font-bold transition cursor-pointer">
-                                استعادة الشعار الملكي الافتراضي
-                            </button>
-                            <input type="file" id="logo-file-input" accept="image/*" class="hidden" onchange="handleDeviceImageSelect(this, 'logo')">
                         </div>
 
-                        <!-- حقول الهوية والأمان -->
-                        <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-xs font-bold text-goldLight mb-1.5">اسم المنصة الرسمي</label>
-                                <input type="text" id="set-platform-name" required class="royal-input text-sm font-bold">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-goldLight mb-1.5">الشعار الفرعي (Tagline)</label>
-                                <input type="text" id="set-platform-sub" required class="royal-input text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-goldLight mb-1.5">رقم واتساب استقبال الطلبات (مع رمز الدولة)</label>
-                                <input type="text" id="set-whatsapp" required placeholder="967736190956" class="royal-input text-sm font-mono" dir="ltr">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-goldLight mb-1.5">كلمة مرور لوحة المشرف</label>
-                                <input type="text" id="set-admin-pass" required class="royal-input text-sm font-mono" dir="ltr">
-                            </div>
-                            <div class="sm:col-span-2">
-                                <label class="block text-xs font-bold text-goldLight mb-1.5">عنوان الواجهة الرئيسية المتحرك</label>
-                                <input type="text" id="set-hero-title" maxlength="90" required placeholder="إنجازك يبدأ من هنا" class="royal-input text-sm">
-                                <p class="text-[11px] text-goldLight/70 mt-1">يمكنك تغيير العبارة من هنا في أي وقت دون تعديل الكود.</p>
-                            </div>
-                            <div class="sm:col-span-2">
-                                <label class="block text-xs font-bold text-goldLight mb-1.5">النص الوصفي في الواجهة الرئيسية</label>
-                                <textarea id="set-hero-desc" rows="2" required class="royal-input text-sm"></textarea>
-                            </div>
-
-                            <div class="sm:col-span-2 rounded-2xl border border-gold24/25 bg-obsidian/45 p-4 space-y-3">
-                                <div class="flex items-center justify-between gap-3 flex-wrap">
-                                    <h3 class="font-black text-goldLight"><i class="fas fa-heading ml-2"></i>محرر عناوين الموقع وأحجامها</h3>
-                                    <span class="text-[11px] text-champagne/75">تحكم بالنص وحجم الخط لكل عنوان رئيسي أو فرعي</span>
+                        <!-- =================================================
+                             القسم 2: البيانات الأساسية والتواصل والواجهة الرئيسية
+                        ================================================= -->
+                        <div class="settings-accordion rounded-2xl border border-gold24/30 bg-obsidian/55 overflow-hidden">
+                            <button type="button" onclick="toggleSettingsSection('sec-basic-info', this)"
+                                class="w-full flex items-center justify-between p-4 sm:p-5 text-right bg-emeraldVelvet/40 hover:bg-emeraldVelvet/70 transition cursor-pointer">
+                                <span class="flex items-center gap-3 font-black text-sm sm:text-base text-goldLight">
+                                    <i class="fas fa-id-card text-gold24 w-5 text-center"></i>
+                                    <span>2. البيانات الأساسية والواتساب والواجهة الرئيسية</span>
+                                </span>
+                                <i class="fas fa-chevron-down text-gold24 transition-transform duration-300 accordion-arrow"></i>
+                            </button>
+                            <div id="sec-basic-info" class="settings-accordion-body hidden p-5 border-t border-gold24/20">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-bold text-goldLight mb-1.5">اسم المنصة الرسمي</label>
+                                        <input type="text" id="set-platform-name" required class="royal-input text-sm font-bold">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-goldLight mb-1.5">الشعار الفرعي (Tagline)</label>
+                                        <input type="text" id="set-platform-sub" required class="royal-input text-sm">
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <label class="block text-xs font-bold text-goldLight mb-1.5">رقم واتساب استقبال الطلبات (مع رمز الدولة)</label>
+                                        <input type="text" id="set-whatsapp" required placeholder="967736190956" class="royal-input text-sm font-mono" dir="ltr">
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <label class="block text-xs font-bold text-goldLight mb-1.5">عنوان الواجهة الرئيسية المتحرك</label>
+                                        <input type="text" id="set-hero-title" maxlength="90" required placeholder="إنجازك يبدأ من هنا" class="royal-input text-sm">
+                                        <p class="text-[11px] text-goldLight/70 mt-1">يمكنك تغيير العبارة من هنا في أي وقت دون تعديل الكود.</p>
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <label class="block text-xs font-bold text-goldLight mb-1.5">النص الوصفي في الواجهة الرئيسية</label>
+                                        <textarea id="set-hero-desc" rows="2" required class="royal-input text-sm"></textarea>
+                                    </div>
                                 </div>
-                                <div id="admin-heading-controls" class="space-y-3">
+                            </div>
+                        </div>
+
+                        <!-- =================================================
+                             القسم 3: محرر عناوين الموقع وأحجامها
+                        ================================================= -->
+                        <div class="settings-accordion rounded-2xl border border-gold24/30 bg-obsidian/55 overflow-hidden">
+                            <button type="button" onclick="toggleSettingsSection('sec-headings-editor', this)"
+                                class="w-full flex items-center justify-between p-4 sm:p-5 text-right bg-emeraldVelvet/40 hover:bg-emeraldVelvet/70 transition cursor-pointer">
+                                <span class="flex items-center gap-3 font-black text-sm sm:text-base text-goldLight">
+                                    <i class="fas fa-heading text-gold24 w-5 text-center"></i>
+                                    <span>3. محرر عناوين الموقع وأحجامها (H1 - H3)</span>
+                                </span>
+                                <i class="fas fa-chevron-down text-gold24 transition-transform duration-300 accordion-arrow"></i>
+                            </button>
+                            <div id="sec-headings-editor" class="settings-accordion-body hidden p-5 border-t border-gold24/20 space-y-4">
+                                <div class="flex items-center justify-between gap-2 flex-wrap">
+                                    <span class="text-xs text-champagne/80">تحكم بالنص وحجم الخط (px) لكل عنوان رئيسي أو فرعي في الموقع:</span>
+                                </div>
+                                <div id="admin-heading-controls" class="space-y-3 max-h-[420px] overflow-y-auto pl-1">
                                     <p class="text-xs text-champagne/70">جارٍ تجهيز عناوين الموقع...</p>
                                 </div>
-                                <button type="button" onclick="saveAllHeadingControls()" class="gold-24k-bg font-black px-6 py-3 rounded-xl text-sm cursor-pointer">
-                                    <i class="fas fa-save ml-1.5"></i> حفظ تعديلات جميع العناوين والأحجام
-                                </button>
-                                <p class="text-[11px] text-goldLight/70">يشمل العناوين الرئيسية والفرعية الثابتة في أقسام الموقع. تبقى التعديلات محفوظة على هذا المتصفح.</p>
-                            </div>
-
-                            <div class="sm:col-span-2 rounded-2xl border border-gold24/25 bg-obsidian/45 p-4 space-y-4">
-                                <h3 class="font-black text-goldLight"><i class="fas fa-tags ml-2"></i>تعديل نصوص قسم العروض</h3>
-                                <div><label class="block text-xs font-bold text-champagne mb-1.5">الشارة العلوية</label><input id="set-offers-season-label" type="text" class="royal-input text-sm"></div>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                    <div><label class="block text-xs font-bold text-champagne mb-1.5">العنوان – الكلمة الأولى</label><input id="set-offers-heading-main" type="text" class="royal-input text-sm"></div>
-                                    <div><label class="block text-xs font-bold text-champagne mb-1.5">العنوان – الكلمة الذهبية</label><input id="set-offers-heading-accent" type="text" class="royal-input text-sm"></div>
+                                <div class="pt-2 flex flex-wrap items-center justify-between gap-3">
+                                    <button type="button" onclick="saveAllHeadingControls()" class="gold-24k-bg font-black px-6 py-3 rounded-xl text-sm cursor-pointer">
+                                        <i class="fas fa-save ml-1.5"></i> حفظ تعديلات العناوين والأحجام
+                                    </button>
+                                    <span class="text-[11px] text-goldLight/70">تبقى التعديلات محفوظة تلقائياً.</span>
                                 </div>
-                                <div><label class="block text-xs font-bold text-champagne mb-1.5">الوصف أسفل العنوان</label><textarea id="set-offers-description" rows="2" class="royal-input text-sm"></textarea></div>
-                                <div><label class="block text-xs font-bold text-champagne mb-1.5">رسالة عدم وجود عروض نشطة</label><input id="set-offers-empty-message" type="text" class="royal-input text-sm"></div>
                             </div>
+                        </div>
 
-                            <div class="sm:col-span-2 rounded-2xl border border-gold24/25 bg-obsidian/45 p-4 space-y-4">
-                                <h3 class="font-black text-goldLight"><i class="fas fa-chart-simple ml-2"></i>تعديل بطاقات الثقة الثلاث</h3>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                    <div><label class="block text-xs font-bold text-champagne mb-1.5">رقم البطاقة الأولى</label><input id="set-trust-projects-number" type="text" class="royal-input text-sm"></div>
-                                    <div><label class="block text-xs font-bold text-champagne mb-1.5">وصف البطاقة الأولى</label><input id="set-trust-projects-label" type="text" class="royal-input text-sm"></div>
-                                    <div><label class="block text-xs font-bold text-champagne mb-1.5">نص البطاقة الثانية</label><input id="set-trust-support-label" type="text" class="royal-input text-sm"></div>
-                                    <div><label class="block text-xs font-bold text-champagne mb-1.5">رقم البطاقة الثالثة</label><input id="set-trust-privacy-number" type="text" class="royal-input text-sm"></div>
-                                    <div class="sm:col-span-2"><label class="block text-xs font-bold text-champagne mb-1.5">وصف البطاقة الثالثة</label><input id="set-trust-privacy-label" type="text" class="royal-input text-sm"></div>
+                        <!-- =================================================
+                             القسم 4: نصوص قسم العروض الحصرية
+                        ================================================= -->
+                        <div class="settings-accordion rounded-2xl border border-gold24/30 bg-obsidian/55 overflow-hidden">
+                            <button type="button" onclick="toggleSettingsSection('sec-offers-texts', this)"
+                                class="w-full flex items-center justify-between p-4 sm:p-5 text-right bg-emeraldVelvet/40 hover:bg-emeraldVelvet/70 transition cursor-pointer">
+                                <span class="flex items-center gap-3 font-black text-sm sm:text-base text-goldLight">
+                                    <i class="fas fa-tags text-gold24 w-5 text-center"></i>
+                                    <span>4. نصوص وعناوين قسم العروض</span>
+                                </span>
+                                <i class="fas fa-chevron-down text-gold24 transition-transform duration-300 accordion-arrow"></i>
+                            </button>
+                            <div id="sec-offers-texts" class="settings-accordion-body hidden p-5 border-t border-gold24/20 space-y-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-champagne mb-1.5">الشارة العلوية</label>
+                                    <input id="set-offers-season-label" type="text" class="royal-input text-sm">
                                 </div>
-                                <div class="pt-2">
-                                    <button type="button" onclick="saveVisualTexts()" class="gold-24k-bg font-black px-6 py-3 rounded-xl text-sm cursor-pointer">
-                                        <i class="fas fa-save ml-1.5"></i> حفظ تعديلات العناوين والبطاقات
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div>
+                                        <label class="block text-xs font-bold text-champagne mb-1.5">العنوان – الكلمة الأولى</label>
+                                        <input id="set-offers-heading-main" type="text" class="royal-input text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-champagne mb-1.5">العنوان – الكلمة الذهبية</label>
+                                        <input id="set-offers-heading-accent" type="text" class="royal-input text-sm">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-champagne mb-1.5">الوصف أسفل العنوان</label>
+                                    <textarea id="set-offers-description" rows="2" class="royal-input text-sm"></textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-champagne mb-1.5">رسالة عدم وجود عروض نشطة</label>
+                                    <input id="set-offers-empty-message" type="text" class="royal-input text-sm">
+                                </div>
+                                <div class="pt-1">
+                                    <button type="button" onclick="saveVisualTexts()" class="gold-24k-bg font-black px-6 py-2.5 rounded-xl text-xs sm:text-sm cursor-pointer">
+                                        <i class="fas fa-save ml-1.5"></i> حفظ نصوص العروض
                                     </button>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="sm:col-span-2 flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-gold24/20">
-                                <button type="submit" class="gold-24k-bg font-black px-8 py-3.5 rounded-xl text-sm cursor-pointer">
-                                    <i class="fas fa-save ml-1.5"></i> حفظ جميع الإعدادات
-                                </button>
-
-                                <button type="button" onclick="confirmResetAllData()"
-                                    class="px-5 py-3 rounded-xl bg-red-500/15 border border-red-400/35 text-red-300 hover:bg-red-500/25 text-xs font-bold cursor-pointer">
-                                    <i class="fas fa-rotate-left ml-1"></i> إعادة ضبط البيانات الافتراضية
-                                </button>
+                        <!-- =================================================
+                             القسم 5: بطاقات الثقة والإحصائيات الثلاث
+                        ================================================= -->
+                        <div class="settings-accordion rounded-2xl border border-gold24/30 bg-obsidian/55 overflow-hidden">
+                            <button type="button" onclick="toggleSettingsSection('sec-trust-cards', this)"
+                                class="w-full flex items-center justify-between p-4 sm:p-5 text-right bg-emeraldVelvet/40 hover:bg-emeraldVelvet/70 transition cursor-pointer">
+                                <span class="flex items-center gap-3 font-black text-sm sm:text-base text-goldLight">
+                                    <i class="fas fa-chart-simple text-gold24 w-5 text-center"></i>
+                                    <span>5. بطاقات الثقة والإحصائيات الثلاث</span>
+                                </span>
+                                <i class="fas fa-chevron-down text-gold24 transition-transform duration-300 accordion-arrow"></i>
+                            </button>
+                            <div id="sec-trust-cards" class="settings-accordion-body hidden p-5 border-t border-gold24/20 space-y-4">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div>
+                                        <label class="block text-xs font-bold text-champagne mb-1.5">رقم البطاقة الأولى</label>
+                                        <input id="set-trust-projects-number" type="text" class="royal-input text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-champagne mb-1.5">وصف البطاقة الأولى</label>
+                                        <input id="set-trust-projects-label" type="text" class="royal-input text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-champagne mb-1.5">نص البطاقة الثانية</label>
+                                        <input id="set-trust-support-label" type="text" class="royal-input text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-champagne mb-1.5">رقم البطاقة الثالثة</label>
+                                        <input id="set-trust-privacy-number" type="text" class="royal-input text-sm">
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <label class="block text-xs font-bold text-champagne mb-1.5">وصف البطاقة الثالثة</label>
+                                        <input id="set-trust-privacy-label" type="text" class="royal-input text-sm">
+                                    </div>
+                                </div>
+                                <div class="pt-1">
+                                    <button type="button" onclick="saveVisualTexts()" class="gold-24k-bg font-black px-6 py-2.5 rounded-xl text-xs sm:text-sm cursor-pointer">
+                                        <i class="fas fa-save ml-1.5"></i> حفظ تعديلات بطاقات الثقة
+                                    </button>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- =================================================
+                             شريط الحفظ العام وإعادة الضبط (ثابت أسفل الأزرار)
+                        ================================================= -->
+                        <div class="flex flex-wrap items-center justify-between gap-4 pt-5 mt-4 border-t border-gold24/25">
+                            <button type="submit" class="gold-24k-bg font-black px-8 py-3.5 rounded-xl text-sm cursor-pointer shadow-lg">
+                                <i class="fas fa-save ml-1.5"></i> حفظ جميع الإعدادات الأساسية
+                            </button>
+
+                            <button type="button" onclick="confirmResetAllData()"
+                                class="px-5 py-3 rounded-xl bg-red-500/15 border border-red-400/35 text-red-300 hover:bg-red-500/25 text-xs font-bold cursor-pointer">
+                                <i class="fas fa-rotate-left ml-1"></i> إعادة ضبط البيانات الافتراضية
+                            </button>
+                        </div>
+
                     </form>
                 </div>
             </div>
@@ -4152,6 +4259,27 @@
             startLiveCountdown();
         }
 
+        
+        function toggleSettingsSection(sectionId, btnElement) {
+            const targetBody = document.getElementById(sectionId);
+            if (!targetBody) return;
+
+            const isCurrentlyOpen = !targetBody.classList.contains('hidden');
+
+            document.querySelectorAll('.settings-accordion-body').forEach(body => {
+                body.classList.add('hidden');
+            });
+            document.querySelectorAll('.accordion-arrow').forEach(arrow => {
+                arrow.style.transform = 'rotate(0deg)';
+            });
+
+            if (!isCurrentlyOpen) {
+                targetBody.classList.remove('hidden');
+                const arrow = btnElement ? btnElement.querySelector('.accordion-arrow') : null;
+                if (arrow) arrow.style.transform = 'rotate(180deg)';
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             refreshEntirePublicSite();
             applySavedHeadingOverrides();
@@ -4295,5 +4423,427 @@
     .admin-heading-control .heading-control-grid { display:grid; grid-template-columns:minmax(0,1fr) 92px; gap:9px; align-items:end; }
 </style>
 
+<script>
+/* Supabase integration layer — scoped to authentication, persistence and requested media. */
+(function () {
+  'use strict';
+  const SB_URL = 'https://quljpjwjpeokolqumbne.supabase.co';
+  const SB_PUBLIC_KEY = 'sb_publishable_z7A6bTm4AIO3RyRNezaTOw_Ti0Z0pT8';
+  const SB_MEDIA_FN = SB_URL + '/functions/v1/get-media-view-url';
+  let sb = null, currentAdmin = null, pendingOfferMedia = null, pendingPortfolioMedia = null, platformSettingsId = null;
+  const originalOpenLightbox = window.openLightbox;
+  const originalProcessUploadedFile = window.processUploadedFile;
+  let localSnapshot = null;
+  try { const rawLocal = localStorage.getItem('masar_altamayuz_royal_state_v1'); localSnapshot = rawLocal ? JSON.parse(rawLocal) : null; } catch (_) { localSnapshot = null; }
+  const signedCache = new Map();
+  const MIGRATION_KEY = 'masar_supabase_migration_v1_complete';
+  window.__masarSupabaseDiagnostics = { status:'starting', stage:'page-init', startedAt:new Date().toISOString(), checks:{} };
+  try { if (appState && appState.brand) delete appState.brand.adminPassword; } catch (_) {}
+  const MAX_MEDIA_BYTES = 100 * 1024 * 1024;
+  const ALLOWED = {
+    image: ['image/jpeg','image/png','image/webp','image/gif'],
+    video: ['video/mp4','video/webm'],
+    pdf: ['application/pdf']
+  };
+  const $ = id => document.getElementById(id);
+  const errorDetails = e => {
+    if (!e) return 'خطأ غير محدد';
+    const parts = [e.message || e.error_description || e.error || String(e)];
+    if (e.code) parts.push('code=' + e.code);
+    if (e.details) parts.push('details=' + e.details);
+    if (e.hint) parts.push('hint=' + e.hint);
+    if (e.status) parts.push('HTTP=' + e.status);
+    return parts.join(' | ');
+  };
+  const errText = e => errorDetails(e) || 'تعذر إتمام العملية. تحقق من الاتصال والصلاحيات.';
+  const toastError = e => showToast(errText(e), 'fa-exclamation-circle');
+  function loadSdkFallback() {
+    return new Promise((resolve,reject) => {
+      if (window.supabase && window.supabase.createClient) return resolve();
+      const existing = document.querySelector('script[data-supabase-fallback="1"]');
+      const script = existing || document.createElement('script');
+      let settled = false;
+      const finish = (err) => { if (settled) return; settled=true; clearTimeout(timer); if (err) reject(err); else resolve(); };
+      const timer = setTimeout(() => finish(new Error('تعذر تحميل مكتبة Supabase من jsDelivr وUnpkg خلال 15 ثانية.')),15000);
+      script.onload = () => (window.supabase && window.supabase.createClient) ? finish() : finish(new Error('تم تحميل ملف المكتبة لكن createClient غير متاح.'));
+      script.onerror = () => finish(new Error('فشل تحميل مكتبة Supabase من مصدرَي CDN.'));
+      if (!existing) { script.src='https://unpkg.com/@supabase/supabase-js@2'; script.async=true; script.dataset.supabaseFallback='1'; document.head.appendChild(script); }
+    });
+  }
+  async function ensureSdk() {
+    if (window.supabase && window.supabase.createClient) return;
+    await loadSdkFallback();
+  }
+  function initClient() {
+    if (sb) return sb;
+    if (!window.supabase || !window.supabase.createClient) throw new Error('مكتبة Supabase غير جاهزة.');
+    if (!/^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(SB_URL)) throw new Error('صيغة Project URL غير صحيحة.');
+    if (!SB_PUBLIC_KEY || !SB_PUBLIC_KEY.startsWith('sb_publishable_')) throw new Error('Publishable Key غير موجود أو ليس من النوع المتوقع.');
+    sb = window.supabase.createClient(SB_URL, SB_PUBLIC_KEY, {
+      db: { schema:'public' },
+      global: { headers: { 'X-Client-Info':'masar-student-platform-browser' } },
+      auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, flowType:'pkce' }
+    });
+    sb.auth.onAuthStateChange(async (_event, session) => {
+      if (!session) { currentAdmin = null; isAdminAuthenticated = false; }
+    });
+    return sb;
+  }
+  function toNum(v) { return Number(v || 0); }
+  function fromService(r) { return { id:r.id, title:r.title, description:r.description, startingPrice:toNum(r.starting_price), unitPrice:toNum(r.unit_price), unitName:r.unit_name, duration:r.duration, icon:r.icon || 'fa-book-open' }; }
+  function fromOffer(r) { return { id:r.id, title:r.title, ribbon:r.ribbon, oldPrice:toNum(r.old_price), newPrice:toNum(r.new_price), perks:Array.isArray(r.perks)?r.perks:[], isFeatured:!!r.is_featured, imageUrl:r.image_url || '', mediaType:r.media_type || 'image', mediaUrl:r.media_url || '', mediaPath:r.media_path || '', mediaName:r.media_name || '', mediaMimeType:r.media_mime_type || '', mediaSize:r.media_size || null, isPublished:r.is_published !== false }; }
+  function fromPortfolio(r) { return { id:r.id, title:r.title, category:r.category, grade:r.grade || 'امتياز A+', description:r.description, imageUrl:r.image_url || '', mediaType:r.media_type || 'image', mediaUrl:r.media_url || '', mediaPath:r.media_path || '', mediaName:r.media_name || '', mediaMimeType:r.media_mime_type || '', mediaSize:r.media_size || null, isPublished:r.is_published !== false }; }
+  function mapSettings(r) {
+    if (!r) return;
+    platformSettingsId = r.id;
+    appState.brand.platformName = r.platform_name || appState.brand.platformName;
+    appState.brand.platformSub = r.platform_sub || '';
+    appState.brand.heroTitle = r.hero_title || appState.brand.heroTitle;
+    appState.brand.heroDesc = r.hero_desc || appState.brand.heroDesc;
+    appState.brand.whatsappNumber = r.whatsapp_number || appState.brand.whatsappNumber;
+    appState.brand.customLogoDataUrl = r.custom_logo_url || '';
+    appState.countdownTarget = r.countdown_target || appState.countdownTarget;
+    appState.showCountdown = r.show_countdown !== false;
+    appState.offersSection = { ...DEFAULT_STATE.offersSection, ...(r.offers_section_meta || {}) };
+    appState.heroTrust = { ...DEFAULT_STATE.heroTrust, ...(r.hero_trust_meta || {}) };
+  }
+  async function loadHeadings() {
+    const { data, error } = await initClient().from('site_headings_config').select('heading_key,heading_text,font_size');
+    if (error) throw error;
+    const saved = {};
+    (data || []).forEach(r => { saved[r.heading_key] = { text:r.heading_text || '', size:r.font_size || null }; });
+    if (Object.keys(saved).length) {
+      localStorage.setItem(HEADING_EDITOR_STORAGE_KEY, JSON.stringify(saved));
+      applySavedHeadingOverrides();
+    }
+  }
+  async function loadRemoteState(adminMode) {
+    const client = initClient();
+    const [sv, of, pf, st] = await Promise.all([
+      client.from('services').select('*').order('id', {ascending:true}),
+      client.from('offers').select('*').order('id', {ascending:false}),
+      client.from('portfolio_items').select('*').order('id', {ascending:false}),
+      client.from('platform_settings').select('*').order('id', {ascending:true}).limit(1)
+    ]);
+    for (const q of [sv,of,pf,st]) if (q.error) throw q.error;
+    appState.services = (sv.data || []).map(fromService);
+    appState.offers = (of.data || []).map(fromOffer);
+    appState.portfolio = (pf.data || []).map(fromPortfolio);
+    mapSettings((st.data || [])[0]);
+    try { await loadHeadings(); } catch (e) { console.warn('Headings read:', e.message); }
+    if (!appState.services.length && !appState.offers.length && !appState.portfolio.length) {
+      // Do not seed default demo content into an established empty database. Local migration is handled separately after admin verification.
+    }
+    refreshEntirePublicSite();
+    if (adminMode) renderAllAdminPanels();
+  }
+  async function assertAdmin(session) {
+    if (!session || !session.user) throw new Error('يرجى تسجيل الدخول أولاً.');
+    const { data, error } = await initClient().from('admin_users').select('user_id').eq('user_id', session.user.id).maybeSingle();
+    if (error) throw error;
+    if (!data || data.user_id !== session.user.id) throw new Error('هذا الحساب غير مصرح له بإدارة الموقع.');
+    currentAdmin = session.user;
+    isAdminAuthenticated = true;
+    return true;
+  }
+  async function ensureSessionAdmin() {
+    const { data, error } = await initClient().auth.getSession();
+    if (error) throw error;
+    if (!data.session) return false;
+    await assertAdmin(data.session);
+    return true;
+  }
+  function dataUrlBlob(dataUrl) {
+    const parts = dataUrl.split(',');
+    const mime = (parts[0].match(/data:([^;]+)/) || [])[1] || 'image/jpeg';
+    const bin = atob(parts[1] || '');
+    const bytes = new Uint8Array(bin.length);
+    for (let i=0;i<bin.length;i++) bytes[i] = bin.charCodeAt(i);
+    return new Blob([bytes], {type:mime});
+  }
+  function mediaFor(target) { return target === 'offer' ? pendingOfferMedia : pendingPortfolioMedia; }
+  function setPending(target, item) { if (target === 'offer') pendingOfferMedia = item; else pendingPortfolioMedia = item; }
+  function previewMedia(target, item) {
+    const prefix = target === 'offer' ? 'offer' : 'port';
+    const img = $(prefix + '-img-preview'), prompt = $(prefix + '-upload-prompt');
+    let box = $(prefix + '-media-preview');
+    if (!box) { box = document.createElement('div'); box.id = prefix + '-media-preview'; box.className = 'hidden w-full rounded-xl mb-2 border border-gold24/30 overflow-hidden text-center text-xs text-goldLight p-3'; img.parentNode.insertBefore(box, img); }
+    img.classList.add('hidden'); box.classList.add('hidden'); box.innerHTML = '';
+    if (!item) { prompt.classList.remove('hidden'); return; }
+    prompt.classList.add('hidden');
+    const url = item.previewUrl || (item.dataUrl || '');
+    if (item.type === 'image') { img.src = url; img.classList.remove('hidden'); }
+    else if (item.type === 'video') { box.innerHTML = `<video controls playsinline class="w-full max-h-48 bg-black"><source src="${url}" type="${item.mime}"></video><p class="mt-2">${escapeHtml(item.name)}</p>`; box.classList.remove('hidden'); }
+    else { box.innerHTML = `<i class="fas fa-file-pdf text-3xl"></i><p class="mt-2">ملف PDF: ${escapeHtml(item.name)}</p>`; box.classList.remove('hidden'); }
+  }
+  function injectMediaControls() {
+    [['offer','offer-file-input'],['portfolio','port-file-input']].forEach(([target,inputId]) => {
+      const prefix = target === 'offer' ? 'offer' : 'port';
+      const input = $(inputId); if (!input) return;
+      input.accept = 'image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,application/pdf';
+      const host = input.parentElement;
+      let select = $(prefix + '-media-type');
+      if (!select) {
+        select = document.createElement('select'); select.id = prefix + '-media-type'; select.className = 'royal-input text-xs mt-3';
+        select.innerHTML = '<option value="image">صورة</option><option value="video">فيديو</option><option value="pdf">PDF</option>';
+        host.appendChild(select);
+      }
+      select.addEventListener('change', () => { input.value=''; setPending(target,null); previewMedia(target,null); });
+      let note = $(prefix + '-media-note');
+      if (!note) { note = document.createElement('p'); note.id=prefix+'-media-note'; note.className='text-[10px] text-champagne/70 mt-2'; note.textContent='الحد الأقصى 100 MiB. الصور عامة، والفيديو وPDF في مخزن خاص.'; host.appendChild(note); }
+      input.onchange = () => { if (input.files && input.files[0]) processUploadedFile(input.files[0], target); };
+    });
+  }
+  window.processUploadedFile = function(file, target) {
+    if (target === 'logo') {
+      if (!currentAdmin) return showToast('يجب تسجيل الدخول لتغيير شعار المنصة.','fa-lock');
+      if (!ALLOWED.image.includes(file.type) || file.size > MAX_MEDIA_BYTES) return showToast('صيغة أو حجم صورة الشعار غير صالح.','fa-exclamation-circle');
+      return compressAndReadImage(file,320,async dataUrl=>{try{const blob=dataUrlBlob(dataUrl),path='brand/logo-'+Date.now()+'-'+crypto.randomUUID()+'.jpg';const up=await initClient().storage.from('masar-media').upload(path,blob,{contentType:blob.type||'image/jpeg',upsert:false});if(up.error)throw up.error;const pub=initClient().storage.from('masar-media').getPublicUrl(path);const q=platformSettingsId?await initClient().from('platform_settings').update({custom_logo_url:pub.data.publicUrl}).eq('id',platformSettingsId):await initClient().from('platform_settings').update({custom_logo_url:pub.data.publicUrl}).eq('id',1);if(q.error)throw q.error;appState.brand.customLogoDataUrl=pub.data.publicUrl;renderBrandIdentity();showToast('تم رفع الشعار وحفظ رابطه في Supabase.');}catch(e){toastError(e);}});
+    }
+    const kind = $(target === 'offer' ? 'offer-media-type' : 'port-media-type')?.value || 'image';
+    const allowed = ALLOWED[kind] || [];
+    if (!allowed.includes(file.type)) { showToast('نوع الملف لا يطابق النوع المحدد. الصيغ المسموحة: JPG/PNG/WEBP/GIF أو MP4/WEBM أو PDF.', 'fa-exclamation-circle'); return; }
+    if (file.size > MAX_MEDIA_BYTES) { showToast('حجم الملف يتجاوز الحد الأقصى المسموح (100 MiB).', 'fa-exclamation-circle'); return; }
+    if (kind === 'image') {
+      compressAndReadImage(file, 1100, dataUrl => {
+        const blob = dataUrlBlob(dataUrl);
+        const item = { type:'image', mime:blob.type || 'image/jpeg', name:file.name, size:blob.size, dataUrl, blob };
+        setPending(target,item); previewMedia(target,item); showToast('تم تجهيز الصورة للرفع إلى التخزين.');
+      });
+    } else {
+      const item = { type:kind, mime:file.type, name:file.name, size:file.size, file, previewUrl:URL.createObjectURL(file) };
+      setPending(target,item); previewMedia(target,item); showToast(kind === 'video' ? 'تم اختيار الفيديو.' : 'تم اختيار ملف PDF.');
+    }
+  };
+  window.handleDeviceImageSelect = function(input,target) { if (input.files?.[0]) processUploadedFile(input.files[0],target); };
+  window.handleDropUpload = function(e,target) { e.preventDefault(); if (e.dataTransfer.files?.[0]) processUploadedFile(e.dataTransfer.files[0],target); };
+  async function uploadMedia(target, recordId, item) {
+    if (!item) return null;
+    const section = target === 'offer' ? 'offers' : 'portfolio';
+    const bucket = item.type === 'image' ? 'masar-media' : 'masar-private-media';
+    const ext = item.type === 'pdf' ? 'pdf' : item.type === 'video' ? (item.mime === 'video/webm' ? 'webm' : 'mp4') : 'jpg';
+    const path = `${section}/${recordId}/${Date.now()}-${crypto.randomUUID()}.${ext}`;
+    const body = item.blob || item.file;
+    const { error } = await initClient().storage.from(bucket).upload(path, body, { contentType:item.mime, upsert:false, cacheControl:'3600' });
+    if (error) throw error;
+    if (item.type === 'image') {
+      const { data } = initClient().storage.from(bucket).getPublicUrl(path);
+      return { media_type:'image', media_url:data.publicUrl, media_path:path, media_name:item.name, media_mime_type:item.mime, media_size:item.size, image_url:data.publicUrl, _bucket:bucket };
+    }
+    return { media_type:item.type, media_url:null, media_path:path, media_name:item.name, media_mime_type:item.mime, media_size:item.size, image_url:null, _bucket:bucket };
+  }
+  async function removeOldMedia(row, section) {
+    if (!row || !row.media_path) return;
+    const bucket = row.media_type === 'image' ? 'masar-media' : 'masar-private-media';
+    const { error } = await initClient().storage.from(bucket).remove([row.media_path]);
+    if (error) console.warn('Old media cleanup failed:', section, error.message);
+  }
+  async function getPrivateUrl(section,id) {
+    const key = section + ':' + id, cached = signedCache.get(key);
+    if (cached && cached.until > Date.now()+15000) return cached.url;
+    const { data } = await initClient().auth.getSession();
+    const token = data.session?.access_token || SB_PUBLIC_KEY;
+    const response = await fetch(SB_MEDIA_FN, { method:'POST', headers:{ 'Content-Type':'application/json', 'apikey':SB_PUBLIC_KEY, 'Authorization':'Bearer '+token }, body:JSON.stringify({section,id:String(id)}) });
+    const payload = await response.json().catch(()=>({}));
+    if (!response.ok || !payload.url) throw new Error(payload.error || 'تعذر إنشاء رابط العرض المؤقت.');
+    signedCache.set(key,{url:payload.url,until:Date.now()+Math.max(30,(payload.expires_in||300)-30)*1000});
+    return payload.url;
+  }
+  window.refreshPrivateMedia=async function(video,section,id){try{signedCache.delete(section+':'+id);const url=await getPrivateUrl(section,id);const source=video.querySelector('source');if(source)source.src=url;else video.src=url;video.load();}catch(e){console.warn('Private media URL refresh failed:',e.message);}};
+  async function publicMediaMarkup(item,section) {
+    const type=item.mediaType || 'image';
+    if (type==='video' || type==='pdf') {
+      try {
+        const url=await getPrivateUrl(section,item.id);
+        if(type==='video') return `<video controls playsinline preload="metadata" class="w-full h-full max-h-64 object-contain bg-black" onclick="event.stopPropagation()" onerror="refreshPrivateMedia(this,'${section}',${item.id})"><source src="${url}" type="${escapeHtml(item.mediaMimeType || 'video/mp4')}"></video>`;
+        return `<button type="button" onclick="event.stopPropagation();window.open('${url}','_blank','noopener')" class="w-full h-full min-h-36 flex flex-col items-center justify-center gap-3 text-goldLight bg-obsidian"><i class="fas fa-file-pdf text-5xl"></i><span class="font-bold">عرض ملف PDF</span></button>`;
+      } catch(e) { return `<div class="w-full h-full min-h-36 flex items-center justify-center text-xs text-champagne">تعذر تحميل الوسيط حالياً</div>`; }
+    }
+    return `<img src="${escapeHtml(item.imageUrl || createLuxuryArtSvg(item.title,item.ribbon || item.category || '', '★'))}" alt="${escapeHtml(item.title)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">`;
+  }
+  window.renderPublicOffers = async function() {
+    const grid=$('offers-grid'); if(!grid)return;
+    const offers=appState.offers.filter(o=>o.isPublished!==false);
+    if(!offers.length){grid.innerHTML=`<div class="col-span-full text-center py-12 text-champagne">${escapeHtml(appState.offersSection?.emptyMessage || DEFAULT_STATE.offersSection.emptyMessage)}</div>`;return;}
+    const cards=await Promise.all(offers.map(async offer=>{
+      const pct=Math.max(5,Math.round(((offer.oldPrice-offer.newPrice)/(offer.oldPrice||1))*100));
+      const media=await publicMediaMarkup(offer,'offers');
+      return `<div class="${offer.isFeatured?'vip-conic-card':'velvet-card'} rounded-3xl overflow-hidden flex flex-col justify-between shadow-2xl group"><div><div class="relative h-36 sm:h-40 bg-obsidian overflow-hidden border-b border-gold24/25">${media}<div class="absolute inset-0 bg-gradient-to-t from-[#021a14] via-transparent to-transparent pointer-events-none"></div><span class="absolute top-3.5 right-3.5 px-3.5 py-1 rounded-full gold-24k-bg text-[11px] font-black shadow-lg">${escapeHtml(offer.ribbon)}</span><span class="absolute top-3.5 left-3.5 px-2.5 py-1 rounded-lg bg-obsidian/90 border border-gold24/40 text-goldLight text-xs font-black">خصم ${pct}%</span></div><div class="p-6"><h3 class="text-xl font-black text-ivory mb-4 leading-snug">${escapeHtml(offer.title)}</h3><ul class="space-y-2.5 text-xs sm:text-sm text-champagne mb-6">${(offer.perks||[]).map(p=>`<li class="flex items-start gap-2.5"><i class="fas fa-check-circle text-gold24 mt-0.5 flex-shrink-0"></i><span>${escapeHtml(p)}</span></li>`).join('')}</ul></div></div><div class="px-5 pb-5 pt-3 border-t border-gold24/15"><div class="flex items-baseline justify-between mb-4"><div><span class="block text-xs text-champagne/60 line-through">بدلاً من ${offer.oldPrice} ر.س</span><span class="font-amiri text-3xl font-bold gold-24k-text">${offer.newPrice} ر.س</span></div><span class="text-xs text-goldLight font-bold bg-gold24/15 px-3 py-1 rounded-lg border border-gold24/35">وفّر ${offer.oldPrice-offer.newPrice} ر.س</span></div><button onclick="bookOfferViaWhatsApp(${offer.id})" class="w-full gold-24k-bg font-black py-3 px-5 rounded-xl text-sm shadow-lg flex items-center justify-center gap-2 cursor-pointer"><i class="fab fa-whatsapp text-lg"></i><span>احجز العرض عبر واتساب</span></button></div></div>`;
+    })); grid.innerHTML=cards.join('');
+  };
+  window.renderPublicPortfolio = async function() {
+    const filter=$('portfolio-filters'),grid=$('portfolio-grid'); if(!filter||!grid)return;
+    const itemsAll=appState.portfolio.filter(p=>p.isPublished!==false);
+    const cats=['الكل',...new Set(itemsAll.map(p=>p.category).filter(Boolean))];
+    if(!cats.includes(activePortfolioCategory))activePortfolioCategory='الكل';
+    filter.innerHTML=cats.map(cat=>`<button onclick="filterPortfolio('${escapeHtml(cat)}')" class="px-4 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer ${cat===activePortfolioCategory?'gold-24k-bg shadow-md':'bg-emeraldDeep/80 text-champagne border border-gold24/25 hover:text-goldLight'}">${escapeHtml(cat)}</button>`).join('');
+    const items=activePortfolioCategory==='الكل'?itemsAll:itemsAll.filter(p=>p.category===activePortfolioCategory);
+    if(!items.length){grid.innerHTML='<div class="col-span-full text-center py-12 text-champagne">لا توجد أعمال في هذا التصنيف حالياً.</div>';return;}
+    const cards=await Promise.all(items.map(async item=>{const media=await publicMediaMarkup(item,'portfolio_items');return `<div onclick="openLightbox(${item.id})" class="velvet-card rounded-3xl overflow-hidden flex flex-col justify-between cursor-pointer group"><div><div class="relative h-56 bg-obsidian overflow-hidden border-b border-gold24/25">${media}<div class="absolute inset-0 bg-gradient-to-t from-[#021a14] via-transparent to-transparent pointer-events-none"></div><span class="absolute top-3.5 right-3.5 px-3 py-1 rounded-full bg-obsidian/90 border border-gold24/45 text-goldLight text-[11px] font-bold">${escapeHtml(item.category)}</span><span class="absolute bottom-3.5 right-3.5 px-3 py-1 rounded-lg gold-24k-bg text-[11px] font-black shadow"><i class="fas fa-award ml-1"></i> ${escapeHtml(item.grade||'امتياز A+')}</span></div><div class="p-6"><h3 class="text-lg font-black text-ivory mb-2">${escapeHtml(item.title)}</h3><p class="text-xs text-champagne leading-relaxed">${escapeHtml(item.description)}</p></div></div></div>`;}));grid.innerHTML=cards.join('');
+  };
+  async function upsertService(e) {
+    e.preventDefault(); if(!currentAdmin) return showToast('سجّل الدخول أولاً.','fa-lock');
+    const id=$('srv-edit-id').value, row={title:$('srv-title').value.trim(),description:$('srv-desc').value.trim(),starting_price:Number($('srv-price').value),unit_price:Number($('srv-unit-price').value),unit_name:$('srv-unit-name').value.trim(),duration:$('srv-duration').value.trim(),icon:$('srv-icon').value};
+    try { let q=id?await initClient().from('services').update(row).eq('id',id).select().single():await initClient().from('services').insert(row).select().single(); if(q.error)throw q.error; await loadRemoteState(true); resetServiceForm(); showToast(id?'تم تحديث الخدمة في قاعدة البيانات.':'تمت إضافة الخدمة إلى قاعدة البيانات.'); } catch(err){toastError(err);}
+  }
+  async function saveMediaRecord(target, e) {
+    e.preventDefault(); if(!currentAdmin) return showToast('سجّل الدخول أولاً.','fa-lock');
+    const isOffer=target==='offer', idInput=$(isOffer?'offer-edit-id':'port-edit-id');
+    const id=idInput?.value || '';
+    const item=mediaFor(target);
+    try {
+      if(isOffer){
+        const base={title:$('offer-title').value.trim(),ribbon:$('offer-ribbon').value.trim(),old_price:Number($('offer-old-price').value),new_price:Number($('offer-new-price').value),perks:$('offer-perks').value.split('\n').map(x=>x.trim()).filter(Boolean),is_published:true};
+        let old=null;
+        if(id){const got=await initClient().from('offers').select('*').eq('id',id).single();if(got.error)throw got.error;old=got.data;}
+        let record;
+        if(id){const q=await initClient().from('offers').update(base).eq('id',id).select().single();if(q.error)throw q.error;record=q.data;}
+        else {const q=await initClient().from('offers').insert({...base,is_featured:appState.offers.length===0,media_type:'image'}).select().single();if(q.error)throw q.error;record=q.data;}
+        if(item){const uploaded=await uploadMedia(target,record.id,item);const {_bucket, ...dbMedia}=uploaded;const q=await initClient().from('offers').update(dbMedia).eq('id',record.id).select().single();if(q.error){await initClient().storage.from(uploaded._bucket).remove([uploaded.media_path]);throw q.error;}if(old)await removeOldMedia(old,'offers');}
+        pendingOfferMedia=null; resetOfferForm();
+      } else {
+        const base={title:$('port-title').value.trim(),category:$('port-category').value,grade:$('port-grade').value.trim()||'امتياز A+',description:$('port-desc').value.trim(),is_published:true};
+        let record,old=null;
+        if(id){const got=await initClient().from('portfolio_items').select('*').eq('id',id).single();if(got.error)throw got.error;old=got.data;const q=await initClient().from('portfolio_items').update(base).eq('id',id).select().single();if(q.error)throw q.error;record=q.data;}
+        else {const q=await initClient().from('portfolio_items').insert({...base,media_type:'image'}).select().single();if(q.error)throw q.error;record=q.data;}
+        if(item){const uploaded=await uploadMedia(target,record.id,item);const {_bucket, ...dbMedia}=uploaded;const q=await initClient().from('portfolio_items').update(dbMedia).eq('id',record.id).select().single();if(q.error){await initClient().storage.from(uploaded._bucket).remove([uploaded.media_path]);throw q.error;}if(old)await removeOldMedia(old,'portfolio_items');}
+        pendingPortfolioMedia=null; $('admin-portfolio-form').reset(); if($('port-edit-id'))$('port-edit-id').value=''; previewMedia('portfolio',null);
+      }
+      await loadRemoteState(true); showToast('تم حفظ البيانات والوسائط في Supabase بنجاح.');
+    } catch(err){toastError(err);}
+  }
+  async function deleteRemote(table,id) {
+    try { const got=await initClient().from(table).select('*').eq('id',id).maybeSingle(); if(got.error)throw got.error; const q=await initClient().from(table).delete().eq('id',id);if(q.error)throw q.error;if(got.data)await removeOldMedia(got.data,table);await loadRemoteState(true);showToast('تم الحذف من قاعدة البيانات والتخزين إن وُجد الملف.'); } catch(err){toastError(err);}
+  }
+  window.saveServiceItem=upsertService;
+  window.saveOfferItem=e=>saveMediaRecord('offer',e);
+  window.savePortfolioItem=e=>saveMediaRecord('portfolio',e);
+  window.deleteServiceItem=id=>{if(appState.services.length<=1)return showToast('يجب الإبقاء على خدمة واحدة على الأقل في المنصة.','fa-exclamation-circle');askRoyalConfirmation('حذف الخدمة','سيتم حذف الخدمة من قاعدة البيانات. هل تريد المتابعة؟',()=>deleteRemote('services',id));};
+  window.deleteOfferItem=id=>askRoyalConfirmation('حذف العرض','سيتم حذف العرض وملفه المرتبط إن وجد. هل تريد المتابعة؟',()=>deleteRemote('offers',id));
+  window.deletePortfolioItem=id=>askRoyalConfirmation('حذف العمل','سيتم حذف العمل وملفه المرتبط إن وجد. هل تريد المتابعة؟',()=>deleteRemote('portfolio_items',id));
+  window.openAdminGate=function(){ $('admin-email-input').value=''; $('admin-pass-input').value=''; $('admin-gate-modal').classList.remove('hidden'); setTimeout(()=>$('admin-email-input').focus(),100); };
+  window.verifyAdminPassword=async function(e){e.preventDefault();const email=$('admin-email-input').value.trim(),password=$('admin-pass-input').value;try{const {data,error}=await initClient().auth.signInWithPassword({email,password});if(error)throw error;await assertAdmin(data.session);try{await migrateLocalSnapshot();}catch(migrationError){console.error('Local migration remains pending; original localStorage was preserved:',migrationError);showToast('تعذر ترحيل بعض البيانات المحلية؛ احتفظنا بها دون حذف ويمكن إعادة المحاولة.','fa-exclamation-circle');}closeAdminGate();await loadRemoteState(true);switchToAdminView();showToast('تم التحقق من حساب المشرف عبر Supabase Auth.');}catch(err){try{await initClient().auth.signOut();}catch(_){}currentAdmin=null;isAdminAuthenticated=false;toastError(err);}};
+  window.lockAdminPanel=async function(){try{await initClient().auth.signOut();}catch(e){console.warn(e);}currentAdmin=null;isAdminAuthenticated=false;switchToPublicView();showToast('تم تسجيل الخروج وقفل لوحة التحكم.','fa-lock');};
+  window.switchToAdminView=function(){if(!currentAdmin){openAdminGate();return;} $('public-website-view').classList.add('hidden');$('admin-dashboard-view').classList.remove('hidden');renderAllAdminPanels();window.scrollTo({top:0,behavior:'smooth'});};
+  window.restoreDefaultSvgLogo=async function(){try{const q=platformSettingsId?await initClient().from('platform_settings').update({custom_logo_url:null}).eq('id',platformSettingsId):await initClient().from('platform_settings').update({custom_logo_url:null}).eq('id',1);if(q.error)throw q.error;appState.brand.customLogoDataUrl='';renderBrandIdentity();showToast('تمت استعادة الشعار الافتراضي وحفظ التغيير.');}catch(e){toastError(e);}};
+  window.saveBrandSettings=async function(e){e.preventDefault();if(!currentAdmin)return;const b=appState.brand;b.platformName=$('set-platform-name').value.trim();b.platformSub=$('set-platform-sub').value.trim();b.whatsappNumber=$('set-whatsapp').value.trim();b.heroTitle=$('set-hero-title').value.trim();b.heroDesc=$('set-hero-desc').value.trim();appState.offersSection={seasonLabel:$('set-offers-season-label').value.trim(),headingMain:$('set-offers-heading-main').value.trim(),headingAccent:$('set-offers-heading-accent').value.trim(),description:$('set-offers-description').value.trim(),emptyMessage:$('set-offers-empty-message').value.trim()};appState.heroTrust={projectsNumber:$('set-trust-projects-number').value.trim(),projectsLabel:$('set-trust-projects-label').value.trim(),supportLabel:$('set-trust-support-label').value.trim(),privacyNumber:$('set-trust-privacy-number').value.trim(),privacyLabel:$('set-trust-privacy-label').value.trim()};try{const row={platform_name:b.platformName,platform_sub:b.platformSub,hero_title:b.heroTitle,hero_desc:b.heroDesc,whatsapp_number:b.whatsappNumber,countdown_target:appState.countdownTarget,show_countdown:appState.showCountdown,offers_section_meta:appState.offersSection,hero_trust_meta:appState.heroTrust};const q=platformSettingsId ? await initClient().from('platform_settings').update(row).eq('id',platformSettingsId) : await initClient().from('platform_settings').insert({id:1,...row}).select('id').single();if(q.error)throw q.error;if(q.data?.id)platformSettingsId=q.data.id;renderBrandIdentity();showToast('تم حفظ إعدادات المنصة في Supabase.');}catch(err){toastError(err);}};
+  window.populateAdminSettingsForm=function(){buildAdminHeadingControls();const b=appState.brand;$('set-platform-name').value=b.platformName||'';$('set-platform-sub').value=b.platformSub||'';$('set-whatsapp').value=b.whatsappNumber||'';$('set-hero-title').value=b.heroTitle||DEFAULT_STATE.brand.heroTitle;$('set-hero-desc').value=b.heroDesc||'';const offers={...DEFAULT_STATE.offersSection,...(appState.offersSection||{})},trust={...DEFAULT_STATE.heroTrust,...(appState.heroTrust||{})};$('set-offers-season-label').value=offers.seasonLabel;$('set-offers-heading-main').value=offers.headingMain;$('set-offers-heading-accent').value=offers.headingAccent;$('set-offers-description').value=offers.description;$('set-offers-empty-message').value=offers.emptyMessage;$('set-trust-projects-number').value=trust.projectsNumber;$('set-trust-projects-label').value=trust.projectsLabel;$('set-trust-support-label').value=trust.supportLabel;$('set-trust-privacy-number').value=trust.privacyNumber;$('set-trust-privacy-label').value=trust.privacyLabel;const dt=new Date(appState.countdownTarget);$('admin-timer-input').value=new Date(dt.getTime()-dt.getTimezoneOffset()*60000).toISOString().slice(0,16);renderBrandIdentity();};
+  window.saveVisualTexts=function(){return window.saveBrandSettings({preventDefault(){}});};
+  window.toggleCountdownVisibility=async function(){appState.showCountdown=!appState.showCountdown;renderCountdownVisibility();try{const q=platformSettingsId?await initClient().from('platform_settings').update({show_countdown:appState.showCountdown}).eq('id',platformSettingsId):await initClient().from('platform_settings').insert({id:1,show_countdown:appState.showCountdown}).select('id').single();if(q.error)throw q.error;if(q.data?.id)platformSettingsId=q.data.id;showToast('تم تحديث ظهور العدّاد وحفظه.');}catch(e){toastError(e);}};
+  window.saveCountdownTimer=async function(){const val=$('admin-timer-input').value;if(!val)return showToast('اختر تاريخاً ووقتاً صالحاً للعدّاد.','fa-exclamation-circle');appState.countdownTarget=new Date(val).toISOString();try{const q=platformSettingsId ? await initClient().from('platform_settings').update({countdown_target:appState.countdownTarget}).eq('id',platformSettingsId) : await initClient().from('platform_settings').insert({id:1,countdown_target:appState.countdownTarget}).select('id').single();if(q.error)throw q.error;if(q.data?.id)platformSettingsId=q.data.id;startLiveCountdown();showToast('تم حفظ العدّاد في Supabase.');}catch(e){toastError(e);}};
+  window.saveAllHeadingControls=async function(){const headings=getPublicEditableHeadings(),saved=loadHeadingOverrides();try{for(let i=0;i<headings.length;i++){const el=headings[i],key=el.getAttribute('data-admin-heading-key')||`site-heading-${i+1}`,ti=$(`heading-text-${key}`),si=$(`heading-size-${key}`);if(!ti||!si)continue;const text=ti.value.trim(),size=Math.max(12,Math.min(64,Number(si.value)||24));if(!text)continue;saved[key]={text,size};applyHeadingText(el,text);el.style.setProperty('font-size',`${size}px`,'important');const {data:found,error:findErr}=await initClient().from('site_headings_config').select('id').eq('heading_key',key).maybeSingle();if(findErr)throw findErr;const row={heading_key:key,heading_text:text,font_size:size,updated_at:new Date().toISOString()};const q=found?await initClient().from('site_headings_config').update(row).eq('id',found.id):await initClient().from('site_headings_config').insert(row);if(q.error)throw q.error;}localStorage.setItem(HEADING_EDITOR_STORAGE_KEY,JSON.stringify(saved));showToast('تم حفظ نصوص وأحجام العناوين في Supabase.');}catch(e){toastError(e);}};
+  window.editOfferItem=function(id){const o=appState.offers.find(x=>String(x.id)===String(id));if(!o)return;$('offer-edit-id').value=o.id;$('offer-title').value=o.title;$('offer-ribbon').value=o.ribbon;$('offer-old-price').value=o.oldPrice;$('offer-new-price').value=o.newPrice;$('offer-perks').value=(o.perks||[]).join('\n');pendingOfferMedia=null;const sel=$('offer-media-type');if(sel)sel.value=o.mediaType||'image';previewMedia('offer',null);if(o.mediaType==='image'&&o.imageUrl){$('offer-img-preview').src=o.imageUrl;$('offer-img-preview').classList.remove('hidden');$('offer-upload-prompt').classList.add('hidden');}else if(o.mediaType==='video'||o.mediaType==='pdf'){previewMedia('offer',{type:o.mediaType,name:o.mediaName||'وسيط محفوظ',mime:o.mediaMimeType||'',previewUrl:''});} $('offer-form-heading').innerHTML=`<i class="fas fa-edit text-gold24 ml-2"></i> تعديل العرض: ${escapeHtml(o.title)}`;$('offer-cancel-edit-btn').classList.remove('hidden');$('admin-offer-form').scrollIntoView({behavior:'smooth'});};
+  window.editPortfolioItem=function(id){const p=appState.portfolio.find(x=>String(x.id)===String(id));if(!p)return;let h=$('port-edit-id');if(!h){h=document.createElement('input');h.type='hidden';h.id='port-edit-id';$('admin-portfolio-form').appendChild(h);}h.value=p.id;$('port-title').value=p.title;$('port-category').value=p.category;$('port-grade').value=p.grade||'';$('port-desc').value=p.description;const sel=$('port-media-type');if(sel)sel.value=p.mediaType||'image';pendingPortfolioMedia=null;previewMedia('portfolio',null);if(p.mediaType==='image'&&p.imageUrl){$('port-img-preview').src=p.imageUrl;$('port-img-preview').classList.remove('hidden');$('port-upload-prompt').classList.add('hidden');}else if(p.mediaType==='video'||p.mediaType==='pdf')previewMedia('portfolio',{type:p.mediaType,name:p.mediaName||'وسيط محفوظ',mime:p.mediaMimeType||''});$('admin-portfolio-form').scrollIntoView({behavior:'smooth'});};
+  window.openLightbox=async function(id){const item=appState.portfolio.find(x=>String(x.id)===String(id));if(item&&(item.mediaType==='video'||item.mediaType==='pdf')){try{const url=await getPrivateUrl('portfolio_items',item.id);window.open(url,'_blank','noopener');}catch(e){toastError(e);}return;}if(typeof originalOpenLightbox==='function')return originalOpenLightbox(id);};
+  // Admin media lists show the selected media type and retain edit/delete actions.
+  window.renderAdminOffersList=function(){const list=$('admin-offers-list');if(!list)return;list.innerHTML=appState.offers.map(o=>`<div class="velvet-card rounded-2xl overflow-hidden flex flex-col justify-between"><div class="p-4"><div class="h-28 flex items-center justify-center bg-obsidian border border-gold24/20 rounded-xl mb-3 text-goldLight">${o.mediaType==='video'?'<i class="fas fa-film text-4xl"></i>':o.mediaType==='pdf'?'<i class="fas fa-file-pdf text-4xl"></i>':`<img src="${escapeHtml(o.imageUrl||createLuxuryArtSvg(o.title,o.ribbon,'★'))}" class="w-full h-full object-cover rounded-xl">`}</div><span class="text-[11px] font-bold text-gold24">${escapeHtml(o.ribbon)} · ${escapeHtml(o.mediaType||'image')} · ${o.isPublished===false?'غير منشور':'منشور'}</span><h4 class="font-black text-base text-ivory mt-1">${escapeHtml(o.title)}</h4><div class="text-sm"><span class="line-through text-champagne/60 ml-2">${o.oldPrice} ر.س</span><span class="font-black text-goldLight text-lg">${o.newPrice} ر.س</span></div></div><div class="px-4 pb-4 flex gap-2"><button onclick="editOfferItem(${o.id})" class="flex-1 py-2 rounded-xl bg-white/10 hover:bg-gold24 hover:text-obsidian text-xs font-bold">تعديل</button><button onclick="deleteOfferItem(${o.id})" class="px-3 py-2 rounded-xl bg-red-500/20 text-red-300">حذف</button></div></div>`).join('');};
+  window.renderAdminPortfolioList=function(){ $('admin-port-count').innerText=appState.portfolio.length;const list=$('admin-portfolio-list');if(!list)return;list.innerHTML=appState.portfolio.map(p=>`<div class="velvet-card rounded-2xl overflow-hidden flex flex-col"><div class="h-32 flex items-center justify-center bg-obsidian text-goldLight">${p.mediaType==='video'?'<i class="fas fa-film text-4xl"></i>':p.mediaType==='pdf'?'<i class="fas fa-file-pdf text-4xl"></i>':`<img src="${escapeHtml(p.imageUrl||createLuxuryArtSvg(p.title,p.category,'A+'))}" class="w-full h-full object-cover">`}</div><div class="p-4"><div class="text-[11px] text-gold24">${escapeHtml(p.category)} · ${escapeHtml(p.mediaType||'image')} · ${p.isPublished===false?'غير منشور':'منشور'}</div><h4 class="font-black text-ivory">${escapeHtml(p.title)}</h4><p class="text-xs text-champagne">${escapeHtml(p.description)}</p></div><div class="px-4 pb-4 flex gap-2"><button onclick="editPortfolioItem(${p.id})" class="flex-1 py-2 rounded-xl bg-white/10 text-xs">تعديل</button><button onclick="deletePortfolioItem(${p.id})" class="px-3 py-2 rounded-xl bg-red-500/20 text-red-300">حذف</button></div></div>`).join('');};
+  window.resetOfferForm=function(){
+    const form=$('admin-offer-form');form.reset();$('offer-edit-id').value='';pendingOfferMedia=null;previewMedia('offer',null);$('offer-form-heading').innerHTML='<i class="fas fa-crown text-gold24 ml-2"></i> إضافة عرض ملكي جديد (مع رفع صورة الغلاف من جهازك)';$('offer-cancel-edit-btn').classList.add('hidden');
+  };
+  async function migrateLocalSnapshot() {
+    if (localStorage.getItem(MIGRATION_KEY) === '1') return { skipped:true, reason:'already-completed' };
+    let latestSnapshot = localSnapshot;
+    try { const raw = localStorage.getItem('masar_altamayuz_royal_state_v1'); if (raw) latestSnapshot = JSON.parse(raw); } catch (_) {}
+    const localData = (latestSnapshot && typeof latestSnapshot==='object') ? latestSnapshot : {};
+    const client=initClient();
+    const svc=await client.from('services').select('id,title').limit(1000);if(svc.error)throw svc.error;
+    if(Array.isArray(localData.services)) {
+      const existingTitles=new Set((svc.data||[]).map(x=>x.title));
+      for(const x of localData.services){if(existingTitles.has(x.title))continue;const row={title:x.title,description:x.description,starting_price:toNum(x.startingPrice),unit_price:toNum(x.unitPrice),unit_name:x.unitName||'وحدة',duration:x.duration||'غير محدد',icon:x.icon||null};const q=await client.from('services').insert(row);if(q.error)throw q.error;existingTitles.add(x.title);}
+    }
+    const off=await client.from('offers').select('id,title').limit(1000);if(off.error)throw off.error;
+    if(Array.isArray(localData.offers)) {
+      const existingTitles=new Set((off.data||[]).map(x=>x.title));
+      for(const x of localData.offers){if(existingTitles.has(x.title))continue;const q=await client.from('offers').insert({title:x.title,ribbon:x.ribbon||'',old_price:toNum(x.oldPrice),new_price:toNum(x.newPrice),perks:Array.isArray(x.perks)?x.perks:[],is_featured:!!x.isFeatured,is_published:true,media_type:'image'}).select('id').single();if(q.error)throw q.error;const data=x.imageUrl||'';if(data.startsWith('data:image/')&&!data.startsWith('data:image/svg+xml')){const blob=dataUrlBlob(data),item={type:'image',mime:blob.type,name:'migrated-image.jpg',size:blob.size,blob};const uploaded=await uploadMedia('offer',q.data.id,item);const {_bucket,...dbMedia}=uploaded;const u=await client.from('offers').update(dbMedia).eq('id',q.data.id);if(u.error)throw u.error;}existingTitles.add(x.title);}
+    }
+    const port=await client.from('portfolio_items').select('id,title').limit(1000);if(port.error)throw port.error;
+    if(Array.isArray(localData.portfolio)) {
+      const existingTitles=new Set((port.data||[]).map(x=>x.title));
+      for(const x of localData.portfolio){if(existingTitles.has(x.title))continue;const q=await client.from('portfolio_items').insert({title:x.title,category:x.category||'عام',grade:x.grade||null,description:x.description||'',is_published:true,media_type:'image'}).select('id').single();if(q.error)throw q.error;const data=x.imageUrl||'';if(data.startsWith('data:image/')&&!data.startsWith('data:image/svg+xml')){const blob=dataUrlBlob(data),item={type:'image',mime:blob.type,name:'migrated-image.jpg',size:blob.size,blob};const uploaded=await uploadMedia('portfolio',q.data.id,item);const {_bucket,...dbMedia}=uploaded;const u=await client.from('portfolio_items').update(dbMedia).eq('id',q.data.id);if(u.error)throw u.error;}existingTitles.add(x.title);}
+    }
+    const settings=await client.from('platform_settings').select('id').limit(1);if(settings.error)throw settings.error;
+    if(!(settings.data||[]).length){const b=localData.brand||{},o=localData.offersSection||{},t=localData.heroTrust||{};let logo=(b.customLogoDataUrl||'').startsWith('http')?b.customLogoDataUrl:null;const row={platform_name:b.platformName||DEFAULT_STATE.brand.platformName,platform_sub:b.platformSub||null,hero_title:b.heroTitle||null,hero_desc:b.heroDesc||null,whatsapp_number:b.whatsappNumber||null,custom_logo_url:logo,countdown_target:localData.countdownTarget||null,show_countdown:localData.showCountdown!==false,offers_section_meta:o,hero_trust_meta:t};const q=await client.from('platform_settings').insert({id:1,...row}).select('id').single();if(q.error)throw q.error;platformSettingsId=q.data.id;if((b.customLogoDataUrl||'').startsWith('data:image/')){const blob=dataUrlBlob(b.customLogoDataUrl),path='brand/logo-'+Date.now()+'.jpg';const up=await client.storage.from('masar-media').upload(path,blob,{contentType:blob.type||'image/jpeg',upsert:false});if(up.error)throw up.error;const pub=client.storage.from('masar-media').getPublicUrl(path);const upd=await client.from('platform_settings').update({custom_logo_url:pub.data.publicUrl}).eq('id',platformSettingsId);if(upd.error)throw upd.error;}}
+    // Migrate heading overrides without deleting the original local copy.
+    let headings={};try{headings=JSON.parse(localStorage.getItem(HEADING_EDITOR_STORAGE_KEY)||'{}')||{};}catch(_){}
+    for(const [key,v] of Object.entries(headings)){const found=await client.from('site_headings_config').select('id').eq('heading_key',key).maybeSingle();if(found.error)throw found.error;const row={heading_key:key,heading_text:v.text||null,font_size:v.size?Number(v.size):null,updated_at:new Date().toISOString()};if(!found.data){const q=await client.from('site_headings_config').insert(row);if(q.error)throw q.error;}}
+    // Mark only after every migration step succeeds; original localStorage remains untouched.
+    localStorage.setItem(MIGRATION_KEY,'1');
+    return { skipped:false, completed:true };
+  }
+  async function runRead(label, query) {
+    window.__masarSupabaseDiagnostics.stage = 'read:' + label;
+    const result = await query;
+    if (result.error) {
+      window.__masarSupabaseDiagnostics.checks[label] = {status:'failed', error:errorDetails(result.error)};
+      const wrapped = new Error('فشل قراءة جدول ' + label + ': ' + errorDetails(result.error));
+      wrapped.cause = result.error;
+      throw wrapped;
+    }
+    window.__masarSupabaseDiagnostics.checks[label] = {status:'success', rows:Array.isArray(result.data)?result.data.length:(result.data?1:0)};
+    return result.data;
+  }
+  async function boot() {
+    try {
+      window.__masarSupabaseDiagnostics.status='connecting';
+      window.__masarSupabaseDiagnostics.stage='sdk-load';
+      await ensureSdk();
+      initClient(); injectMediaControls();
+      window.__masarSupabaseDiagnostics.stage='project-reachability';
+      const servicesData = await runRead('services', sb.from('services').select('*').order('id',{ascending:true}));
+      const [offersData,portfolioData,settingsData] = await Promise.all([
+        runRead('offers', sb.from('offers').select('*').eq('is_published',true).order('id',{ascending:false})),
+        runRead('portfolio_items', sb.from('portfolio_items').select('*').eq('is_published',true).order('id',{ascending:false})),
+        runRead('platform_settings', sb.from('platform_settings').select('*').order('id',{ascending:true}).limit(1))
+      ]);
+      appState.services=(servicesData||[]).map(fromService);
+      appState.offers=(offersData||[]).map(fromOffer);
+      appState.portfolio=(portfolioData||[]).map(fromPortfolio);
+      mapSettings((settingsData||[])[0]);
+      try {
+        await loadHeadings();
+        window.__masarSupabaseDiagnostics.checks.site_headings_config={status:'success'};
+      } catch (headingError) {
+        window.__masarSupabaseDiagnostics.checks.site_headings_config={status:'failed',error:errorDetails(headingError)};
+        console.error('Supabase headings read failed:',headingError);
+      }
+      refreshEntirePublicSite();
+      window.__masarSupabaseDiagnostics.status='connected';
+      window.__masarSupabaseDiagnostics.stage='public-data-loaded';
+      // Silent public data load
+      // admin_users is intentionally checked only after an authenticated session exists (RLS: read self).
+      try {
+        const sessionOk = await ensureSessionAdmin();
+        if (sessionOk) {
+          window.__masarSupabaseDiagnostics.stage='admin-verification';
+          window.__masarSupabaseDiagnostics.checks.admin_users={status:'success',uid:currentAdmin.id};
+          try { await migrateLocalSnapshot(); }
+          catch(migrationError) { window.__masarSupabaseDiagnostics.checks.local_migration={status:'failed',error:errorDetails(migrationError)}; console.error('Local migration remains pending; original localStorage was preserved:',migrationError); showToast('تعذر ترحيل بعض البيانات المحلية؛ احتفظنا بها دون حذف ويمكن إعادة المحاولة.','fa-exclamation-circle'); }
+          await loadRemoteState(true); switchToAdminView();
+        } else {
+          window.__masarSupabaseDiagnostics.checks.admin_users={status:'not-tested',reason:'No active authenticated session'};
+        }
+      } catch(adminError) {
+        window.__masarSupabaseDiagnostics.checks.admin_users={status:'failed',error:errorDetails(adminError)};
+        try { await sb.auth.signOut(); } catch (_) {}
+        currentAdmin=null; isAdminAuthenticated=false;
+        console.warn('Admin session rejected:',adminError);
+      }
+    } catch(e) {
+      window.__masarSupabaseDiagnostics.status='failed';
+      window.__masarSupabaseDiagnostics.error=errorDetails(e);
+      window.__masarSupabaseDiagnostics.failedStage=window.__masarSupabaseDiagnostics.stage;
+      console.error('Supabase initialization/read failed at '+window.__masarSupabaseDiagnostics.stage+':',e);
+      const message = (e && e.message) ? e.message : errorDetails(e);
+      showToast('تعذر تحميل بيانات Supabase: '+message,'fa-exclamation-circle');
+      refreshEntirePublicSite();
+    }
+  }
+  window.getMasarSupabaseDiagnostics = function(){ return JSON.parse(JSON.stringify(window.__masarSupabaseDiagnostics)); };
+  window.retryMasarSupabaseConnection = function(){ return boot(); };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded',()=>{ injectMediaControls(); boot(); },{once:true});
+  else { injectMediaControls(); boot(); }
+})();
+</script>
 </body>
     </html>
