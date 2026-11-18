@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title data-about-text-key="text_48">من نحن | مسار التميز للخدمات الطلابية</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" onerror="this.onerror=null;var fallback=document.createElement('script');fallback.src='https://unpkg.com/@supabase/supabase-js@2';fallback.onerror=function(){console.warn('تعذر تحميل مكتبة Supabase.');};document.head.appendChild(fallback);"></script>
+<!-- FontAwesome 6 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<!-- Google Fonts: Alexandria, Cairo & Amiri -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@600;700;800;900&amp;family=Amiri:ital,wght@0,400;0,700;1,400&amp;family=Cairo:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        alexandria: ['Alexandria', 'Cairo', 'sans-serif'],
+                        amiri: ['Amiri', 'serif'],
+                    },
+                    colors: {
+                        obsidian: '#021a14',
+                        emeraldDeep: '#042f26',
+                        emeraldVelvet: '#064e3b',
+                        gold24: '#d4af37',
+                        goldLight: '#fcf6ba',
+                        goldDark: '#aa771c',
+                        ivory: '#f8fafc',
+                        champagne: '#cbd5e1',
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* =====================================================================
+           الهوية الملكية الفاخرة: الزمرد الداكن والذهب عيار 24 (مطابقة لـ index)
+        ===================================================================== */
+        :root {
+            --bg-obsidian: #021a14;
+            --bg-emerald: #042f26;
+            --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 28%, #b38728 55%, #fbf5b7 80%, #aa771c 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Cairo', sans-serif;
+            background: radial-gradient(circle at 50% 0%, #05382d 0%, #021a14 55%, #01110d 100%);
+            color: #f8fafc;
+            overflow-x: hidden;
+            min-height: 100vh;
+            line-height: 1.95;
+        }
+
+        .font-amiri {
+            font-family: 'Amiri', serif;
+        }
+
+        .royal-lattice-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d4af37' stroke-width='0.7' stroke-opacity='0.055'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z'/%3E%3Cpath d='M40 12L68 40L40 68L12 40Z'/%3E%3Ccircle cx='40' cy='40' r='10'/%3E%3Cpath d='M0 0L80 80M80 0L0 80'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .gold-24k-bg {
+            background: var(--gold-gradient);
+            background-size: 200% 200%;
+            color: #021a14;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .gold-24k-bg:hover {
+            background-position: right center;
+            box-shadow: 0 10px 30px -5px rgba(212, 175, 55, 0.45);
+            transform: translateY(-2px);
+        }
+
+        .gold-24k-text {
+            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 35%, #d4af37 65%, #fbf5b7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* =====================================================================
+           الخلفية العاجية والذهبية الدافئة للمحتوى (مطابقة لواجهة index)
+        ===================================================================== */
+        .about-luxury-surface {
+            background:
+                radial-gradient(ellipse at 8% 82%, rgba(190, 211, 201, 0.58) 0%, rgba(225, 235, 229, 0.22) 34%, transparent 58%),
+                radial-gradient(ellipse at 92% 12%, rgba(250, 244, 220, 0.72) 0%, transparent 46%),
+                linear-gradient(145deg, #fffefb 0%, #fbfaf4 54%, #f5f7f1 100%);
+            position: relative;
+            isolation: isolate;
+        }
+
+        .about-luxury-surface::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background-image:
+                repeating-linear-gradient(45deg, transparent 0 34px, rgba(190, 169, 112, 0.075) 35px, transparent 36px 70px),
+                repeating-linear-gradient(-45deg, transparent 0 34px, rgba(190, 169, 112, 0.065) 35px, transparent 36px 70px);
+            background-size: 70px 70px;
+            opacity: 0.72;
+        }
+
+        .about-kicker {
+            color: #fff8dc;
+            background: linear-gradient(145deg, #456b63 0%, #365b54 100%);
+            border: 1px solid rgba(190, 161, 83, 0.78);
+            box-shadow: 0 8px 22px rgba(37, 72, 61, 0.14);
+        }
+
+        .about-display-title {
+            font-family: 'Alexandria', 'Cairo', sans-serif;
+            font-size: clamp(1.95rem, 6vw, 3.2rem);
+            font-weight: 900;
+            line-height: 1.45;
+            background: linear-gradient(105deg, #174333 0%, #245844 34%, #9a7629 52%, #174333 72%, #245844 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-ornate-divider {
+            position: relative;
+            width: min(240px, 60vw);
+            height: 14px;
+            margin: 0.65rem auto 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-line-fill {
+            width: 100%;
+            height: 2px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, transparent 0%, rgba(184, 142, 51, 0.48) 18%, #b88e33 50%, rgba(184, 142, 51, 0.48) 82%, transparent 100%);
+        }
+
+        .about-line-gem {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, #e5c36b, #a87b22);
+            border: 1.5px solid #f6f4ea;
+            transform: rotate(45deg);
+            box-shadow: 0 0 8px rgba(184, 142, 51, 0.32);
+        }
+
+        /* بطاقات المحتوى الملكية الفاتحة بإطار ذهبي */
+        .royal-ivory-card {
+            position: relative;
+            background: linear-gradient(155deg, rgba(255, 255, 251, 0.96) 0%, rgba(246, 244, 232, 0.94) 100%);
+            border: 1px solid rgba(178, 139, 48, 0.46);
+            border-radius: 1.5rem;
+            padding: clamp(1.35rem, 3.8vw, 2.2rem);
+            box-shadow: 0 12px 30px rgba(24, 61, 48, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .royal-ivory-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            inset-inline: 18%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(184, 142, 51, 0.85), transparent);
+        }
+
+        .royal-ivory-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(178, 139, 48, 0.85);
+            box-shadow: 0 18px 36px rgba(24, 61, 48, 0.12);
+        }
+
+        .royal-card-heading {
+            font-family: 'Alexandria', 'Cairo', sans-serif;
+            font-size: clamp(1.15rem, 2.6vw, 1.45rem);
+            font-weight: 800;
+            color: #174333;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .royal-card-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 0.85rem;
+            background: linear-gradient(145deg, #f7f0d9, #eee5c7);
+            border: 1px solid rgba(160, 126, 48, 0.42);
+            color: #94701f;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .royal-value-pill {
+            background: linear-gradient(145deg, #3f665d 0%, #2a4d44 100%);
+            border: 1px solid rgba(212, 175, 55, 0.65);
+            color: #fff8dc;
+            border-radius: 1rem;
+            padding: 1rem 0.65rem;
+            text-align: center;
+            font-weight: 800;
+            font-size: 0.95rem;
+            box-shadow: 0 8px 18px rgba(23, 61, 49, 0.14);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .royal-value-pill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(23, 61, 49, 0.22);
+        }
+
+        .royal-closing-banner {
+            background: linear-gradient(145deg, #071f18 0%, #0b3024 48%, #041711 100%);
+            border: 1px solid rgba(212, 175, 55, 0.48);
+            border-radius: 1.65rem;
+            padding: clamp(1.6rem, 4vw, 2.4rem) 1.25rem;
+            text-align: center;
+            box-shadow: 0 16px 36px rgba(2, 26, 20, 0.22);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .royal-closing-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            inset-inline: 12%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #f5d97e, transparent);
+        }
+
+        /* =====================================================================
+           تنسيق الفوتر الملكي المطابق تماماً لـ index.html
+        ===================================================================== */
+        .masar-footer {
+            position: relative;
+            background: linear-gradient(180deg, #041d17 0%, #01110d 100%);
+            color: #e8ecea;
+            padding: 24px 16px 16px;
+            text-align: center;
+            direction: rtl;
+            overflow: hidden;
+        }
+
+        .masar-footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(
+              90deg,
+              transparent 0%,
+              #b68d2c 20%,
+              #f5d97e 50%,
+              #b68d2c 80%,
+              transparent 100%
+            );
+        }
+
+        .masar-footer-container {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .masar-trust-strip {
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 7px;
+            background: rgba(212, 175, 55, 0.06);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 50px;
+            padding: 5px 14px;
+            margin: 10px auto 14px;
+            font-size: 0.74rem;
+            font-weight: 600;
+            color: #f3e5b8;
+        }
+
+        .masar-trust-dot {
+            color: #d4af37;
+            font-weight: 900;
+            font-size: 0.85rem;
+        }
+
+        .masar-social-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .masar-social-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.75);
+            background: rgba(212, 175, 55, 0.07);
+            color: #e6c35c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .masar-social-btn:hover,
+        .masar-social-btn:active {
+            background: linear-gradient(135deg, #d4af37, #f0d068);
+            color: #081a12;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .masar-social-btn svg {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .masar-stacked-links {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            max-width: 280px;
+            margin: 0 auto 16px;
+            text-align: center;
+        }
+
+        .masar-links-group h4 {
+            color: #d4af37;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin: 0 0 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .masar-links-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .masar-links-list li {
+            width: 100%;
+        }
+
+        .masar-links-list a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.74rem;
+            font-weight: 600;
+            display: inline-block;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .masar-links-list a:hover,
+        .masar-links-list a:active {
+            color: #fcf6ba;
+            transform: translateY(-1px);
+        }
+
+        .masar-copyright-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.22), transparent);
+            margin-bottom: 10px;
+        }
+
+        .masar-copyright {
+            font-size: 0.73rem;
+            color: #b4c4bd;
+            margin: 0;
+            line-height: 1.5;
+            user-select: none;
+        }
+
+        .masar-copyright .year-highlight {
+            color: #dfc065;
+            font-weight: 600;
+        }
+
+        /* =====================================================================
+           حركات وتأثيرات ملكية فاخرة لقسم القيم والبطاقة الختامية (Animated Luxury)
+        ===================================================================== */
+        @keyframes royalGoldShimmer {
+            0% { transform: translateX(130%) skewX(-22deg); }
+            55%, 100% { transform: translateX(-160%) skewX(-22deg); }
+        }
+
+        @keyframes royalFloatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes royalIconPulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0px rgba(212, 175, 55, 0)); }
+            50% { transform: scale(1.13); filter: drop-shadow(0 0 8px rgba(252, 246, 186, 0.55)); }
+        }
+
+        @keyframes royalOrbDrift {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.45; }
+            50% { transform: translate(-18px, 14px) scale(1.12); opacity: 0.78; }
+        }
+
+        @keyframes royalBorderGlow {
+            0%, 100% {
+                box-shadow: 0 16px 38px rgba(2, 26, 20, 0.25), 0 0 0 1px rgba(212, 175, 55, 0.45);
+            }
+            50% {
+                box-shadow: 0 22px 48px rgba(2, 26, 20, 0.35), 0 0 24px rgba(212, 175, 55, 0.32), 0 0 0 1px rgba(252, 246, 186, 0.75);
+            }
+        }
+
+        @keyframes royalCtaPulse {
+            0%, 100% {
+                box-shadow: 0 8px 22px rgba(212, 175, 55, 0.32), 0 0 0 0 rgba(212, 175, 55, 0.45);
+            }
+            50% {
+                box-shadow: 0 12px 30px rgba(212, 175, 55, 0.55), 0 0 0 8px rgba(212, 175, 55, 0);
+            }
+        }
+
+        /* حركة الظهور المتدرج عند النزول للقسم */
+        .royal-reveal {
+            opacity: 0;
+            transform: translateY(24px) scale(0.98);
+            transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .royal-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* تحسين حبوب القيم الأساسية ببريق ذهبي متحرك وطفو ناعم */
+        .royal-value-pill {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(145deg, #3f665d 0%, #24473e 100%);
+            border: 1px solid rgba(212, 175, 55, 0.68);
+            color: #fff8dc;
+            border-radius: 1.15rem;
+            padding: 1.15rem 0.75rem;
+            text-align: center;
+            font-weight: 800;
+            font-size: 0.98rem;
+            box-shadow: 0 10px 22px rgba(23, 61, 49, 0.16);
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+            animation: royalFloatSlow 4.5s ease-in-out infinite;
+        }
+
+        .royal-value-pill:nth-child(2) { animation-delay: 0.7s; }
+        .royal-value-pill:nth-child(3) { animation-delay: 1.4s; }
+        .royal-value-pill:nth-child(4) { animation-delay: 2.1s; }
+
+
+
+        .royal-value-pill i {
+            animation: royalIconPulse 3.6s ease-in-out infinite;
+            transition: transform 0.35s ease;
+        }
+
+        .royal-value-pill:nth-child(2) i { animation-delay: 0.9s; }
+        .royal-value-pill:nth-child(3) i { animation-delay: 1.8s; }
+        .royal-value-pill:nth-child(4) i { animation-delay: 2.7s; }
+
+        .royal-value-pill:hover,
+        .royal-value-pill:active {
+            transform: translateY(-6px) scale(1.03);
+            border-color: #fcf6ba;
+            box-shadow: 0 16px 32px rgba(23, 61, 49, 0.26), 0 0 16px rgba(212, 175, 55, 0.32);
+        }
+
+        /* تحسين البطاقة الختامية الزمردية بهالة ذهبية متحركة وبريق */
+        .royal-closing-banner {
+            background: linear-gradient(145deg, #061c16 0%, #0b3226 48%, #03150f 100%);
+            border: 1px solid rgba(212, 175, 55, 0.55);
+            border-radius: 1.75rem;
+            padding: clamp(1.85rem, 4.5vw, 2.75rem) 1.35rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: royalBorderGlow 5s ease-in-out infinite;
+        }
+
+        .royal-closing-banner::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 45%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(252, 246, 186, 0.08), transparent);
+            animation: royalGoldShimmer 6.5s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .royal-banner-orb-1 {
+            position: absolute;
+            top: -35px;
+            right: -35px;
+            width: 150px;
+            height: 150px;
+            border-radius: 9999px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.22) 0%, transparent 70%);
+            animation: royalOrbDrift 7s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .royal-banner-orb-2 {
+            position: absolute;
+            bottom: -45px;
+            left: -30px;
+            width: 170px;
+            height: 170px;
+            border-radius: 9999px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, transparent 70%);
+            animation: royalOrbDrift 8.5s ease-in-out infinite reverse;
+            pointer-events: none;
+        }
+
+        .royal-cta-animated {
+            position: relative;
+            overflow: hidden;
+            animation: royalCtaPulse 3s infinite;
+        }
+
+        .royal-cta-animated::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+            animation: royalGoldShimmer 3.4s ease-in-out infinite;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="royal-lattice-bg selection:bg-gold24 selection:text-obsidian">
+<!-- =====================================================================
+         1. الشريط العلوي الملكي (مطابق تماماً لـ index: الشعار + الاسم + زر الثلاثة خطوط)
+    ===================================================================== -->
+<header class="sticky top-0 z-50 bg-[#021a14]/95 backdrop-blur-xl border-b border-gold24/25 shadow-lg shadow-black/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
+<!-- الشعار واسم المنصة -->
+<a class="flex items-center gap-3 min-w-0 group" href="index.html">
+<div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full p-0.5 gold-24k-bg shadow-lg shadow-gold24/20 flex-shrink-0 transition-transform duration-300 group-hover:scale-105" id="navbar-logo-wrapper">
+<div class="w-full h-full rounded-full bg-obsidian flex items-center justify-center overflow-hidden" id="navbar-logo-inner"></div>
+</div>
+<div class="min-w-0">
+<span class="block font-black text-sm sm:text-lg md:text-xl gold-24k-text truncate" data-about-text-key="text_22" id="navbar-platform-name">مسار التميز للخدمات الطلابية</span>
+<span class="hidden" data-about-text-key="text_23" id="navbar-platform-sub">البوابة الأكاديمية الملكية للنخبة</span>
+</div>
+</a>
+<!-- زر القائمة الثلاثية -->
+<button aria-expanded="false" aria-label="فتح القائمة" class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl border border-gold24/40 bg-emeraldDeep/90 hover:bg-emeraldVelvet text-goldLight flex items-center justify-center text-xl cursor-pointer transition shadow-md shadow-black/10" id="mobile-nav-btn">
+<i class="fas fa-bars"></i>
+</button>
+</div>
+<!-- القائمة المنسدلة لجميع روابط الموقع -->
+<div class="hidden bg-[#021d16]/98 border-t border-gold24/20 px-6 py-5 space-y-3.5 shadow-xl" id="mobile-nav-drawer">
+<a class="block text-ivory hover:text-goldLight font-bold py-1.5" data-about-text-key="text_24" href="index.html#hero" onclick="closeMobileNav()">الرئيسية</a>
+<a class="block text-goldLight font-bold py-1.5" data-about-text-key="text_25" href="من-نحن.html" onclick="closeMobileNav()">تعرف علينا</a>
+<a class="block text-ivory hover:text-goldLight font-bold py-1.5" data-about-text-key="text_26" href="index.html#offers" onclick="closeMobileNav()">العروض الحصرية</a>
+<a class="block text-ivory hover:text-goldLight font-bold py-1.5" data-about-text-key="text_27" href="index.html#services" onclick="closeMobileNav()">خدماتنا المرقّمة</a>
+<a class="block text-ivory hover:text-goldLight font-bold py-1.5" data-about-text-key="text_28" href="index.html#calculator" onclick="closeMobileNav()">حاسبة الخصم والطلب</a>
+<a class="block text-ivory hover:text-goldLight font-bold py-1.5" data-about-text-key="text_29" href="index.html#portfolio" onclick="closeMobileNav()">معرض الأعمال</a>
+<div class="pt-3 border-t border-gold24/15 flex flex-wrap gap-3">
+<a class="flex-1 text-center gold-24k-bg font-black py-3 px-4 rounded-xl text-sm" data-about-text-key="text_30" href="index.html#calculator" onclick="closeMobileNav()">اطلب خدمتك الآن</a>
+</div>
+</div>
+</header>
+<!-- =====================================================================
+         2. المحتوى الرئيسي لصفحة (من نحن) بنفس الألوان والهوية الملكية
+    ===================================================================== -->
+<main class="about-luxury-surface py-10 sm:py-16 px-4 sm:px-6 lg:px-8">
+<div class="max-w-4xl mx-auto space-y-6">
+<!-- الترويسة التعريفية -->
+<section class="text-center pt-2 pb-4">
+<div class="about-kicker inline-flex items-center justify-center gap-2.5 px-5 py-2 rounded-full text-xs sm:text-sm font-extrabold mb-4">
+<i class="fas fa-award text-[#e3c15d]"></i>
+<span data-about-text-key="text_01">هويتنا وطموحنا</span>
+</div>
+<h1 class="about-display-title" data-about-text-key="text_02">تعرّف علينا وعلى تميزنا</h1>
+<div aria-hidden="true" class="about-ornate-divider">
+<div class="about-line-fill"></div>
+<span class="about-line-gem"></span>
+</div>
+<p class="text-[#354d44] font-semibold text-sm sm:text-lg max-w-2xl mx-auto mt-5 leading-relaxed" data-about-text-key="text_03">
+                    تعرّف على رؤيتنا ورسالتنا والقيم التي نعمل وفقها لتقديم تجربة موثوقة ودعم احترافي للطلاب والباحثين.
+                </p>
+</section>
+<!-- بطاقة: من نحن -->
+<section class="royal-ivory-card royal-reveal">
+<h2 class="royal-card-heading">
+<span class="royal-card-icon"><i class="fa-solid fa-building-columns"></i></span>
+<span data-about-text-key="text_04">من نحن؟</span>
+</h2>
+<p class="text-base sm:text-lg font-black text-[#1d4a38] mb-3" data-about-text-key="text_05">
+                    شريكك الموثوق في الرحلة الأكاديمية والبحثية
+                </p>
+<div class="space-y-3 text-sm sm:text-base text-[#2f483e] font-semibold leading-relaxed">
+<p data-about-text-key="text_06">
+                        مَسَارُ التَّمَيُّزِ هي منصة متخصصة في تقديم الخدمات الطلابية والأكاديمية، ودعم طلاب الجامعات والدراسات العليا، إلى جانب الحلول التقنية والإبداعية، باحترافية وجودة عالية.
+                    </p>
+<p data-about-text-key="text_07">
+                        نسعى إلى مساعدة المستفيد على إنجاز ما يحتاجه بسهولة، وتوفير وقته وجهده، من خلال تجربة منظمة تجمع بين الجودة والدقة والسرعة والاهتمام باحتياجه.
+                    </p>
+<p data-about-text-key="text_08">
+                        نؤمن بأن الإنجاز الحقيقي لا يعتمد على تقديم الخدمة فحسب، بل على جودة التجربة، ودقة التنفيذ، والثقة التي نبنيها مع كل مستفيد.
+                    </p>
+</div>
+</section>
+<!-- رؤيتنا ورسالتنا -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<section class="royal-ivory-card royal-reveal">
+<h2 class="royal-card-heading">
+<span class="royal-card-icon"><i class="fa-solid fa-eye"></i></span>
+<span data-about-text-key="text_09">رؤيتنا</span>
+</h2>
+<p class="text-sm sm:text-base text-[#2f483e] font-semibold leading-relaxed" data-about-text-key="text_10">
+                        أن نكون الخيار الموثوق للطلاب والباحثين في الحصول على خدمات وحلول احترافية، تجمع بين الجودة وسهولة الوصول والاهتمام الحقيقي باحتياجات المستفيد.
+                    </p>
+</section>
+<section class="royal-ivory-card royal-reveal">
+<h2 class="royal-card-heading">
+<span class="royal-card-icon"><i class="fa-solid fa-bullseye"></i></span>
+<span data-about-text-key="text_11">رسالتنا</span>
+</h2>
+<p class="text-sm sm:text-base text-[#2f483e] font-semibold leading-relaxed" data-about-text-key="text_12">
+                        تمكين المستفيد من الوصول إلى خدمات موثوقة وحلول متقنة، من خلال تجربة تجمع بين الجودة والسرعة والاحترافية، وتضع احتياجه في مقدمة أولوياتنا.
+                    </p>
+</section>
+</div>
+<!-- قيمنا الأساسية (بحركة تفاعلية وبريق ذهبي) -->
+<section class="royal-ivory-card royal-reveal">
+<div class="flex items-center justify-between gap-2 mb-3">
+<h2 class="royal-card-heading !mb-0">
+<span class="royal-card-icon"><i class="fa-solid fa-gem"></i></span>
+<span data-about-text-key="text_13">قيمنا الأساسية</span>
+</h2>
+<span class="text-[11px] font-extrabold text-[#8a681b] bg-[#f7f0d9] border border-[#d4af37]/45 px-3 py-1 rounded-full" data-about-text-key="text_14">
+                        ركائز التميز
+                    </span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5 pt-2">
+<div class="royal-value-pill">
+<i class="fas fa-award text-[#fcf6ba] block text-xl mb-1.5"></i>
+<span data-about-text-key="text_15">الجودة</span>
+</div>
+<div class="royal-value-pill">
+<i class="fas fa-handshake-angle text-[#fcf6ba] block text-xl mb-1.5"></i>
+<span data-about-text-key="text_16">الثقة</span>
+</div>
+<div class="royal-value-pill">
+<i class="fas fa-shield-halved text-[#fcf6ba] block text-xl mb-1.5"></i>
+<span data-about-text-key="text_17">الموثوقية</span>
+</div>
+<div class="royal-value-pill">
+<i class="fas fa-lightbulb text-[#fcf6ba] block text-xl mb-1.5"></i>
+<span data-about-text-key="text_18">الابتكار</span>
+</div>
+</div>
+</section>
+<!-- البطاقة الختامية الزمردية والذهبية (بحركة وهالة ضوئية فخمة) -->
+<section class="royal-closing-banner royal-reveal space-y-3">
+<div aria-hidden="true" class="royal-banner-orb-1"></div>
+<div aria-hidden="true" class="royal-banner-orb-2"></div>
+<p class="text-base sm:text-xl font-black text-goldLight leading-relaxed relative z-10" data-about-text-key="text_19">
+                    نؤمن أن كل طلب وراءه هدف، وكل هدف يستحق أن يُنجز بإتقان.
+                </p>
+<p class="text-xs sm:text-sm text-champagne font-bold relative z-10" data-about-text-key="text_20">
+                    مَسَارُ التَّمَيُّزِ &mdash; نحو تجربة أكثر احترافية، وإنجاز أكثر سهولة.
+                </p>
+<p class="font-amiri text-base sm:text-xl gold-24k-text font-bold pt-1 relative z-10" data-about-text-key="text_21">
+                    مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَابِيَّةِ | جودة تُنجز، وثقة تُبنى.
+                </p>
+</section>
+</div>
+</main>
+<!-- =====================================================================
+         3. الفوتر الملكي (مطابق تماماً لأسفل الصفحة الرسمية index.html)
+    ===================================================================== -->
+<footer class="masar-footer">
+<div class="masar-footer-container">
+<!-- اسم المنصة -->
+<div class="text-base sm:text-lg font-black mb-1">
+<span class="gold-24k-text" data-about-text-key="text_31" id="footer-platform-name">مسار التميز للخدمات الطلابية</span>
+</div>
+<!-- العبارة التسويقية -->
+<p class="font-amiri text-sm sm:text-base text-goldLight/90 italic m-0" data-about-text-key="text_32">
+                &laquo;جودة تُنجز، وثقة تُبنى، وطموح يُتوج بالتميز&raquo;
+            </p>
+<!-- شريط الثقة -->
+<div class="masar-trust-strip">
+<span data-about-text-key="text_33">سرية تامة</span>
+<span class="masar-trust-dot" data-about-text-key="text_34">&bull;</span>
+<span data-about-text-key="text_35">دقة أكاديمية</span>
+<span class="masar-trust-dot" data-about-text-key="text_36">&bull;</span>
+<span data-about-text-key="text_37">تسليم بالموعد</span>
+</div>
+<!-- أيقونات التواصل الدائرية -->
+<div class="masar-social-row">
+<!-- واتساب مباشر -->
+<a aria-label="واتساب" class="masar-social-btn" href="https://wa.me/967736190956" rel="noopener" target="_blank">
+<svg viewbox="0 0 24 24"><path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.758.459 3.477 1.332 4.992L2 22l5.184-1.359a9.927 9.927 0 0 0 4.847 1.258h.004c5.515 0 9.968-4.453 9.968-9.969A9.934 9.934 0 0 0 19.08 4.92 9.914 9.914 0 0 0 12.031 2zm5.816 14.254c-.246.691-1.43 1.32-1.984 1.402-.508.074-1.148.105-1.855-.117-.43-.137-.98-.32-1.684-.625-2.961-1.277-4.895-4.262-5.043-4.457-.148-.195-1.203-1.602-1.203-3.055 0-1.453.762-2.168 1.031-2.465.27-.297.59-.371.785-.371.195 0 .391.004.562.012.18.008.422-.07.66.504.246.59.836 2.039.91 2.188.074.148.121.32.023.516-.098.195-.148.32-.293.492-.148.172-.309.383-.441.516-.148.148-.301.309-.129.605.172.297.762 1.258 1.637 2.039 1.125 1.004 2.074 1.316 2.371 1.465.297.148.469.125.641-.074.172-.195.738-.859.934-1.156.195-.297.391-.246.66-.148.27.098 1.719.812 2.016.961.297.148.492.223.566.348.074.125.074.715-.172 1.406z"></path></svg>
+</a>
+<!-- تيليجرام -->
+<a aria-label="تيليجرام" class="masar-social-btn" href="https://t.me/MasarExcellence" rel="noopener" target="_blank">
+<svg viewbox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path></svg>
+</a>
+<!-- انستجرام -->
+<a aria-label="انستجرام" class="masar-social-btn" href="https://instagram.com/masar_altamayuz" rel="noopener" target="_blank">
+<svg viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+<!-- اتصال مباشر -->
+<a aria-label="اتصال مباشر" class="masar-social-btn" href="tel:+967736190956">
+<svg viewbox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"></path></svg>
+</a>
+</div>
+<!-- الروابط السريعة -->
+<div class="masar-stacked-links">
+<div class="masar-links-group">
+<h4 data-about-text-key="text_38">روابط سريعة</h4>
+<ul class="masar-links-list">
+<li><a data-about-text-key="text_39" href="index.html#hero">الرئيسية</a></li>
+<li><a data-about-text-key="text_40" href="من-نحن.html">تعرف علينا</a></li>
+<li><a data-about-text-key="text_41" href="index.html#portfolio">معرض الأعمال</a></li>
+</ul>
+</div>
+<div class="masar-links-group">
+<h4 data-about-text-key="text_42">خدماتنا وعروضنا</h4>
+<ul class="masar-links-list">
+<li><a data-about-text-key="text_43" href="index.html#services">خدماتنا</a></li>
+<li><a data-about-text-key="text_44" href="index.html#offers">العروض الحصرية</a></li>
+<li><a data-about-text-key="text_45" href="index.html#calculator">حاسبة الخصم</a></li>
+</ul>
+</div>
+</div>
+<div class="masar-copyright-divider"></div>
+<!-- سطر الحقوق -->
+<p class="masar-copyright">
+                جميع الحقوق محفوظة &copy; <span class="year-highlight" data-about-text-key="text_46">2026</span> &mdash; <span data-about-text-key="text_47" id="footer-copy-name">مسار التميز للخدمات الطلابية</span>
+</p>
+</div>
+</footer>
+<!-- =====================================================================
+         سكربت الشعار الملكي والقائمة المنسدلة ومزامنة اسم المنصة والشعار
+    ===================================================================== -->
+<script>
+        const ROYAL_SVG_CREST = `
+            <svg viewBox="0 0 120 120" class="w-full h-full p-1" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="royalGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#bf953f"/>
+                        <stop offset="35%" stop-color="#fcf6ba"/>
+                        <stop offset="70%" stop-color="#b38728"/>
+                        <stop offset="100%" stop-color="#fbf5b7"/>
+                    </linearGradient>
+                    <linearGradient id="emeraldShieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#065f46"/>
+                        <stop offset="100%" stop-color="#022c22"/>
+                    </linearGradient>
+                </defs>
+                <circle cx="60" cy="60" r="55" fill="none" stroke="url(#royalGoldGrad)" stroke-width="2.5"/>
+                <circle cx="60" cy="60" r="49" fill="none" stroke="url(#royalGoldGrad)" stroke-width="0.9" stroke-dasharray="3 2"/>
+                <path d="M60 22 L90 34 V62 C90 81 76 93 60 100 C44 93 30 81 30 62 V34 Z"
+                      fill="url(#emeraldShieldGrad)" stroke="url(#royalGoldGrad)" stroke-width="2.2"/>
+                <polygon points="60,10 62.5,16 69,16 64,20 66,26 60,22.5 54,26 56,20 51,16 57.5,16"
+                         fill="url(#royalGoldGrad)"/>
+                <polygon points="60,36 82,45 60,54 38,45" fill="url(#royalGoldGrad)"/>
+                <path d="M46 49 V57 C46 61 74 61 74 57 V49" fill="none" stroke="url(#royalGoldGrad)" stroke-width="2.2"/>
+                <line x1="80" y1="46" x2="80" y2="59" stroke="#fcf6ba" stroke-width="1.6"/>
+                <circle cx="80" cy="60" r="2" fill="#fcf6ba"/>
+                <path d="M60 63 L67 76 L60 91 L53 76 Z" fill="url(#royalGoldGrad)"/>
+                <line x1="60" y1="63" x2="60" y2="85" stroke="#021a14" stroke-width="1.3"/>
+                <circle cx="60" cy="76" r="2" fill="#021a14"/>
+            </svg>
+        `;
+
+        // تحميل الشعار واسم المنصة المحفوظين إن وجدا
+        (function syncBrandWithIndex() {
+            let brand = {
+                platformName: 'مسار التميز للخدمات الطلابية',
+                customLogoDataUrl: ''
+            };
+            try {
+                const raw = localStorage.getItem('masar_altamayuz_royal_state_v1');
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    if (parsed && parsed.brand) {
+                        brand = { ...brand, ...parsed.brand };
+                    }
+                }
+            } catch (_) {}
+
+            document.getElementById('navbar-platform-name').innerText = brand.platformName;
+            document.getElementById('footer-platform-name').innerText = brand.platformName;
+            document.getElementById('footer-copy-name').innerText = brand.platformName;
+
+            const logoInner = document.getElementById('navbar-logo-inner');
+            if (logoInner) {
+                logoInner.innerHTML = brand.customLogoDataUrl
+                    ? `<img src="${String(brand.customLogoDataUrl).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}" alt="${String(brand.platformName).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}" class="w-full h-full object-cover rounded-full">`
+                    : ROYAL_SVG_CREST;
+            }
+        })();
+
+
+        // تحميل النصوص التي يعدّلها المشرف من إعدادات Supabase المشتركة.
+        (async function loadAboutManagedTexts(){
+            try {
+                const SB_URL='https://quljpjwjpeokolqumbne.supabase.co';
+                const SB_PUBLIC_KEY='sb_publishable_z7A6bTm4AIO3RyRNezaTOw_Ti0Z0pT8';
+                if(!window.supabase?.createClient) return;
+                const client=window.supabase.createClient(SB_URL,SB_PUBLIC_KEY,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}});
+                const {data,error}=await client.from('site_headings_config').select('heading_key,heading_text').like('heading_key','about-text-%');
+                if(error) throw error;
+                (data||[]).forEach(row=>{
+                    const key=String(row.heading_key||'').replace(/^about-text-/,'');
+                    const el=document.querySelector(`[data-about-text-key="${key}"]`);
+                    if(el && typeof row.heading_text==='string') el.textContent=row.heading_text;
+                });
+            } catch(error) { console.warn('تعذر تحميل نصوص صفحة تعرف علينا المحفوظة:',error?.message||error); }
+        })();
+
+        // القائمة المنسدلة في الشريط العلوي
+        const mobileNavBtn = document.getElementById('mobile-nav-btn');
+        const mobileNavDrawer = document.getElementById('mobile-nav-drawer');
+
+        mobileNavBtn.addEventListener('click', () => {
+            const isOpening = mobileNavDrawer.classList.contains('hidden');
+            mobileNavDrawer.classList.toggle('hidden');
+            mobileNavBtn.setAttribute('aria-expanded', String(isOpening));
+        });
+
+        function closeMobileNav() {
+            mobileNavDrawer.classList.add('hidden');
+            mobileNavBtn.setAttribute('aria-expanded', 'false');
+        }
+
+        // تفعيل حركة الظهور الانسيابي للبطاقات عند التمرير
+        (function initRoyalReveal() {
+            const items = document.querySelectorAll('.royal-reveal');
+            if (!('IntersectionObserver' in window)) {
+                items.forEach(el => el.classList.add('is-visible'));
+                return;
+            }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            items.forEach(el => observer.observe(el));
+        })();
+    </script>
+</body>
+</html>
