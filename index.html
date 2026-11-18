@@ -3367,7 +3367,7 @@
         ===================================================================== */
         function renderPublicServices() {
             const grid = document.getElementById('services-grid');
-            grid.innerHTML = appState.services.map((srv, idx) => {
+            grid.innerHTML = appState.services.filter(srv => srv.isPublished !== false).map((srv, idx) => {
                 const num = String(idx + 1).padStart(2, '0');
                 return `
                 <div class="velvet-card rounded-3xl p-7 flex flex-col justify-between group">
@@ -3462,10 +3462,11 @@
         function populateCalculatorServices() {
             const select = document.getElementById('calc-service-select');
             const prevVal = select.value;
-            select.innerHTML = appState.services.map(s =>
-                `<option value="${s.id}">${s.title} (يبدأ من ${s.startingPrice} ر.س)</option>`
+            const publicServices = appState.services.filter(s => s.isPublished !== false);
+            select.innerHTML = publicServices.map(s =>
+                `<option value="${escapeHtml(s.id)}">${escapeHtml(s.title)} (يبدأ من ${s.startingPrice} ر.س)</option>`
             ).join('');
-            if (prevVal && appState.services.some(s => String(s.id) === String(prevVal))) {
+            if (prevVal && publicServices.some(s => String(s.id) === String(prevVal))) {
                 select.value = prevVal;
             }
             renderCalculatorServiceOptions();
@@ -3624,9 +3625,9 @@
             filterContainer.innerHTML = categories.map(cat => {
                 const isActive = cat === activePortfolioCategory;
                 return `
-                <button onclick="filterPortfolio('${cat}')"
+                <button onclick="filterPortfolio(this.dataset.category)" data-category="${escapeHtml(cat)}"
                     class="px-4 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer ${isActive ? 'gold-24k-bg shadow-md' : 'bg-emeraldDeep/80 text-champagne border border-gold24/25 hover:text-goldLight'}">
-                    ${cat}
+                    ${escapeHtml(cat)}
                 </button>
                 `;
             }).join('');
@@ -3945,7 +3946,7 @@
             window.setServiceIcon?.(srv.icon || 'fa-book-open');
             document.getElementById('srv-desc').value = srv.description;
 
-            document.getElementById('srv-form-heading').innerHTML = `<i class="fas fa-edit text-gold24 ml-2"></i> تعديل الخدمة: ${srv.title}`;
+            document.getElementById('srv-form-heading').innerHTML = `<i class="fas fa-edit text-gold24 ml-2"></i> تعديل الخدمة: ${escapeHtml(srv.title)}`;
             toggleServiceFormPanel(true);
             document.getElementById('srv-cancel-edit-btn').classList.remove('hidden');
             document.getElementById('admin-service-form').scrollIntoView({ behavior: 'smooth' });
@@ -4053,7 +4054,7 @@
                 document.getElementById('offer-upload-prompt').classList.add('hidden');
             }
 
-            document.getElementById('offer-form-heading').innerHTML = `<i class="fas fa-edit text-gold24 ml-2"></i> تعديل العرض: ${offer.title}`;
+            document.getElementById('offer-form-heading').innerHTML = `<i class="fas fa-edit text-gold24 ml-2"></i> تعديل العرض: ${escapeHtml(offer.title)}`;
             document.getElementById('offer-cancel-edit-btn').classList.remove('hidden');
             document.getElementById('admin-offer-form').scrollIntoView({ behavior: 'smooth' });
         }
@@ -4560,7 +4561,7 @@
   const MIGRATION_KEY = 'masar_supabase_migration_v1_complete';
   window.__masarSupabaseDiagnostics = { status:'starting', stage:'page-init', startedAt:new Date().toISOString(), checks:{} };
   try { if (appState && appState.brand) delete appState.brand.adminPassword; } catch (_) {}
-  const MAX_MEDIA_BYTES = 500 * 1024 * 1024; // 500 MiB per file; Supabase project/bucket limits must also allow this size.
+  const MAX_MEDIA_BYTES = 100 * 1024 * 1024; // Must match the 100 MiB Supabase bucket limit.
   const ALLOWED = {
     image: ['image/jpeg','image/png','image/webp','image/gif'],
     video: ['video/mp4','video/webm'],
@@ -4712,7 +4713,7 @@
     return sb;
   }
   function toNum(v) { return Number(v || 0); }
-  function fromService(r) { return { id:r.id, title:r.title, description:r.description, startingPrice:toNum(r.starting_price), unitPrice:toNum(r.unit_price), unitName:r.unit_name, duration:r.duration, icon:r.icon || 'fa-book-open' }; }
+  function fromService(r) { return { id:r.id, title:r.title, description:r.description, startingPrice:toNum(r.starting_price), unitPrice:toNum(r.unit_price), unitName:r.unit_name, duration:r.duration, icon:r.icon || 'fa-book-open', isPublished:r.is_published !== false }; }
   function fromOffer(r) { return { id:r.id, title:r.title, ribbon:r.ribbon, oldPrice:toNum(r.old_price), newPrice:toNum(r.new_price), perks:Array.isArray(r.perks)?r.perks:[], isFeatured:!!r.is_featured, imageUrl:r.image_url || '', mediaType:r.media_type || 'image', mediaUrl:r.media_url || '', mediaPath:r.media_path || '', mediaName:r.media_name || '', mediaMimeType:r.media_mime_type || '', mediaSize:r.media_size || null, isPublished:r.is_published !== false }; }
   function fromPortfolio(r) { return { id:r.id, title:r.title, category:r.category, grade:r.grade || 'امتياز A+', description:r.description, imageUrl:r.image_url || '', mediaType:r.media_type || 'image', mediaUrl:r.media_url || '', mediaPath:r.media_path || '', mediaName:r.media_name || '', mediaMimeType:r.media_mime_type || '', mediaSize:r.media_size || null, isPublished:r.is_published !== false }; }
   function mapSettings(r) {
@@ -5024,7 +5025,7 @@
     ensureUploadProgress('logo');
   }
   window.processUploadedFile = function(file, target) {
-    if (file.size > MAX_MEDIA_BYTES) return showToast('حجم الملف يتجاوز الحد الأقصى المسموح (500 MiB).', 'fa-exclamation-circle');
+    if (file.size > MAX_MEDIA_BYTES) return showToast('حجم الملف يتجاوز الحد الأقصى المسموح (100 MiB).', 'fa-exclamation-circle');
     if (target === 'logo') {
       if (!currentAdmin) return showToast('يجب تسجيل الدخول لتغيير شعار المنصة.','fa-lock');
       if (!ALLOWED.image.includes(file.type)) return showToast('صيغة صورة الشعار غير مدعومة.','fa-exclamation-circle');
@@ -5125,7 +5126,7 @@
     const itemsAll=appState.portfolio.filter(p=>p.isPublished!==false);
     const cats=['الكل',...new Set(itemsAll.map(p=>p.category).filter(Boolean))];
     if(!cats.includes(activePortfolioCategory))activePortfolioCategory='الكل';
-    filter.innerHTML=cats.map(cat=>`<button onclick="filterPortfolio('${escapeHtml(cat)}')" class="px-4 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer ${cat===activePortfolioCategory?'gold-24k-bg shadow-md':'bg-emeraldDeep/80 text-champagne border border-gold24/25 hover:text-goldLight'}">${escapeHtml(cat)}</button>`).join('');
+    filter.innerHTML=cats.map(cat=>`<button onclick="filterPortfolio(this.dataset.category)" data-category="${escapeHtml(cat)}" class="px-4 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer ${cat===activePortfolioCategory?'gold-24k-bg shadow-md':'bg-emeraldDeep/80 text-champagne border border-gold24/25 hover:text-goldLight'}">${escapeHtml(cat)}</button>`).join('');
     const items=activePortfolioCategory==='الكل'?itemsAll:itemsAll.filter(p=>p.category===activePortfolioCategory);
     if(!items.length){grid.innerHTML='<div class="col-span-full text-center py-12 text-champagne">لا توجد أعمال في هذا التصنيف حالياً.</div>';return;}
     const cards=await Promise.all(items.map(async item=>{const media=await publicMediaMarkup(item,'portfolio_items');return `<div onclick="openLightbox(${item.id})" class="velvet-card rounded-3xl overflow-hidden flex flex-col justify-between cursor-pointer group"><div><div class="relative h-56 bg-obsidian overflow-hidden border-b border-gold24/25">${media}<div class="absolute inset-0 bg-gradient-to-t from-[#021a14] via-transparent to-transparent pointer-events-none"></div><span class="absolute top-3.5 right-3.5 px-3 py-1 rounded-full bg-obsidian/90 border border-gold24/45 text-goldLight text-[11px] font-bold">${escapeHtml(item.category)}</span><span class="absolute bottom-3.5 right-3.5 px-3 py-1 rounded-lg gold-24k-bg text-[11px] font-black shadow"><i class="fas fa-award ml-1"></i> ${escapeHtml(item.grade||'امتياز A+')}</span></div><div class="p-6"><h3 class="text-lg font-black text-ivory mb-2">${escapeHtml(item.title)}</h3><p class="text-xs text-champagne leading-relaxed">${escapeHtml(item.description)}</p></div></div></div>`;}));grid.innerHTML=cards.join('');
@@ -5241,7 +5242,7 @@
       await ensureSdk();
       initClient(); injectMediaControls();
       window.__masarSupabaseDiagnostics.stage='project-reachability';
-      const servicesData = await runRead('services', sb.from('services').select('*').order('id',{ascending:true}));
+      const servicesData = await runRead('services', sb.from('services').select('*').eq('is_published',true).order('id',{ascending:true}));
       const [offersData,portfolioData,settingsData] = await Promise.all([
         runRead('offers', sb.from('offers').select('*').eq('is_published',true).order('id',{ascending:false})),
         runRead('portfolio_items', sb.from('portfolio_items').select('*').eq('is_published',true).order('id',{ascending:false})),
