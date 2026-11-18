@@ -2290,6 +2290,25 @@
                                 </div>
                                 <div id="service-icon-options" class="grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-64 overflow-y-auto pr-1"></div>
                             </div>
+                            <div id="service-icon-manager-modal" class="hidden fixed inset-0 z-[10050] bg-black/75 backdrop-blur-sm p-3 sm:p-6 flex items-center justify-center" role="dialog" aria-modal="true" aria-label="إدارة أيقونات الخدمات">
+                                <div class="w-full max-w-2xl max-h-[88vh] overflow-hidden rounded-3xl border border-gold24/45 bg-[#031b14] shadow-2xl flex flex-col">
+                                    <div class="p-4 sm:p-5 border-b border-gold24/20 flex items-center justify-between gap-3">
+                                        <div><h3 class="text-lg font-black text-goldLight">مركز إدارة الأيقونات</h3><p class="text-xs text-champagne mt-1">أضف الأيقونات وعدّلها، وستظهر تلقائياً في الخدمات والحاسبة.</p></div>
+                                        <button type="button" onclick="closeServiceIconManager()" class="w-10 h-10 rounded-xl bg-white/10 text-ivory"><i class="fas fa-times"></i></button>
+                                    </div>
+                                    <div class="p-4 overflow-y-auto">
+                                        <form id="service-icon-manager-form" onsubmit="saveManagedServiceIcon(event)" class="grid grid-cols-1 sm:grid-cols-[1fr_1fr_auto] gap-2 mb-4">
+                                            <input type="hidden" id="managed-icon-old">
+                                            <input id="managed-icon-label" required maxlength="60" placeholder="اسم الأيقونة، مثال: تصميم جرافيك" class="royal-input text-sm">
+                                            <input id="managed-icon-class" required pattern="fa-[a-z0-9-]+" placeholder="fa-palette" title="اكتب اسم أيقونة Font Awesome مثل fa-palette" class="royal-input text-sm" dir="ltr">
+                                            <button type="submit" class="gold-24k-bg rounded-xl px-4 py-3 font-black text-sm"><i class="fas fa-plus ml-1"></i> حفظ</button>
+                                        </form>
+                                        <div class="flex items-center justify-between gap-2 mb-3"><span id="service-icon-manager-count" class="text-xs text-champagne">0 أيقونة</span><span class="text-[10px] text-champagne/70">مثال الأيقونة: fa-palette</span></div>
+                                        <div id="service-icon-manager-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-2"></div>
+                                    </div>
+                                    <div class="p-3 border-t border-gold24/20 flex justify-end"><button type="button" onclick="closeServiceIconManager()" class="px-5 py-2 rounded-xl bg-white/10 text-ivory font-bold text-sm">إغلاق</button></div>
+                                </div>
+                            </div>
                         </div>
                         <div class="md:col-span-2 lg:col-span-3">
                             <label class="block text-xs font-bold text-goldLight mb-1.5">وصف الخدمة *</label>
@@ -3101,7 +3120,7 @@
             document.getElementById('footer-copy-name').innerText = b.platformName;
 
             const logoHtml = b.customLogoDataUrl
-                ? `<img src="${b.customLogoDataUrl}" alt="${b.platformName}" class="w-full h-full object-cover rounded-full">`
+                ? `<img src="${escapeHtml(b.customLogoDataUrl)}" alt="${escapeHtml(b.platformName)}" class="w-full h-full object-cover rounded-full">`
                 : ROYAL_SVG_CREST;
 
             document.getElementById('navbar-logo-inner').innerHTML = logoHtml;
@@ -3355,7 +3374,7 @@
                     <div>
                         <div class="flex items-center justify-between mb-6">
                             <div class="w-13 h-13 w-14 h-14 rounded-2xl bg-obsidian/90 border border-gold24/40 text-goldLight flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                                <i class="fas ${srv.icon === 'fa-presentation-screen' ? 'fa-display' : (srv.icon || 'fa-book-open')}"></i>
+                                <i class="fas ${escapeHtml(srv.icon === 'fa-presentation-screen' ? 'fa-display' : (srv.icon || 'fa-book-open'))}"></i>
                             </div>
                             <span class="font-amiri text-4xl font-bold text-gold24/35 group-hover:text-goldLight transition-colors select-none">
                                 ${num}
@@ -3363,11 +3382,11 @@
                         </div>
 
                         <h3 class="text-lg sm:text-xl font-black text-ivory mb-3 group-hover:text-goldLight transition-colors">
-                            ${srv.title}
+                            ${escapeHtml(srv.title)}
                         </h3>
 
                         <p class="text-xs sm:text-sm text-champagne leading-relaxed mb-6">
-                            ${srv.description}
+                            ${escapeHtml(srv.description)}
                         </p>
                     </div>
 
@@ -3425,7 +3444,7 @@
             host.innerHTML = appState.services.map(s => {
                 const active = selected && String(selected.id) === String(s.id);
                 return `<button type="button" role="option" aria-selected="${active ? 'true' : 'false'}" onclick="chooseCalculatorService('${String(s.id).replace(/'/g, '&#39;')}')" class="w-full flex items-center justify-between gap-3 text-right rounded-xl px-3.5 py-3 border ${active ? 'border-goldLight bg-gold24/15 text-goldLight' : 'border-transparent bg-white/5 text-ivory hover:bg-gold24/10 hover:border-gold24/25'} transition">
-                    <span class="font-bold text-sm">${escapeHtml(s.title)}</span>
+                    <span class="flex items-center gap-3"><span class="w-9 h-9 rounded-lg bg-gold24/10 border border-gold24/25 text-goldLight flex items-center justify-center"><i class="fas ${escapeHtml(s.icon || 'fa-book-open')}"></i></span><span class="font-bold text-sm">${escapeHtml(s.title)}</span></span>
                     <i class="fas ${active ? 'fa-check-circle text-goldLight' : 'fa-circle text-champagne/40'}"></i>
                 </button>`;
             }).join('');
@@ -3862,12 +3881,13 @@
             list.innerHTML = appState.services.map((srv, i) => `
                 <div class="velvet-card rounded-2xl p-5 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center justify-between mb-3 gap-3">
                             <span class="px-2.5 py-1 rounded-lg gold-24k-bg text-xs font-black">#${String(i + 1).padStart(2, '0')}</span>
-                            <span class="text-xs font-bold text-goldLight">${srv.startingPrice} ر.س / ${srv.unitPrice} ر.س لكل ${srv.unitName}</span>
+                            <span class="w-10 h-10 rounded-xl bg-gold24/10 border border-gold24/25 text-goldLight flex items-center justify-center text-xl"><i class="fas ${escapeHtml(srv.icon || 'fa-book-open')}"></i></span>
+                            <span class="text-xs font-bold text-goldLight">${srv.startingPrice} ر.س / ${srv.unitPrice} ر.س لكل ${escapeHtml(srv.unitName)}</span>
                         </div>
-                        <h4 class="font-black text-base text-ivory mb-1.5">${srv.title}</h4>
-                        <p class="text-xs text-champagne line-clamp-2 mb-4">${srv.description}</p>
+                        <h4 class="font-black text-base text-ivory mb-1.5">${escapeHtml(srv.title)}</h4>
+                        <p class="text-xs text-champagne line-clamp-2 mb-4">${escapeHtml(srv.description)}</p>
                     </div>
                     <div class="flex flex-wrap gap-2 pt-3 border-t border-gold24/15">
                         <button onclick="toggleServicePriceVisibility(${srv.id})" class="w-full py-2 rounded-xl ${srv.showPrice===false?'bg-white/10 text-champagne':'bg-emerald-900/50 text-goldLight'} border border-gold24/20 text-xs font-bold transition cursor-pointer"><i class="fas ${srv.showPrice===false?'fa-eye-slash':'fa-eye'} ml-1"></i> ${srv.showPrice===false?'السعر مخفي عن الزوار':'السعر ظاهر للزوار'}</button>
@@ -4540,7 +4560,7 @@
   const MIGRATION_KEY = 'masar_supabase_migration_v1_complete';
   window.__masarSupabaseDiagnostics = { status:'starting', stage:'page-init', startedAt:new Date().toISOString(), checks:{} };
   try { if (appState && appState.brand) delete appState.brand.adminPassword; } catch (_) {}
-  const MAX_MEDIA_BYTES = 100 * 1024 * 1024;
+  const MAX_MEDIA_BYTES = 500 * 1024 * 1024; // 500 MiB per file; Supabase project/bucket limits must also allow this size.
   const ALLOWED = {
     image: ['image/jpeg','image/png','image/webp','image/gif'],
     video: ['video/mp4','video/webm'],
@@ -4574,6 +4594,107 @@
   async function ensureSdk() {
     if (window.supabase && window.supabase.createClient) return;
     await loadSdkFallback();
+  }
+  let tusSdkPromise = null;
+  function loadTusSdk() {
+    if (window.tus && window.tus.Upload) return Promise.resolve();
+    if (tusSdkPromise) return tusSdkPromise;
+    tusSdkPromise = new Promise((resolve,reject) => {
+      const sources = [
+        'https://cdn.jsdelivr.net/npm/tus-js-client@4.3.1/dist/tus.min.js',
+        'https://unpkg.com/tus-js-client@4.3.1/dist/tus.min.js'
+      ];
+      let index = 0;
+      const tryNext = () => {
+        if (window.tus && window.tus.Upload) return resolve();
+        if (index >= sources.length) return reject(new Error('تعذر تحميل مكتبة الرفع المجزأ. تحقق من اتصال الإنترنت ثم أعد المحاولة.'));
+        const script = document.createElement('script');
+        script.src = sources[index++]; script.async = true;
+        script.onload = () => window.tus && window.tus.Upload ? resolve() : tryNext();
+        script.onerror = tryNext;
+        document.head.appendChild(script);
+      };
+      tryNext();
+    }).catch(error => { tusSdkPromise = null; throw error; });
+    return tusSdkPromise;
+  }
+  const formatBytes = value => {
+    const n = Number(value || 0);
+    if (n < 1024) return n + ' B';
+    const units = ['KB','MB','GB']; let size=n/1024, i=0;
+    while (size >= 1024 && i < units.length-1) { size/=1024; i++; }
+    return size.toFixed(size >= 100 ? 0 : 1) + ' ' + units[i];
+  };
+  function ensureUploadProgress(target) {
+    const id = target + '-upload-progress';
+    let root = $(id);
+    if (root) return root;
+    let panel=$('global-upload-progress');
+    if(!panel){
+      panel=document.createElement('section');panel.id='global-upload-progress';
+      panel.className='hidden fixed bottom-4 right-3 left-3 sm:left-auto sm:right-5 z-[10060] sm:w-[min(92vw,430px)] max-h-[45vh] overflow-y-auto space-y-2';
+      panel.setAttribute('aria-live','polite');panel.setAttribute('aria-label','متابعة عمليات رفع الملفات');
+      document.body.appendChild(panel);
+    }
+    root = document.createElement('div'); root.id=id;
+    root.className='rounded-2xl border border-gold24/45 bg-[#031b14]/95 backdrop-blur-xl shadow-2xl p-3 text-right';
+    root.innerHTML = `<div class="flex items-center justify-between gap-2 text-xs"><strong class="upload-progress-title text-goldLight">جاهز للرفع</strong><b class="upload-progress-percent text-gold24">0%</b></div><div class="mt-2 h-2 overflow-hidden rounded-full bg-white/10"><div class="upload-progress-bar h-full rounded-full bg-gradient-to-l from-emerald-400 to-yellow-400 transition-[width] duration-200" style="width:0%"></div></div><div class="upload-progress-meta mt-2 text-[10px] leading-6 text-champagne">0 B من 0 B · الملف 0 من 1</div><div class="upload-progress-speed text-[10px] text-champagne/80"></div>`;
+    panel.appendChild(root);
+    return root;
+  }
+  let activeUploadTasks=0;
+  window.addEventListener('beforeunload',e=>{if(activeUploadTasks>0){e.preventDefault();e.returnValue='يوجد رفع ملفات قيد التنفيذ. إذا غادرت الصفحة الآن قد يتوقف الرفع.';return e.returnValue;}});
+
+  function setUploadProgress(target, state={}) {
+    const root=ensureUploadProgress(target); if(!root)return;
+    root.classList.remove('hidden');$('global-upload-progress')?.classList.remove('hidden');
+    const title=root.querySelector('.upload-progress-title'), percent=root.querySelector('.upload-progress-percent'), bar=root.querySelector('.upload-progress-bar'), meta=root.querySelector('.upload-progress-meta'), speed=root.querySelector('.upload-progress-speed');
+    const pct=Math.max(0,Math.min(100,Number(state.percent||0)));
+    const labels={preparing:'جارٍ تجهيز الملف...',ready:'الملف جاهز، اضغط حفظ لبدء الرفع',uploading:'جارٍ رفع الملف...',success:'اكتمل رفع الملف بنجاح',error:'تعذر رفع الملف'};
+    title.textContent=state.message || labels[state.status] || 'متابعة الرفع';
+    percent.textContent=pct.toFixed(pct%1?1:0)+'%'; bar.style.width=pct+'%';
+    meta.textContent=`${formatBytes(state.loaded||0)} من ${formatBytes(state.total||0)} · الملف ${state.done||0} من ${state.count||1}`;
+    speed.textContent=state.speed ? `السرعة: ${formatBytes(state.speed)}/ث · المتبقي تقريباً: ${Math.max(0,Math.ceil(state.eta||0))} ثانية` : (state.status==='success'?'تم الحفظ في التخزين.':'');
+    if(state.status==='error') { title.classList.add('text-red-300'); bar.classList.remove('from-emerald-400','to-yellow-400'); bar.classList.add('bg-red-500'); }
+    else { title.classList.remove('text-red-300'); bar.classList.remove('bg-red-500'); bar.classList.add('bg-gradient-to-l','from-emerald-400','to-yellow-400'); }
+  }
+  async function uploadTus(bucket,path,body,mime,onProgress) {
+    await loadTusSdk();
+    const {data:{session}} = await initClient().auth.getSession();
+    const token=session?.access_token || SB_PUBLIC_KEY;
+    const file = body instanceof File ? body : new File([body], path.split('/').pop(), {type:mime || body.type || 'application/octet-stream',lastModified:0});
+    const projectRef = new URL(SB_URL).hostname.split('.')[0];
+    const endpoint = `https://${projectRef}.storage.supabase.co/storage/v1/upload/resumable`;
+    return new Promise((resolve,reject) => {
+      const upload = new window.tus.Upload(file, {
+        endpoint,
+        retryDelays:[0,3000,5000,10000,20000],
+        headers:{ apikey:SB_PUBLIC_KEY, authorization:'Bearer '+token, 'x-upsert':'false' },
+        uploadDataDuringCreation:true,
+        removeFingerprintOnSuccess:true,
+        chunkSize:6*1024*1024,
+        metadata:{bucketName:bucket,objectName:path,contentType:mime || file.type || 'application/octet-stream',cacheControl:'3600'},
+        onError:error=>reject(error),
+        onProgress:(uploaded,total)=>onProgress && onProgress(uploaded,total),
+        onSuccess:()=>resolve({url:upload.url})
+      });
+      upload.findPreviousUploads().then(previous=>{
+        if(previous && previous.length) upload.resumeFromPreviousUpload(previous[0]);
+        upload.start();
+      }).catch(reject);
+    });
+  }
+  async function compressImageToBlob(file,maxWidth) {
+    let bitmap;
+    try { bitmap=await createImageBitmap(file); }
+    catch (_) { throw new Error('تعذر قراءة الصورة. جرّب صورة بصيغة JPG أو PNG أو WEBP.'); }
+    const scale=Math.min(1,maxWidth/bitmap.width), width=Math.max(1,Math.round(bitmap.width*scale)), height=Math.max(1,Math.round(bitmap.height*scale));
+    const canvas=document.createElement('canvas'); canvas.width=width; canvas.height=height;
+    const ctx=canvas.getContext('2d',{alpha:false}); ctx.drawImage(bitmap,0,0,width,height); bitmap.close?.();
+    const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/jpeg',0.82));
+    canvas.width=canvas.height=1;
+    if(!blob) throw new Error('فشل تجهيز الصورة للرفع.');
+    return blob;
   }
   function initClient() {
     if (sb) return sb;
@@ -4673,19 +4794,98 @@
       renderAdminServicesList();renderPublicServices();showToast(next?'تم إظهار السعر في بطاقة الخدمة.':'تم إخفاء السعر من بطاقة الخدمة.');
     } catch(e){toastError(e);}
   }
-  const SERVICE_ICON_OPTIONS=[
+  const DEFAULT_SERVICE_ICON_OPTIONS=[
     ['fa-book-open','كتاب وبحث علمي'],['fa-laptop-code','برمجة وأنظمة'],['fa-display','عروض تقديمية'],['fa-chart-pie','تحليل إحصائي وبيانات'],
-    ['fa-language','ترجمة وتدقيق لغوي'],['fa-file-signature','تكليفات وتلخيص'],['fa-graduation-cap','قبعة تخرج أكاديمية'],['fa-compass-drafting','تصميم وهندسة']
+    ['fa-language','ترجمة وتدقيق لغوي'],['fa-file-signature','تكليفات وتلخيص'],['fa-graduation-cap','قبعة تخرج أكاديمية'],['fa-compass-drafting','تصميم وهندسة'],
+    ['fa-palette','تصميم جرافيك'],['fa-video','مونتاج وفيديو'],['fa-camera','تصوير'],['fa-file-pdf','ملفات PDF'],
+    ['fa-calculator','رياضيات وحسابات'],['fa-flask','علوم ومختبرات'],['fa-microscope','أبحاث علمية'],['fa-database','قواعد بيانات'],
+    ['fa-globe','مواقع إلكترونية'],['fa-mobile-screen-button','تطبيقات جوال'],['fa-pen-nib','كتابة وتحرير'],['fa-spell-check','تدقيق لغوي'],
+    ['fa-chart-line','تحليل أعمال'],['fa-diagram-project','مشاريع'],['fa-cubes','نمذجة ثلاثية الأبعاد'],['fa-file-powerpoint','PowerPoint']
   ];
-  function setServiceIcon(value){const input=$('srv-icon');if(input)input.value=value;const item=SERVICE_ICON_OPTIONS.find(x=>x[0]===value)||SERVICE_ICON_OPTIONS[0];if($('srv-icon-preview'))$('srv-icon-preview').innerHTML=`<i class="fas ${item[0]}"></i>`;if($('srv-icon-label'))$('srv-icon-label').textContent=item[1];}
+  let SERVICE_ICON_OPTIONS=DEFAULT_SERVICE_ICON_OPTIONS.map(x=>[...x]);
+  let serviceIconsLoaded=false;
+  const SERVICE_ICON_REGISTRY_KEY='service-icon-registry-v1';
+  async function loadServiceIconRegistry(){
+    try{
+      const {data,error}=await initClient().from('site_headings_config').select('id,heading_text').eq('heading_key',SERVICE_ICON_REGISTRY_KEY).maybeSingle();
+      if(error)throw error;
+      if(data?.heading_text){
+        const parsed=JSON.parse(data.heading_text);
+        if(Array.isArray(parsed)) SERVICE_ICON_OPTIONS=parsed.filter(x=>Array.isArray(x)&&/^fa-[a-z0-9-]+$/.test(String(x[0]))&&String(x[1]||'').trim()).map(x=>[String(x[0]),String(x[1])]);
+      }
+      if(!SERVICE_ICON_OPTIONS.length) SERVICE_ICON_OPTIONS=DEFAULT_SERVICE_ICON_OPTIONS.map(x=>[...x]);
+      serviceIconsLoaded=true;
+    }catch(e){console.warn('تعذر تحميل سجل الأيقونات:',e.message);if(!SERVICE_ICON_OPTIONS.length)SERVICE_ICON_OPTIONS=DEFAULT_SERVICE_ICON_OPTIONS.map(x=>[...x]);}
+    return SERVICE_ICON_OPTIONS;
+  }
+  async function persistServiceIconRegistry(){
+    if(!currentAdmin) throw new Error('يجب تسجيل الدخول كمشرف لإدارة الأيقونات.');
+    const client=initClient(), value=JSON.stringify(SERVICE_ICON_OPTIONS);
+    const {data,error}=await client.from('site_headings_config').select('id').eq('heading_key',SERVICE_ICON_REGISTRY_KEY).maybeSingle();
+    if(error)throw error;
+    const row={heading_key:SERVICE_ICON_REGISTRY_KEY,heading_text:value,font_size:16,updated_at:new Date().toISOString()};
+    const q=data?await client.from('site_headings_config').update(row).eq('id',data.id):await client.from('site_headings_config').insert(row);
+    if(q.error)throw q.error;
+  }
+  function setServiceIcon(value){
+    const input=$('srv-icon');if(input)input.value=value;
+    const item=SERVICE_ICON_OPTIONS.find(x=>x[0]===value)||SERVICE_ICON_OPTIONS[0];
+    if($('srv-icon-preview'))$('srv-icon-preview').innerHTML=`<i class="fas ${escapeHtml(item?.[0]||'fa-book-open')}"></i>`;
+    if($('srv-icon-label'))$('srv-icon-label').textContent=item?.[1]||'اختر أيقونة';
+  }
   window.setServiceIcon=setServiceIcon;
   window.renderAboutTextEditor=renderAboutTextEditor;
   window.saveAboutPageTexts=saveAboutPageTexts;
   window.loadAboutPageTextFields=loadAboutPageTextFields;
   window.toggleServicePriceVisibility=toggleServicePriceVisibility;
-  window.openServiceIconPicker=function(){const modal=$('service-icon-picker-modal'),grid=$('service-icon-options');if(!modal||!grid)return;const current=$('srv-icon')?.value||'fa-book-open';grid.innerHTML=SERVICE_ICON_OPTIONS.map(([icon,label])=>`<button type="button" onclick="chooseServiceIcon('${icon}')" class="rounded-xl border ${icon===current?'border-goldLight bg-gold24/15':'border-gold24/25 bg-[#06271e]'} p-2.5 flex flex-col items-center gap-1.5 text-ivory hover:border-goldLight hover:bg-gold24/10 transition"><span class="w-10 h-10 rounded-xl bg-[#0b3026] border border-gold24/30 flex items-center justify-center text-xl text-goldLight"><i class="fas ${icon}"></i></span><span class="text-[11px] font-bold">${label}</span></button>`).join('');modal.classList.remove('hidden');};
+  window.openServiceIconPicker=async function(){
+    await loadServiceIconRegistry();
+    const modal=$('service-icon-picker-modal'),grid=$('service-icon-options');if(!modal||!grid)return;
+    const current=$('srv-icon')?.value||'fa-book-open';
+    grid.innerHTML=SERVICE_ICON_OPTIONS.map(([icon,label])=>`<button type="button" onclick="chooseServiceIcon('${icon}')" class="rounded-xl border ${icon===current?'border-goldLight bg-gold24/15':'border-gold24/25 bg-[#06271e]'} p-2.5 flex flex-col items-center gap-1.5 text-ivory hover:border-goldLight hover:bg-gold24/10 transition"><span class="w-10 h-10 rounded-xl bg-[#0b3026] border border-gold24/30 flex items-center justify-center text-xl text-goldLight"><i class="fas ${icon}"></i></span><span class="text-[11px] font-bold">${escapeHtml(label)}</span></button>`).join('')+`<button type="button" onclick="openServiceIconManager()" class="rounded-xl border border-dashed border-goldLight/60 bg-gold24/10 p-2.5 flex flex-col items-center justify-center gap-2 text-goldLight"><i class="fas fa-sliders text-2xl"></i><span class="text-xs font-black">إدارة وإضافة الأيقونات</span></button>`;
+    modal.classList.remove('hidden');
+  };
   window.closeServiceIconPicker=function(){const modal=$('service-icon-picker-modal');if(modal)modal.classList.add('hidden');};
   window.chooseServiceIcon=function(icon){setServiceIcon(icon);closeServiceIconPicker();};
+  function renderServiceIconManager(){
+    const grid=$('service-icon-manager-grid');if(!grid)return;
+    $('service-icon-manager-count').textContent=`${SERVICE_ICON_OPTIONS.length} أيقونة`;
+    grid.innerHTML=SERVICE_ICON_OPTIONS.map(([icon,label])=>`<div class="rounded-2xl border border-gold24/25 bg-[#08291f] p-3 flex flex-col items-center gap-2 text-center"><span class="w-12 h-12 rounded-xl bg-[#0b3026] border border-gold24/35 flex items-center justify-center text-2xl text-goldLight"><i class="fas ${escapeHtml(icon)}"></i></span><strong class="text-xs text-ivory">${escapeHtml(label)}</strong><code class="text-[10px] text-champagne" dir="ltr">${escapeHtml(icon)}</code><div class="flex gap-2 w-full"><button type="button" onclick="editManagedServiceIcon('${icon}')" class="flex-1 rounded-lg bg-white/10 py-2 text-xs font-bold text-ivory"><i class="fas fa-pen ml-1"></i>تعديل</button><button type="button" onclick="deleteManagedServiceIcon('${icon}')" class="rounded-lg bg-red-500/15 px-3 py-2 text-xs text-red-300"><i class="fas fa-trash"></i></button></div></div>`).join('');
+  }
+  window.openServiceIconManager=async function(){
+    await loadServiceIconRegistry();closeServiceIconPicker();
+    $('service-icon-manager-form')?.reset();$('managed-icon-old').value='';
+    renderServiceIconManager();$('service-icon-manager-modal')?.classList.remove('hidden');
+  };
+  window.closeServiceIconManager=function(){$('service-icon-manager-modal')?.classList.add('hidden');};
+  window.editManagedServiceIcon=function(icon){
+    const item=SERVICE_ICON_OPTIONS.find(x=>x[0]===icon);if(!item)return;
+    $('managed-icon-old').value=item[0];$('managed-icon-class').value=item[0];$('managed-icon-label').value=item[1];
+    $('managed-icon-label').focus();
+  };
+  window.saveManagedServiceIcon=async function(e){
+    e.preventDefault();const old=$('managed-icon-old').value,icon=$('managed-icon-class').value.trim(),label=$('managed-icon-label').value.trim();
+    if(!/^fa-[a-z0-9-]+$/.test(icon))return showToast('اسم الأيقونة غير صحيح. استخدم صيغة مثل fa-palette.','fa-exclamation-circle');
+    if(!label)return showToast('اكتب اسماً واضحاً للأيقونة.');
+    if(SERVICE_ICON_OPTIONS.some(x=>x[0]===icon&&x[0]!==old))return showToast('هذه الأيقونة موجودة بالفعل.');
+    const previous=SERVICE_ICON_OPTIONS.map(x=>[...x]);let linkedServices=false;
+    try{
+      if(old){SERVICE_ICON_OPTIONS=SERVICE_ICON_OPTIONS.map(x=>x[0]===old?[icon,label]:x);if(old!==icon){const q=await initClient().from('services').update({icon}).eq('icon',old);if(q.error)throw q.error;linkedServices=true;}}
+      else SERVICE_ICON_OPTIONS.push([icon,label]);
+      await persistServiceIconRegistry();$('managed-icon-old').value='';$('service-icon-manager-form').reset();
+      renderServiceIconManager();await loadRemoteState(true);
+      if($('srv-icon')?.value===old)setServiceIcon(icon);
+      showToast(old?'تم تحديث الأيقونة وربطها بالخدمات المستخدمة.':'تمت إضافة الأيقونة بنجاح، وأصبحت متاحة في كل الخدمات والحاسبة.');
+    }catch(err){if(linkedServices&&old!==icon){try{await initClient().from('services').update({icon:old}).eq('icon',icon);}catch(rollbackError){console.error('Icon reference rollback failed:',rollbackError);}}SERVICE_ICON_OPTIONS=previous;toastError(err);}
+  };
+  window.deleteManagedServiceIcon=async function(icon){
+    const inUse=appState.services.filter(x=>x.icon===icon);
+    if(inUse.length)return showToast(`لا يمكن حذف الأيقونة؛ تستخدمها ${inUse.length} خدمة. عدّل الخدمات أولاً أو غيّر أيقونتها.`,'fa-exclamation-circle');
+    if(SERVICE_ICON_OPTIONS.length<=1)return showToast('يجب الإبقاء على أيقونة واحدة على الأقل.');
+    const previous=SERVICE_ICON_OPTIONS.map(x=>[...x]);
+    try{SERVICE_ICON_OPTIONS=SERVICE_ICON_OPTIONS.filter(x=>x[0]!==icon);await persistServiceIconRegistry();renderServiceIconManager();if($('srv-icon')?.value===icon)setServiceIcon(SERVICE_ICON_OPTIONS[0][0]);showToast('تم حذف الأيقونة من المكتبة.');}
+    catch(err){SERVICE_ICON_OPTIONS=previous;toastError(err);}
+  };
 
   const FOOTER_TEXT_KEYS = ['text_31','text_32','text_33','text_35','text_37','text_38','text_39','text_40','text_41','text_42','text_43','text_44','text_45','text_46','text_47'];
   function renderFooterTextEditor(){
@@ -4752,6 +4952,7 @@
     ]);
     for (const q of [sv,of,pf,st]) if (q.error) throw q.error;
     appState.services = (sv.data || []).map(fromService);
+    await loadServiceIconRegistry();
     appState.offers = (of.data || []).map(fromOffer);
     appState.portfolio = (pf.data || []).map(fromPortfolio);
     mapSettings((st.data || [])[0]);
@@ -4814,31 +5015,44 @@
         select.innerHTML = '<option value="image">صورة</option><option value="video">فيديو</option><option value="pdf">PDF</option>';
         host.appendChild(select);
       }
-      select.addEventListener('change', () => { input.value=''; setPending(target,null); previewMedia(target,null); });
+      select.onchange = () => { input.value=''; setPending(target,null); previewMedia(target,null); const progress=$(target+'-upload-progress'); if(progress)progress.classList.add('hidden'); };
       let note = $(prefix + '-media-note');
-      if (!note) { note = document.createElement('p'); note.id=prefix+'-media-note'; note.className='text-[10px] text-champagne/70 mt-2'; note.textContent='الحد الأقصى 100 MiB. الصور عامة، والفيديو وPDF في مخزن خاص.'; host.appendChild(note); }
+      if (!note) { note = document.createElement('p'); note.id=prefix+'-media-note'; note.className='text-[10px] text-champagne/70 mt-2'; note.textContent='الحد الأقصى للملف الواحد 500 MiB. يتم الرفع المجزأ مع متابعة النسبة ومحاولة الاستكمال عند انقطاع الاتصال. الصور عامة، والفيديو وPDF في مخزن خاص.'; host.appendChild(note); }
       input.onchange = () => { if (input.files && input.files[0]) processUploadedFile(input.files[0], target); };
+      ensureUploadProgress(target);
     });
+    ensureUploadProgress('logo');
   }
   window.processUploadedFile = function(file, target) {
+    if (file.size > MAX_MEDIA_BYTES) return showToast('حجم الملف يتجاوز الحد الأقصى المسموح (500 MiB).', 'fa-exclamation-circle');
     if (target === 'logo') {
       if (!currentAdmin) return showToast('يجب تسجيل الدخول لتغيير شعار المنصة.','fa-lock');
-      if (!ALLOWED.image.includes(file.type) || file.size > MAX_MEDIA_BYTES) return showToast('صيغة أو حجم صورة الشعار غير صالح.','fa-exclamation-circle');
-      return compressAndReadImage(file,320,async dataUrl=>{try{const blob=dataUrlBlob(dataUrl),path='brand/logo-'+Date.now()+'-'+crypto.randomUUID()+'.jpg';const up=await initClient().storage.from('masar-media').upload(path,blob,{contentType:blob.type||'image/jpeg',upsert:false});if(up.error)throw up.error;const pub=initClient().storage.from('masar-media').getPublicUrl(path);const q=platformSettingsId?await initClient().from('platform_settings').update({custom_logo_url:pub.data.publicUrl}).eq('id',platformSettingsId):await initClient().from('platform_settings').update({custom_logo_url:pub.data.publicUrl}).eq('id',1);if(q.error)throw q.error;appState.brand.customLogoDataUrl=pub.data.publicUrl;renderBrandIdentity();showToast('تم رفع الشعار وحفظ رابطه في Supabase.');}catch(e){toastError(e);}});
+      if (!ALLOWED.image.includes(file.type)) return showToast('صيغة صورة الشعار غير مدعومة.','fa-exclamation-circle');
+      setUploadProgress('logo',{status:'preparing',total:file.size,loaded:0,count:1,done:0});
+      (async()=>{try{
+        const blob=await compressImageToBlob(file,320), path='brand/logo-'+Date.now()+'-'+crypto.randomUUID()+'.jpg';
+        const started=Date.now(); setUploadProgress('logo',{status:'uploading',total:blob.size,loaded:0,count:1,done:0});
+        await uploadTus('masar-media',path,blob,blob.type||'image/jpeg',(loaded,total)=>{const elapsed=Math.max(.5,(Date.now()-started)/1000),speed=loaded/elapsed;setUploadProgress('logo',{status:'uploading',loaded,total,percent:total?loaded/total*100:0,speed,eta:speed?(total-loaded)/speed:0,count:1,done:0});});
+        const pub=initClient().storage.from('masar-media').getPublicUrl(path);
+        const q=platformSettingsId?await initClient().from('platform_settings').update({custom_logo_url:pub.data.publicUrl}).eq('id',platformSettingsId):await initClient().from('platform_settings').update({custom_logo_url:pub.data.publicUrl}).eq('id',1);
+        if(q.error)throw q.error; appState.brand.customLogoDataUrl=pub.data.publicUrl; renderBrandIdentity();
+        setUploadProgress('logo',{status:'success',percent:100,loaded:blob.size,total:blob.size,count:1,done:1}); showToast('تم رفع الشعار وحفظ رابطه في Supabase.');
+      }catch(e){setUploadProgress('logo',{status:'error',message:'فشل رفع الشعار: '+(e.message||'خطأ غير معروف'),count:1});toastError(e);}})();
+      return;
     }
     const kind = $(target === 'offer' ? 'offer-media-type' : 'port-media-type')?.value || 'image';
     const allowed = ALLOWED[kind] || [];
     if (!allowed.includes(file.type)) { showToast('نوع الملف لا يطابق النوع المحدد. الصيغ المسموحة: JPG/PNG/WEBP/GIF أو MP4/WEBM أو PDF.', 'fa-exclamation-circle'); return; }
-    if (file.size > MAX_MEDIA_BYTES) { showToast('حجم الملف يتجاوز الحد الأقصى المسموح (100 MiB).', 'fa-exclamation-circle'); return; }
+    setUploadProgress(target,{status:kind==='image'?'preparing':'ready',total:file.size,loaded:0,count:1,done:0});
     if (kind === 'image') {
-      compressAndReadImage(file, 1100, dataUrl => {
-        const blob = dataUrlBlob(dataUrl);
-        const item = { type:'image', mime:blob.type || 'image/jpeg', name:file.name, size:blob.size, dataUrl, blob };
-        setPending(target,item); previewMedia(target,item); showToast('تم تجهيز الصورة للرفع إلى التخزين.');
-      });
+      (async()=>{try{
+        const blob=await compressImageToBlob(file,1100), previewUrl=URL.createObjectURL(blob);
+        const item={type:'image',mime:blob.type||'image/jpeg',name:file.name,size:blob.size,blob,previewUrl};
+        setPending(target,item); previewMedia(target,item); setUploadProgress(target,{status:'ready',total:blob.size,loaded:0,count:1,done:0,message:`تم تجهيز الصورة (${formatBytes(blob.size)}). اضغط حفظ لبدء الرفع.`}); showToast('تم تجهيز الصورة للرفع إلى التخزين.');
+      }catch(e){setUploadProgress(target,{status:'error',message:e.message,count:1});toastError(e);}})();
     } else {
       const item = { type:kind, mime:file.type, name:file.name, size:file.size, file, previewUrl:URL.createObjectURL(file) };
-      setPending(target,item); previewMedia(target,item); showToast(kind === 'video' ? 'تم اختيار الفيديو.' : 'تم اختيار ملف PDF.');
+      setPending(target,item); previewMedia(target,item); setUploadProgress(target,{status:'ready',total:file.size,loaded:0,count:1,done:0,message:`الملف جاهز (${formatBytes(file.size)}). اضغط حفظ لبدء الرفع.`}); showToast(kind === 'video' ? 'تم اختيار الفيديو.' : 'تم اختيار ملف PDF.');
     }
   };
   window.handleDeviceImageSelect = function(input,target) { if (input.files?.[0]) processUploadedFile(input.files[0],target); };
@@ -4848,10 +5062,18 @@
     const section = target === 'offer' ? 'offers' : 'portfolio';
     const bucket = item.type === 'image' ? 'masar-media' : 'masar-private-media';
     const ext = item.type === 'pdf' ? 'pdf' : item.type === 'video' ? (item.mime === 'video/webm' ? 'webm' : 'mp4') : 'jpg';
-    const path = `${section}/${recordId}/${Date.now()}-${crypto.randomUUID()}.${ext}`;
-    const body = item.blob || item.file;
-    const { error } = await initClient().storage.from(bucket).upload(path, body, { contentType:item.mime, upsert:false, cacheControl:'3600' });
-    if (error) throw error;
+    const path = item.storagePath || `${section}/${recordId}/${Date.now()}-${crypto.randomUUID()}.${ext}`;
+    item.storagePath = path; // Keep the same object path so a failed TUS upload can resume on the next save attempt.
+    const body = item.blob || item.file, total=body.size || item.size || 0, started=Date.now();
+    setUploadProgress(target,{status:'uploading',loaded:0,total,count:1,done:0});
+    activeUploadTasks++;
+    try {
+      await uploadTus(bucket,path,body,item.mime,(loaded,all)=>{
+        const elapsed=Math.max(.5,(Date.now()-started)/1000),speed=loaded/elapsed;
+        setUploadProgress(target,{status:'uploading',loaded,total:all||total,percent:all?loaded/all*100:0,speed,eta:speed?((all||total)-loaded)/speed:0,count:1,done:0});
+      });
+      setUploadProgress(target,{status:'success',percent:100,loaded:total,total,count:1,done:1});
+    } finally { activeUploadTasks=Math.max(0,activeUploadTasks-1); }
     if (item.type === 'image') {
       const { data } = initClient().storage.from(bucket).getPublicUrl(path);
       return { media_type:'image', media_url:data.publicUrl, media_path:path, media_name:item.name, media_mime_type:item.mime, media_size:item.size, image_url:data.publicUrl, _bucket:bucket };
@@ -4915,8 +5137,10 @@
   }
   async function saveMediaRecord(target, e) {
     e.preventDefault(); if(!currentAdmin) return showToast('سجّل الدخول أولاً.','fa-lock');
-    const isOffer=target==='offer', idInput=$(isOffer?'offer-edit-id':'port-edit-id');
-    const id=idInput?.value || '';
+    const isOffer=target==='offer';
+    let idInput=$(isOffer?'offer-edit-id':'port-edit-id');
+    if(!idInput){idInput=document.createElement('input');idInput.type='hidden';idInput.id='port-edit-id';$('admin-portfolio-form').appendChild(idInput);}
+    const id=idInput.value || '';
     const item=mediaFor(target);
     try {
       if(isOffer){
@@ -4925,19 +5149,19 @@
         if(id){const got=await initClient().from('offers').select('*').eq('id',id).single();if(got.error)throw got.error;old=got.data;}
         let record;
         if(id){const q=await initClient().from('offers').update(base).eq('id',id).select().single();if(q.error)throw q.error;record=q.data;}
-        else {const q=await initClient().from('offers').insert({...base,is_featured:appState.offers.length===0,media_type:'image'}).select().single();if(q.error)throw q.error;record=q.data;}
+        else {const q=await initClient().from('offers').insert({...base,is_featured:appState.offers.length===0,media_type:'image'}).select().single();if(q.error)throw q.error;record=q.data;if(idInput)idInput.value=record.id;}
         if(item){const uploaded=await uploadMedia(target,record.id,item);const {_bucket, ...dbMedia}=uploaded;const q=await initClient().from('offers').update(dbMedia).eq('id',record.id).select().single();if(q.error){await initClient().storage.from(uploaded._bucket).remove([uploaded.media_path]);throw q.error;}if(old)await removeOldMedia(old,'offers');}
         pendingOfferMedia=null; resetOfferForm();
       } else {
         const base={title:$('port-title').value.trim(),category:$('port-category').value,grade:$('port-grade').value.trim()||'امتياز A+',description:$('port-desc').value.trim(),is_published:true};
         let record,old=null;
         if(id){const got=await initClient().from('portfolio_items').select('*').eq('id',id).single();if(got.error)throw got.error;old=got.data;const q=await initClient().from('portfolio_items').update(base).eq('id',id).select().single();if(q.error)throw q.error;record=q.data;}
-        else {const q=await initClient().from('portfolio_items').insert({...base,media_type:'image'}).select().single();if(q.error)throw q.error;record=q.data;}
+        else {const q=await initClient().from('portfolio_items').insert({...base,media_type:'image'}).select().single();if(q.error)throw q.error;record=q.data;if(idInput)idInput.value=record.id;}
         if(item){const uploaded=await uploadMedia(target,record.id,item);const {_bucket, ...dbMedia}=uploaded;const q=await initClient().from('portfolio_items').update(dbMedia).eq('id',record.id).select().single();if(q.error){await initClient().storage.from(uploaded._bucket).remove([uploaded.media_path]);throw q.error;}if(old)await removeOldMedia(old,'portfolio_items');}
         pendingPortfolioMedia=null; $('admin-portfolio-form').reset(); if($('port-edit-id'))$('port-edit-id').value=''; previewMedia('portfolio',null);
       }
       await loadRemoteState(true); showToast('تم حفظ البيانات والوسائط في Supabase بنجاح.');
-    } catch(err){toastError(err);}
+    } catch(err){if(item)setUploadProgress(target,{status:'error',message:'فشل الرفع أو الحفظ: '+(err.message||'خطأ غير معروف')+' — يمكنك الضغط على حفظ للمحاولة مرة أخرى.',count:1});toastError(err);}
   }
   async function deleteRemote(table,id) {
     try { const got=await initClient().from(table).select('*').eq('id',id).maybeSingle(); if(got.error)throw got.error; const q=await initClient().from(table).delete().eq('id',id);if(q.error)throw q.error;if(got.data)await removeOldMedia(got.data,table);await loadRemoteState(true);showToast('تم الحذف من قاعدة البيانات والتخزين إن وُجد الملف.'); } catch(err){toastError(err);}
@@ -4990,7 +5214,7 @@
       for(const x of localData.portfolio){if(existingTitles.has(x.title))continue;const q=await client.from('portfolio_items').insert({title:x.title,category:x.category||'عام',grade:x.grade||null,description:x.description||'',is_published:true,media_type:'image'}).select('id').single();if(q.error)throw q.error;const data=x.imageUrl||'';if(data.startsWith('data:image/')&&!data.startsWith('data:image/svg+xml')){const blob=dataUrlBlob(data),item={type:'image',mime:blob.type,name:'migrated-image.jpg',size:blob.size,blob};const uploaded=await uploadMedia('portfolio',q.data.id,item);const {_bucket,...dbMedia}=uploaded;const u=await client.from('portfolio_items').update(dbMedia).eq('id',q.data.id);if(u.error)throw u.error;}existingTitles.add(x.title);}
     }
     const settings=await client.from('platform_settings').select('id').limit(1);if(settings.error)throw settings.error;
-    if(!(settings.data||[]).length){const b=localData.brand||{},o=localData.offersSection||{},t=localData.heroTrust||{};let logo=(b.customLogoDataUrl||'').startsWith('http')?b.customLogoDataUrl:null;const row={platform_name:b.platformName||DEFAULT_STATE.brand.platformName,platform_sub:b.platformSub||null,hero_title:b.heroTitle||null,hero_desc:b.heroDesc||null,whatsapp_number:b.whatsappNumber||null,custom_logo_url:logo,countdown_target:localData.countdownTarget||null,show_countdown:localData.showCountdown!==false,offers_section_meta:o,hero_trust_meta:t};const q=await client.from('platform_settings').insert({id:1,...row}).select('id').single();if(q.error)throw q.error;platformSettingsId=q.data.id;if((b.customLogoDataUrl||'').startsWith('data:image/')){const blob=dataUrlBlob(b.customLogoDataUrl),path='brand/logo-'+Date.now()+'.jpg';const up=await client.storage.from('masar-media').upload(path,blob,{contentType:blob.type||'image/jpeg',upsert:false});if(up.error)throw up.error;const pub=client.storage.from('masar-media').getPublicUrl(path);const upd=await client.from('platform_settings').update({custom_logo_url:pub.data.publicUrl}).eq('id',platformSettingsId);if(upd.error)throw upd.error;}}
+    if(!(settings.data||[]).length){const b=localData.brand||{},o=localData.offersSection||{},t=localData.heroTrust||{};let logo=(b.customLogoDataUrl||'').startsWith('http')?b.customLogoDataUrl:null;const row={platform_name:b.platformName||DEFAULT_STATE.brand.platformName,platform_sub:b.platformSub||null,hero_title:b.heroTitle||null,hero_desc:b.heroDesc||null,whatsapp_number:b.whatsappNumber||null,custom_logo_url:logo,countdown_target:localData.countdownTarget||null,show_countdown:localData.showCountdown!==false,offers_section_meta:o,hero_trust_meta:t};const q=await client.from('platform_settings').insert({id:1,...row}).select('id').single();if(q.error)throw q.error;platformSettingsId=q.data.id;if((b.customLogoDataUrl||'').startsWith('data:image/')){const blob=dataUrlBlob(b.customLogoDataUrl),path='brand/logo-'+Date.now()+'.jpg';await uploadTus('masar-media',path,blob,blob.type||'image/jpeg');const pub=client.storage.from('masar-media').getPublicUrl(path);const upd=await client.from('platform_settings').update({custom_logo_url:pub.data.publicUrl}).eq('id',platformSettingsId);if(upd.error)throw upd.error;}}
     // Migrate heading overrides without deleting the original local copy.
     let headings={};try{headings=JSON.parse(localStorage.getItem(HEADING_EDITOR_STORAGE_KEY)||'{}')||{};}catch(_){}
     for(const [key,v] of Object.entries(headings)){const found=await client.from('site_headings_config').select('id').eq('heading_key',key).maybeSingle();if(found.error)throw found.error;const row={heading_key:key,heading_text:v.text||null,font_size:v.size?Number(v.size):null,updated_at:new Date().toISOString()};if(!found.data){const q=await client.from('site_headings_config').insert(row);if(q.error)throw q.error;}}
