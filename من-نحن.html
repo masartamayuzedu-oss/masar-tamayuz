@@ -1,22 +1,19 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="scroll-smooth">
+
+<html class="scroll-smooth" dir="rtl" lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>من نحن | مسار التميز للخدمات الطلابية</title>
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- FontAwesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- Google Fonts: Alexandria, Cairo & Amiri -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@600;700;800;900&family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-
-    <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title data-about-text-key="text_48">من نحن | مسار التميز للخدمات الطلابية</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- FontAwesome 6 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<!-- Google Fonts: Alexandria, Cairo & Amiri -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@600;700;800;900&amp;family=Amiri:ital,wght@0,400;0,700;1,400&amp;family=Cairo:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -39,8 +36,7 @@
             }
         }
     </script>
-
-    <style>
+<style>
         /* =====================================================================
            الهوية الملكية الفاخرة: الزمرد الداكن والذهب عيار 24 (مطابقة لـ index)
         ===================================================================== */
@@ -569,243 +565,217 @@
     </style>
 </head>
 <body class="royal-lattice-bg selection:bg-gold24 selection:text-obsidian">
-
-    <!-- =====================================================================
+<!-- =====================================================================
          1. الشريط العلوي الملكي (مطابق تماماً لـ index: الشعار + الاسم + زر الثلاثة خطوط)
     ===================================================================== -->
-    <header class="sticky top-0 z-50 bg-[#021a14]/95 backdrop-blur-xl border-b border-gold24/25 shadow-lg shadow-black/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
-            <!-- الشعار واسم المنصة -->
-            <a href="index.html" class="flex items-center gap-3 min-w-0 group">
-                <div id="navbar-logo-wrapper" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full p-0.5 gold-24k-bg shadow-lg shadow-gold24/20 flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
-                    <div id="navbar-logo-inner" class="w-full h-full rounded-full bg-obsidian flex items-center justify-center overflow-hidden"></div>
-                </div>
-                <div class="min-w-0">
-                    <span id="navbar-platform-name" class="block font-black text-sm sm:text-lg md:text-xl gold-24k-text truncate">مسار التميز للخدمات الطلابية</span>
-                    <span id="navbar-platform-sub" class="hidden">البوابة الأكاديمية الملكية للنخبة</span>
-                </div>
-            </a>
-
-            <!-- زر القائمة الثلاثية -->
-            <button id="mobile-nav-btn" aria-label="فتح القائمة" aria-expanded="false"
-                class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl border border-gold24/40 bg-emeraldDeep/90 hover:bg-emeraldVelvet text-goldLight flex items-center justify-center text-xl cursor-pointer transition shadow-md shadow-black/10">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-
-        <!-- القائمة المنسدلة لجميع روابط الموقع -->
-        <div id="mobile-nav-drawer" class="hidden bg-[#021d16]/98 border-t border-gold24/20 px-6 py-5 space-y-3.5 shadow-xl">
-            <a href="index.html#hero" onclick="closeMobileNav()" class="block text-ivory hover:text-goldLight font-bold py-1.5">الرئيسية</a>
-            <a href="من-نحن.html" onclick="closeMobileNav()" class="block text-goldLight font-bold py-1.5">من نحن</a>
-            <a href="index.html#offers" onclick="closeMobileNav()" class="block text-ivory hover:text-goldLight font-bold py-1.5">العروض الحصرية</a>
-            <a href="index.html#services" onclick="closeMobileNav()" class="block text-ivory hover:text-goldLight font-bold py-1.5">خدماتنا المرقّمة</a>
-            <a href="index.html#calculator" onclick="closeMobileNav()" class="block text-ivory hover:text-goldLight font-bold py-1.5">حاسبة الخصم والطلب</a>
-            <a href="index.html#portfolio" onclick="closeMobileNav()" class="block text-ivory hover:text-goldLight font-bold py-1.5">معرض الأعمال</a>
-            <div class="pt-3 border-t border-gold24/15 flex flex-wrap gap-3">
-                <a href="index.html#calculator" onclick="closeMobileNav()" class="flex-1 text-center gold-24k-bg font-black py-3 px-4 rounded-xl text-sm">اطلب خدمتك الآن</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- =====================================================================
+<header class="sticky top-0 z-50 bg-[#021a14]/95 backdrop-blur-xl border-b border-gold24/25 shadow-lg shadow-black/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
+<!-- الشعار واسم المنصة -->
+<a class="flex items-center gap-3 min-w-0 group" href="index.html">
+<div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full p-0.5 gold-24k-bg shadow-lg shadow-gold24/20 flex-shrink-0 transition-transform duration-300 group-hover:scale-105" id="navbar-logo-wrapper">
+<div class="w-full h-full rounded-full bg-obsidian flex items-center justify-center overflow-hidden" id="navbar-logo-inner"></div>
+</div>
+<div class="min-w-0">
+<span class="block font-black text-sm sm:text-lg md:text-xl gold-24k-text truncate" data-about-text-key="text_22" id="navbar-platform-name">مسار التميز للخدمات الطلابية</span>
+<span class="hidden" data-about-text-key="text_23" id="navbar-platform-sub">البوابة الأكاديمية الملكية للنخبة</span>
+</div>
+</a>
+<!-- زر القائمة الثلاثية -->
+<button aria-expanded="false" aria-label="فتح القائمة" class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl border border-gold24/40 bg-emeraldDeep/90 hover:bg-emeraldVelvet text-goldLight flex items-center justify-center text-xl cursor-pointer transition shadow-md shadow-black/10" id="mobile-nav-btn">
+<i class="fas fa-bars"></i>
+</button>
+</div>
+<!-- القائمة المنسدلة لجميع روابط الموقع -->
+<div class="hidden bg-[#021d16]/98 border-t border-gold24/20 px-6 py-5 space-y-3.5 shadow-xl" id="mobile-nav-drawer">
+<a class="block text-ivory hover:text-goldLight font-bold py-1.5" data-about-text-key="text_24" href="index.html#hero" onclick="closeMobileNav()">الرئيسية</a>
+<a class="block text-goldLight font-bold py-1.5" data-about-text-key="text_25" href="من-نحن.html" onclick="closeMobileNav()">تعرف علينا</a>
+<a class="block text-ivory hover:text-goldLight font-bold py-1.5" data-about-text-key="text_26" href="index.html#offers" onclick="closeMobileNav()">العروض الحصرية</a>
+<a class="block text-ivory hover:text-goldLight font-bold py-1.5" data-about-text-key="text_27" href="index.html#services" onclick="closeMobileNav()">خدماتنا المرقّمة</a>
+<a class="block text-ivory hover:text-goldLight font-bold py-1.5" data-about-text-key="text_28" href="index.html#calculator" onclick="closeMobileNav()">حاسبة الخصم والطلب</a>
+<a class="block text-ivory hover:text-goldLight font-bold py-1.5" data-about-text-key="text_29" href="index.html#portfolio" onclick="closeMobileNav()">معرض الأعمال</a>
+<div class="pt-3 border-t border-gold24/15 flex flex-wrap gap-3">
+<a class="flex-1 text-center gold-24k-bg font-black py-3 px-4 rounded-xl text-sm" data-about-text-key="text_30" href="index.html#calculator" onclick="closeMobileNav()">اطلب خدمتك الآن</a>
+</div>
+</div>
+</header>
+<!-- =====================================================================
          2. المحتوى الرئيسي لصفحة (من نحن) بنفس الألوان والهوية الملكية
     ===================================================================== -->
-    <main class="about-luxury-surface py-10 sm:py-16 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto space-y-6">
-
-            <!-- الترويسة التعريفية -->
-            <section class="text-center pt-2 pb-4">
-                <div class="about-kicker inline-flex items-center justify-center gap-2.5 px-5 py-2 rounded-full text-xs sm:text-sm font-extrabold mb-4">
-                    <i class="fas fa-award text-[#e3c15d]"></i>
-                    <span>هويتنا وطموحنا</span>
-                </div>
-                <h1 class="about-display-title">تعرّف علينا وعلى تميزنا</h1>
-                <div class="about-ornate-divider" aria-hidden="true">
-                    <div class="about-line-fill"></div>
-                    <span class="about-line-gem"></span>
-                </div>
-                <p class="text-[#354d44] font-semibold text-sm sm:text-lg max-w-2xl mx-auto mt-5 leading-relaxed">
+<main class="about-luxury-surface py-10 sm:py-16 px-4 sm:px-6 lg:px-8">
+<div class="max-w-4xl mx-auto space-y-6">
+<!-- الترويسة التعريفية -->
+<section class="text-center pt-2 pb-4">
+<div class="about-kicker inline-flex items-center justify-center gap-2.5 px-5 py-2 rounded-full text-xs sm:text-sm font-extrabold mb-4">
+<i class="fas fa-award text-[#e3c15d]"></i>
+<span data-about-text-key="text_01">هويتنا وطموحنا</span>
+</div>
+<h1 class="about-display-title" data-about-text-key="text_02">تعرّف علينا وعلى تميزنا</h1>
+<div aria-hidden="true" class="about-ornate-divider">
+<div class="about-line-fill"></div>
+<span class="about-line-gem"></span>
+</div>
+<p class="text-[#354d44] font-semibold text-sm sm:text-lg max-w-2xl mx-auto mt-5 leading-relaxed" data-about-text-key="text_03">
                     تعرّف على رؤيتنا ورسالتنا والقيم التي نعمل وفقها لتقديم تجربة موثوقة ودعم احترافي للطلاب والباحثين.
                 </p>
-            </section>
-
-            <!-- بطاقة: من نحن -->
-            <section class="royal-ivory-card royal-reveal">
-                <h2 class="royal-card-heading">
-                    <span class="royal-card-icon"><i class="fa-solid fa-building-columns"></i></span>
-                    <span>من نحن؟</span>
-                </h2>
-                <p class="text-base sm:text-lg font-black text-[#1d4a38] mb-3">
+</section>
+<!-- بطاقة: من نحن -->
+<section class="royal-ivory-card royal-reveal">
+<h2 class="royal-card-heading">
+<span class="royal-card-icon"><i class="fa-solid fa-building-columns"></i></span>
+<span data-about-text-key="text_04">من نحن؟</span>
+</h2>
+<p class="text-base sm:text-lg font-black text-[#1d4a38] mb-3" data-about-text-key="text_05">
                     شريكك الموثوق في الرحلة الأكاديمية والبحثية
                 </p>
-                <div class="space-y-3 text-sm sm:text-base text-[#2f483e] font-semibold leading-relaxed">
-                    <p>
+<div class="space-y-3 text-sm sm:text-base text-[#2f483e] font-semibold leading-relaxed">
+<p data-about-text-key="text_06">
                         مَسَارُ التَّمَيُّزِ هي منصة متخصصة في تقديم الخدمات الطلابية والأكاديمية، ودعم طلاب الجامعات والدراسات العليا، إلى جانب الحلول التقنية والإبداعية، باحترافية وجودة عالية.
                     </p>
-                    <p>
+<p data-about-text-key="text_07">
                         نسعى إلى مساعدة المستفيد على إنجاز ما يحتاجه بسهولة، وتوفير وقته وجهده، من خلال تجربة منظمة تجمع بين الجودة والدقة والسرعة والاهتمام باحتياجه.
                     </p>
-                    <p>
+<p data-about-text-key="text_08">
                         نؤمن بأن الإنجاز الحقيقي لا يعتمد على تقديم الخدمة فحسب، بل على جودة التجربة، ودقة التنفيذ، والثقة التي نبنيها مع كل مستفيد.
                     </p>
-                </div>
-            </section>
-
-            <!-- رؤيتنا ورسالتنا -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <section class="royal-ivory-card royal-reveal">
-                    <h2 class="royal-card-heading">
-                        <span class="royal-card-icon"><i class="fa-solid fa-eye"></i></span>
-                        <span>رؤيتنا</span>
-                    </h2>
-                    <p class="text-sm sm:text-base text-[#2f483e] font-semibold leading-relaxed">
+</div>
+</section>
+<!-- رؤيتنا ورسالتنا -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<section class="royal-ivory-card royal-reveal">
+<h2 class="royal-card-heading">
+<span class="royal-card-icon"><i class="fa-solid fa-eye"></i></span>
+<span data-about-text-key="text_09">رؤيتنا</span>
+</h2>
+<p class="text-sm sm:text-base text-[#2f483e] font-semibold leading-relaxed" data-about-text-key="text_10">
                         أن نكون الخيار الموثوق للطلاب والباحثين في الحصول على خدمات وحلول احترافية، تجمع بين الجودة وسهولة الوصول والاهتمام الحقيقي باحتياجات المستفيد.
                     </p>
-                </section>
-
-                <section class="royal-ivory-card royal-reveal">
-                    <h2 class="royal-card-heading">
-                        <span class="royal-card-icon"><i class="fa-solid fa-bullseye"></i></span>
-                        <span>رسالتنا</span>
-                    </h2>
-                    <p class="text-sm sm:text-base text-[#2f483e] font-semibold leading-relaxed">
+</section>
+<section class="royal-ivory-card royal-reveal">
+<h2 class="royal-card-heading">
+<span class="royal-card-icon"><i class="fa-solid fa-bullseye"></i></span>
+<span data-about-text-key="text_11">رسالتنا</span>
+</h2>
+<p class="text-sm sm:text-base text-[#2f483e] font-semibold leading-relaxed" data-about-text-key="text_12">
                         تمكين المستفيد من الوصول إلى خدمات موثوقة وحلول متقنة، من خلال تجربة تجمع بين الجودة والسرعة والاحترافية، وتضع احتياجه في مقدمة أولوياتنا.
                     </p>
-                </section>
-            </div>
-
-            <!-- قيمنا الأساسية (بحركة تفاعلية وبريق ذهبي) -->
-            <section class="royal-ivory-card royal-reveal">
-                <div class="flex items-center justify-between gap-2 mb-3">
-                    <h2 class="royal-card-heading !mb-0">
-                        <span class="royal-card-icon"><i class="fa-solid fa-gem"></i></span>
-                        <span>قيمنا الأساسية</span>
-                    </h2>
-                    <span class="text-[11px] font-extrabold text-[#8a681b] bg-[#f7f0d9] border border-[#d4af37]/45 px-3 py-1 rounded-full">
+</section>
+</div>
+<!-- قيمنا الأساسية (بحركة تفاعلية وبريق ذهبي) -->
+<section class="royal-ivory-card royal-reveal">
+<div class="flex items-center justify-between gap-2 mb-3">
+<h2 class="royal-card-heading !mb-0">
+<span class="royal-card-icon"><i class="fa-solid fa-gem"></i></span>
+<span data-about-text-key="text_13">قيمنا الأساسية</span>
+</h2>
+<span class="text-[11px] font-extrabold text-[#8a681b] bg-[#f7f0d9] border border-[#d4af37]/45 px-3 py-1 rounded-full" data-about-text-key="text_14">
                         ركائز التميز
                     </span>
-                </div>
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5 pt-2">
-                    <div class="royal-value-pill">
-                        <i class="fas fa-award text-[#fcf6ba] block text-xl mb-1.5"></i>
-                        <span>الجودة</span>
-                    </div>
-                    <div class="royal-value-pill">
-                        <i class="fas fa-handshake-angle text-[#fcf6ba] block text-xl mb-1.5"></i>
-                        <span>الثقة</span>
-                    </div>
-                    <div class="royal-value-pill">
-                        <i class="fas fa-shield-halved text-[#fcf6ba] block text-xl mb-1.5"></i>
-                        <span>الموثوقية</span>
-                    </div>
-                    <div class="royal-value-pill">
-                        <i class="fas fa-lightbulb text-[#fcf6ba] block text-xl mb-1.5"></i>
-                        <span>الابتكار</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- البطاقة الختامية الزمردية والذهبية (بحركة وهالة ضوئية فخمة) -->
-            <section class="royal-closing-banner royal-reveal space-y-3">
-                <div class="royal-banner-orb-1" aria-hidden="true"></div>
-                <div class="royal-banner-orb-2" aria-hidden="true"></div>
-
-                <p class="text-base sm:text-xl font-black text-goldLight leading-relaxed relative z-10">
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5 pt-2">
+<div class="royal-value-pill">
+<i class="fas fa-award text-[#fcf6ba] block text-xl mb-1.5"></i>
+<span data-about-text-key="text_15">الجودة</span>
+</div>
+<div class="royal-value-pill">
+<i class="fas fa-handshake-angle text-[#fcf6ba] block text-xl mb-1.5"></i>
+<span data-about-text-key="text_16">الثقة</span>
+</div>
+<div class="royal-value-pill">
+<i class="fas fa-shield-halved text-[#fcf6ba] block text-xl mb-1.5"></i>
+<span data-about-text-key="text_17">الموثوقية</span>
+</div>
+<div class="royal-value-pill">
+<i class="fas fa-lightbulb text-[#fcf6ba] block text-xl mb-1.5"></i>
+<span data-about-text-key="text_18">الابتكار</span>
+</div>
+</div>
+</section>
+<!-- البطاقة الختامية الزمردية والذهبية (بحركة وهالة ضوئية فخمة) -->
+<section class="royal-closing-banner royal-reveal space-y-3">
+<div aria-hidden="true" class="royal-banner-orb-1"></div>
+<div aria-hidden="true" class="royal-banner-orb-2"></div>
+<p class="text-base sm:text-xl font-black text-goldLight leading-relaxed relative z-10" data-about-text-key="text_19">
                     نؤمن أن كل طلب وراءه هدف، وكل هدف يستحق أن يُنجز بإتقان.
                 </p>
-                <p class="text-xs sm:text-sm text-champagne font-bold relative z-10">
-                    مَسَارُ التَّمَيُّزِ — نحو تجربة أكثر احترافية، وإنجاز أكثر سهولة.
+<p class="text-xs sm:text-sm text-champagne font-bold relative z-10" data-about-text-key="text_20">
+                    مَسَارُ التَّمَيُّزِ &mdash; نحو تجربة أكثر احترافية، وإنجاز أكثر سهولة.
                 </p>
-                <p class="font-amiri text-base sm:text-xl gold-24k-text font-bold pt-1 relative z-10">
+<p class="font-amiri text-base sm:text-xl gold-24k-text font-bold pt-1 relative z-10" data-about-text-key="text_21">
                     مَسَارُ التَّمَيُّزِ لِلْخِدْمَاتِ الطُّلَابِيَّةِ | جودة تُنجز، وثقة تُبنى.
                 </p>
-            </section>
-
-        </div>
-    </main>
-
-    <!-- =====================================================================
+</section>
+</div>
+</main>
+<!-- =====================================================================
          3. الفوتر الملكي (مطابق تماماً لأسفل الصفحة الرسمية index.html)
     ===================================================================== -->
-    <footer class="masar-footer">
-        <div class="masar-footer-container">
-
-            <!-- اسم المنصة -->
-            <div class="text-base sm:text-lg font-black mb-1">
-                <span id="footer-platform-name" class="gold-24k-text">مسار التميز للخدمات الطلابية</span>
-            </div>
-
-            <!-- العبارة التسويقية -->
-            <p class="font-amiri text-sm sm:text-base text-goldLight/90 italic m-0">
-                «جودة تُنجز، وثقة تُبنى، وطموح يُتوج بالتميز»
+<footer class="masar-footer">
+<div class="masar-footer-container">
+<!-- اسم المنصة -->
+<div class="text-base sm:text-lg font-black mb-1">
+<span class="gold-24k-text" data-about-text-key="text_31" id="footer-platform-name">مسار التميز للخدمات الطلابية</span>
+</div>
+<!-- العبارة التسويقية -->
+<p class="font-amiri text-sm sm:text-base text-goldLight/90 italic m-0" data-about-text-key="text_32">
+                &laquo;جودة تُنجز، وثقة تُبنى، وطموح يُتوج بالتميز&raquo;
             </p>
-
-            <!-- شريط الثقة -->
-            <div class="masar-trust-strip">
-                <span>سرية تامة</span>
-                <span class="masar-trust-dot">•</span>
-                <span>دقة أكاديمية</span>
-                <span class="masar-trust-dot">•</span>
-                <span>تسليم بالموعد</span>
-            </div>
-
-            <!-- أيقونات التواصل الدائرية -->
-            <div class="masar-social-row">
-                <!-- واتساب مباشر -->
-                <a href="https://wa.me/967736190956" target="_blank" rel="noopener" class="masar-social-btn" aria-label="واتساب">
-                    <svg viewBox="0 0 24 24"><path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.758.459 3.477 1.332 4.992L2 22l5.184-1.359a9.927 9.927 0 0 0 4.847 1.258h.004c5.515 0 9.968-4.453 9.968-9.969A9.934 9.934 0 0 0 19.08 4.92 9.914 9.914 0 0 0 12.031 2zm5.816 14.254c-.246.691-1.43 1.32-1.984 1.402-.508.074-1.148.105-1.855-.117-.43-.137-.98-.32-1.684-.625-2.961-1.277-4.895-4.262-5.043-4.457-.148-.195-1.203-1.602-1.203-3.055 0-1.453.762-2.168 1.031-2.465.27-.297.59-.371.785-.371.195 0 .391.004.562.012.18.008.422-.07.66.504.246.59.836 2.039.91 2.188.074.148.121.32.023.516-.098.195-.148.32-.293.492-.148.172-.309.383-.441.516-.148.148-.301.309-.129.605.172.297.762 1.258 1.637 2.039 1.125 1.004 2.074 1.316 2.371 1.465.297.148.469.125.641-.074.172-.195.738-.859.934-1.156.195-.297.391-.246.66-.148.27.098 1.719.812 2.016.961.297.148.492.223.566.348.074.125.074.715-.172 1.406z"/></svg>
-                </a>
-
-                <!-- تيليجرام -->
-                <a href="https://t.me/MasarExcellence" target="_blank" rel="noopener" class="masar-social-btn" aria-label="تيليجرام">
-                    <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-                </a>
-
-                <!-- انستجرام -->
-                <a href="https://instagram.com/masar_altamayuz" target="_blank" rel="noopener" class="masar-social-btn" aria-label="انستجرام">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                </a>
-
-                <!-- اتصال مباشر -->
-                <a href="tel:+967736190956" class="masar-social-btn" aria-label="اتصال مباشر">
-                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                </a>
-            </div>
-
-            <!-- الروابط السريعة -->
-            <div class="masar-stacked-links">
-                <div class="masar-links-group">
-                    <h4>روابط سريعة</h4>
-                    <ul class="masar-links-list">
-                        <li><a href="index.html#hero">الرئيسية</a></li>
-                        <li><a href="من-نحن.html">من نحن</a></li>
-                        <li><a href="index.html#portfolio">معرض الأعمال</a></li>
-                    </ul>
-                </div>
-
-                <div class="masar-links-group">
-                    <h4>خدماتنا وعروضنا</h4>
-                    <ul class="masar-links-list">
-                        <li><a href="index.html#services">خدماتنا</a></li>
-                        <li><a href="index.html#offers">العروض الحصرية</a></li>
-                        <li><a href="index.html#calculator">حاسبة الخصم</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="masar-copyright-divider"></div>
-
-            <!-- سطر الحقوق -->
-            <p class="masar-copyright">
-                جميع الحقوق محفوظة © <span class="year-highlight">2026</span> — <span id="footer-copy-name">مسار التميز للخدمات الطلابية</span>
-            </p>
-        </div>
-    </footer>
-
-    <!-- =====================================================================
+<!-- شريط الثقة -->
+<div class="masar-trust-strip">
+<span data-about-text-key="text_33">سرية تامة</span>
+<span class="masar-trust-dot" data-about-text-key="text_34">&bull;</span>
+<span data-about-text-key="text_35">دقة أكاديمية</span>
+<span class="masar-trust-dot" data-about-text-key="text_36">&bull;</span>
+<span data-about-text-key="text_37">تسليم بالموعد</span>
+</div>
+<!-- أيقونات التواصل الدائرية -->
+<div class="masar-social-row">
+<!-- واتساب مباشر -->
+<a aria-label="واتساب" class="masar-social-btn" href="https://wa.me/967736190956" rel="noopener" target="_blank">
+<svg viewbox="0 0 24 24"><path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.758.459 3.477 1.332 4.992L2 22l5.184-1.359a9.927 9.927 0 0 0 4.847 1.258h.004c5.515 0 9.968-4.453 9.968-9.969A9.934 9.934 0 0 0 19.08 4.92 9.914 9.914 0 0 0 12.031 2zm5.816 14.254c-.246.691-1.43 1.32-1.984 1.402-.508.074-1.148.105-1.855-.117-.43-.137-.98-.32-1.684-.625-2.961-1.277-4.895-4.262-5.043-4.457-.148-.195-1.203-1.602-1.203-3.055 0-1.453.762-2.168 1.031-2.465.27-.297.59-.371.785-.371.195 0 .391.004.562.012.18.008.422-.07.66.504.246.59.836 2.039.91 2.188.074.148.121.32.023.516-.098.195-.148.32-.293.492-.148.172-.309.383-.441.516-.148.148-.301.309-.129.605.172.297.762 1.258 1.637 2.039 1.125 1.004 2.074 1.316 2.371 1.465.297.148.469.125.641-.074.172-.195.738-.859.934-1.156.195-.297.391-.246.66-.148.27.098 1.719.812 2.016.961.297.148.492.223.566.348.074.125.074.715-.172 1.406z"></path></svg>
+</a>
+<!-- تيليجرام -->
+<a aria-label="تيليجرام" class="masar-social-btn" href="https://t.me/MasarExcellence" rel="noopener" target="_blank">
+<svg viewbox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path></svg>
+</a>
+<!-- انستجرام -->
+<a aria-label="انستجرام" class="masar-social-btn" href="https://instagram.com/masar_altamayuz" rel="noopener" target="_blank">
+<svg viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+<!-- اتصال مباشر -->
+<a aria-label="اتصال مباشر" class="masar-social-btn" href="tel:+967736190956">
+<svg viewbox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"></path></svg>
+</a>
+</div>
+<!-- الروابط السريعة -->
+<div class="masar-stacked-links">
+<div class="masar-links-group">
+<h4 data-about-text-key="text_38">روابط سريعة</h4>
+<ul class="masar-links-list">
+<li><a data-about-text-key="text_39" href="index.html#hero">الرئيسية</a></li>
+<li><a data-about-text-key="text_40" href="من-نحن.html">تعرف علينا</a></li>
+<li><a data-about-text-key="text_41" href="index.html#portfolio">معرض الأعمال</a></li>
+</ul>
+</div>
+<div class="masar-links-group">
+<h4 data-about-text-key="text_42">خدماتنا وعروضنا</h4>
+<ul class="masar-links-list">
+<li><a data-about-text-key="text_43" href="index.html#services">خدماتنا</a></li>
+<li><a data-about-text-key="text_44" href="index.html#offers">العروض الحصرية</a></li>
+<li><a data-about-text-key="text_45" href="index.html#calculator">حاسبة الخصم</a></li>
+</ul>
+</div>
+</div>
+<div class="masar-copyright-divider"></div>
+<!-- سطر الحقوق -->
+<p class="masar-copyright">
+                جميع الحقوق محفوظة &copy; <span class="year-highlight" data-about-text-key="text_46">2026</span> &mdash; <span data-about-text-key="text_47" id="footer-copy-name">مسار التميز للخدمات الطلابية</span>
+</p>
+</div>
+</footer>
+<!-- =====================================================================
          سكربت الشعار الملكي والقائمة المنسدلة ومزامنة اسم المنصة والشعار
     ===================================================================== -->
-    <script>
+<script>
         const ROYAL_SVG_CREST = `
             <svg viewBox="0 0 120 120" class="w-full h-full p-1" xmlns="http://www.w3.org/2000/svg">
                 <defs>
@@ -862,6 +832,24 @@
                     ? `<img src="${brand.customLogoDataUrl}" alt="${brand.platformName}" class="w-full h-full object-cover rounded-full">`
                     : ROYAL_SVG_CREST;
             }
+        })();
+
+
+        // تحميل النصوص التي يعدّلها المشرف من إعدادات Supabase المشتركة.
+        (async function loadAboutManagedTexts(){
+            try {
+                const SB_URL='https://quljpjwjpeokolqumbne.supabase.co';
+                const SB_PUBLIC_KEY='sb_publishable_z7A6bTm4AIO3RyRNezaTOw_Ti0Z0pT8';
+                if(!window.supabase?.createClient) return;
+                const client=window.supabase.createClient(SB_URL,SB_PUBLIC_KEY,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}});
+                const {data,error}=await client.from('site_headings_config').select('heading_key,heading_text').like('heading_key','about-text-%');
+                if(error) throw error;
+                (data||[]).forEach(row=>{
+                    const key=String(row.heading_key||'').replace(/^about-text-/,'');
+                    const el=document.querySelector(`[data-about-text-key="${key}"]`);
+                    if(el && typeof row.heading_text==='string') el.textContent=row.heading_text;
+                });
+            } catch(error) { console.warn('تعذر تحميل نصوص صفحة تعرف علينا المحفوظة:',error?.message||error); }
         })();
 
         // القائمة المنسدلة في الشريط العلوي
