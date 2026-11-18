@@ -1,0 +1,2 @@
+[functions.get-media-view-url]
+verify_jwt = false
